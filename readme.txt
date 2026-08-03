@@ -1,10 +1,10 @@
 === t1 Schema ===
 Contributors: pvj7000
-Tags: schema, json-ld, structured-data, seo, rich-snippets
+Tags: schema, json-ld, structured-data, seo, woocommerce, rich-snippets
 Requires at least: 6.0
 Tested up to: 7.0
 Requires PHP: 8.0
-Stable tag: 2.0.2
+Stable tag: 2.1.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -30,6 +30,7 @@ t1 Schema is a Schema.org JSON-LD plugin for WordPress that gives you granular c
 * **Site Map** — Hierarchical view of every URL context on your site with schema coverage indicators and one-click rule creation.
 * **Recommended Templates** — Sensible default rules (Article for posts, WebPage for pages, etc.) that you opt into — never auto-activated.
 * **33 Built-In Schema Types** — Organization, Article, Product, FAQPage, HowTo, Event, VideoObject, Service, and more.
+* **WooCommerce Compatible** — `product` works as a condition like any post type, plus dynamic `{{product_price}}`, `{{product_availability}}`, `{{product_rating}}` variables, and automatic suppression of WooCommerce's own Product/Review/BreadcrumbList/WebSite markup wherever a t1 Schema rule would otherwise duplicate it.
 * **WP-CLI** — Full command suite: create, inspect, render, health-check, export, import, coverage audit, and diagnostics.
 * **Admin Bar Indicator** — Shows active schema count on frontend pages with a dropdown listing each type.
 * **Post Editor Meta Box** — Compact sidebar panel showing the local schemas on the current post with health badges, and a link straight into the full editor for that post.
@@ -75,6 +76,10 @@ Yes. t1 Schema outputs a `<script type="application/ld+json">` tag in `<head>` a
 
 t1 Schema only outputs JSON-LD structured data. It does not modify meta tags, sitemaps, or other SEO elements. It coexists with Yoast SEO, Rank Math, and similar plugins — but make sure to disable their schema output to avoid duplicates.
 
+= Does it work with WooCommerce? =
+
+Yes. `product` is treated as a regular post type, so it works with Global Schemas, Rules, and Local Overrides without extra setup, and dynamic variables like `{{product_price}}` and `{{product_availability}}` are available once WooCommerce is active. WooCommerce also outputs its own Product/Review/BreadcrumbList/WebSite JSON-LD by default — turn on "Suppress conflicting schema output" under Help → Settings and t1 Schema will automatically remove only the WooCommerce output that would otherwise duplicate a type you've configured.
+
 = What happens when I deactivate the plugin? =
 
 Your data (schemas, rules, custom variables) stays in the database. If you delete the plugin and have enabled the "Delete data on uninstall" setting, all data is removed.
@@ -101,6 +106,11 @@ Yes. Use `wp t1-schema export` and `wp t1-schema import` via WP-CLI, or export t
 6. Help — the full dynamic variable reference.
 
 == Changelog ==
+
+= 2.1.0 =
+* Feature: Automatic WooCommerce compatibility. When "Suppress conflicting schema output" is on, t1 Schema detects which schema types it is about to render on the current page and removes only the matching WooCommerce structured data (Product, Review, BreadcrumbList, or WebSite) — no more duplicate JSON-LD on stores running both.
+* Feature: Nine WooCommerce dynamic variables — `{{product_price}}`, `{{product_regular_price}}`, `{{product_sale_price}}`, `{{product_currency}}`, `{{product_sku}}`, `{{product_availability}}`, `{{product_rating}}`, `{{product_review_count}}`, `{{product_brand}}`. Only listed in the Help tab when WooCommerce is active.
+* Improvement: `wp t1-schema doctor` reports WooCommerce detection and suppression status alongside the existing conflict checks.
 
 = 2.0.2 =
 * Fix: Corrected the plugin and author URLs. The previous domain did not resolve, so the plugin homepage and author links were dead.

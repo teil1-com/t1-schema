@@ -15,6 +15,7 @@ export default function HelpPanel() {
     site: { icon: '🌐', title: 'Site Variables', desc: 'Global site information from WordPress settings' },
     taxonomy: { icon: '🏷️', title: 'Taxonomy Variables', desc: 'Categories, tags, and custom taxonomies' },
     meta: { icon: '🔧', title: 'Custom Meta Variables', desc: 'Access any post_meta field by key' },
+    woocommerce: { icon: '🛒', title: 'WooCommerce Variables', desc: 'Live product data — only shown when WooCommerce is active' },
   };
 
   return (
@@ -102,6 +103,9 @@ export default function HelpPanel() {
         </div>
         <div className="sp-p-6 sp-space-y-6">
           {Object.entries(variables).map(([category, vars]) => {
+            if (Object.keys(vars).length === 0) {
+              return null;
+            }
             const meta = categoryMeta[category] || { icon: '📋', title: category, desc: '' };
             return (
               <div key={category}>
@@ -150,7 +154,7 @@ export default function HelpPanel() {
         <div className="sp-divide-y sp-divide-surface-2">
           <SettingToggle
             label="Suppress conflicting schema output"
-            desc="Removes JSON-LD emitted by other plugins that would duplicate what t1 Schema outputs. Leave this off unless you actually see duplicate structured data on your pages."
+            desc="Removes JSON-LD emitted by other plugins — or by WooCommerce's own Product/Review/BreadcrumbList/WebSite markup — wherever it would duplicate what t1 Schema outputs. Leave this off unless you actually see duplicate structured data on your pages."
             checked={!!settings?.suppress_conflicts}
             disabled={!settings || updateSettings.isPending}
             onChange={(value) => updateSettings.mutate({ suppress_conflicts: value })}
@@ -236,6 +240,15 @@ function getExample(tag) {
     categories: 'Marketing, SEO, Growth',
     tags: 'schema, json-ld, structured-data',
     'meta:{key}': '(any custom post meta value)',
+    product_price: '29.90',
+    product_regular_price: '34.90',
+    product_sale_price: '29.90',
+    product_currency: 'EUR',
+    product_sku: 'WP-PENNANT-01',
+    product_availability: 'https://schema.org/InStock',
+    product_rating: '4.5',
+    product_review_count: '12',
+    product_brand: 'Acme',
   };
   return examples[tag] || '—';
 }

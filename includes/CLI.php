@@ -1547,6 +1547,17 @@ class CLI {
             );
             $found_conflict = true;
         }
+        if ( class_exists( '\WooCommerce' ) ) {
+            $suppressing = (bool) apply_filters(
+                't1schema_suppress_woocommerce_conflicts',
+                (bool) get_option( 't1schema_suppress_conflicts', false )
+            );
+            \WP_CLI::log( $suppressing
+                ? '   ⚠ WooCommerce detected — suppression is ON, t1 Schema removes WooCommerce\'s own Product/Review/BreadcrumbList/WebSite markup wherever a t1 Schema rule covers the same type'
+                : '   ⚠ WooCommerce detected — suppression is OFF; if a t1 Schema rule also covers Product, Review, BreadcrumbList, or WebSite, enable it in Settings to avoid duplicate JSON-LD'
+            );
+            $found_conflict = true;
+        }
         if ( ! $found_conflict ) {
             \WP_CLI::log( '   ✓ No conflicts detected' );
         }

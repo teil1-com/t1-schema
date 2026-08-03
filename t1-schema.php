@@ -3,7 +3,7 @@
  * Plugin Name:       t1 Schema
  * Plugin URI:        https://github.com/pvj7000/t1-schema
  * Description:       High-performance Schema.org JSON-LD markup with granular control. SaaS-grade visual editor for SEO professionals.
- * Version:           2.0.2
+ * Version:           2.1.0
  * Requires at least: 6.0
  * Requires PHP:      8.0
  * Author:            teil1 development
@@ -22,7 +22,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Plugin constants.
  */
-define( 'T1SCHEMA_VERSION', '2.0.2' );
+define( 'T1SCHEMA_VERSION', '2.1.0' );
 // Tracks the table schema, not the release. Bump only when tables change.
 define( 'T1SCHEMA_DB_VERSION', '1.5.0' );
 define( 'T1SCHEMA_FILE', __FILE__ );
@@ -101,15 +101,25 @@ add_action( 'plugins_loaded', function () {
         // Admin bar schema indicator (frontend only, for admins).
         $admin_bar = new T1Schema\AdminBar();
         $admin_bar->init();
+
+        // WooCommerce: suppress its own structured data where it would
+        // duplicate what t1 Schema is already rendering. Shares $frontend
+        // so the overlap check and the actual render use one assembly pass.
+        $wc_compat = new T1Schema\WooCommerceCompat( $frontend );
+        $wc_compat->init();
     }
 
     /**
-     * Conflict suppression.
+     * Conflict suppression (mu-plugin case).
      *
      * When enabled, removes another plugin's schema output so the page does
      * not end up with duplicate JSON-LD in <head>. Opt-in only: it is off
      * until the site owner turns it on in Settings, because it changes the
      * behaviour of software t1 Schema does not own.
+     *
+     * The WooCommerce equivalent is handled separately by WooCommerceCompat
+     * above, since it needs to run per-request against the current page's
+     * assembled schemas rather than once at boot.
      *
      * @since 1.0.0
      */

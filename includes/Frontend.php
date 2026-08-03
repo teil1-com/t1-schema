@@ -21,6 +21,16 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 class Frontend {
 
+    /**
+     * Per-request cache for assemble_schemas().
+     *
+     * Also called by WooCommerceCompat (on the `wp` hook) to decide which of
+     * WooCommerce's own structured data types would collide with ours, ahead
+     * of the actual render on `wp_head`. Query state does not change within
+     * a request, so it is safe to compute once and reuse.
+     */
+    private ?array $assembled_cache = null;
+
     public function init(): void {
         add_action( 'wp_head', [ $this, 'render_jsonld' ], 1 );
     }
@@ -69,6 +79,10 @@ class Frontend {
      * Within the same layer, later items override earlier ones per @type.
      */
     public function assemble_schemas(): array {
+        if ( $this->assembled_cache !== null ) {
+            return $this->assembled_cache;
+        }
+
         // Layer 1: Site-wide globals.
         $globals = $this->get_global_schemas();
 
@@ -132,6 +146,7 @@ class Frontend {
             }
         }
 
+        $this->assembled_cache = $schemas;
         return $schemas;
     }
 

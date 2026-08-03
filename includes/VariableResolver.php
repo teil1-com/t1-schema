@@ -67,7 +67,31 @@ class VariableResolver {
             'meta' => [
                 'meta:{key}'          => 'Custom post meta value (replace {key} with meta key)',
             ],
-            'custom' => self::get_custom_variable_catalog(),
+            'woocommerce' => self::get_woocommerce_catalog(),
+            'custom'      => self::get_custom_variable_catalog(),
+        ];
+    }
+
+    /**
+     * WooCommerce variable catalog. Empty when WooCommerce is not active, so
+     * the Variable Picker and Help reference do not advertise tags that
+     * would always resolve to an empty string.
+     */
+    private static function get_woocommerce_catalog(): array {
+        if ( ! class_exists( '\WooCommerce' ) ) {
+            return [];
+        }
+
+        return [
+            'product_price'         => 'Current price (sale price if on sale, else regular price)',
+            'product_regular_price' => 'Regular (non-sale) price',
+            'product_sale_price'    => 'Sale price, or empty if not on sale',
+            'product_currency'      => 'Store currency code (e.g. EUR)',
+            'product_sku'           => 'Product SKU',
+            'product_availability'  => 'Stock status as a schema.org URL (e.g. https://schema.org/InStock)',
+            'product_rating'        => 'Average rating, or empty with no reviews',
+            'product_review_count'  => 'Number of approved reviews',
+            'product_brand'         => 'First term from the Product Brand taxonomy, if set',
         ];
     }
 
@@ -197,6 +221,18 @@ class VariableResolver {
             'archive_url'          => self::get_archive_url(),
             'search_query'         => get_search_query(),
 
+            // WooCommerce variables (empty when WooCommerce is inactive or
+            // the current post is not a product).
+            'product_price'         => self::get_wc_product_field( $post_id, 'price' ),
+            'product_regular_price' => self::get_wc_product_field( $post_id, 'regular_price' ),
+            'product_sale_price'    => self::get_wc_product_field( $post_id, 'sale_price' ),
+            'product_currency'      => self::get_wc_product_field( $post_id, 'currency' ),
+            'product_sku'           => self::get_wc_product_field( $post_id, 'sku' ),
+            'product_availability'  => self::get_wc_product_field( $post_id, 'availability' ),
+            'product_rating'        => self::get_wc_product_field( $post_id, 'rating' ),
+            'product_review_count'  => self::get_wc_product_field( $post_id, 'review_count' ),
+            'product_brand'         => self::get_wc_product_field( $post_id, 'brand' ),
+
             default => '',
         };
 
@@ -210,6 +246,86 @@ class VariableResolver {
          * @param int|null $post_id The post ID context.
          */
         return (string) apply_filters( 't1schema_resolve_variable', $value, $tag, $post_id );
+    }
+
+    /**
+     * Resolve a single WooCommerce product field.
+     *
+     * Returns '' whenever WooCommerce is inactive, there is no post context,
+     * or the post is not a WC_Product — the same "empty when unavailable"
+     * convention every other variable in this resolver follows.
+     *
+     * @param int|null $post_id Post ID context.
+     * @param string   $field   One of: price, regular_price, sale_price,
+     *                          currency, sku, availability, rating,
+     *                          review_count, brand.
+     */
+    private static function get_wc_product_field( ?int $post_id, string $field ): string {
+        if ( ! $post_id || ! function_exists( 'wc_get_product' ) ) {
+            return '';
+        }
+
+        $product = wc_get_product( $post_id );
+        if ( ! is_a( $product, 'WC_Product' ) ) {
+            return '';
+        }
+
+        switch ( $field ) {
+            case 'price':
+                return (string) $product->get_price();
+
+            case 'regular_price':
+                return (string) $product->get_regular_price();
+
+            case 'sale_price':
+                return $product->is_on_sale() ? (string) $product->get_sale_price() : '';
+
+            case 'currency':
+                return function_exists( 'get_woocommerce_currency' ) ? get_woocommerce_currency() : '';
+
+            case 'sku':
+                return (string) $product->get_sku();
+
+            case 'availability':
+                if ( ! $product->is_in_stock() ) {
+                    return 'https://schema.org/OutOfStock';
+                }
+                return 'onbackorder' === $product->get_stock_status()
+                    ? 'https://schema.org/BackOrder'
+                    : 'https://schema.org/InStock';
+
+            case 'rating':
+                // Mirrors WooCommerce's own gate so a t1 Schema AggregateRating
+                // agrees with what WooCommerce itself would consider valid.
+                if ( ! $product->get_rating_count() || ! self::wc_review_ratings_enabled() ) {
+                    return '';
+                }
+                return (string) $product->get_average_rating();
+
+            case 'review_count':
+                if ( ! $product->get_rating_count() || ! self::wc_review_ratings_enabled() ) {
+                    return '';
+                }
+                return (string) $product->get_review_count();
+
+            case 'brand':
+                if ( ! taxonomy_exists( 'product_brand' ) ) {
+                    return '';
+                }
+                $terms = get_the_terms( $post_id, 'product_brand' );
+                return ( ! is_wp_error( $terms ) && ! empty( $terms ) ) ? $terms[0]->name : '';
+
+            default:
+                return '';
+        }
+    }
+
+    /**
+     * Wrapper around wc_review_ratings_enabled() for a single null-safety
+     * check point, since it is only defined once WooCommerce has loaded.
+     */
+    private static function wc_review_ratings_enabled(): bool {
+        return function_exists( 'wc_review_ratings_enabled' ) && wc_review_ratings_enabled();
     }
 
     /**

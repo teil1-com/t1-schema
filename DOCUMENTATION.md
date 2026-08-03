@@ -1,6 +1,6 @@
 # t1 Schema — Documentation
 
-**Version:** 2.0.2  
+**Version:** 2.1.0  
 **Author:** teil1 development  
 **Requires:** WordPress 6.0+, PHP 8.0+  
 **License:** GPL v2 or later
@@ -27,8 +27,9 @@
 13. [Schema Types Reference](#schema-types-reference)
 14. [Priority & Override Logic](#priority--override-logic)
 15. [mu-Plugin Conflict Handling](#mu-plugin-conflict-handling)
-16. [Hooks & Filters](#hooks--filters)
-17. [Troubleshooting](#troubleshooting)
+16. [WooCommerce Compatibility](#woocommerce-compatibility)
+17. [Hooks & Filters](#hooks--filters)
+18. [Troubleshooting](#troubleshooting)
 
 ---
 
@@ -424,6 +425,24 @@ Access any `post_meta` value:
 | Variable | Description |
 |----------|-------------|
 | `{{meta:custom_key}}` | Value of `get_post_meta($post_id, 'custom_key', true)` |
+
+### WooCommerce Variables
+
+Only resolve — and only listed in the Help tab's Variable Reference — when WooCommerce is active. All return `''` on a post that is not a `WC_Product`.
+
+| Variable | Description | Example Output |
+|----------|-------------|----------------|
+| `{{product_price}}` | Current price — sale price if on sale, else regular price | `29.90` |
+| `{{product_regular_price}}` | Regular (non-sale) price | `34.90` |
+| `{{product_sale_price}}` | Sale price, or `''` when not on sale | `29.90` |
+| `{{product_currency}}` | Store currency code | `EUR` |
+| `{{product_sku}}` | Product SKU | `WP-PENNANT-01` |
+| `{{product_availability}}` | Stock status as a schema.org URL | `https://schema.org/InStock` |
+| `{{product_rating}}` | Average rating, or `''` with no reviews or ratings disabled | `4.5` |
+| `{{product_review_count}}` | Approved review count, same gate as `product_rating` | `12` |
+| `{{product_brand}}` | First term from the `product_brand` taxonomy, if the taxonomy is registered | `Acme` |
+
+`product_availability` mirrors WooCommerce core's own mapping (`is_in_stock()` → `InStock`/`OutOfStock`, `onbackorder` stock status → `BackOrder`) so a t1 Schema `Offer.availability` value always agrees with what WooCommerce itself would report, even when WooCommerce's own structured data is suppressed on that page (see [WooCommerce Compatibility](#woocommerce-compatibility) below).
 | `{{meta:_price}}` | Example: WooCommerce price field |
 | `{{meta:project_client}}` | Example: custom client field |
 
@@ -808,6 +827,34 @@ add_filter( 't1schema_suppress_conflicts', '__return_true' );
 
 ---
 
+## WooCommerce Compatibility
+
+`product` is a public custom post type like any other, so it works with Global Schemas, Schema Rules (`singular: product`, `archive: product`), and Local Overrides without any WooCommerce-specific setup.
+
+**Duplicate structured data.** WooCommerce ships its own JSON-LD via `WC_Structured_Data`, on by default with no setting to turn it off. It emits `Product`, `Review`, `BreadcrumbList`, and `WebSite` markup on WooCommerce-templated pages. If a t1 Schema rule or local override also covers one of those types on the same page, the page ends up with two separate `<script type="application/ld+json">` blocks describing the same thing.
+
+Turning on **Help → Settings → Suppress conflicting schema output** also covers this case. `WooCommerceCompat` runs on the `wp` hook, checks which `@type`s t1 Schema is about to render on the current request (reusing `Frontend::assemble_schemas()` — no extra render pass), and adds a `__return_empty_array` filter for each matching WooCommerce type:
+
+| t1 Schema is rendering… | …suppresses WooCommerce's | via filter |
+|---|---|---|
+| `Product` | Product, Offer, AggregateRating, Review (all bundled into one markup array by WooCommerce) | `woocommerce_structured_data_product` |
+| `Review` | Standalone per-comment Review on the reviews tab | `woocommerce_structured_data_review` |
+| `BreadcrumbList` | WooCommerce's breadcrumb markup — t1 Schema auto-generates its own `BreadcrumbList` on every singular page by default, so this is the most common overlap even without an explicit rule | `woocommerce_structured_data_breadcrumblist` |
+| `WebSite` | WooCommerce's WebSite markup on shop/archive/single-product templates | `woocommerce_structured_data_website` |
+
+Only the overlapping type is suppressed. `Order` has no t1 Schema equivalent and is never touched. `WC_Structured_Data::generate_order_data()` is unaffected regardless of this setting.
+
+The check runs independently of the mu-plugin conflict handling above and is filterable on its own:
+
+```php
+// Force WooCommerce suppression on or off, ignoring the shared t1schema_suppress_conflicts option
+add_filter( 't1schema_suppress_woocommerce_conflicts', '__return_true' );
+```
+
+`wp t1-schema doctor` reports whether WooCommerce is detected and whether suppression is currently on.
+
+---
+
 ## Hooks & Filters
 
 ### PHP Filters
@@ -866,6 +913,9 @@ add_filter( 't1schema_auto_breadcrumbs', '__return_false' );
 
 // Force suppression of conflicting schema plugins on, ignoring the stored setting
 add_filter( 't1schema_suppress_conflicts', '__return_true' );
+
+// Same, but scoped to WooCommerce's own structured data only
+add_filter( 't1schema_suppress_woocommerce_conflicts', '__return_true' );
 ```
 
 ### Action Hooks
