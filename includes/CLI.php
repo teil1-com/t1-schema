@@ -1363,6 +1363,7 @@ class CLI {
         // Resolve variables unless --raw is passed
         $resolve = ! isset( $assoc_args['raw'] );
         if ( $resolve ) {
+            $merged = WooCommerceOffers::expand( $merged, $post_id );
             $merged = VariableResolver::resolve( $merged, $post_id );
         }
 

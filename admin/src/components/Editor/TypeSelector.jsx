@@ -17,7 +17,7 @@ export default function TypeSelector({ value, onChange, types }) {
   const groups = {
     'Core': ['Organization', 'LocalBusiness', 'WebSite', 'WebPage', 'Person'],
     'Content': ['Article', 'BlogPosting', 'CreativeWork', 'VideoObject', 'ImageObject'],
-    'Commerce': ['Product', 'Offer', 'Service', 'SoftwareApplication', 'JobPosting'],
+    'Commerce': ['Product', 'Offer', 'AggregateOffer', 'Service', 'SoftwareApplication', 'JobPosting'],
     'Rich Results': ['FAQPage', 'Question', 'Answer', 'HowTo', 'HowToStep', 'BreadcrumbList', 'ListItem', 'Review', 'AggregateRating'],
     'Other': ['Event', 'Course', 'Recipe', 'Thing'],
   };

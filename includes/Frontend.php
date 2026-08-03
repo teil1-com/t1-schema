@@ -46,6 +46,12 @@ class Frontend {
             // can be matched against literal URLs from local schemas.
             $schemas = $this->strip_internal_meta( $schemas );
             $post_id = $this->get_current_post_id();
+
+            // Must run before variable resolution — it keys off the literal
+            // {{product_price}} tag to upgrade a variable product's Offer
+            // into an AggregateOffer price range.
+            $schemas = WooCommerceOffers::expand( $schemas, $post_id );
+
             $schemas = VariableResolver::resolve( $schemas, $post_id );
 
             // Deduplicate nodes with the same @id (e.g. Rule + Local for same entity).

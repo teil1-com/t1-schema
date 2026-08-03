@@ -83,7 +83,7 @@ class VariableResolver {
         }
 
         return [
-            'product_price'         => 'Current price (sale price if on sale, else regular price)',
+            'product_price'         => 'Current price (sale price if on sale, else regular price). In an Offer.price, auto-upgrades to an AggregateOffer range for variable products',
             'product_regular_price' => 'Regular (non-sale) price',
             'product_sale_price'    => 'Sale price, or empty if not on sale',
             'product_currency'      => 'Store currency code (e.g. EUR)',

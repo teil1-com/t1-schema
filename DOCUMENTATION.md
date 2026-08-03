@@ -1,6 +1,6 @@
 # t1 Schema — Documentation
 
-**Version:** 2.1.0  
+**Version:** 2.2.0  
 **Author:** teil1 development  
 **Requires:** WordPress 6.0+, PHP 8.0+  
 **License:** GPL v2 or later
@@ -434,7 +434,7 @@ Only resolve — and only listed in the Help tab's Variable Reference — when W
 
 | Variable | Description | Example Output |
 |----------|-------------|----------------|
-| `{{product_price}}` | Current price — sale price if on sale, else regular price | `29.90` |
+| `{{product_price}}` | Current price — sale price if on sale, else regular price. For a variable product with a real price range, using this inside an `Offer.price` auto-upgrades that node to an `AggregateOffer` — see [WooCommerce Compatibility](#woocommerce-compatibility) | `29.90` |
 | `{{product_regular_price}}` | Regular (non-sale) price | `34.90` |
 | `{{product_sale_price}}` | Sale price, or `''` when not on sale | `29.90` |
 | `{{product_currency}}` | Store currency code | `EUR` |
@@ -689,7 +689,7 @@ done
 
 ## Schema Types Reference
 
-t1 Schema ships with 22 built-in Schema.org types:
+t1 Schema ships with 34 built-in Schema.org types. `wp t1-schema types` lists every one with its full property breakdown; the most commonly used are:
 
 | Type | Parent | Required Properties |
 |------|--------|---------------------|
@@ -701,6 +701,7 @@ t1 Schema ships with 22 built-in Schema.org types:
 | **BlogPosting** | Article | headline, image, datePublished, author |
 | **Product** | Thing | name, image, offers |
 | **Offer** | Thing | price, priceCurrency |
+| **AggregateOffer** | Offer | lowPrice, highPrice, priceCurrency |
 | **FAQPage** | WebPage | mainEntity |
 | **Question** | CreativeWork | name, acceptedAnswer |
 | **Answer** | CreativeWork | text |
@@ -853,6 +854,18 @@ add_filter( 't1schema_suppress_woocommerce_conflicts', '__return_true' );
 
 `wp t1-schema doctor` reports whether WooCommerce is detected and whether suppression is currently on.
 
+**Variable products.** `{{product_price}}` alone can only resolve to one number, which understates a variable product (size/color options, etc.) as its cheapest variation. `WooCommerceOffers::expand()` runs on every render before variable resolution: if the current product is variable and its variations don't all share one active price, it rewrites the `Offer` node into a proper `AggregateOffer`:
+
+```json
+// You write, in the Rule/Local editor:
+{ "@type": "Offer", "price": "{{product_price}}", "priceCurrency": "{{product_currency}}" }
+
+// A variable product with a real price range renders as:
+{ "@type": "AggregateOffer", "lowPrice": "19.99", "highPrice": "34.99", "offerCount": 4, "priceCurrency": "EUR" }
+```
+
+If every variation happens to share one active price, nothing is rewritten — the plain `Offer` with `{{product_price}}` is already correct and simpler. This only touches `Offer` nodes that actually use `{{product_price}}`; a hand-written static `Offer` is never altered. The price range itself is computed the same way WooCommerce's own `WC_Structured_Data::generate_product_data()` does (`get_variation_price( 'min'|'max', true )`, which already applies your site's tax display setting), so it agrees with what WooCommerce itself would report. This expansion is independent of the suppression setting above — it happens whether or not WooCommerce's own output is being suppressed.
+
 ---
 
 ## Hooks & Filters
@@ -993,9 +1006,10 @@ t1-schema/
 │   ├── ConditionMatcher.php     # Rule condition evaluation
 │   ├── MetaBox.php              # Post editor sidebar panel
 │   ├── WooCommerceCompat.php    # Suppresses WooCommerce's own JSON-LD on overlapping types
+│   ├── WooCommerceOffers.php    # Expands {{product_price}} into AggregateOffer for variable products
 │   └── CLI.php                  # WP-CLI command class
 ├── data/
-│   ├── schema-types.json        # Schema.org type registry (33 types)
+│   ├── schema-types.json        # Schema.org type registry (34 types)
 │   └── valid-types.json         # Full Schema.org type list for validation
 ├── languages/
 │   └── t1-schema.pot            # Translation template

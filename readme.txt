@@ -4,7 +4,7 @@ Tags: schema, json-ld, structured-data, seo, woocommerce, rich-snippets
 Requires at least: 6.0
 Tested up to: 7.0
 Requires PHP: 8.0
-Stable tag: 2.1.0
+Stable tag: 2.2.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -29,8 +29,8 @@ t1 Schema is a Schema.org JSON-LD plugin for WordPress that gives you granular c
 * **Health Validation** — Every schema is validated against its type definition. Errors, warnings, and fix suggestions are shown inline.
 * **Site Map** — Hierarchical view of every URL context on your site with schema coverage indicators and one-click rule creation.
 * **Recommended Templates** — Sensible default rules (Article for posts, WebPage for pages, etc.) that you opt into — never auto-activated.
-* **33 Built-In Schema Types** — Organization, Article, Product, FAQPage, HowTo, Event, VideoObject, Service, and more.
-* **WooCommerce Compatible** — `product` works as a condition like any post type, plus dynamic `{{product_price}}`, `{{product_availability}}`, `{{product_rating}}` variables, and automatic suppression of WooCommerce's own Product/Review/BreadcrumbList/WebSite markup wherever a t1 Schema rule would otherwise duplicate it.
+* **34 Built-In Schema Types** — Organization, Article, Product, FAQPage, HowTo, Event, VideoObject, Service, and more.
+* **WooCommerce Compatible** — `product` works as a condition like any post type, plus dynamic `{{product_price}}`, `{{product_availability}}`, `{{product_rating}}` variables, automatic `AggregateOffer` price ranges for variable products, and automatic suppression of WooCommerce's own Product/Review/BreadcrumbList/WebSite markup wherever a t1 Schema rule would otherwise duplicate it.
 * **WP-CLI** — Full command suite: create, inspect, render, health-check, export, import, coverage audit, and diagnostics.
 * **Admin Bar Indicator** — Shows active schema count on frontend pages with a dropdown listing each type.
 * **Post Editor Meta Box** — Compact sidebar panel showing the local schemas on the current post with health badges, and a link straight into the full editor for that post.
@@ -78,7 +78,7 @@ t1 Schema only outputs JSON-LD structured data. It does not modify meta tags, si
 
 = Does it work with WooCommerce? =
 
-Yes. `product` is treated as a regular post type, so it works with Global Schemas, Rules, and Local Overrides without extra setup, and dynamic variables like `{{product_price}}` and `{{product_availability}}` are available once WooCommerce is active. WooCommerce also outputs its own Product/Review/BreadcrumbList/WebSite JSON-LD by default — turn on "Suppress conflicting schema output" under Help → Settings and t1 Schema will automatically remove only the WooCommerce output that would otherwise duplicate a type you've configured.
+Yes. `product` is treated as a regular post type, so it works with Global Schemas, Rules, and Local Overrides without extra setup, and dynamic variables like `{{product_price}}` and `{{product_availability}}` are available once WooCommerce is active. Variable products (size/color options) using `{{product_price}}` automatically get an accurate `AggregateOffer` price range instead of just their cheapest variation. WooCommerce also outputs its own Product/Review/BreadcrumbList/WebSite JSON-LD by default — turn on "Suppress conflicting schema output" under Help → Settings and t1 Schema will automatically remove only the WooCommerce output that would otherwise duplicate a type you've configured.
 
 = What happens when I deactivate the plugin? =
 
@@ -106,6 +106,10 @@ Yes. Use `wp t1-schema export` and `wp t1-schema import` via WP-CLI, or export t
 6. Help — the full dynamic variable reference.
 
 == Changelog ==
+
+= 2.2.0 =
+* Feature: Variable WooCommerce products (size/color options, etc.) now get an accurate `AggregateOffer` — `lowPrice`, `highPrice`, and `offerCount` — instead of `{{product_price}}` understating them at their cheapest variation. Computed the same way WooCommerce's own structured data does, so the numbers always agree. Products with one effective price across all variations are unaffected.
+* Feature: New `AggregateOffer` schema type in the type registry (34 built-in types total).
 
 = 2.1.0 =
 * Feature: Automatic WooCommerce compatibility. When "Suppress conflicting schema output" is on, t1 Schema detects which schema types it is about to render on the current page and removes only the matching WooCommerce structured data (Product, Review, BreadcrumbList, or WebSite) — no more duplicate JSON-LD on stores running both.

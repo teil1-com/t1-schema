@@ -185,7 +185,7 @@ function isObjectType(type) {
   const base = type.replace('[]', '');
   if (PRIMITIVE_TYPES.includes(base)) return false;
   if (type.endsWith('[]')) return true;
-  const objects = ['Person', 'Organization', 'PostalAddress', 'GeoCoordinates', 'Offer',
+  const objects = ['Person', 'Organization', 'PostalAddress', 'GeoCoordinates', 'Offer', 'AggregateOffer',
     'Review', 'AggregateRating', 'Rating', 'Brand', 'Place', 'SearchAction',
     'MonetaryAmount', 'Answer', 'Question', 'HowToStep', 'ListItem', 'DefinedTermSet'];
   return objects.includes(type);

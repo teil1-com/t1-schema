@@ -115,6 +115,19 @@
       "url": { "type": "URL", "required": false, "recommended": true, "description": "URL to purchase." }
     }
   },
+  "AggregateOffer": {
+    "label": "Aggregate Offer",
+    "parent": "Offer",
+    "description": "A price range across multiple offers for the same item, e.g. a product with several variations.",
+    "properties": {
+      "lowPrice": { "type": "Number", "required": true, "recommended": true, "description": "Lowest price across all offers." },
+      "highPrice": { "type": "Number", "required": true, "recommended": true, "description": "Highest price across all offers." },
+      "priceCurrency": { "type": "Text", "required": true, "recommended": true, "description": "Currency code (e.g. EUR)." },
+      "offerCount": { "type": "Number", "required": false, "recommended": true, "description": "Number of distinct offers in the range." },
+      "availability": { "type": "Text", "required": false, "recommended": true, "description": "Availability status URL." },
+      "url": { "type": "URL", "required": false, "recommended": true, "description": "URL to purchase." }
+    }
+  },
   "FAQPage": {
     "label": "FAQ Page",
     "parent": "WebPage",
