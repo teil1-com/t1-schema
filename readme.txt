@@ -53,7 +53,7 @@ t1 Schema is a Schema.org JSON-LD plugin for WordPress that gives you granular c
 
 = Source Code =
 
-The React admin UI is built with Vite. Source code and build tools are available on [GitHub](https://github.com/pvj7000/t1-schema).
+The React admin UI is built with Vite. Source code and build tools are available on [GitHub](https://github.com/teil1-com/t1-schema).
 
 == Installation ==
 
