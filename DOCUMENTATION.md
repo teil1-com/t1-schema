@@ -425,6 +425,8 @@ Access any `post_meta` value:
 | Variable | Description |
 |----------|-------------|
 | `{{meta:custom_key}}` | Value of `get_post_meta($post_id, 'custom_key', true)` |
+| `{{meta:_price}}` | Raw WooCommerce price meta — prefer `{{product_price}}` below, which normalizes it |
+| `{{meta:project_client}}` | Example: custom client field |
 
 ### WooCommerce Variables
 
@@ -443,8 +445,6 @@ Only resolve — and only listed in the Help tab's Variable Reference — when W
 | `{{product_brand}}` | First term from the `product_brand` taxonomy, if the taxonomy is registered | `Acme` |
 
 `product_availability` mirrors WooCommerce core's own mapping (`is_in_stock()` → `InStock`/`OutOfStock`, `onbackorder` stock status → `BackOrder`) so a t1 Schema `Offer.availability` value always agrees with what WooCommerce itself would report, even when WooCommerce's own structured data is suppressed on that page (see [WooCommerce Compatibility](#woocommerce-compatibility) below).
-| `{{meta:_price}}` | Example: WooCommerce price field |
-| `{{meta:project_client}}` | Example: custom client field |
 
 ### Custom Variables (Site Constants)
 
@@ -616,7 +616,7 @@ wp t1-schema coverage --format=json
 
 ### Doctor — Diagnostics
 
-Checks database tables, duplicate types, plugin conflicts, health across all layers, orphaned schemas.
+Checks database tables, duplicate types, plugin conflicts (including WooCommerce's own structured data — see [WooCommerce Compatibility](#woocommerce-compatibility)), health across all layers, orphaned schemas.
 
 ```bash
 wp t1-schema doctor
@@ -962,6 +962,12 @@ do_action( 't1schema_loaded' );
 - WP-CLI commands only register when `WP_CLI` is defined. Run commands via `wp t1-schema` (not `php`).
 - Verify the plugin is activated: `wp plugin list | grep t1-schema`.
 
+### Duplicate Product/Review/BreadcrumbList JSON-LD on a WooCommerce store
+
+- WooCommerce outputs its own structured data by default. If a t1 Schema rule or local override also covers `Product`, `Review`, `BreadcrumbList`, or `WebSite`, you'll see two `<script type="application/ld+json">` blocks for the same page.
+- Turn on **Help → Settings → Suppress conflicting schema output**. t1 Schema will then remove only the overlapping WooCommerce output — see [WooCommerce Compatibility](#woocommerce-compatibility).
+- Confirm it's working with `wp t1-schema doctor`, which reports WooCommerce detection and whether suppression is on.
+
 ---
 
 ## File Structure
@@ -986,6 +992,7 @@ t1-schema/
 │   ├── ContextDetector.php      # WordPress context detection
 │   ├── ConditionMatcher.php     # Rule condition evaluation
 │   ├── MetaBox.php              # Post editor sidebar panel
+│   ├── WooCommerceCompat.php    # Suppresses WooCommerce's own JSON-LD on overlapping types
 │   └── CLI.php                  # WP-CLI command class
 ├── data/
 │   ├── schema-types.json        # Schema.org type registry (33 types)
