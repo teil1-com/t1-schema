@@ -1,10 +1,10 @@
 === t1 Schema ===
 Contributors: pvj7000
-Tags: schema, json-ld, structured-data, seo, woocommerce, rich-snippets
+Tags: schema, json-ld, structured-data, seo, woocommerce
 Requires at least: 6.0
 Tested up to: 7.0
 Requires PHP: 8.0
-Stable tag: 2.2.0
+Stable tag: 2.2.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -106,6 +106,10 @@ Yes. Use `wp t1-schema export` and `wp t1-schema import` via WP-CLI, or export t
 6. Help — the full dynamic variable reference.
 
 == Changelog ==
+
+= 2.2.1 =
+* Fix: Move the Vite asset manifest out of the hidden `assets/.vite/` folder so the distribution zip passes WordPress.org Plugin Check (hidden files are not permitted).
+* Fix: Drop the sixth readme tag. WordPress.org allows a maximum of five.
 
 = 2.2.0 =
 * Feature: Variable WooCommerce products (size/color options, etc.) now get an accurate `AggregateOffer` — `lowPrice`, `highPrice`, and `offerCount` — instead of `{{product_price}}` understating them at their cheapest variation. Computed the same way WooCommerce's own structured data does, so the numbers always agree. Products with one effective price across all variations are unaffected.

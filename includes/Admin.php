@@ -54,7 +54,7 @@ class Admin {
             return;
         }
 
-        $manifest_path = T1SCHEMA_PATH . 'assets/.vite/manifest.json';
+        $manifest_path = T1SCHEMA_PATH . 'assets/manifest.json';
         $asset_url     = T1SCHEMA_URL . 'assets/';
 
         // Production: load from manifest.

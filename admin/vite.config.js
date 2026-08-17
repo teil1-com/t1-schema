@@ -13,10 +13,8 @@ function directorySilencers() {
   return {
     name: 't1schema-directory-silencers',
     closeBundle() {
-      for (const dir of [OUT_DIR, path.join(OUT_DIR, '.vite')]) {
-        if (fs.existsSync(dir)) {
-          fs.writeFileSync(path.join(dir, 'index.php'), '<?php\n// Silence is golden.\n');
-        }
+      if (fs.existsSync(OUT_DIR)) {
+        fs.writeFileSync(path.join(OUT_DIR, 'index.php'), '<?php\n// Silence is golden.\n');
       }
     },
   };
@@ -29,7 +27,9 @@ export default defineConfig({
   build: {
     outDir: '../assets',
     emptyOutDir: true,
-    manifest: true,
+    // Write the manifest at assets/manifest.json — not assets/.vite/ —
+    // because WordPress.org Plugin Check rejects hidden files and folders.
+    manifest: 'manifest.json',
     rollupOptions: {
       input: path.resolve(__dirname, 'src/main.jsx'),
       output: {

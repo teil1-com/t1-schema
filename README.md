@@ -28,7 +28,7 @@ npm ci
 npm run build
 ```
 
-This reads `admin/vite.config.js` and writes the compiled bundle plus a manifest into `assets/` at the repository root. The PHP side resolves hashed filenames through `assets/.vite/manifest.json`, so the admin screen will not load until a build has been run at least once.
+This reads `admin/vite.config.js` and writes the compiled bundle plus a manifest into `assets/` at the repository root. The PHP side resolves hashed filenames through `assets/manifest.json`, so the admin screen will not load until a build has been run at least once.
 
 ### Development
 
