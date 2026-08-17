@@ -4,7 +4,7 @@ Tags: schema, json-ld, structured-data, seo, woocommerce
 Requires at least: 6.0
 Tested up to: 7.0
 Requires PHP: 8.0
-Stable tag: 2.2.1
+Stable tag: 2.2.2
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -106,6 +106,9 @@ Yes. Use `wp t1-schema export` and `wp t1-schema import` via WP-CLI, or export t
 6. Help — the full dynamic variable reference.
 
 == Changelog ==
+
+= 2.2.2 =
+* Fix: Escape custom table names with `esc_sql()` before interpolating them into SQL, which clears Plugin Check's UnescapedDBParameter warnings.
 
 = 2.2.1 =
 * Fix: Move the Vite asset manifest out of the hidden `assets/.vite/` folder so the distribution zip passes WordPress.org Plugin Check (hidden files are not permitted).

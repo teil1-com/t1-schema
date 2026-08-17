@@ -24,7 +24,7 @@ if ( $t1schema_delete_data ) {
 
     // 1. Drop the plugin tables.
     foreach ( [ 't1schema_globals', 't1schema_rules' ] as $t1schema_table ) {
-        $t1schema_table_name = $wpdb->prefix . $t1schema_table;
+        $t1schema_table_name = esc_sql( $wpdb->prefix . $t1schema_table );
         $wpdb->query( "DROP TABLE IF EXISTS {$t1schema_table_name}" ); // phpcs:ignore WordPress.DB.DirectDatabaseQuery, WordPress.DB.PreparedSQL
     }
 

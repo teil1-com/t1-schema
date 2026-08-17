@@ -187,7 +187,7 @@ class Frontend {
      */
     private function get_global_schemas(): array {
         global $wpdb;
-        $table = $wpdb->prefix . 't1schema_globals';
+        $table = esc_sql( $wpdb->prefix . 't1schema_globals' );
 
         if ( ! $wpdb->get_var( $wpdb->prepare( 'SHOW TABLES LIKE %s', $table ) ) ) {
             return [];
@@ -219,7 +219,7 @@ class Frontend {
      */
     private function get_matching_rules( array $context ): array {
         global $wpdb;
-        $table = $wpdb->prefix . 't1schema_rules';
+        $table = esc_sql( $wpdb->prefix . 't1schema_rules' );
 
         if ( ! $wpdb->get_var( $wpdb->prepare( 'SHOW TABLES LIKE %s', $table ) ) ) {
             return [];

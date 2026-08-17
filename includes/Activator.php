@@ -100,7 +100,7 @@ class Activator {
     private function maybe_seed_defaults(): void {
         global $wpdb;
 
-        $table_name = $wpdb->prefix . 't1schema_globals';
+        $table_name = esc_sql( $wpdb->prefix . 't1schema_globals' );
         $count      = (int) $wpdb->get_var( "SELECT COUNT(*) FROM {$table_name}" ); // phpcs:ignore WordPress.DB.DirectDatabaseQuery, WordPress.DB.PreparedSQL
 
         if ( $count > 0 ) {
@@ -163,10 +163,10 @@ class Activator {
 
         global $wpdb;
 
-        $old_globals = $wpdb->prefix . 'schemapro_globals';
-        $new_globals = $wpdb->prefix . 't1schema_globals';
-        $old_rules   = $wpdb->prefix . 'schemapro_rules';
-        $new_rules   = $wpdb->prefix . 't1schema_rules';
+        $old_globals = esc_sql( $wpdb->prefix . 'schemapro_globals' );
+        $new_globals = esc_sql( $wpdb->prefix . 't1schema_globals' );
+        $old_rules   = esc_sql( $wpdb->prefix . 'schemapro_rules' );
+        $new_rules   = esc_sql( $wpdb->prefix . 't1schema_rules' );
 
         // 1. Rename tables (only if old exists and new doesn't).
         $old_globals_exists = $wpdb->get_var( $wpdb->prepare( 'SHOW TABLES LIKE %s', $old_globals ) );

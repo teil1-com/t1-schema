@@ -3,7 +3,7 @@
  * Plugin Name:       t1 Schema
  * Plugin URI:        https://github.com/teil1-com/t1-schema
  * Description:       High-performance Schema.org JSON-LD markup with granular control. SaaS-grade visual editor for SEO professionals.
- * Version:           2.2.1
+ * Version:           2.2.2
  * Requires at least: 6.0
  * Requires PHP:      8.0
  * Author:            teil1 development
@@ -22,7 +22,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Plugin constants.
  */
-define( 'T1SCHEMA_VERSION', '2.2.1' );
+define( 'T1SCHEMA_VERSION', '2.2.2' );
 // Tracks the table schema, not the release. Bump only when tables change.
 define( 'T1SCHEMA_DB_VERSION', '1.5.0' );
 define( 'T1SCHEMA_FILE', __FILE__ );
