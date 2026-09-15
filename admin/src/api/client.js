@@ -8,10 +8,39 @@
 const config = window.t1SchemaConfig || {};
 
 /**
+ * Build an endpoint URL for both pretty and plain WordPress permalinks.
+ *
+ * On a default installation, rest_url() returns a URL such as
+ * `index.php?rest_route=/teil1-schema-manager/v1/`. Appending an endpoint and
+ * its query string directly would put `?page=...` inside the rest_route value.
+ */
+function buildApiUrl(endpoint) {
+  const queryIndex = endpoint.indexOf('?');
+  const endpointPath = queryIndex === -1 ? endpoint : endpoint.slice(0, queryIndex);
+  const endpointQuery = queryIndex === -1 ? '' : endpoint.slice(queryIndex + 1);
+  const base = new URL(config.restUrl, window.location.origin);
+  const restRoute = base.searchParams.get('rest_route');
+
+  if (restRoute !== null) {
+    const routeBase = restRoute.endsWith('/') ? restRoute : `${restRoute}/`;
+    base.searchParams.set('rest_route', `${routeBase}${endpointPath.replace(/^\/+/, '')}`);
+
+    new URLSearchParams(endpointQuery).forEach((value, key) => {
+      base.searchParams.append(key, value);
+    });
+
+    return base.toString();
+  }
+
+  const baseUrl = config.restUrl.endsWith('/') ? config.restUrl : `${config.restUrl}/`;
+  return `${baseUrl}${endpoint.replace(/^\/+/, '')}`;
+}
+
+/**
  * Base fetch wrapper with WP nonce handling.
  */
 async function apiFetch(endpoint, options = {}) {
-  const url = `${config.restUrl}${endpoint}`;
+  const url = buildApiUrl(endpoint);
 
   const headers = {
     'Content-Type': 'application/json',

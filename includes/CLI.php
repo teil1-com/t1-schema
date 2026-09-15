@@ -7,7 +7,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * WP-CLI commands for t1 Schema.
+ * WP-CLI commands for Teil1 Schema Manager.
  *
  * Usage: wp t1-schema <subcommand>
  *
@@ -73,11 +73,12 @@ class CLI {
      * <type>
      * : Schema.org type (e.g. Organization, WebSite, Article).
      *
-     * [--json=<json>]
+     * [--schema-json=<json>]
      * : Full schema data as JSON string.
      *
      * [--json-file=<path>]
-     * : Path to a JSON file containing schema data. Use this instead of --json
+     * : Path to a JSON file containing schema data. Use this instead of
+     *   --schema-json
      *   when values contain {{variables}} or special characters.
      *
      * [--name=<name>]
@@ -110,7 +111,7 @@ class CLI {
         $type   = $args[0];
         $status = $assoc_args['status'] ?? 'active';
 
-        // Build schema data from --json, --json-file, or empty.
+        // Build schema data from --schema-json, --json-file, or empty.
         $schema_data = $this->parse_json_input( $assoc_args );
         if ( false === $schema_data ) {
             return;
@@ -164,11 +165,12 @@ class CLI {
      * <id>
      * : Schema ID to update.
      *
-     * [--json=<json>]
+     * [--schema-json=<json>]
      * : Full schema data as JSON string (merges with existing data).
      *
      * [--json-file=<path>]
-     * : Path to a JSON file containing schema data. Use this instead of --json
+     * : Path to a JSON file containing schema data. Use this instead of
+     *   --schema-json
      *   when values contain {{variables}} or special characters.
      *
      * [--name=<name>]
@@ -210,7 +212,7 @@ class CLI {
         // Handle data updates.
         $data = json_decode( $row['schema_data'], true );
 
-        if ( ! empty( $assoc_args['json'] ) || ! empty( $assoc_args['json-file'] ) ) {
+        if ( ! empty( $assoc_args['schema-json'] ) || ! empty( $assoc_args['json-file'] ) ) {
             $new_data = $this->parse_json_input( $assoc_args );
             if ( false === $new_data ) {
                 return;
@@ -370,7 +372,7 @@ class CLI {
      * <type>
      * : Schema.org type (e.g. Article, Product, FAQPage).
      *
-     * [--json=<json>]
+     * [--schema-json=<json>]
      * : Schema properties as JSON string.
      *
      * [--replace]
@@ -381,9 +383,9 @@ class CLI {
      *
      * ## EXAMPLES
      *
-     *     wp t1-schema set-local 42 Article --json='{"headline":"{{post_title}}","datePublished":"{{post_date}}"}'
+     *     wp teil1-schema-manager set-local 42 Article --schema-json='{"headline":"{{post_title}}","datePublished":"{{post_date}}"}'
      *     wp t1-schema set-local 42 FAQPage --replace
-     *     wp t1-schema set-local 99 Product --json='{"name":"My Product","offers":{"@type":"Offer","price":"49.99","priceCurrency":"EUR"}}'
+     *     wp teil1-schema-manager set-local 99 Product --schema-json='{"name":"My Product","offers":{"@type":"Offer","price":"49.99","priceCurrency":"EUR"}}'
      *
      * @subcommand set-local
      */
@@ -407,8 +409,8 @@ class CLI {
             ],
         ];
 
-        if ( ! empty( $assoc_args['json'] ) ) {
-            $extra = json_decode( $assoc_args['json'], true );
+        if ( ! empty( $assoc_args['schema-json'] ) ) {
+            $extra = json_decode( $assoc_args['schema-json'], true );
             if ( json_last_error() !== JSON_ERROR_NONE ) {
                 \WP_CLI::error( 'Invalid JSON: ' . json_last_error_msg() );
                 return;
@@ -1041,12 +1043,12 @@ class CLI {
     }
 
     /**
-     * Parse JSON input from --json or --json-file parameter.
+     * Parse JSON input from --schema-json or --json-file parameter.
      *
      * @return array|false Parsed data or false on error.
      */
     private function parse_json_input( array $assoc_args ) {
-        // Prefer --json-file over --json (avoids shell escaping issues).
+        // Prefer --json-file over --schema-json (avoids shell escaping issues).
         if ( ! empty( $assoc_args['json-file'] ) ) {
             $path = $assoc_args['json-file'];
             if ( ! file_exists( $path ) ) {
@@ -1062,8 +1064,8 @@ class CLI {
             return $data;
         }
 
-        if ( ! empty( $assoc_args['json'] ) ) {
-            $data = json_decode( $assoc_args['json'], true );
+        if ( ! empty( $assoc_args['schema-json'] ) ) {
+            $data = json_decode( $assoc_args['schema-json'], true );
             if ( json_last_error() !== JSON_ERROR_NONE ) {
                 \WP_CLI::error( 'Invalid JSON: ' . json_last_error_msg() );
                 return false;
@@ -1130,7 +1132,7 @@ class CLI {
      * [--name=<name>]
      * : Rule name. Auto-generated if omitted.
      *
-     * [--json=<json>]
+     * [--schema-json=<json>]
      * : Schema properties as JSON string.
      *
      * [--priority=<priority>]
@@ -1138,7 +1140,7 @@ class CLI {
      *
      * ## EXAMPLES
      *
-     *     wp t1-schema add-rule Article --conditions='[{"type":"singular","value":"post"}]' --json='{"headline":"{{post_title}}"}'
+     *     wp teil1-schema-manager add-rule Article --conditions='[{"type":"singular","value":"post"}]' --schema-json='{"headline":"{{post_title}}"}'
      *     wp t1-schema add-rule CollectionPage --conditions='[{"type":"archive","value":"portfolio"}]' --name="Portfolio Archive"
      *
      * @subcommand add-rule
@@ -1155,8 +1157,8 @@ class CLI {
         }
 
         $schema_data = [ '@context' => 'https://schema.org', '@type' => $type ];
-        if ( ! empty( $assoc_args['json'] ) ) {
-            $extra = json_decode( $assoc_args['json'], true );
+        if ( ! empty( $assoc_args['schema-json'] ) ) {
+            $extra = json_decode( $assoc_args['schema-json'], true );
             if ( json_last_error() !== JSON_ERROR_NONE ) {
                 \WP_CLI::error( 'Invalid schema JSON: ' . json_last_error_msg() );
                 return;
@@ -1214,12 +1216,9 @@ class CLI {
     }
 
     /**
-     * Export all schemas (globals + rules + locals) to a JSON file.
+     * Export all schemas (globals + rules + locals) as JSON on stdout.
      *
      * ## OPTIONS
-     *
-     * [<file>]
-     * : Output file path. Defaults to stdout.
      *
      * [--globals-only]
      * : Export only global schemas.
@@ -1229,9 +1228,8 @@ class CLI {
      *
      * ## EXAMPLES
      *
-     *     wp t1-schema export > backup.json
-     *     wp t1-schema export /path/to/backup.json
-     *     wp t1-schema export --globals-only
+     *     wp teil1-schema-manager export > backup.json
+     *     wp teil1-schema-manager export --globals-only
      *
      * @subcommand export
      */
@@ -1281,16 +1279,11 @@ class CLI {
 
         $json = wp_json_encode( $output, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE );
 
-        if ( ! empty( $args[0] ) ) {
-            file_put_contents( $args[0], $json ); // phpcs:ignore
-            $counts = [];
-            if ( isset( $output['globals'] ) ) $counts[] = count( $output['globals'] ) . ' globals';
-            if ( isset( $output['rules'] ) )   $counts[] = count( $output['rules'] ) . ' rules';
-            if ( isset( $output['locals'] ) )  $counts[] = count( $output['locals'] ) . ' locals';
-            \WP_CLI::success( 'Exported ' . implode( ', ', $counts ) . " to {$args[0]}." );
-        } else {
-            \WP_CLI::log( $json );
-        }
+        // Intentionally write only to stdout. Accepting a user-controlled file
+        // path here would allow the CLI process to overwrite arbitrary writable
+        // files. Shell redirection keeps filesystem access explicit:
+        // wp teil1-schema-manager export > backup.json
+        \WP_CLI::log( $json );
     }
 
     /**
@@ -1482,7 +1475,7 @@ class CLI {
     }
 
     /**
-     * Run diagnostics on the t1 Schema installation.
+     * Run diagnostics on the Teil1 Schema Manager installation.
      *
      * Checks: database tables, orphaned data, plugin conflicts, schema health across all layers.
      *
@@ -1496,7 +1489,7 @@ class CLI {
         global $wpdb;
         $issues = 0;
 
-        \WP_CLI::log( '🩺 t1 Schema Doctor' );
+        \WP_CLI::log( '🩺 Teil1 Schema Manager Doctor' );
         \WP_CLI::log( str_repeat( '─', 50 ) );
 
         // 1. Check database tables.
@@ -1543,7 +1536,7 @@ class CLI {
         if ( function_exists( 'teil1_schema_output' ) ) {
             $suppressing = (bool) get_option( 't1schema_suppress_conflicts', false );
             \WP_CLI::log( $suppressing
-                ? '   ⚠ teil1_schema_output() detected — suppression is ON, t1 Schema removes it'
+                ? '   ⚠ teil1_schema_output() detected — suppression is ON, Teil1 Schema Manager removes it'
                 : '   ⚠ teil1_schema_output() detected — suppression is OFF, enable it in Settings if you see duplicates'
             );
             $found_conflict = true;
@@ -1554,8 +1547,8 @@ class CLI {
                 (bool) get_option( 't1schema_suppress_conflicts', false )
             );
             \WP_CLI::log( $suppressing
-                ? '   ⚠ WooCommerce detected — suppression is ON, t1 Schema removes WooCommerce\'s own Product/Review/BreadcrumbList/WebSite markup wherever a t1 Schema rule covers the same type'
-                : '   ⚠ WooCommerce detected — suppression is OFF; if a t1 Schema rule also covers Product, Review, BreadcrumbList, or WebSite, enable it in Settings to avoid duplicate JSON-LD'
+                ? '   ⚠ WooCommerce detected — suppression is ON, Teil1 Schema Manager removes WooCommerce\'s own Product/Review/BreadcrumbList/WebSite markup wherever a configured rule covers the same type'
+                : '   ⚠ WooCommerce detected — suppression is OFF; if a configured rule also covers Product, Review, BreadcrumbList, or WebSite, enable it in Settings to avoid duplicate JSON-LD'
             );
             $found_conflict = true;
         }
@@ -1599,6 +1592,8 @@ class CLI {
 
         if ( $total_errors === 0 ) {
             \WP_CLI::log( "   ✓ All schemas valid ({$total_warns} warning(s))" );
+        } else {
+            $issues += $total_errors;
         }
 
         // 5. Orphaned local schemas.
@@ -1618,7 +1613,7 @@ class CLI {
         // Summary.
         \WP_CLI::log( "\n" . str_repeat( '─', 50 ) );
         if ( $issues === 0 ) {
-            \WP_CLI::success( 'No issues found. t1 Schema is healthy.' );
+            \WP_CLI::success( 'No issues found. Teil1 Schema Manager is healthy.' );
         } else {
             \WP_CLI::warning( "{$issues} issue(s) found." );
         }

@@ -1,12 +1,10 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 /* Reset WordPress admin interference inside our root */
-#schemapro-root {
-  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+#t1schema-root {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   font-size: 14px;
   line-height: 1.5;
   color: #212529;
@@ -14,39 +12,39 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-#schemapro-root *,
-#schemapro-root *::before,
-#schemapro-root *::after {
+#t1schema-root *,
+#t1schema-root *::before,
+#t1schema-root *::after {
   box-sizing: border-box;
 }
 
-#schemapro-root button {
+#t1schema-root button {
   font-family: inherit;
   cursor: pointer;
 }
 
-#schemapro-root input,
-#schemapro-root textarea,
-#schemapro-root select {
+#t1schema-root input,
+#t1schema-root textarea,
+#t1schema-root select {
   font-family: inherit;
   font-size: inherit;
 }
 
 /* Scrollbar styling */
-#schemapro-root ::-webkit-scrollbar {
+#t1schema-root ::-webkit-scrollbar {
   width: 6px;
   height: 6px;
 }
 
-#schemapro-root ::-webkit-scrollbar-track {
+#t1schema-root ::-webkit-scrollbar-track {
   background: transparent;
 }
 
-#schemapro-root ::-webkit-scrollbar-thumb {
+#t1schema-root ::-webkit-scrollbar-thumb {
   background: #dee2e6;
   border-radius: 3px;
 }
 
-#schemapro-root ::-webkit-scrollbar-thumb:hover {
+#t1schema-root ::-webkit-scrollbar-thumb:hover {
   background: #adb5bd;
 }

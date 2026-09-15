@@ -1,0 +1,74 @@
+/**
+ * Frontend admin-bar dropdown for Teil1 Schema Manager.
+ */
+
+#wp-admin-bar-teil1-schema-manager .ab-sub-wrapper {
+	min-width: 220px;
+}
+
+#wp-admin-bar-teil1-schema-manager .ab-submenu .ab-item {
+	line-height: 1.6 !important;
+	height: auto !important;
+	padding: 4px 10px !important;
+}
+
+.t1schema-ab-count {
+	font-weight: 600;
+}
+
+.t1schema-ab-count--active {
+	color: #10b981;
+}
+
+.t1schema-ab-count--empty {
+	color: #9ca3af;
+}
+
+.t1schema-ab-muted {
+	color: #9ca3af;
+	font-size: 12px;
+}
+
+.t1schema-ab-props {
+	color: #9ca3af;
+	margin-left: 6px;
+	font-size: 11px;
+}
+
+.t1schema-ab-dashboard {
+	color: #6366f1;
+	font-size: 12px;
+}
+
+.t1schema-ab-dot {
+	display: inline-block;
+	width: 8px;
+	height: 8px;
+	border-radius: 50%;
+	margin-right: 6px;
+	background: #64748b;
+}
+
+.t1schema-ab-dot--organization {
+	background: #6366f1;
+}
+
+.t1schema-ab-dot--article {
+	background: #f59e0b;
+}
+
+.t1schema-ab-dot--product {
+	background: #10b981;
+}
+
+.t1schema-ab-dot--faq {
+	background: #8b5cf6;
+}
+
+.t1schema-ab-dot--website {
+	background: #3b82f6;
+}
+
+.t1schema-ab-dot--breadcrumb {
+	background: #ec4899;
+}

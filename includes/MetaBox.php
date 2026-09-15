@@ -41,7 +41,7 @@ class MetaBox {
 
             add_meta_box(
                 't1schema-local-schemas',
-                __( '🔮 t1 Schema — Local Schemas', 't1-schema' ),
+                __( '🔮 Teil1 Schema Manager — Local Schemas', 'teil1-schema-manager' ),
                 [ $this, 'render' ],
                 $post_type,
                 'side',
@@ -63,7 +63,7 @@ class MetaBox {
         // Namespaced so it cannot be mistaken for core's $_GET['post'].
         $editor_url = add_query_arg(
             [
-                'page'    => 't1-schema',
+                'page'    => T1SCHEMA_ADMIN_SLUG,
                 't1_post' => $post->ID,
             ],
             admin_url( 'admin.php' )
@@ -78,14 +78,14 @@ class MetaBox {
             }
             echo '</div>';
         } else {
-            echo '<p class="t1schema-metabox__empty">' . esc_html__( 'No local schemas on this page.', 't1-schema' ) . '<br>' . esc_html__( 'Global schemas still apply.', 't1-schema' ) . '</p>';
+            echo '<p class="t1schema-metabox__empty">' . esc_html__( 'No local schemas on this page.', 'teil1-schema-manager' ) . '<br>' . esc_html__( 'Global schemas still apply.', 'teil1-schema-manager' ) . '</p>';
         }
 
         echo '<div class="t1schema-metabox__footer">';
         echo '<a href="' . esc_url( $editor_url ) . '" class="t1schema-metabox__link" target="_blank" rel="noopener noreferrer">';
         echo empty( $schemas )
-            ? esc_html__( 'Add a schema →', 't1-schema' )
-            : esc_html__( 'Edit in t1 Schema →', 't1-schema' );
+            ? esc_html__( 'Add a schema →', 'teil1-schema-manager' )
+            : esc_html__( 'Edit in Teil1 Schema Manager →', 'teil1-schema-manager' );
         echo '</a>';
         echo '</div>';
 
@@ -110,17 +110,17 @@ class MetaBox {
         if ( ! $health['valid'] ) {
             $status_class = 't1schema-status--error';
             /* translators: %d: number of validation errors. */
-            $status_label = sprintf( _n( '%d error', '%d errors', $error_cnt, 't1-schema' ), $error_cnt );
+            $status_label = sprintf( _n( '%d error', '%d errors', $error_cnt, 'teil1-schema-manager' ), $error_cnt );
         } elseif ( $warn_cnt > 0 ) {
             $status_class = 't1schema-status--warning';
             /* translators: %d: number of validation warnings. */
-            $status_label = sprintf( _n( '%d warning', '%d warnings', $warn_cnt, 't1-schema' ), $warn_cnt );
+            $status_label = sprintf( _n( '%d warning', '%d warnings', $warn_cnt, 'teil1-schema-manager' ), $warn_cnt );
         } elseif ( $info_cnt > 0 ) {
             $status_class = 't1schema-status--info';
-            $status_label = __( 'Valid (Custom)', 't1-schema' );
+            $status_label = __( 'Valid (Custom)', 'teil1-schema-manager' );
         } else {
             $status_class = 't1schema-status--valid';
-            $status_label = __( 'Valid', 't1-schema' );
+            $status_label = __( 'Valid', 'teil1-schema-manager' );
         }
 
         echo '<div class="t1schema-metabox__item">';
@@ -140,7 +140,7 @@ class MetaBox {
             if ( $warn_cnt > 3 ) {
                 echo '<div class="t1schema-metabox__issue t1schema-metabox__issue--warning">' . esc_html(
                     /* translators: %d: number of additional warnings not shown. */
-                    sprintf( __( '… and %d more', 't1-schema' ), $warn_cnt - 3 )
+                    sprintf( __( '… and %d more', 'teil1-schema-manager' ), $warn_cnt - 3 )
                 ) . '</div>';
             }
             foreach ( array_slice( $health['infos'], 0, 3 ) as $info ) {
@@ -152,8 +152,8 @@ class MetaBox {
         echo '<div class="t1schema-metabox__item-meta">';
         echo '<span class="t1schema-metabox__flag">';
         echo $override
-            ? esc_html__( '↑ Overrides global', 't1-schema' )
-            : esc_html__( '∥ Coexists with global', 't1-schema' );
+            ? esc_html__( '↑ Overrides global', 'teil1-schema-manager' )
+            : esc_html__( '∥ Coexists with global', 'teil1-schema-manager' );
         echo '</span>';
         echo '</div>';
         echo '</div>';

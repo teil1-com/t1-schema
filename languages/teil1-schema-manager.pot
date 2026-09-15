@@ -1,14 +1,10 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the t1 Schema package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
-#, fuzzy
+# Copyright (C) 2026 teil1 development
+# This file is distributed under the same license as the Teil1 Schema Manager package.
 msgid ""
 msgstr ""
-"Project-Id-Version: t1 Schema 1.5.0\n"
+"Project-Id-Version: Teil1 Schema Manager 2.3.2\n"
 "Report-Msgid-Bugs-To: https://github.com/teil1-com/t1-schema/issues\n"
-"POT-Creation-Date: 2026-06-05 14:26+0200\n"
+"POT-Creation-Date: 2026-09-14 09:50+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,130 +12,116 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"X-Domain: teil1-schema-manager\n"
 
-#: includes/Admin.php:25 includes/Admin.php:26
-msgid "t1 Schema"
+#: includes/Admin.php
+msgid "Teil1 Schema Manager"
 msgstr ""
 
-#: includes/AdminBar.php:74
+#: includes/AdminBar.php
 #, php-format
-msgid "t1 Schema: %d active schema(s) on this page"
+msgid "Teil1 Schema Manager: %d active schema(s) on this page"
 msgstr ""
 
-#: includes/AdminBar.php:84
+#: includes/AdminBar.php
 msgid "No schemas active on this page"
 msgstr ""
 
-#: includes/AdminBar.php:99
+#: includes/AdminBar.php
 #, php-format
 msgid "%d props"
 msgstr ""
 
-#: includes/AdminBar.php:109
+#: includes/AdminBar.php
 msgid "→ Open Dashboard"
 msgstr ""
 
-#: includes/CLI.php:584 includes/CLI.php:647
-#, php-format
-msgid "Summary: %d schema(s), %d error(s), %d warning(s)."
+#: includes/MetaBox.php
+msgid "🔮 Teil1 Schema Manager — Local Schemas"
 msgstr ""
 
-#: includes/CLI.php:639
-#, php-format
-msgid "Health for \"%s\" (ID: %d):"
-msgstr ""
-
-#: includes/CLI.php:1379
-#, php-format
-msgid "Total: %d schema(s) for \"%s\" (ID: %d)."
-msgstr ""
-
-#: includes/MetaBox.php:44
-msgid "🔮 t1 Schema — Local Schemas"
-msgstr ""
-
-#: includes/MetaBox.php:81
+#: includes/MetaBox.php
 msgid "No local schemas on this page."
 msgstr ""
 
-#: includes/MetaBox.php:81
+#: includes/MetaBox.php
 msgid "Global schemas still apply."
 msgstr ""
 
-#: includes/MetaBox.php:87
+#: includes/MetaBox.php
 msgid "Add a schema →"
 msgstr ""
 
-#: includes/MetaBox.php:88
-msgid "Edit in t1 Schema →"
+#: includes/MetaBox.php
+msgid "Edit in Teil1 Schema Manager →"
 msgstr ""
 
-#: includes/MetaBox.php:113
+#: includes/MetaBox.php
 #, php-format
 msgid "%d error"
 msgid_plural "%d errors"
 msgstr[0] ""
 msgstr[1] ""
 
-#: includes/MetaBox.php:117
+#: includes/MetaBox.php
 #, php-format
 msgid "%d warning"
 msgid_plural "%d warnings"
 msgstr[0] ""
 msgstr[1] ""
 
-#: includes/MetaBox.php:120
+#: includes/MetaBox.php
 msgid "Valid (Custom)"
 msgstr ""
 
-#: includes/MetaBox.php:123
+#: includes/MetaBox.php
 msgid "Valid"
 msgstr ""
 
-#: includes/MetaBox.php:143
+#: includes/MetaBox.php
 #, php-format
 msgid "… and %d more"
 msgstr ""
 
-#: includes/MetaBox.php:155
+#: includes/MetaBox.php
 msgid "↑ Overrides global"
 msgstr ""
 
-#: includes/MetaBox.php:156
+#: includes/MetaBox.php
 msgid "∥ Coexists with global"
 msgstr ""
 
-#: includes/SchemaValidator.php:37
+#: includes/SchemaValidator.php
 msgid "Missing required @type property."
 msgstr ""
 
-#: includes/SchemaValidator.php:54
+#: includes/SchemaValidator.php
 #, php-format
 msgid ""
 "Type '%s' is a valid custom Schema.org type. Property validation is skipped."
 msgstr ""
 
-#: includes/SchemaValidator.php:60
+#: includes/SchemaValidator.php
 #, php-format
 msgid "Type '%s' is not recognized as a valid Schema.org type."
 msgstr ""
 
-#: includes/SchemaValidator.php:87
+#: includes/SchemaValidator.php
 #, php-format
 msgid "Missing required property: '%1$s' for type '%2$s'."
 msgstr ""
 
-#: includes/SchemaValidator.php:108
+#: includes/SchemaValidator.php
 #, php-format
 msgid ""
 "Missing recommended property: '%1$s' for type '%2$s'. May be set per-post."
 msgstr ""
 
-#: includes/SchemaValidator.php:115
+#: includes/SchemaValidator.php
 #, php-format
 msgid "Missing recommended property: '%1$s' for type '%2$s'."
 msgstr ""
 
-#: includes/SchemaValidator.php:126
+#: includes/SchemaValidator.php
 msgid "Missing @context. Will be added automatically at output."
 msgstr ""

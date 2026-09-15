@@ -1,6 +1,6 @@
-# t1 Schema — Documentation
+# Teil1 Schema Manager — Documentation
 
-**Version:** 2.2.2  
+**Version:** 2.3.2
 **Author:** teil1 development  
 **Requires:** WordPress 6.0+, PHP 8.0+  
 **License:** GPL v2 or later
@@ -35,7 +35,7 @@
 
 ## Overview
 
-t1 Schema is a high-performance Schema.org JSON-LD markup plugin for WordPress. It provides three layers of structured data management:
+Teil1 Schema Manager is a high-performance Schema.org JSON-LD markup plugin for WordPress. It provides three layers of structured data management:
 
 - **Global Schemas** — site-wide markup that fires on every page (e.g. Organization, WebSite)
 - **Schema Rules** — conditional templates that target specific page types, archives, taxonomies, and more
@@ -47,9 +47,9 @@ All schema data is output as a single `<script type="application/ld+json">` tag 
 
 ## Installation
 
-1. Upload `t1-schema.zip` via **Plugins → Add New → Upload Plugin**
+1. Upload `teil1-schema-manager.zip` via **Plugins → Add New → Upload Plugin**
 2. Activate the plugin
-3. Navigate to **t1 Schema** in the admin sidebar
+3. Navigate to **Teil1 Schema Manager** in the admin sidebar
 
 On first activation, the plugin:
 - Creates the `t1schema_globals` and `t1schema_rules` database tables
@@ -338,7 +338,7 @@ The `_t1schema_meta` object is internal metadata stripped before rendering:
 
 ## Post Editor Meta Box
 
-When editing any post, page, or custom post type in the WordPress editor, a **🔮 t1 Schema — Local Schemas** panel appears in the sidebar.
+When editing any post, page, or custom post type in the WordPress editor, a **🔮 Teil1 Schema Manager — Local Schemas** panel appears in the sidebar.
 
 The panel is read-only. It answers "what structured data does this page emit, and is it healthy?" — everything editable lives in the full editor, so schema data has a single save path.
 
@@ -347,7 +347,7 @@ The panel is read-only. It answers "what structured data does this page emit, an
 - Health badge per schema (Valid / Warnings / Errors)
 - Inline error/warning messages (first 3 shown)
 - Override indicator ("↑ Overrides global" or "∥ Coexists with global")
-- **Edit in t1 Schema →** opens the full editor on this post's local schemas, via `admin.php?page=t1-schema&t1_post={ID}`. On a post with no local schemas the link reads **Add a schema →**.
+- **Edit in Teil1 Schema Manager →** opens the full editor on this post's local schemas, via `admin.php?page=teil1-schema-manager&t1_post={ID}`. On a post with no local schemas the link reads **Add a schema →**.
 
 The panel registers no form fields and hooks nothing on `save_post`, so saving a post never writes schema data.
 
@@ -382,7 +382,7 @@ Use `{{variable_name}}` in any schema property value. Variables are resolved at 
 | `{{author_name}}` | Author display name | `Max Mustermann` |
 | `{{author_url}}` | Author archive URL | `https://example.com/author/max/` |
 | `{{author_description}}` | Author bio | `Digital marketing specialist…` |
-| `{{author_avatar_url}}` | Author avatar (96px) | `https://secure.gravatar.com/…` |
+| `{{author_avatar_url}}` | Author avatar (96px) | `https://example.com/wp-content/uploads/author.jpg` |
 
 > **Filterable:** `author_name`, `author_url`, and `author_avatar_url` can be overridden via the `t1schema_author_name`, `t1schema_author_url`, and `t1schema_author_avatar_url` filters. This allows themes or plugins with custom author systems to inject the correct author data without modifying the schema plugin. See [Hooks & Filters](#hooks--filters).
 
@@ -542,13 +542,13 @@ wp t1-schema local 42
 wp t1-schema local 42 --format=json
 
 # Add a local schema to a post
-wp t1-schema set-local 42 Article --json='{"headline":"{{post_title}}","datePublished":"{{post_date}}"}'
+wp teil1-schema-manager set-local 42 Article --schema-json='{"headline":"{{post_title}}","datePublished":"{{post_date}}"}'
 
 # Replace all existing locals (instead of appending)
-wp t1-schema set-local 42 Article --json='{"headline":"{{post_title}}"}' --replace
+wp teil1-schema-manager set-local 42 Article --schema-json='{"headline":"{{post_title}}"}' --replace
 
 # Don't override global schema of same type
-wp t1-schema set-local 42 Organization --json='{"name":"Local Branch"}' --no-override
+wp teil1-schema-manager set-local 42 Organization --schema-json='{"name":"Local Branch"}' --no-override
 
 # Clear all local schemas from a post
 wp t1-schema clear-local 42
@@ -565,7 +565,7 @@ wp t1-schema rules --format=json
 # Create a rule — Article for all blog posts
 wp t1-schema add-rule Article \
   --conditions='[{"type":"singular","value":"post"}]' \
-  --json='{"headline":"{{post_title}}","datePublished":"{{post_date}}"}'
+  --schema-json='{"headline":"{{post_title}}","datePublished":"{{post_date}}"}'
 
 # Create a rule — CollectionPage for a CPT archive
 wp t1-schema add-rule CollectionPage \
@@ -599,10 +599,9 @@ wp t1-schema render 42 --layers   # show each layer before merging
 Exports all globals, rules, and local schemas to JSON. Use for site migration.
 
 ```bash
-wp t1-schema export backup.json
-wp t1-schema export > backup.json
-wp t1-schema export --globals-only
-wp t1-schema export --rules-only
+wp teil1-schema-manager export > backup.json
+wp teil1-schema-manager export --globals-only
+wp teil1-schema-manager export --rules-only
 ```
 
 ### Coverage — Site-Wide Audit
@@ -652,7 +651,7 @@ Once set, use `{{custom.phone}}` etc. in any schema property.
 
 Import accepts two formats:
 
-1. **Export format** (round-trip with `wp t1-schema export`):
+1. **Export format** (round-trip with `wp teil1-schema-manager export`):
    ```json
    {"globals": [...], "rules": [...], "locals": [...]}
    ```
@@ -664,11 +663,11 @@ Import accepts two formats:
 
 ```bash
 # Round-trip: export from staging, import to production
-wp t1-schema export backup.json       # on staging
-wp t1-schema import backup.json       # on production
+wp teil1-schema-manager export > backup.json  # on staging
+wp teil1-schema-manager import backup.json    # on production
 
 # Preview before importing
-wp t1-schema import backup.json --dry-run
+wp teil1-schema-manager import backup.json --dry-run
 ```
 
 ### Batch Operations
@@ -676,7 +675,7 @@ wp t1-schema import backup.json --dry-run
 ```bash
 # Add Article schema to all blog posts
 for id in $(wp post list --post_type=post --format=ids); do
-  wp t1-schema set-local $id Article --json='{"headline":"{{post_title}}","datePublished":"{{post_date}}"}'
+  wp teil1-schema-manager set-local $id Article --schema-json='{"headline":"{{post_title}}","datePublished":"{{post_date}}"}'
 done
 
 # Create rules for all CPTs
@@ -986,7 +985,7 @@ do_action( 't1schema_loaded' );
 ## File Structure
 
 ```
-t1-schema/
+teil1-schema-manager/
 ├── t1-schema.php                # Plugin bootstrap, autoloader, hooks
 ├── uninstall.php                # Cleanup on uninstall
 ├── readme.txt                   # WP.org standard readme
@@ -1012,7 +1011,9 @@ t1-schema/
 │   ├── schema-types.json        # Schema.org type registry (34 types)
 │   └── valid-types.json         # Full Schema.org type list for validation
 ├── languages/
-│   └── t1-schema.pot            # Translation template
+│   └── teil1-schema-manager.pot # Translation template
+├── css/
+│   └── admin-bar.css            # Frontend admin-bar styles (enqueued)
 ├── assets/                      # Built production JS + CSS (Vite output)
 │   ├── app-*.js                 # React SPA bundle (~287 KB)
 │   └── main-*.css               # Stylesheet (~33 KB)
@@ -1030,7 +1031,7 @@ t1-schema/
 
 ## REST API Endpoints
 
-All endpoints are under `/wp-json/t1-schema/v1/` and require `manage_options` capability.
+All endpoints are under `/wp-json/teil1-schema-manager/v1/` and require `manage_options` capability.
 
 | Endpoint | Method | Description |
 |----------|--------|-------------|

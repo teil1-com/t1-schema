@@ -26,10 +26,10 @@ class Admin {
      */
     public function register_menu(): void {
         add_menu_page(
-            __( 't1 Schema', 't1-schema' ),
-            __( 't1 Schema', 't1-schema' ),
+            __( 'Teil1 Schema Manager', 'teil1-schema-manager' ),
+            __( 'Teil1 Schema Manager', 'teil1-schema-manager' ),
             apply_filters( 't1schema_required_capability', 'manage_options' ),
-            't1-schema',
+            T1SCHEMA_ADMIN_SLUG,
             [ $this, 'render_page' ],
             'dashicons-code-standards',
             81
@@ -50,7 +50,7 @@ class Admin {
      * @param string $hook_suffix Current admin page hook.
      */
     public function enqueue_assets( string $hook_suffix ): void {
-        if ( $hook_suffix !== 'toplevel_page_t1-schema' ) {
+        if ( $hook_suffix !== 'toplevel_page_' . T1SCHEMA_ADMIN_SLUG ) {
             return;
         }
 
@@ -113,7 +113,7 @@ class Admin {
 
         // Localize config for the React app.
         wp_localize_script( 't1schema-app', 't1SchemaConfig', [
-            'restUrl'   => rest_url( 't1-schema/v1/' ),
+            'restUrl'   => rest_url( 'teil1-schema-manager/v1/' ),
             'nonce'     => wp_create_nonce( 'wp_rest' ),
             'adminUrl'  => admin_url(),
             'pluginUrl' => T1SCHEMA_URL,

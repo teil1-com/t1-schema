@@ -1,18 +1,20 @@
 #!/usr/bin/env bash
 #
-# Build a WordPress-ready distribution zip for t1 Schema.
+# Build a WordPress-ready distribution zip for Teil1 Schema Manager.
 # Exclusions are read from .distignore at the repo root.
 #
 # Usage (from repo root):
 #   ./bin/build-zip.sh
 #
 # Output:
-#   dist/t1-schema-{version}.zip
+#   dist/teil1-schema-manager-{version}.zip
+# The folder inside the zip matches the assigned WordPress.org slug.
 
 set -euo pipefail
 
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
-SLUG="t1-schema"
+SLUG="teil1-schema-manager"
+ZIP_NAME="teil1-schema-manager"
 DIST_DIR="${ROOT}/dist"
 STAGING="$(mktemp -d)"
 EXCLUDES="$(mktemp)"
@@ -49,7 +51,7 @@ grep -v '^[[:space:]]*#' .distignore | grep -v '^[[:space:]]*$' > "${EXCLUDES}"
 rsync -a --exclude-from="${EXCLUDES}" ./ "${STAGING}/${SLUG}/"
 
 mkdir -p "${DIST_DIR}"
-ZIP_PATH="${DIST_DIR}/${SLUG}-${VERSION}.zip"
+ZIP_PATH="${DIST_DIR}/${ZIP_NAME}-${VERSION}.zip"
 rm -f "${ZIP_PATH}"
 
 cd "${STAGING}"

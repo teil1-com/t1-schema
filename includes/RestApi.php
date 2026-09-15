@@ -14,7 +14,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 class RestApi {
 
-    private const NAMESPACE = 't1-schema/v1';
+    private const NAMESPACE = 'teil1-schema-manager/v1';
 
     public function init(): void {
         add_action( 'rest_api_init', [ $this, 'register_routes' ] );
@@ -225,7 +225,7 @@ class RestApi {
 
     public function get_globals( \WP_REST_Request $request ): \WP_REST_Response {
         global $wpdb;
-        $table = $wpdb->prefix . 't1schema_globals';
+        $table = esc_sql( $wpdb->prefix . 't1schema_globals' );
 
         $rows = $wpdb->get_results( "SELECT * FROM {$table} ORDER BY created_at DESC", ARRAY_A ); // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching,WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- Table name from $wpdb->prefix, no user input.
 
@@ -240,7 +240,7 @@ class RestApi {
 
     public function get_global( \WP_REST_Request $request ): \WP_REST_Response {
         global $wpdb;
-        $table = $wpdb->prefix . 't1schema_globals';
+        $table = esc_sql( $wpdb->prefix . 't1schema_globals' );
         $id    = (int) $request->get_param( 'id' );
 
         $row = $wpdb->get_row( $wpdb->prepare( "SELECT * FROM {$table} WHERE id = %d", $id ), ARRAY_A ); // phpcs:ignore
@@ -257,7 +257,7 @@ class RestApi {
 
     public function create_global( \WP_REST_Request $request ): \WP_REST_Response {
         global $wpdb;
-        $table = $wpdb->prefix . 't1schema_globals';
+        $table = esc_sql( $wpdb->prefix . 't1schema_globals' );
 
         $body        = $request->get_json_params();
         $schema_type = sanitize_text_field( $body['schema_type'] ?? '' );
@@ -288,7 +288,7 @@ class RestApi {
 
     public function update_global( \WP_REST_Request $request ): \WP_REST_Response {
         global $wpdb;
-        $table = $wpdb->prefix . 't1schema_globals';
+        $table = esc_sql( $wpdb->prefix . 't1schema_globals' );
         $id    = (int) $request->get_param( 'id' );
 
         $existing = $wpdb->get_row( $wpdb->prepare( "SELECT id FROM {$table} WHERE id = %d", $id ) ); // phpcs:ignore
@@ -324,7 +324,7 @@ class RestApi {
 
     public function delete_global( \WP_REST_Request $request ): \WP_REST_Response {
         global $wpdb;
-        $table = $wpdb->prefix . 't1schema_globals';
+        $table = esc_sql( $wpdb->prefix . 't1schema_globals' );
         $id    = (int) $request->get_param( 'id' );
 
         $deleted = $wpdb->delete( $table, [ 'id' => $id ], [ '%d' ] );
@@ -385,8 +385,8 @@ class RestApi {
 
     public function get_health( \WP_REST_Request $request ): \WP_REST_Response {
         global $wpdb;
-        $g_table = $wpdb->prefix . 't1schema_globals';
-        $r_table = $wpdb->prefix . 't1schema_rules';
+        $g_table = esc_sql( $wpdb->prefix . 't1schema_globals' );
+        $r_table = esc_sql( $wpdb->prefix . 't1schema_rules' );
 
         $report = [
             'globals'  => [],
@@ -754,7 +754,7 @@ class RestApi {
 
     public function get_rules( \WP_REST_Request $request ): \WP_REST_Response {
         global $wpdb;
-        $table = $wpdb->prefix . 't1schema_rules';
+        $table = esc_sql( $wpdb->prefix . 't1schema_rules' );
 
         $rows = $wpdb->get_results( "SELECT * FROM {$table} ORDER BY priority ASC, created_at DESC", ARRAY_A ); // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching,WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- Table name from $wpdb->prefix, no user input.
 
@@ -771,7 +771,7 @@ class RestApi {
 
     public function get_rule( \WP_REST_Request $request ): \WP_REST_Response {
         global $wpdb;
-        $table = $wpdb->prefix . 't1schema_rules';
+        $table = esc_sql( $wpdb->prefix . 't1schema_rules' );
         $id    = (int) $request->get_param( 'id' );
 
         $row = $wpdb->get_row( $wpdb->prepare( "SELECT * FROM {$table} WHERE id = %d", $id ), ARRAY_A ); // phpcs:ignore
@@ -789,7 +789,7 @@ class RestApi {
 
     public function create_rule( \WP_REST_Request $request ): \WP_REST_Response {
         global $wpdb;
-        $table = $wpdb->prefix . 't1schema_rules';
+        $table = esc_sql( $wpdb->prefix . 't1schema_rules' );
 
         $body        = $request->get_json_params();
         $rule_name   = sanitize_text_field( $body['rule_name'] ?? '' );
@@ -834,7 +834,7 @@ class RestApi {
 
     public function update_rule( \WP_REST_Request $request ): \WP_REST_Response {
         global $wpdb;
-        $table = $wpdb->prefix . 't1schema_rules';
+        $table = esc_sql( $wpdb->prefix . 't1schema_rules' );
         $id    = (int) $request->get_param( 'id' );
 
         $existing = $wpdb->get_row( $wpdb->prepare( "SELECT id FROM {$table} WHERE id = %d", $id ) ); // phpcs:ignore
@@ -882,7 +882,7 @@ class RestApi {
 
     public function delete_rule( \WP_REST_Request $request ): \WP_REST_Response {
         global $wpdb;
-        $table = $wpdb->prefix . 't1schema_rules';
+        $table = esc_sql( $wpdb->prefix . 't1schema_rules' );
         $id    = (int) $request->get_param( 'id' );
 
         $deleted = $wpdb->delete( $table, [ 'id' => $id ], [ '%d' ] );
@@ -920,7 +920,7 @@ class RestApi {
 
         // Load all rules for coverage mapping.
         global $wpdb;
-        $rules_table = $wpdb->prefix . 't1schema_rules';
+        $rules_table = esc_sql( $wpdb->prefix . 't1schema_rules' );
         $rules_exist = (bool) $wpdb->get_var( $wpdb->prepare( 'SHOW TABLES LIKE %s', $rules_table ) );
         $all_rules   = [];
 
@@ -1080,7 +1080,7 @@ class RestApi {
         global $wpdb;
 
         // --- Coverage (40%) ---
-        $r_table = $wpdb->prefix . 't1schema_rules';
+        $r_table = esc_sql( $wpdb->prefix . 't1schema_rules' );
         $rules   = $wpdb->get_results( "SELECT conditions, schema_type FROM {$r_table} WHERE status = 'active'", ARRAY_A ) ?: []; // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching,WordPress.DB.PreparedSQL.InterpolatedNotPrepared
 
         $contexts = [];
@@ -1110,7 +1110,7 @@ class RestApi {
             }
         }
         // Globals always cover singular pages.
-        $g_table = $wpdb->prefix . 't1schema_globals';
+        $g_table = esc_sql( $wpdb->prefix . 't1schema_globals' );
         $global_count = (int) $wpdb->get_var( "SELECT COUNT(*) FROM {$g_table} WHERE status = 'active'" ); // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching,WordPress.DB.PreparedSQL.InterpolatedNotPrepared
         if ( $global_count > 0 ) {
             $covered_contexts = max( $covered_contexts, 1 ); // At least front page covered.
@@ -1207,7 +1207,7 @@ class RestApi {
 
     public function get_recommended_rules( \WP_REST_Request $request ): \WP_REST_Response {
         global $wpdb;
-        $r_table = $wpdb->prefix . 't1schema_rules';
+        $r_table = esc_sql( $wpdb->prefix . 't1schema_rules' );
         $existing = $wpdb->get_results( "SELECT conditions, schema_type FROM {$r_table}", ARRAY_A ) ?: []; // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching,WordPress.DB.PreparedSQL.InterpolatedNotPrepared
 
         $templates = $this->get_rule_templates();
@@ -1229,7 +1229,7 @@ class RestApi {
 
     public function activate_recommended_rule( \WP_REST_Request $request ): \WP_REST_Response {
         global $wpdb;
-        $r_table = $wpdb->prefix . 't1schema_rules';
+        $r_table = esc_sql( $wpdb->prefix . 't1schema_rules' );
         $key     = $request->get_param( 'key' );
 
         $templates = $this->get_rule_templates();

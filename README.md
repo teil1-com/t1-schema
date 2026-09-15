@@ -1,4 +1,4 @@
-# t1 Schema
+# Teil1 Schema Manager
 
 Schema.org JSON-LD markup for WordPress with granular control, built around three layers: site-wide Global Schemas, conditional Schema Rules, and per-page Local Overrides.
 
@@ -52,7 +52,7 @@ npm test
 ./bin/build-zip.sh
 ```
 
-The script builds the admin assets, stages the plugin using the exclusion list in `.distignore`, and writes `dist/t1-schema-{version}.zip`. The version is read from the `Version:` header in `t1-schema.php`.
+The script builds the admin assets, stages the plugin using the exclusion list in `.distignore`, and writes `dist/teil1-schema-manager-{version}.zip`. The version is read from the `Version:` header in `t1-schema.php`.
 
 The resulting zip deliberately omits `admin/`, `bin/`, and other development files. That is why the published plugin contains only compiled JavaScript — the corresponding source is the `admin/` directory in this repository, at the tag matching the released version.
 
@@ -68,10 +68,11 @@ git push origin v2.0.0
 ## WP-CLI
 
 ```bash
-wp t1-schema doctor          # Environment and conflict diagnostics
-wp t1-schema render <post>   # Print the JSON-LD graph for a post
-wp t1-schema coverage        # Audit schema coverage across the site
-wp t1-schema export|import   # Move schemas between installs
+wp teil1-schema-manager doctor   # Environment and conflict diagnostics
+wp teil1-schema-manager render <post>  # Print the JSON-LD graph for a post
+wp teil1-schema-manager coverage       # Audit schema coverage across the site
+wp teil1-schema-manager export > backup.json
+wp teil1-schema-manager import backup.json
 ```
 
-Run `wp help t1-schema` for the full command list.
+Run `wp help teil1-schema-manager` for the full command list.

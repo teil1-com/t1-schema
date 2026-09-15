@@ -1,10 +1,10 @@
-=== t1 Schema ===
+=== Teil1 Schema Manager ===
 Contributors: pvj7000
 Tags: schema, json-ld, structured-data, seo, woocommerce
 Requires at least: 6.0
-Tested up to: 7.0
+Tested up to: 7.1
 Requires PHP: 8.0
-Stable tag: 2.2.2
+Stable tag: 2.3.2
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -12,7 +12,7 @@ High-performance Schema.org JSON-LD markup with a visual editor. Three-layer arc
 
 == Description ==
 
-t1 Schema is a Schema.org JSON-LD plugin for WordPress that gives you granular control over your structured data through three layers:
+Teil1 Schema Manager is a Schema.org JSON-LD plugin for WordPress that gives you granular control over your structured data through three layers:
 
 **Global Schemas** – Site-wide markup that fires on every page (Organization, WebSite, etc.)
 
@@ -30,7 +30,7 @@ t1 Schema is a Schema.org JSON-LD plugin for WordPress that gives you granular c
 * **Site Map** — Hierarchical view of every URL context on your site with schema coverage indicators and one-click rule creation.
 * **Recommended Templates** — Sensible default rules (Article for posts, WebPage for pages, etc.) that you opt into — never auto-activated.
 * **34 Built-In Schema Types** — Organization, Article, Product, FAQPage, HowTo, Event, VideoObject, Service, and more.
-* **WooCommerce Compatible** — `product` works as a condition like any post type, plus dynamic `{{product_price}}`, `{{product_availability}}`, `{{product_rating}}` variables, automatic `AggregateOffer` price ranges for variable products, and automatic suppression of WooCommerce's own Product/Review/BreadcrumbList/WebSite markup wherever a t1 Schema rule would otherwise duplicate it.
+* **WooCommerce Compatible** — `product` works as a condition like any post type, plus dynamic `{{product_price}}`, `{{product_availability}}`, `{{product_rating}}` variables, automatic `AggregateOffer` price ranges for variable products, and automatic suppression of WooCommerce's own Product/Review/BreadcrumbList/WebSite markup wherever a Teil1 Schema Manager rule would otherwise duplicate it.
 * **WP-CLI** — Full command suite: create, inspect, render, health-check, export, import, coverage audit, and diagnostics.
 * **Admin Bar Indicator** — Shows active schema count on frontend pages with a dropdown listing each type.
 * **Post Editor Meta Box** — Compact sidebar panel showing the local schemas on the current post with health badges, and a link straight into the full editor for that post.
@@ -57,9 +57,9 @@ The React admin UI is built with Vite. Source code and build tools are available
 
 == Installation ==
 
-1. Upload the `t1-schema` directory to `/wp-content/plugins/`, or install directly through the WordPress plugin screen.
+1. Upload the `teil1-schema-manager` directory to `/wp-content/plugins/`, or install directly through the WordPress plugin screen.
 2. Activate the plugin through the **Plugins** screen.
-3. Navigate to **t1 Schema** in the admin sidebar.
+3. Navigate to **Teil1 Schema Manager** in the admin sidebar.
 
 On first activation, the plugin:
 
@@ -70,15 +70,15 @@ On first activation, the plugin:
 
 = Does this plugin work with any theme? =
 
-Yes. t1 Schema outputs a `<script type="application/ld+json">` tag in `<head>` and has no dependency on any theme.
+Yes. Teil1 Schema Manager outputs a `<script type="application/ld+json">` tag in `<head>` and has no dependency on any theme.
 
 = Does it conflict with other SEO plugins? =
 
-t1 Schema only outputs JSON-LD structured data. It does not modify meta tags, sitemaps, or other SEO elements. It coexists with Yoast SEO, Rank Math, and similar plugins — but make sure to disable their schema output to avoid duplicates.
+Teil1 Schema Manager only outputs JSON-LD structured data. It does not modify meta tags, sitemaps, or other SEO elements. It coexists with Yoast SEO, Rank Math, and similar plugins — but make sure to disable their schema output to avoid duplicates.
 
 = Does it work with WooCommerce? =
 
-Yes. `product` is treated as a regular post type, so it works with Global Schemas, Rules, and Local Overrides without extra setup, and dynamic variables like `{{product_price}}` and `{{product_availability}}` are available once WooCommerce is active. Variable products (size/color options) using `{{product_price}}` automatically get an accurate `AggregateOffer` price range instead of just their cheapest variation. WooCommerce also outputs its own Product/Review/BreadcrumbList/WebSite JSON-LD by default — turn on "Suppress conflicting schema output" under Help → Settings and t1 Schema will automatically remove only the WooCommerce output that would otherwise duplicate a type you've configured.
+Yes. `product` is treated as a regular post type, so it works with Global Schemas, Rules, and Local Overrides without extra setup, and dynamic variables like `{{product_price}}` and `{{product_availability}}` are available once WooCommerce is active. Variable products (size/color options) using `{{product_price}}` automatically get an accurate `AggregateOffer` price range instead of just their cheapest variation. WooCommerce also outputs its own Product/Review/BreadcrumbList/WebSite JSON-LD by default — turn on "Suppress conflicting schema output" under Help → Settings and Teil1 Schema Manager will automatically remove only the WooCommerce output that would otherwise duplicate a type you've configured.
 
 = What happens when I deactivate the plugin? =
 
@@ -94,7 +94,7 @@ Variables like `{{post_title}}` are placeholders that resolve to actual values a
 
 = Can I export and import schemas between sites? =
 
-Yes. Use `wp t1-schema export` and `wp t1-schema import` via WP-CLI, or export the JSON from the dashboard.
+Yes. Use `wp teil1-schema-manager export > backup.json` and `wp teil1-schema-manager import backup.json` via WP-CLI, or export the JSON from the dashboard.
 
 == Screenshots ==
 
@@ -106,6 +106,23 @@ Yes. Use `wp t1-schema export` and `wp t1-schema import` via WP-CLI, or export t
 6. Help — the full dynamic variable reference.
 
 == Changelog ==
+
+= 2.3.2 =
+* Compliance: Updated every gettext call and the plugin header to the confirmed WordPress.org slug and text domain, `teil1-schema-manager`.
+* Security: WP-CLI exports now write JSON only to stdout. Use shell redirection to choose the destination file, preventing a command argument from overwriting arbitrary writable paths.
+* Security: Escaped all custom table names before interpolating them into REST API queries.
+* Fix: REST requests with query parameters now work on clean WordPress installations using plain permalinks.
+* Fix: WP-CLI schema JSON input now uses `--schema-json`, avoiding WP-CLI's reserved `--json` format shortcut.
+* Fix: `wp teil1-schema-manager doctor` now counts schema validation errors in its final result.
+
+= 2.3.1 =
+* Compliance: Set Tested up to 7.1.
+* Interim submission build; superseded after WordPress.org confirmed the plugin slug is `teil1-schema-manager`.
+
+= 2.3.0 =
+* Compliance: Admin bar styles are now registered with `wp_enqueue_style()` instead of an inline `<style>` tag.
+* Compliance: Removed the remote Gravatar example URL and the Google Fonts stylesheet from the admin UI. Fonts use the system stack; all plugin assets are local.
+* Compliance: Plugin display name is now **Teil1 Schema Manager**. Existing options, tables, hooks, and the `wp t1-schema` CLI command are unchanged.
 
 = 2.2.2 =
 * Fix: Escape custom table names with `esc_sql()` before interpolating them into SQL, which clears Plugin Check's UnescapedDBParameter warnings.

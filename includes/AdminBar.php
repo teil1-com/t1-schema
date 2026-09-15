@@ -7,7 +7,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * Admin Bar integration — shows t1 Schema icon with active schemas on hover.
+ * Admin Bar integration — shows an icon with active schemas on hover.
  *
  * Hooks into Frontend's render pipeline to capture the schemas that were
  * actually assembled, then displays them in the admin bar.
@@ -30,7 +30,7 @@ class AdminBar {
 
         // Render admin bar items.
         add_action( 'admin_bar_menu', [ $this, 'add_menu' ], 100 );
-        add_action( 'wp_head', [ $this, 'inline_styles' ], 999 );
+        add_action( 'wp_enqueue_scripts', [ $this, 'enqueue_styles' ] );
     }
 
     /**
@@ -57,25 +57,25 @@ class AdminBar {
     }
 
     /**
-     * Add t1 Schema node to the admin bar.
+     * Add Teil1 Schema Manager node to the admin bar.
      */
     public function add_menu( \WP_Admin_Bar $wp_admin_bar ): void {
         if ( is_admin() || ! current_user_can( 'manage_options' ) ) {
             return;
         }
 
-        $count = count( self::$captured_schemas );
-        $label = "🔮 {$count}";
-        $color = $count > 0 ? '#10b981' : '#9ca3af';
+        $count      = count( self::$captured_schemas );
+        $count_mod  = $count > 0 ? 't1schema-ab-count--active' : 't1schema-ab-count--empty';
+        $editor_url = admin_url( 'admin.php?page=' . T1SCHEMA_ADMIN_SLUG );
 
         $wp_admin_bar->add_node( [
-            'id'    => 't1-schema',
-            'title' => "<span style='color:{$color};font-weight:600'>{$label}</span>",
-            'href'  => admin_url( 'admin.php?page=t1-schema' ),
+            'id'    => T1SCHEMA_ADMIN_SLUG,
+            'title' => '<span class="t1schema-ab-count ' . esc_attr( $count_mod ) . '">🔮 ' . esc_html( (string) $count ) . '</span>',
+            'href'  => $editor_url,
             'meta'  => [
                 'title' => sprintf(
                     /* translators: %d: number of active schemas. */
-                    __( 't1 Schema: %d active schema(s) on this page', 't1-schema' ),
+                    __( 'Teil1 Schema Manager: %d active schema(s) on this page', 'teil1-schema-manager' ),
                     $count
                 ),
             ],
@@ -83,57 +83,66 @@ class AdminBar {
 
         if ( $count === 0 ) {
             $wp_admin_bar->add_node( [
-                'parent' => 't1-schema',
+                'parent' => T1SCHEMA_ADMIN_SLUG,
                 'id'     => 't1schema-empty',
-                'title'  => '<span style="color:#9ca3af;font-size:12px">' . esc_html__( 'No schemas active on this page', 't1-schema' ) . '</span>',
-                'href'   => admin_url( 'admin.php?page=t1-schema' ),
+                'title'  => '<span class="t1schema-ab-muted">' . esc_html__( 'No schemas active on this page', 'teil1-schema-manager' ) . '</span>',
+                'href'   => $editor_url,
             ] );
             return;
         }
 
         foreach ( self::$captured_schemas as $i => $schema ) {
-            $badge = $this->get_type_color( $schema['type'] );
+            $dot_mod = $this->get_type_modifier( $schema['type'] );
             $wp_admin_bar->add_node( [
-                'parent' => 't1-schema',
+                'parent' => T1SCHEMA_ADMIN_SLUG,
                 'id'     => "t1schema-schema-{$i}",
-                'title'  => "<span style='display:inline-block;width:8px;height:8px;border-radius:50%;background:{$badge};margin-right:6px'></span>"
+                'title'  => '<span class="t1schema-ab-dot t1schema-ab-dot--' . esc_attr( $dot_mod ) . '"></span>'
                           . '<strong>' . esc_html( $schema['type'] ) . '</strong>'
-                          . '<span style="color:#9ca3af;margin-left:6px;font-size:11px">' . sprintf(
+                          . '<span class="t1schema-ab-props">' . sprintf(
                               /* translators: %d: number of properties. */
-                              esc_html__( '%d props', 't1-schema' ),
+                              esc_html__( '%d props', 'teil1-schema-manager' ),
                               $schema['props']
                           ) . '</span>',
-                'href'   => admin_url( 'admin.php?page=t1-schema' ),
+                'href'   => $editor_url,
             ] );
         }
 
         $wp_admin_bar->add_node( [
-            'parent' => 't1-schema',
+            'parent' => T1SCHEMA_ADMIN_SLUG,
             'id'     => 't1schema-dashboard',
-            'title'  => '<span style="color:#6366f1;font-size:12px">' . esc_html__( '→ Open Dashboard', 't1-schema' ) . '</span>',
-            'href'   => admin_url( 'admin.php?page=t1-schema' ),
+            'title'  => '<span class="t1schema-ab-dashboard">' . esc_html__( '→ Open Dashboard', 'teil1-schema-manager' ) . '</span>',
+            'href'   => $editor_url,
         ] );
     }
 
     /**
-     * Minimal inline styles for the admin bar dropdown.
+     * Enqueue admin-bar styles through the WordPress style API.
      */
-    public function inline_styles(): void {
+    public function enqueue_styles(): void {
         if ( is_admin() || ! current_user_can( 'manage_options' ) || ! is_admin_bar_showing() ) {
             return;
         }
-        echo '<style>#wp-admin-bar-t1schema .ab-sub-wrapper{min-width:220px}#wp-admin-bar-t1schema .ab-submenu .ab-item{line-height:1.6!important;height:auto!important;padding:4px 10px!important}</style>' . "\n";
+
+        wp_enqueue_style(
+            't1schema-admin-bar',
+            T1SCHEMA_URL . 'css/admin-bar.css',
+            [],
+            T1SCHEMA_VERSION
+        );
     }
 
-    private function get_type_color( string $type ): string {
+    /**
+     * Map a Schema.org type to a CSS modifier for the admin-bar dot.
+     */
+    private function get_type_modifier( string $type ): string {
         return match ( true ) {
-            in_array( $type, [ 'Organization', 'LocalBusiness' ] )   => '#6366f1',
-            in_array( $type, [ 'Article', 'BlogPosting' ] )          => '#f59e0b',
-            in_array( $type, [ 'Product', 'Offer' ] )                => '#10b981',
-            in_array( $type, [ 'FAQPage', 'HowTo' ] )                => '#8b5cf6',
-            in_array( $type, [ 'WebSite', 'WebPage' ] )              => '#3b82f6',
-            in_array( $type, [ 'BreadcrumbList' ] )                   => '#ec4899',
-            default                                                   => '#64748b',
+            in_array( $type, [ 'Organization', 'LocalBusiness' ], true ) => 'organization',
+            in_array( $type, [ 'Article', 'BlogPosting' ], true )        => 'article',
+            in_array( $type, [ 'Product', 'Offer' ], true )              => 'product',
+            in_array( $type, [ 'FAQPage', 'HowTo' ], true )              => 'faq',
+            in_array( $type, [ 'WebSite', 'WebPage' ], true )            => 'website',
+            in_array( $type, [ 'BreadcrumbList' ], true )                => 'breadcrumb',
+            default                                                      => 'other',
         };
     }
 }

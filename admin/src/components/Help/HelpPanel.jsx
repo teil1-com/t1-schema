@@ -23,7 +23,7 @@ export default function HelpPanel() {
       {/* Quick Start Guide */}
       <div className="sp-rounded-xl sp-border sp-border-surface-3 sp-bg-white sp-shadow-bento">
         <div className="sp-border-b sp-border-surface-2 sp-px-6 sp-py-4">
-          <h2 className="sp-text-base sp-font-semibold sp-text-ink-0">📖 How t1 Schema Works</h2>
+          <h2 className="sp-text-base sp-font-semibold sp-text-ink-0">📖 How Teil1 Schema Manager Works</h2>
         </div>
         <div className="sp-p-6 sp-space-y-6">
           {/* Concepts */}
@@ -154,7 +154,7 @@ export default function HelpPanel() {
         <div className="sp-divide-y sp-divide-surface-2">
           <SettingToggle
             label="Suppress conflicting schema output"
-            desc="Removes JSON-LD emitted by other plugins — or by WooCommerce's own Product/Review/BreadcrumbList/WebSite markup — wherever it would duplicate what t1 Schema outputs. Leave this off unless you actually see duplicate structured data on your pages."
+            desc="Removes JSON-LD emitted by other plugins — or by WooCommerce's own Product/Review/BreadcrumbList/WebSite markup — wherever it would duplicate what Teil1 Schema Manager outputs. Leave this off unless you actually see duplicate structured data on your pages."
             checked={!!settings?.suppress_conflicts}
             disabled={!settings || updateSettings.isPending}
             onChange={(value) => updateSettings.mutate({ suppress_conflicts: value })}
@@ -229,7 +229,7 @@ function getExample(tag) {
     author_name: 'Max Mustermann',
     author_url: 'https://example.com/author/max/',
     author_description: 'Senior WordPress Developer',
-    author_avatar_url: 'https://secure.gravatar.com/avatar/…',
+    author_avatar_url: 'https://example.com/wp-content/uploads/author.jpg',
     site_name: 'My Website',
     site_url: 'https://example.com/',
     site_description: 'Your site tagline from Settings → General',

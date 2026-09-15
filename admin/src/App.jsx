@@ -104,7 +104,7 @@ export default function App() {
             </svg>
           </div>
           <div>
-            <h1 className="sp-text-lg sp-font-semibold sp-text-ink-0">t1 Schema</h1>
+            <h1 className="sp-text-lg sp-font-semibold sp-text-ink-0">Teil1 Schema Manager</h1>
             <p className="sp-text-2xs sp-font-medium sp-uppercase sp-tracking-wider sp-text-ink-3">
               Structured Data Engine
             </p>
