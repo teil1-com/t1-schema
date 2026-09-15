@@ -2,6 +2,8 @@
 
 Schema.org JSON-LD markup for WordPress with granular control, built around three layers: site-wide Global Schemas, conditional Schema Rules, and per-page Local Overrides.
 
+[Official plugin website](https://teil1.com/t1-schema/) · [WordPress.org listing](https://wordpress.org/plugins/teil1-schema-manager/)
+
 This repository contains the complete, unminified source for the plugin, including the React admin interface. The distributed plugin ships a compiled bundle; everything needed to reproduce that bundle from source is here.
 
 - **Requires:** WordPress 6.0+, PHP 8.0+

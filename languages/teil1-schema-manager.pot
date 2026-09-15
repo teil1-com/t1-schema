@@ -2,9 +2,9 @@
 # This file is distributed under the same license as the Teil1 Schema Manager package.
 msgid ""
 msgstr ""
-"Project-Id-Version: Teil1 Schema Manager 2.3.2\n"
+"Project-Id-Version: Teil1 Schema Manager 2.3.3\n"
 "Report-Msgid-Bugs-To: https://github.com/teil1-com/t1-schema/issues\n"
-"POT-Creation-Date: 2026-09-14 09:50+0200\n"
+"POT-Creation-Date: 2026-09-15 14:19+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"

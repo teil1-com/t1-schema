@@ -1,18 +1,20 @@
 === Teil1 Schema Manager ===
 Contributors: pvj7000
-Tags: schema, json-ld, structured-data, seo, woocommerce
+Tags: schema, json-ld, structured-data, rich-snippets, woocommerce
 Requires at least: 6.0
 Tested up to: 7.1
 Requires PHP: 8.0
-Stable tag: 2.3.2
+Stable tag: 2.3.3
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
-High-performance Schema.org JSON-LD markup with a visual editor. Three-layer architecture: Global Schemas, Conditional Rules, and Per-Page Overrides.
+Visual Schema.org JSON-LD manager for rich snippets, with conditional rules, quality scoring, @graph output, and WooCommerce support.
 
 == Description ==
 
-Teil1 Schema Manager is a Schema.org JSON-LD plugin for WordPress that gives you granular control over your structured data through three layers:
+Teil1 Schema Manager helps you create and control Schema.org JSON-LD without editing theme code. Build site-wide schemas, conditional rules, and per-page overrides from a visual WordPress dashboard.
+
+Structured data can help search engines and AI-powered discovery systems interpret page entities and relationships. It does not guarantee rich results, search rankings, AI citations, or inclusion in AI Overviews.
 
 **Global Schemas** – Site-wide markup that fires on every page (Organization, WebSite, etc.)
 
@@ -20,17 +22,21 @@ Teil1 Schema Manager is a Schema.org JSON-LD plugin for WordPress that gives you
 
 **Local Overrides** – Per-page schemas stored in post meta for granular control, with an override toggle for same-type resolution.
 
+= Schema Quality Score =
+
+The dashboard's internal 0–100 Schema Quality Score summarizes configured coverage, required and recommended properties, schema depth, and type diversity. It is a diagnostic for improving your configuration, not a Google ranking or Rich Results score.
+
 = Key Features =
 
 * **Visual Schema Editor** — Build schemas with a property-by-property editor, live JSON-LD preview, and Rich Snippet preview.
 * **Dynamic Variables** — Use `{{post_title}}`, `{{post_date}}`, `{{featured_image_url}}`, `{{meta:custom_key}}`, and 30+ variables that resolve at render time.
 * **Custom Variables** — Define reusable site-wide constants (phone, address, logo) accessible as `{{custom.key}}` in any schema.
-* **Schema Quality Score** — Dashboard shows an objective 0–100 quality metric based on coverage, health, depth, and type diversity.
+* **Schema Quality Score** — Review an internal 0–100 diagnostic based on configured coverage, required and recommended properties, schema depth, and type diversity.
 * **Health Validation** — Every schema is validated against its type definition. Errors, warnings, and fix suggestions are shown inline.
 * **Site Map** — Hierarchical view of every URL context on your site with schema coverage indicators and one-click rule creation.
 * **Recommended Templates** — Sensible default rules (Article for posts, WebPage for pages, etc.) that you opt into — never auto-activated.
 * **34 Built-In Schema Types** — Organization, Article, Product, FAQPage, HowTo, Event, VideoObject, Service, and more.
-* **WooCommerce Compatible** — `product` works as a condition like any post type, plus dynamic `{{product_price}}`, `{{product_availability}}`, `{{product_rating}}` variables, automatic `AggregateOffer` price ranges for variable products, and automatic suppression of WooCommerce's own Product/Review/BreadcrumbList/WebSite markup wherever a Teil1 Schema Manager rule would otherwise duplicate it.
+* **WooCommerce Compatible** — `product` works as a condition like any post type, plus dynamic `{{product_price}}`, `{{product_availability}}`, and `{{product_rating}}` variables. Variable products receive `AggregateOffer` price ranges, and optional conflict suppression can remove overlapping WooCommerce Product, Review, BreadcrumbList, and WebSite markup.
 * **WP-CLI** — Full command suite: create, inspect, render, health-check, export, import, coverage audit, and diagnostics.
 * **Admin Bar Indicator** — Shows active schema count on frontend pages with a dropdown listing each type.
 * **Post Editor Meta Box** — Compact sidebar panel showing the local schemas on the current post with health badges, and a link straight into the full editor for that post.
@@ -38,6 +44,12 @@ Teil1 Schema Manager is a Schema.org JSON-LD plugin for WordPress that gives you
 * **`@id`-Based Merging** — Schemas sharing the same `@id` are merged into a single node, eliminating duplicates.
 * **Auto BreadcrumbList** — Hierarchical pages with ancestors automatically get a BreadcrumbList schema.
 * **Developer Hooks** — Filters for capability, JSON-LD output, variable resolution, condition matching, and author data.
+
+= Compatibility and Duplicate Schema =
+
+Teil1 Schema Manager can run alongside Yoast SEO, Rank Math, SEOPress, and AIOSEO because it does not change their titles, descriptions, sitemaps, or other SEO features. If two plugins output the same Schema.org type on a page, however, duplicate JSON-LD can result. Disable the overlapping schema output in the other SEO plugin when you configure the same type here.
+
+For WooCommerce, the optional **Suppress conflicting schema output** setting removes only WooCommerce's Product, Review, BreadcrumbList, or WebSite markup when Teil1 Schema Manager renders the same type on that request. It does not merge arbitrary third-party schema graphs or disable unrelated WooCommerce structured data.
 
 = Who Is This For? =
 
@@ -54,6 +66,10 @@ Teil1 Schema Manager is a Schema.org JSON-LD plugin for WordPress that gives you
 = Source Code =
 
 The React admin UI is built with Vite. Source code and build tools are available on [GitHub](https://github.com/teil1-com/t1-schema).
+
+= Official Website =
+
+Learn more, view documentation, and find examples on the official [Teil1 Schema Manager website](https://teil1.com/t1-schema/).
 
 == Installation ==
 
@@ -74,7 +90,7 @@ Yes. Teil1 Schema Manager outputs a `<script type="application/ld+json">` tag in
 
 = Does it conflict with other SEO plugins? =
 
-Teil1 Schema Manager only outputs JSON-LD structured data. It does not modify meta tags, sitemaps, or other SEO elements. It coexists with Yoast SEO, Rank Math, and similar plugins — but make sure to disable their schema output to avoid duplicates.
+Teil1 Schema Manager only outputs JSON-LD structured data. It does not modify meta tags, sitemaps, or other SEO elements. It can run alongside Yoast SEO, Rank Math, SEOPress, and AIOSEO, but overlapping schema types should be disabled in the other plugin to prevent duplicate JSON-LD.
 
 = Does it work with WooCommerce? =
 
@@ -98,14 +114,19 @@ Yes. Use `wp teil1-schema-manager export > backup.json` and `wp teil1-schema-man
 
 == Screenshots ==
 
-1. Globals dashboard — Schema Quality Score, action items, and site-wide custom variables.
-2. Rule Builder — condition selector, property editor, and live JSON-LD output.
-3. Schema Rules — conditional templates targeting post types, archives, and taxonomies.
-4. Site Map — schema coverage across every URL context on the site.
-5. Pages & Posts — per-page local schema management.
-6. Help — the full dynamic variable reference.
+1. Globals dashboard — review the internal 0–100 Schema Quality Score, resolve action items, and manage reusable site variables.
+2. Visual Rule Builder — target WordPress contexts, configure schema properties, and inspect the live JSON-LD output.
+3. Schema Rules — review conditional coverage and priorities for posts, pages, archives, and taxonomies.
+4. Site Map Coverage Audit — identify URL contexts with configured or missing structured data.
+5. Pages & Posts — inspect and edit per-page local schemas and global override behavior.
+6. Help & Settings — browse dynamic variables and configure conflict suppression and uninstall behavior.
 
 == Changelog ==
+
+= 2.3.3 =
+* Documentation: Added the official Teil1 Schema Manager website and set the plugin homepage to its dedicated teil1 landing page.
+* Directory: Improved the short description, feature tags, screenshot captions, Quality Score explanation, and compatibility guidance.
+* Documentation: Added conservative guidance about structured data for AI-powered discovery without promising rankings, rich results, AI citations, or AI Overview inclusion.
 
 = 2.3.2 =
 * Compliance: Updated every gettext call and the plugin header to the confirmed WordPress.org slug and text domain, `teil1-schema-manager`.
