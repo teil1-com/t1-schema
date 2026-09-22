@@ -96,6 +96,10 @@ add_action( 'plugins_loaded', function () {
     $rest_api = new T1Schema\RestApi();
     $rest_api->init();
 
+    // Map blog editorial formats to Article, NewsArticle or BlogPosting.
+    $blog_article_type = new T1Schema\BlogArticleType();
+    $blog_article_type->init();
+
     // Frontend JSON-LD output.
     if ( ! is_admin() ) {
         $frontend = new T1Schema\Frontend();

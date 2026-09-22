@@ -54,6 +54,16 @@ class Frontend {
 
             $schemas = VariableResolver::resolve( $schemas, $post_id );
 
+            /**
+             * Filters fully resolved schema nodes before @id merging.
+             *
+             * @since 2.4.1
+             *
+             * @param list<array<string, mixed>> $schemas Resolved schema nodes.
+             * @param int|null                   $post_id Current post ID.
+             */
+            $schemas = apply_filters( 't1schema_resolved_schemas', $schemas, $post_id );
+
             // Deduplicate nodes with the same @id (e.g. Rule + Local for same entity).
             $schemas = $this->merge_by_id( $schemas );
 

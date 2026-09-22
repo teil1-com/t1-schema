@@ -1861,6 +1861,7 @@ class CLI {
         if ( $resolve ) {
             $merged = WooCommerceOffers::expand( $merged, $post_id );
             $merged = VariableResolver::resolve( $merged, $post_id );
+            $merged = apply_filters( 't1schema_resolved_schemas', $merged, $post_id );
         }
 
         // Deduplicate nodes with the same @id (Rule + Local merge)
