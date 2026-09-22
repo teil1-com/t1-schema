@@ -7,7 +7,7 @@
         "messages": {
             "": {
                 "domain": "messages",
-                "lang": "de_DE",
+                "lang": "de_DE_formal",
                 "plural-forms": "nplurals=2; plural=(n != 1);"
             },
             "Invalid JSON: %1$s": [
@@ -113,10 +113,10 @@
                 "Noch keine Schemas"
             ],
             "Start by creating your Organization or WebSite schema. These are the foundation of your structured data.": [
-                "Zun\u00e4chst ein Organization- oder WebSite-Schema erstellen. Diese Schemas bilden die Grundlage f\u00fcr strukturierte Daten."
+                "Erstellen Sie zun\u00e4chst ein Organization- oder WebSite-Schema. Diese Schemas bilden die Grundlage Ihrer strukturierten Daten."
             ],
             "Define site-wide constants. Use %1$s in any schema.": [
-                "Websiteweite Konstanten definieren. %1$s in einem beliebigen Schema verwenden."
+                "Definieren Sie websiteweite Konstanten. Verwenden Sie %1$s in einem beliebigen Schema."
             ],
             "Loading custom variables\u2026": [
                 "Benutzerdefinierte Variablen werden geladen\u2026"
@@ -161,37 +161,37 @@
                 "Basierend auf den Anforderungen von Google Rich Results. Fehler m\u00fcssen f\u00fcr die Eignung behoben werden; Warnungen weisen auf Verbesserungsm\u00f6glichkeiten hin."
             ],
             "Tip: Use {{site_name}} or {{post_title}} as a dynamic value": [
-                "Tipp: {{site_name}} oder {{post_title}} als dynamischen Wert verwenden"
+                "Tipp: Verwenden Sie {{site_name}} oder {{post_title}} als dynamischen Wert"
             ],
             "Tip: Use {{site_url}} or {{post_url}}": [
-                "Tipp: {{site_url}} oder {{post_url}} verwenden"
+                "Tipp: Verwenden Sie {{site_url}} oder {{post_url}}"
             ],
             "Tip: Use {{site_logo}} to pull from theme settings": [
-                "Tipp: {{site_logo}} verwenden, um das Logo aus den Theme-Einstellungen zu \u00fcbernehmen"
+                "Tipp: Verwenden Sie {{site_logo}}, um das Logo aus den Theme-Einstellungen zu \u00fcbernehmen"
             ],
             "Tip: Use {{featured_image_url}} for the post thumbnail": [
-                "Tipp: {{featured_image_url}} f\u00fcr das Beitragsbild verwenden"
+                "Tipp: Verwenden Sie {{featured_image_url}} f\u00fcr das Beitragsbild"
             ],
             "Tip: Use {{post_title}} for the article headline": [
-                "Tipp: {{post_title}} f\u00fcr die Artikel\u00fcberschrift verwenden"
+                "Tipp: Verwenden Sie {{post_title}} f\u00fcr die Artikel\u00fcberschrift"
             ],
             "Tip: Use {{post_date}} for auto-dated articles": [
-                "Tipp: {{post_date}} verwenden, um das Artikeldatum automatisch einzusetzen"
+                "Tipp: Verwenden Sie {{post_date}}, um das Artikeldatum automatisch einzusetzen"
             ],
             "Tip: Use a nested Person object or {{author_name}}": [
-                "Tipp: Ein verschachteltes Person-Objekt oder {{author_name}} verwenden"
+                "Tipp: Verwenden Sie ein verschachteltes Person-Objekt oder {{author_name}}"
             ],
             "Tip: Use {{post_excerpt}} or {{site_description}}": [
-                "Tipp: {{post_excerpt}} oder {{site_description}} verwenden"
+                "Tipp: Verwenden Sie {{post_excerpt}} oder {{site_description}}"
             ],
             "Add your social media profile URLs as an array": [
-                "URLs der Social-Media-Profile als Array hinzuf\u00fcgen"
+                "F\u00fcgen Sie die URLs Ihrer Social-Media-Profile als Array hinzu"
             ],
             "Add a nested PostalAddress object via JSON import": [
-                "\u00dcber den JSON-Import ein verschachteltes PostalAddress-Objekt hinzuf\u00fcgen"
+                "F\u00fcgen Sie \u00fcber den JSON-Import ein verschachteltes PostalAddress-Objekt hinzu"
             ],
             "Add your business phone number": [
-                "Telefonnummer des Unternehmens hinzuf\u00fcgen"
+                "F\u00fcgen Sie die Telefonnummer Ihres Unternehmens hinzu"
             ],
             "This is added automatically when rendered \u2014 no action needed": [
                 "Dies wird bei der Ausgabe automatisch erg\u00e4nzt \u2014 keine Aktion erforderlich"
@@ -200,7 +200,7 @@
                 "Google unterst\u00fctzt diesen Typ m\u00f6glicherweise; die Validierung ist jedoch auf Syntaxpr\u00fcfungen beschr\u00e4nkt."
             ],
             "Set this property in the editor above to resolve": [
-                "Diese Eigenschaft im obigen Editor festlegen, um das Problem zu beheben"
+                "Legen Sie diese Eigenschaft im obigen Editor fest, um das Problem zu beheben"
             ],
             "Loading health data\u2026": [
                 "Statusdaten werden geladen\u2026"
@@ -321,7 +321,7 @@
                 "JSON-LD einf\u00fcgen"
             ],
             "Paste raw JSON-LD markup. Script tags will be stripped automatically.": [
-                "Unformatiertes JSON-LD-Markup einf\u00fcgen. Script-Tags werden automatisch entfernt."
+                "F\u00fcgen Sie unformatiertes JSON-LD-Markup ein. Script-Tags werden automatisch entfernt."
             ],
             "{\n  \"@context\": \"https:\/\/schema.org\",\n  \"@type\": \"Organization\",\n  \"name\": \"Your Company\"\n}": [
                 "{\n  \"@context\": \"https:\/\/schema.org\",\n  \"@type\": \"Organization\",\n  \"name\": \"Your Company\"\n}"
@@ -372,7 +372,7 @@
                 "Schema auf dieser Seite"
             ],
             "Select a type above to start building": [
-                "Oben einen Typ ausw\u00e4hlen, um das Schema zu erstellen"
+                "W\u00e4hlen Sie oben einen Typ aus, um das Schema zu erstellen"
             ],
             "%1$d schema on this page": [
                 "%1$d Schema auf dieser Seite",
@@ -469,7 +469,7 @@
                 "%1$d verf\u00fcgbare Eigenschaften"
             ],
             "Select a Schema type above to start building": [
-                "Oben einen Schema-Typ ausw\u00e4hlen, um das Schema zu erstellen"
+                "W\u00e4hlen Sie oben einen Schema-Typ aus, um das Schema zu erstellen"
             ],
             "Create Schema": [
                 "Schema erstellen"
@@ -580,13 +580,13 @@
                 "\ud83d\udcd6 Funktionsweise von %1$s"
             ],
             "Site-wide schemas (%1$s, %2$s) that apply to every page automatically. Manage these in the Dashboard tab.": [
-                "Websiteweite Schemas (%1$s, %2$s), die automatisch f\u00fcr jede Seite gelten. Im Tab \u201eDashboard\u201c verwalten."
+                "Websiteweite Schemas (%1$s, %2$s), die automatisch f\u00fcr jede Seite gelten. Verwalten Sie sie im Tab \u201eDashboard\u201c."
             ],
             "Local Schemas": [
                 "Lokale Schemas"
             ],
             "Page-specific schemas (%1$s, %2$s, %3$s) that apply to a single post or page. Manage these in the Pages tab.": [
-                "Seitenspezifische Schemas (%1$s, %2$s, %3$s), die f\u00fcr einen einzelnen Beitrag oder eine einzelne Seite gelten. Im Tab \u201eSeiten\u201c verwalten."
+                "Seitenspezifische Schemas (%1$s, %2$s, %3$s), die f\u00fcr einen einzelnen Beitrag oder eine einzelne Seite gelten. Verwalten Sie sie im Tab \u201eSeiten\u201c."
             ],
             "Override Logic": [
                 "\u00dcberschreibungslogik"
@@ -598,7 +598,7 @@
                 "Dynamische Variablen"
             ],
             "Use %1$s tags instead of hardcoded values. These resolve to real data at render time \u2014 e.g. %2$s becomes the actual page title.": [
-                "%1$s-Tags anstelle fest codierter Werte verwenden. Bei der Ausgabe werden sie durch tats\u00e4chliche Daten ersetzt \u2014 so wird beispielsweise %2$s zum aktuellen Seitentitel."
+                "Verwenden Sie %1$s-Tags anstelle fest codierter Werte. Bei der Ausgabe werden sie durch tats\u00e4chliche Daten ersetzt \u2014 so wird beispielsweise %2$s zum aktuellen Seitentitel."
             ],
             "Typical Workflow": [
                 "Typischer Ablauf"
@@ -637,7 +637,7 @@
                 "\ud83c\udff7\ufe0f Variablenreferenz"
             ],
             "Use these tags in any property value. They are resolved to real data when the %1$s is rendered.": [
-                "Diese Tags in beliebigen Eigenschaftswerten verwenden. Bei der Ausgabe von %1$s werden sie durch tats\u00e4chliche Daten ersetzt."
+                "Verwenden Sie diese Tags in beliebigen Eigenschaftswerten. Bei der Ausgabe von %1$s werden sie durch tats\u00e4chliche Daten ersetzt."
             ],
             "Variable": [
                 "Variable"
@@ -655,7 +655,7 @@
                 "Konfliktverursachende Schema-Ausgabe unterdr\u00fccken"
             ],
             "Removes %1$s emitted by other plugins \u2014 or by %2$s's own %3$s\/%4$s\/%5$s\/%6$s markup \u2014 wherever it would duplicate what %7$s outputs. Leave this off unless you actually see duplicate structured data on your pages.": [
-                "Entfernt von anderen Plugins ausgegebenes %1$s sowie %2$s-eigenes %3$s\/%4$s\/%5$s\/%6$s-Markup, wenn es die Ausgabe von %7$s duplizieren w\u00fcrde. Diese Option deaktiviert lassen, solange auf den Seiten keine doppelten strukturierten Daten auftreten."
+                "Entfernt von anderen Plugins ausgegebenes %1$s sowie %2$s-eigenes %3$s\/%4$s\/%5$s\/%6$s-Markup, wenn es die Ausgabe von %7$s duplizieren w\u00fcrde. Lassen Sie diese Option deaktiviert, solange auf Ihren Seiten keine doppelten strukturierten Daten auftreten."
             ],
             "Delete all data on uninstall": [
                 "Alle Daten bei der Deinstallation l\u00f6schen"
@@ -682,7 +682,7 @@
                 "Meine Website"
             ],
             "Your site tagline from Settings \u2192 General": [
-                "Untertitel der Website aus Einstellungen \u2192 Allgemein"
+                "Untertitel Ihrer Website aus Einstellungen \u2192 Allgemein"
             ],
             "(any custom post meta value)": [
                 "(beliebiger Wert eines benutzerdefinierten Beitrags-Metafelds)"
@@ -737,7 +737,7 @@
                 "Schema bearbeiten"
             ],
             "Select a schema type to see the preview": [
-                "Schema-Typ ausw\u00e4hlen, um die Vorschau anzuzeigen"
+                "W\u00e4hlen Sie einen Schema-Typ aus, um die Vorschau anzuzeigen"
             ],
             "Rich Result Preview": [
                 "Rich-Result-Vorschau"
@@ -834,7 +834,7 @@
                 "%1$d von %2$d Eigenschaften festgelegt"
             ],
             "Select a schema type above to configure properties": [
-                "Oben einen Schema-Typ ausw\u00e4hlen, um die Eigenschaften zu konfigurieren"
+                "W\u00e4hlen Sie oben einen Schema-Typ aus, um die Eigenschaften zu konfigurieren"
             ],
             "Create Rule": [
                 "Regel erstellen"
@@ -870,7 +870,7 @@
                 "Noch keine Schema-Regeln"
             ],
             "Rules let you target archives, CPTs, taxonomies, and more": [
-                "Mit Regeln lassen sich Archive, CPTs, Taxonomien und weitere Kontexte gezielt ansprechen"
+                "Mit Regeln k\u00f6nnen Sie Archive, CPTs, Taxonomien und weitere Kontexte gezielt ansprechen"
             ],
             "Create Your First Rule": [
                 "Erste Regel erstellen"

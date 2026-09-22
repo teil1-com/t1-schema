@@ -2,181 +2,175 @@
 # This file is distributed under the GPL v2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Teil1 Schema Manager 2.4.1\n"
+"Project-Id-Version: Teil1 Schema Manager 2.4.0\n"
 "Report-Msgid-Bugs-To: https://github.com/teil1-com/t1-schema/issues\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: Übersetzungsentwurf – menschliche Prüfung erforderlich\n"
+"Language-Team: Deutsch\n"
+"Language: de_DE_formal\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: \n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"X-Generator: WP-CLI 2.12.0\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Domain: teil1-schema-manager\n"
+"X-Generator: WP-CLI 2.12.0\n"
 
 #. Plugin Name of the plugin
-#: t1-schema.php
-#: includes/Admin.php:29
-#: includes/Admin.php:30
+#: t1-schema.php includes/Admin.php:29 includes/Admin.php:30
 msgid "Teil1 Schema Manager"
-msgstr ""
+msgstr "Teil1 Schema Manager"
 
 #. Plugin URI of the plugin
 #: t1-schema.php
 msgid "https://teil1.com/t1-schema/"
-msgstr ""
+msgstr "https://teil1.com/t1-schema/"
 
 #. Description of the plugin
 #: t1-schema.php
-msgid "Visual Schema.org JSON-LD manager for rich snippets, with conditional rules, quality scoring, @graph output, and WooCommerce support."
+msgid ""
+"Visual Schema.org JSON-LD manager for rich snippets, with conditional rules, "
+"quality scoring, @graph output, and WooCommerce support."
 msgstr ""
+"Visueller Schema.org-JSON-LD-Manager für Rich Snippets mit bedingten Regeln, "
+"Qualitätsbewertung, @graph-Ausgabe und WooCommerce-Unterstützung."
 
 #. Author of the plugin
 #: t1-schema.php
 msgid "teil1 development"
-msgstr ""
+msgstr "teil1 development"
 
 #. Author URI of the plugin
 #: t1-schema.php
 msgid "https://teil1.com"
-msgstr ""
+msgstr "https://teil1.com"
 
 #. translators: %d: number of active schemas.
 #: includes/AdminBar.php:78
 #, php-format
 msgid "Teil1 Schema Manager: %d active schema(s) on this page"
-msgstr ""
+msgstr "Teil1 Schema Manager: aktive Schemas auf dieser Seite: %d"
 
 #: includes/AdminBar.php:88
 msgid "No schemas active on this page"
-msgstr ""
+msgstr "Auf dieser Seite sind keine Schemas aktiv"
 
 #. translators: %d: number of properties.
 #: includes/AdminBar.php:103
 #, php-format
 msgid "%d props"
-msgstr ""
+msgstr "%d Eigenschaften"
 
 #: includes/AdminBar.php:113
 msgid "→ Open Dashboard"
-msgstr ""
+msgstr "→ Dashboard öffnen"
 
 #: includes/CLI.php:49
 msgid "No global schemas found."
-msgstr ""
+msgstr "Keine globalen Schemas gefunden."
 
-#: includes/CLI.php:138
-#: includes/RestApi.php:285
+#: includes/CLI.php:138 includes/RestApi.php:285
 msgid "Failed to create schema."
-msgstr ""
+msgstr "Schema konnte nicht erstellt werden."
 
 #. translators: 1: Schema.org type, 2: Schema ID.
 #: includes/CLI.php:145
 #, php-format
 msgid "Created %1$s schema (ID: %2$d)."
-msgstr ""
+msgstr "%1$s-Schema erstellt (ID: %2$d)."
 
 #. translators: %1$d: Number of validation errors.
 #: includes/CLI.php:158
 #, php-format
 msgid "%1$d validation error:"
 msgid_plural "%1$d validation errors:"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%1$d Validierungsfehler:"
+msgstr[1] "%1$d Validierungsfehler:"
 
 #. translators: %1$s: Validation error message.
-#: includes/CLI.php:166
-#: includes/CLI.php:569
+#: includes/CLI.php:166 includes/CLI.php:569
 #, php-format
 msgid "  ✗ %1$s"
-msgstr ""
+msgstr "  ✗ %1$s"
 
 #. translators: %1$d: Number of validation warnings.
 #: includes/CLI.php:177
 #, php-format
 msgid "%1$d warning:"
 msgid_plural "%1$d warnings:"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%1$d Warnung:"
+msgstr[1] "%1$d Warnungen:"
 
 #. translators: %1$s: Validation warning message.
 #: includes/CLI.php:185
 #, php-format
 msgid "  ⚠ %1$s"
-msgstr ""
+msgstr "  ⚠ %1$s"
 
 #. translators: %1$d: Schema ID.
-#: includes/CLI.php:236
-#: includes/CLI.php:311
-#: includes/CLI.php:366
+#: includes/CLI.php:236 includes/CLI.php:311 includes/CLI.php:366
 #, php-format
 msgid "Schema ID %1$d not found."
-msgstr ""
+msgstr "Schema mit ID %1$d wurde nicht gefunden."
 
 #. translators: %1$d: Schema ID.
 #: includes/CLI.php:277
 #, php-format
 msgid "Updated schema ID %1$d."
-msgstr ""
+msgstr "Schema mit ID %1$d aktualisiert."
 
 #. translators: 1: Schema.org type, 2: Schema ID.
 #: includes/CLI.php:321
 #, php-format
 msgid "Delete %1$s schema (ID: %2$d)?"
-msgstr ""
+msgstr "%1$s-Schema (ID: %2$d) löschen?"
 
 #. translators: %1$d: Schema ID.
 #: includes/CLI.php:332
 #, php-format
 msgid "Deleted schema ID %1$d."
-msgstr ""
+msgstr "Schema mit ID %1$d gelöscht."
 
 #. translators: %1$d: Post ID.
-#: includes/CLI.php:408
-#: includes/CLI.php:496
-#: includes/CLI.php:602
-#: includes/CLI.php:822
-#: includes/CLI.php:1821
+#: includes/CLI.php:408 includes/CLI.php:496 includes/CLI.php:602
+#: includes/CLI.php:822 includes/CLI.php:1821
 #, php-format
 msgid "Post ID %1$d not found."
-msgstr ""
+msgstr "Beitrag mit ID %1$d wurde nicht gefunden."
 
 #. translators: 1: Post title, 2: Post ID.
 #: includes/CLI.php:422
 #, php-format
 msgid "No local schemas for '%1$s' (ID: %2$d)."
-msgstr ""
+msgstr "Keine lokalen Schemas für „%1$s“ (ID: %2$d)."
 
 #. translators: 1: Post title, 2: Post ID.
 #: includes/CLI.php:433
 #, php-format
 msgid "Local schemas for '%1$s' (ID: %2$d):"
-msgstr ""
+msgstr "Lokale Schemas für „%1$s“ (ID: %2$d):"
 
-#: includes/CLI.php:445
-#: includes/CLI.php:861
+#: includes/CLI.php:445 includes/CLI.php:861
 msgctxt "schema type table value"
 msgid "Unknown"
-msgstr ""
+msgstr "Unbekannt"
 
 #: includes/CLI.php:447
 msgctxt "boolean table value"
 msgid "Yes"
-msgstr ""
+msgstr "Ja"
 
 #: includes/CLI.php:448
 msgctxt "boolean table value"
 msgid "No"
-msgstr ""
+msgstr "Nein"
 
 #. translators: %1$s: JSON parser error message.
-#: includes/CLI.php:519
-#: includes/CLI.php:1524
-#: includes/RestApi.php:687
+#: includes/CLI.php:519 includes/CLI.php:1524 includes/RestApi.php:687
 #: admin/src/components/Editor/JsonImporter.jsx:31
-#, php-format,js-format
+#, php-format
 msgid "Invalid JSON: %1$s"
-msgstr ""
+msgstr "Ungültiges JSON: %1$s"
 
 #. translators: 1: Schema.org type, 2: Post title, 3: Post ID, 4: Total number of local schemas.
 #: includes/CLI.php:549
@@ -184,244 +178,241 @@ msgstr ""
 msgid "Added %1$s schema to '%2$s' (ID: %3$d). Total: %4$d schema."
 msgid_plural "Added %1$s schema to '%2$s' (ID: %3$d). Total: %4$d schemas."
 msgstr[0] ""
+"Ein %1$s-Schema zu „%2$s“ hinzugefügt (ID: %3$d). Gesamt: %4$d Schema."
 msgstr[1] ""
+"Ein %1$s-Schema zu „%2$s“ hinzugefügt (ID: %3$d). Gesamt: %4$d Schemas."
 
 #. translators: %1$s: Post title.
 #: includes/CLI.php:612
 #, php-format
 msgid "Clear all local schemas from '%1$s'?"
-msgstr ""
+msgstr "Alle lokalen Schemas von „%1$s“ entfernen?"
 
 #. translators: %1$d: Post ID.
 #: includes/CLI.php:622
 #, php-format
 msgid "Cleared local schemas from post ID %1$d."
-msgstr ""
+msgstr "Lokale Schemas aus Beitrag mit ID %1$d entfernt."
 
-#: includes/CLI.php:681
-#: includes/CLI.php:718
-#: includes/CLI.php:866
+#: includes/CLI.php:681 includes/CLI.php:718 includes/CLI.php:866
 msgctxt "schema validation status"
 msgid "⚠ Warnings"
-msgstr ""
+msgstr "⚠ Warnungen"
 
-#: includes/CLI.php:683
-#: includes/CLI.php:720
+#: includes/CLI.php:683 includes/CLI.php:720
 msgctxt "schema validation status"
 msgid "ℹ Custom"
-msgstr ""
+msgstr "ℹ Benutzerdefiniert"
 
-#: includes/CLI.php:684
-#: includes/CLI.php:721
-#: includes/CLI.php:867
+#: includes/CLI.php:684 includes/CLI.php:721 includes/CLI.php:867
 msgctxt "schema validation status"
 msgid "✓ Valid"
-msgstr ""
+msgstr "✓ Gültig"
 
-#: includes/CLI.php:685
-#: includes/CLI.php:722
-#: includes/CLI.php:868
+#: includes/CLI.php:685 includes/CLI.php:722 includes/CLI.php:868
 msgctxt "schema validation status"
 msgid "✗ Errors"
-msgstr ""
+msgstr "✗ Fehler"
 
 #: includes/CLI.php:692
 msgctxt "schema layer table value"
 msgid "Global"
-msgstr ""
+msgstr "Global"
 
 #. translators: %1$s: Schema rule name.
 #: includes/CLI.php:732
 #, php-format
 msgctxt "schema layer table value"
 msgid "Rule: %1$s"
-msgstr ""
+msgstr "Regel: %1$s"
 
 #: includes/CLI.php:746
 msgid "No active schemas to check."
-msgstr ""
+msgstr "Keine aktiven Schemas zum Prüfen."
 
 #. translators: %1$d: Number of evaluated items.
 #: includes/CLI.php:754
 #, php-format
 msgid "Total item evaluated: %1$d"
 msgid_plural "Total items evaluated: %1$d"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Ausgewertete Elemente insgesamt: %1$d"
+msgstr[1] "Ausgewertete Elemente insgesamt: %1$d"
 
 #. translators: %1$d: Number of validation errors.
 #: includes/CLI.php:761
 #, php-format
 msgid "Total validation error: %1$d"
 msgid_plural "Total validation errors: %1$d"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Validierungsfehler insgesamt: %1$d"
+msgstr[1] "Validierungsfehler insgesamt: %1$d"
 
 #. translators: %1$d: Number of validation warnings.
 #: includes/CLI.php:768
 #, php-format
 msgid "Total validation warning: %1$d"
 msgid_plural "Total validation warnings: %1$d"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Validierungswarnung insgesamt: %1$d"
+msgstr[1] "Validierungswarnungen insgesamt: %1$d"
 
 #. translators: %1$d: Number of custom schema types.
 #: includes/CLI.php:775
 #, php-format
 msgid "Total custom type (info): %1$d"
 msgid_plural "Total custom types (infos): %1$d"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Benutzerdefinierter Typ insgesamt (Hinweis): %1$d"
+msgstr[1] "Benutzerdefinierte Typen insgesamt (Hinweise): %1$d"
 
 #. translators: %1$d: Number of schemas.
-#: includes/CLI.php:789
-#: includes/CLI.php:897
+#: includes/CLI.php:789 includes/CLI.php:897
 #: admin/src/components/Pages/PageBrowser.jsx:208
-#, php-format,js-format
+#, php-format
 msgid "%1$d schema"
 msgid_plural "%1$d schemas"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%1$d Schema"
+msgstr[1] "%1$d Schemas"
 
 #. translators: %1$d: Number of validation errors.
-#: includes/CLI.php:794
-#: includes/CLI.php:902
+#: includes/CLI.php:794 includes/CLI.php:902
 #: admin/src/components/Dashboard/BentoGrid.jsx:177
 #: admin/src/components/Dashboard/HealthDetail.jsx:64
-#, php-format,js-format
+#, php-format
 msgid "%1$d error"
 msgid_plural "%1$d errors"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%1$d Fehler"
+msgstr[1] "%1$d Fehler"
 
 #. translators: %1$d: Number of validation warnings.
-#: includes/CLI.php:799
-#: includes/CLI.php:907
+#: includes/CLI.php:799 includes/CLI.php:907
 #: admin/src/components/Dashboard/BentoGrid.jsx:167
 #: admin/src/components/Dashboard/HealthDetail.jsx:78
-#, php-format,js-format
+#, php-format
 msgid "%1$d warning"
 msgid_plural "%1$d warnings"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%1$d Warnung"
+msgstr[1] "%1$d Warnungen"
 
 #. translators: 1: Schema count summary, 2: Error count summary, 3: Warning count summary.
-#: includes/CLI.php:805
-#: includes/CLI.php:913
+#: includes/CLI.php:805 includes/CLI.php:913
 #, php-format
 msgid "Summary: %1$s, %2$s, %3$s."
-msgstr ""
+msgstr "Zusammenfassung: %1$s, %2$s, %3$s."
 
 #. translators: 1: Post title, 2: Post ID.
 #: includes/CLI.php:836
 #, php-format
 msgid "No local schemas on \"%1$s\" (ID: %2$d)."
-msgstr ""
+msgstr "Keine lokalen Schemas auf „%1$s“ (ID: %2$d)."
 
 #. translators: 1: Post title, 2: Post ID.
 #: includes/CLI.php:884
 #, php-format
 msgid "Health for \"%1$s\" (ID: %2$d):"
-msgstr ""
+msgstr "Status für „%1$s“ (ID: %2$d):"
 
 #: includes/CLI.php:1013
-msgid "No custom variables defined. Use `wp t1-schema set-var <key> <value>` to create one."
+msgid ""
+"No custom variables defined. Use `wp t1-schema set-var <key> <value>` to "
+"create one."
 msgstr ""
+"Keine benutzerdefinierten Variablen definiert. Erstellen Sie eine mit `wp t1-"
+"schema set-var <key> <value>`."
 
 #: includes/CLI.php:1057
 msgid "Invalid key. Use lowercase letters, numbers, and underscores only."
 msgstr ""
+"Ungültiger Schlüssel. Verwenden Sie ausschließlich Kleinbuchstaben, Zahlen "
+"und Unterstriche."
 
 #. translators: 1: Custom variable key, 2: Custom variable value.
 #: includes/CLI.php:1074
 #, php-format
 msgid "Updated custom variable: {{custom.%1$s}} → \"%2$s\""
-msgstr ""
+msgstr "Benutzerdefinierte Variable aktualisiert: {{custom.%1$s}} → „%2$s“"
 
 #. translators: 1: Custom variable key, 2: Custom variable value.
 #: includes/CLI.php:1083
 #, php-format
 msgid "Created custom variable: {{custom.%1$s}} → \"%2$s\""
-msgstr ""
+msgstr "Benutzerdefinierte Variable erstellt: {{custom.%1$s}} → „%2$s“"
 
 #. translators: %1$s: Custom variable key.
 #: includes/CLI.php:1116
 #, php-format
 msgid "Custom variable '%1$s' not found."
-msgstr ""
+msgstr "Benutzerdefinierte Variable „%1$s“ wurde nicht gefunden."
 
 #. translators: %1$s: Custom variable key.
 #: includes/CLI.php:1126
 #, php-format
 msgid "Delete custom variable '{{custom.%1$s}}'?"
-msgstr ""
+msgstr "Benutzerdefinierte Variable „{{custom.%1$s}}“ löschen?"
 
 #. translators: %1$s: Custom variable key.
 #: includes/CLI.php:1137
 #, php-format
 msgid "Deleted custom variable: {{custom.%1$s}}"
-msgstr ""
+msgstr "Benutzerdefinierte Variable gelöscht: {{custom.%1$s}}"
 
 #. translators: %1$s: JSON file path.
 #: includes/CLI.php:1172
 #, php-format
 msgid "File not found: %1$s"
-msgstr ""
+msgstr "Datei nicht gefunden: %1$s"
 
 #. translators: %1$s: JSON parser error message.
-#: includes/CLI.php:1186
-#: includes/CLI.php:1509
+#: includes/CLI.php:1186 includes/CLI.php:1509
 #, php-format
 msgid "Invalid JSON file: %1$s"
-msgstr ""
+msgstr "Ungültige JSON-Datei: %1$s"
 
 #: includes/CLI.php:1201
 msgid "Unrecognized JSON format. Expected export format or flat array."
 msgstr ""
+"Unbekanntes JSON-Format. Erwartet wird ein Exportformat oder ein flaches "
+"Array."
 
 #: includes/CLI.php:1223
 msgid "Skipping global: missing schema_type."
-msgstr ""
+msgstr "Globales Schema wird übersprungen: schema_type fehlt."
 
 #. translators: %1$s: Schema.org type.
 #: includes/CLI.php:1235
 #, php-format
 msgid "[DRY RUN] Would create global: %1$s"
-msgstr ""
+msgstr "[DRY RUN] Globales Schema würde erstellt: %1$s"
 
 #. translators: 1: Schema.org type, 2: Schema ID.
 #: includes/CLI.php:1248
 #, php-format
 msgid "✓ Created global %1$s (ID: %2$d)"
-msgstr ""
+msgstr "✓ Globales %1$s-Schema erstellt (ID: %2$d)"
 
 #: includes/CLI.php:1262
 msgctxt "default imported schema rule name"
 msgid "Imported Rule"
-msgstr ""
+msgstr "Importierte Regel"
 
 #: includes/CLI.php:1269
 msgid "Skipping rule: missing schema_type."
-msgstr ""
+msgstr "Regel wird übersprungen: schema_type fehlt."
 
 #. translators: %1$s: Schema rule name.
 #: includes/CLI.php:1277
 #, php-format
 msgid "[DRY RUN] Would create rule: %1$s"
-msgstr ""
+msgstr "[DRY RUN] Regel würde erstellt: %1$s"
 
 #. translators: 1: Schema rule name, 2: Rule ID.
 #: includes/CLI.php:1293
 #, php-format
 msgid "✓ Created rule '%1$s' (ID: %2$d)"
-msgstr ""
+msgstr "✓ Regel „%1$s“ erstellt (ID: %2$d)"
 
 #. translators: %1$d: Post ID.
-#: includes/CLI.php:1318
-#: includes/CLI.php:1421
+#: includes/CLI.php:1318 includes/CLI.php:1421
 #, php-format
 msgid "Post ID %1$d not found, skipping."
-msgstr ""
+msgstr "Beitrag mit ID %1$d wurde nicht gefunden und wird übersprungen."
 
 #. translators: 1: Number of local schemas, 2: Post title, 3: Post ID.
 #: includes/CLI.php:1330
@@ -429,236 +420,237 @@ msgstr ""
 msgid "[DRY RUN] Would set %1$d local schema on '%2$s' (ID: %3$d)"
 msgid_plural "[DRY RUN] Would set %1$d local schemas on '%2$s' (ID: %3$d)"
 msgstr[0] ""
+"[DRY RUN] %1$d lokales Schema würde für „%2$s“ festgelegt (ID: %3$d)"
 msgstr[1] ""
+"[DRY RUN] %1$d lokale Schemas würden für „%2$s“ festgelegt (ID: %3$d)"
 
 #. translators: 1: Number of local schemas, 2: Post title, 3: Post ID.
 #: includes/CLI.php:1346
 #, php-format
 msgid "✓ Set %1$d local schema on '%2$s' (ID: %3$d)"
 msgid_plural "✓ Set %1$d local schemas on '%2$s' (ID: %3$d)"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "✓ %1$d lokales Schema für „%2$s“ festgelegt (ID: %3$d)"
+msgstr[1] "✓ %1$d lokale Schemas für „%2$s“ festgelegt (ID: %3$d)"
 
 #. translators: %1$d: Number of global schemas.
 #: includes/CLI.php:1364
 #, php-format
 msgid "%1$d global"
 msgid_plural "%1$d globals"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%1$d globales Schema"
+msgstr[1] "%1$d globale Schemas"
 
 #. translators: %1$d: Number of schema rules.
 #: includes/CLI.php:1369
 #, php-format
 msgid "%1$d rule"
 msgid_plural "%1$d rules"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%1$d Regel"
+msgstr[1] "%1$d Regeln"
 
 #. translators: %1$d: Number of posts with local schemas.
 #: includes/CLI.php:1374
 #, php-format
 msgid "%1$d local"
 msgid_plural "%1$d locals"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%1$d lokaler Beitrag"
+msgstr[1] "%1$d lokale Beiträge"
 
 #. translators: 1: Global schema count summary, 2: Rule count summary, 3: Local schema count summary.
 #: includes/CLI.php:1381
 #, php-format
 msgid "Would import: %1$s, %2$s, %3$s."
-msgstr ""
+msgstr "Importiert würden: %1$s, %2$s, %3$s."
 
 #. translators: 1: Global schema count summary, 2: Rule count summary, 3: Local schema count summary.
 #: includes/CLI.php:1391
 #, php-format
 msgid "Imported: %1$s, %2$s, %3$s."
-msgstr ""
+msgstr "Importiert: %1$s, %2$s, %3$s."
 
 #: includes/CLI.php:1412
 msgid "Skipping entry: missing post_id or type."
-msgstr ""
+msgstr "Eintrag wird übersprungen: post_id oder type fehlt."
 
 #. translators: 1: Schema.org type, 2: Post title, 3: Post ID.
 #: includes/CLI.php:1432
 #, php-format
 msgid "[DRY RUN] Would add %1$s to '%2$s' (ID: %3$d)."
-msgstr ""
+msgstr "[DRY RUN] %1$s würde zu „%2$s“ hinzugefügt (ID: %3$d)."
 
 #. translators: 1: Schema.org type, 2: Post title, 3: Post ID.
 #: includes/CLI.php:1455
 #, php-format
 msgid "✓ Added %1$s to '%2$s' (ID: %3$d)."
-msgstr ""
+msgstr "✓ %1$s zu „%2$s“ hinzugefügt (ID: %3$d)."
 
 #. translators: %1$d: Number of schemas.
 #: includes/CLI.php:1469
 #, php-format
 msgid "Would process %1$d schema."
 msgid_plural "Would process %1$d schemas."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%1$d Schema würde verarbeitet."
+msgstr[1] "%1$d Schemas würden verarbeitet."
 
 #. translators: %1$d: Number of schemas.
 #: includes/CLI.php:1477
 #, php-format
 msgid "Processed %1$d schema."
 msgid_plural "Processed %1$d schemas."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%1$d Schema verarbeitet."
+msgstr[1] "%1$d Schemas verarbeitet."
 
 #. translators: %1$s: JSON file path.
 #: includes/CLI.php:1497
 #, php-format
 msgid "JSON file not found: %1$s"
-msgstr ""
+msgstr "JSON-Datei nicht gefunden: %1$s"
 
 #: includes/CLI.php:1557
 msgid "No schema rules found."
-msgstr ""
+msgstr "Keine Schema-Regeln gefunden."
 
 #: includes/CLI.php:1569
 msgctxt "schema rule condition separator"
 msgid " AND "
-msgstr ""
+msgstr " UND "
 
 #: includes/CLI.php:1570
 msgctxt "empty schema rule conditions table value"
 msgid "(none)"
-msgstr ""
+msgstr "(keine)"
 
 #. translators: %1$s: JSON parser error message.
 #: includes/CLI.php:1616
 #, php-format
 msgid "Invalid conditions JSON: %1$s"
-msgstr ""
+msgstr "Ungültiges JSON für Bedingungen: %1$s"
 
 #. translators: %1$s: JSON parser error message.
 #: includes/CLI.php:1630
 #, php-format
 msgid "Invalid schema JSON: %1$s"
-msgstr ""
+msgstr "Ungültiges Schema-JSON: %1$s"
 
-#: includes/CLI.php:1652
-#: includes/RestApi.php:851
+#: includes/CLI.php:1652 includes/RestApi.php:851
 msgid "Failed to create rule."
-msgstr ""
+msgstr "Regel konnte nicht erstellt werden."
 
 #. translators: 1: Schema rule name, 2: Rule ID.
 #: includes/CLI.php:1659
 #, php-format
 msgid "Created rule '%1$s' (ID: %2$d)."
-msgstr ""
+msgstr "Regel „%1$s“ erstellt (ID: %2$d)."
 
 #. translators: %1$d: Rule ID.
 #: includes/CLI.php:1689
 #, php-format
 msgid "Rule ID %1$d not found."
-msgstr ""
+msgstr "Regel mit ID %1$d wurde nicht gefunden."
 
 #. translators: 1: Schema rule name, 2: Rule ID.
 #: includes/CLI.php:1699
 #, php-format
 msgid "Delete rule '%1$s' (ID: %2$d)?"
-msgstr ""
+msgstr "Regel „%1$s“ (ID: %2$d) löschen?"
 
 #. translators: %1$d: Rule ID.
 #: includes/CLI.php:1709
 #, php-format
 msgid "Deleted rule ID %1$d."
-msgstr ""
+msgstr "Regel mit ID %1$d gelöscht."
 
 #. translators: 1: Number of schemas, 2: Post title, 3: Post ID.
 #: includes/CLI.php:1888
 #, php-format
 msgid "Total: %1$d schema for \"%2$s\" (ID: %3$d)."
 msgid_plural "Total: %1$d schemas for \"%2$s\" (ID: %3$d)."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Gesamt: %1$d Schema für „%2$s“ (ID: %3$d)."
+msgstr[1] "Gesamt: %1$d Schemas für „%2$s“ (ID: %3$d)."
 
 #: includes/CLI.php:1936
 msgctxt "site context table value"
 msgid "🏠 Front Page"
-msgstr ""
+msgstr "🏠 Startseite"
 
 #. translators: 1: Post type label, 2: Number of published posts.
 #: includes/CLI.php:1954
 #, php-format
 msgctxt "site context table value"
 msgid "📄 %1$s (%2$d)"
-msgstr ""
+msgstr "📄 %1$s (%2$d)"
 
 #. translators: %1$s: Post type label.
 #: includes/CLI.php:1972
 #, php-format
 msgctxt "site context table value"
 msgid "  📋 %1$s Archive"
-msgstr ""
+msgstr "  📋 %1$s-Archiv"
 
 #. translators: 1: Taxonomy label, 2: Number of taxonomy terms.
 #: includes/CLI.php:1994
 #, php-format
 msgctxt "site context table value"
 msgid "🏷️ %1$s (%2$d)"
-msgstr ""
+msgstr "🏷️ %1$s (%2$d)"
 
 #: includes/CLI.php:2008
 msgctxt "site context table value"
 msgid "🔍 Search Results"
-msgstr ""
+msgstr "🔍 Suchergebnisse"
 
 #: includes/CLI.php:2009
 msgctxt "site context table value"
 msgid "⚠️  404 Page"
-msgstr ""
+msgstr "⚠️  404-Seite"
 
 #: includes/CLI.php:2010
 msgctxt "site context table value"
 msgid "👤 Author Archives"
-msgstr ""
+msgstr "👤 Autorenarchive"
 
 #: includes/CLI.php:2011
 msgctxt "site context table value"
 msgid "📅 Date Archives"
-msgstr ""
+msgstr "📅 Datumsarchive"
 
 #. translators: 1: Covered site contexts, 2: Total site contexts, 3: Coverage percentage.
 #: includes/CLI.php:2027
 #, php-format
 msgid "Coverage: %1$d/%2$d context (%3$d%%)."
 msgid_plural "Coverage: %1$d/%2$d contexts (%3$d%%)."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Abdeckung: %1$d/%2$d Kontext (%3$d%%)."
+msgstr[1] "Abdeckung: %1$d/%2$d Kontexte (%3$d%%)."
 
 #: includes/CLI.php:2071
 msgid "🩺 Teil1 Schema Manager Doctor"
-msgstr ""
+msgstr "🩺 Teil1 Schema Manager Diagnose"
 
 #: includes/CLI.php:2075
 msgid "1. Database tables:"
-msgstr ""
+msgstr "1. Datenbanktabellen:"
 
 #. translators: 1: Database table name, 2: Number of rows.
 #: includes/CLI.php:2083
 #, php-format
 msgid "   ✓ %1$s (%2$d row)"
 msgid_plural "   ✓ %1$s (%2$d rows)"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "   ✓ %1$s (%2$d Zeile)"
+msgstr[1] "   ✓ %1$s (%2$d Zeilen)"
 
 #. translators: %1$s: Database table name.
 #: includes/CLI.php:2092
 #, php-format
 msgid "   ✗ %1$s — MISSING! Deactivate and reactivate the plugin."
-msgstr ""
+msgstr "   ✗ %1$s — FEHLT! Deaktivieren und reaktivieren Sie das Plugin."
 
 #: includes/CLI.php:2101
 msgid "2. Duplicate global types:"
-msgstr ""
+msgstr "2. Doppelte globale Typen:"
 
 #: includes/CLI.php:2105
 msgid "   ✓ No duplicates"
-msgstr ""
+msgstr "   ✓ Keine Duplikate"
 
 #. translators: 1: Schema.org type, 2: Number of active global schemas.
 #: includes/CLI.php:2111
@@ -666,2348 +658,2412 @@ msgstr ""
 msgid "   ⚠ %1$s has %2$d active global — only one will render"
 msgid_plural "   ⚠ %1$s has %2$d active globals — only one will render"
 msgstr[0] ""
+"   ⚠ %1$s hat %2$d aktives globales Schema — nur eines wird ausgegeben"
 msgstr[1] ""
+"   ⚠ %1$s hat %2$d aktive globale Schemas — nur eines wird ausgegeben"
 
 #: includes/CLI.php:2126
 msgid "3. Plugin conflicts:"
-msgstr ""
+msgstr "3. Plugin-Konflikte:"
 
 #: includes/CLI.php:2128
 msgctxt "plugin conflict label"
 msgid "teil1-content (mu-plugin schema)"
-msgstr ""
+msgstr "teil1-content (MU-Plugin-Schema)"
 
 #: includes/CLI.php:2129
 msgctxt "plugin conflict label"
 msgid "Schema Pro (wpschema.com)"
-msgstr ""
+msgstr "Schema Pro (wpschema.com)"
 
 #: includes/CLI.php:2130
 msgctxt "plugin conflict label"
 msgid "WP SEO Schema Pro"
-msgstr ""
+msgstr "WP SEO Schema Pro"
 
 #. translators: %1$s: Conflicting plugin name.
 #: includes/CLI.php:2138
 #, php-format
 msgid "   ⚠ %1$s is active — may output duplicate JSON-LD"
-msgstr ""
+msgstr "   ⚠ %1$s ist aktiv — möglicherweise wird doppeltes JSON-LD ausgegeben"
 
 #: includes/CLI.php:2149
-msgid "   ⚠ teil1_schema_output() detected — suppression is ON, Teil1 Schema Manager removes it"
+msgid ""
+"   ⚠ teil1_schema_output() detected — suppression is ON, Teil1 Schema "
+"Manager removes it"
 msgstr ""
+"   ⚠ teil1_schema_output() erkannt — Unterdrückung ist EIN; Teil1 Schema "
+"Manager entfernt die Ausgabe"
 
 #: includes/CLI.php:2150
-msgid "   ⚠ teil1_schema_output() detected — suppression is OFF, enable it in Settings if you see duplicates"
+msgid ""
+"   ⚠ teil1_schema_output() detected — suppression is OFF, enable it in "
+"Settings if you see duplicates"
 msgstr ""
+"   ⚠ teil1_schema_output() erkannt — Unterdrückung ist AUS; aktivieren Sie "
+"sie bei doppelten Ausgaben in den Einstellungen"
 
 #: includes/CLI.php:2160
-msgid "   ⚠ WooCommerce detected — suppression is ON, Teil1 Schema Manager removes WooCommerce's own Product/Review/BreadcrumbList/WebSite markup wherever a configured rule covers the same type"
+msgid ""
+"   ⚠ WooCommerce detected — suppression is ON, Teil1 Schema Manager removes "
+"WooCommerce's own Product/Review/BreadcrumbList/WebSite markup wherever a "
+"configured rule covers the same type"
 msgstr ""
+"   ⚠ WooCommerce erkannt — Unterdrückung ist EIN; Teil1 Schema Manager "
+"entfernt WooCommerce-eigenes Product-/Review-/BreadcrumbList-/WebSite-"
+"Markup, wenn eine konfigurierte Regel denselben Typ abdeckt"
 
 #: includes/CLI.php:2161
-msgid "   ⚠ WooCommerce detected — suppression is OFF; if a configured rule also covers Product, Review, BreadcrumbList, or WebSite, enable it in Settings to avoid duplicate JSON-LD"
+msgid ""
+"   ⚠ WooCommerce detected — suppression is OFF; if a configured rule also "
+"covers Product, Review, BreadcrumbList, or WebSite, enable it in Settings to "
+"avoid duplicate JSON-LD"
 msgstr ""
+"   ⚠ WooCommerce erkannt — Unterdrückung ist AUS; wenn eine konfigurierte "
+"Regel auch Product, Review, BreadcrumbList oder WebSite abdeckt, aktivieren "
+"Sie die Unterdrückung in den Einstellungen, um doppeltes JSON-LD zu vermeiden"
 
 #: includes/CLI.php:2166
 msgid "   ✓ No conflicts detected"
-msgstr ""
+msgstr "   ✓ Keine Konflikte erkannt"
 
 #: includes/CLI.php:2170
 msgid "4. Schema health (all layers):"
-msgstr ""
+msgstr "4. Schema-Status (alle Ebenen):"
 
 #. translators: 1: Global schema ID, 2: Schema.org type, 3: Number of validation errors.
 #: includes/CLI.php:2187
 #, php-format
 msgid "   ✗ Global #%1$d (%2$s): %3$d error"
 msgid_plural "   ✗ Global #%1$d (%2$s): %3$d errors"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "   ✗ Global #%1$d (%2$s): %3$d Fehler"
+msgstr[1] "   ✗ Global #%1$d (%2$s): %3$d Fehler"
 
 #. translators: 1: Schema rule ID, 2: Schema.org type, 3: Number of validation errors.
 #: includes/CLI.php:2215
 #, php-format
 msgid "   ✗ Rule #%1$d (%2$s): %3$d error"
 msgid_plural "   ✗ Rule #%1$d (%2$s): %3$d errors"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "   ✗ Regel #%1$d (%2$s): %3$d Fehler"
+msgstr[1] "   ✗ Regel #%1$d (%2$s): %3$d Fehler"
 
 #. translators: %1$d: Number of validation warnings.
 #: includes/CLI.php:2233
 #, php-format
 msgid "   ✓ All schemas valid (%1$d warning)"
 msgid_plural "   ✓ All schemas valid (%1$d warnings)"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "   ✓ Alle Schemas gültig (%1$d Warnung)"
+msgstr[1] "   ✓ Alle Schemas gültig (%1$d Warnungen)"
 
 #: includes/CLI.php:2247
 msgid "5. Orphaned local schemas:"
-msgstr ""
+msgstr "5. Verwaiste lokale Schemas:"
 
 #: includes/CLI.php:2253
 msgid "   ✓ No orphaned schemas"
-msgstr ""
+msgstr "   ✓ Keine verwaisten Schemas"
 
 #. translators: 1: Number of orphaned local schemas, 2: Comma-separated post IDs.
 #: includes/CLI.php:2260
 #, php-format
 msgid "   ⚠ %1$d orphaned local schema on deleted posts: %2$s"
 msgid_plural "   ⚠ %1$d orphaned local schemas on deleted posts: %2$s"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "   ⚠ %1$d verwaistes lokales Schema bei gelöschten Beiträgen: %2$s"
+msgstr[1] "   ⚠ %1$d verwaiste lokale Schemas bei gelöschten Beiträgen: %2$s"
 
 #: includes/CLI.php:2276
 msgid "No issues found. Teil1 Schema Manager is healthy."
-msgstr ""
+msgstr "Keine Probleme gefunden. Teil1 Schema Manager ist fehlerfrei."
 
 #. translators: %1$d: Number of issues found.
 #: includes/CLI.php:2281
 #, php-format
 msgid "%1$d issue found."
 msgid_plural "%1$d issues found."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%1$d Problem gefunden."
+msgstr[1] "%1$d Probleme gefunden."
 
 #: includes/CLI.php:2327
 msgctxt "table column heading"
 msgid "#"
-msgstr ""
+msgstr "#"
 
 #: includes/CLI.php:2329
 msgctxt "table column heading"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 #: includes/CLI.php:2331
 msgctxt "table column heading"
 msgid "Index"
-msgstr ""
+msgstr "Index"
 
 #: includes/CLI.php:2333
 msgctxt "table column heading"
 msgid "Type"
-msgstr ""
+msgstr "Typ"
 
 #: includes/CLI.php:2335
 msgctxt "table column heading"
 msgid "Status"
-msgstr ""
+msgstr "Status"
 
 #: includes/CLI.php:2337
 msgctxt "table column heading"
 msgid "Name"
-msgstr ""
+msgstr "Name"
 
 #: includes/CLI.php:2339
 msgctxt "table column heading"
 msgid "Created"
-msgstr ""
+msgstr "Erstellt"
 
 #: includes/CLI.php:2341
 msgctxt "table column heading"
 msgid "Override"
-msgstr ""
+msgstr "Überschreibung"
 
 #: includes/CLI.php:2343
 msgctxt "table column heading"
 msgid "Props"
-msgstr ""
+msgstr "Eigenschaften"
 
 #: includes/CLI.php:2345
 msgctxt "table column heading"
 msgid "Layer"
-msgstr ""
+msgstr "Ebene"
 
 #: includes/CLI.php:2347
 msgctxt "table column heading"
 msgid "Errors"
-msgstr ""
+msgstr "Fehler"
 
 #: includes/CLI.php:2349
 msgctxt "table column heading"
 msgid "Warnings"
-msgstr ""
+msgstr "Warnungen"
 
 #: includes/CLI.php:2351
 msgctxt "table column heading"
 msgid "Infos"
-msgstr ""
+msgstr "Infos"
 
 #: includes/CLI.php:2353
 msgctxt "table column heading"
 msgid "Details"
-msgstr ""
+msgstr "Details"
 
 #: includes/CLI.php:2355
 msgctxt "table column heading"
 msgid "Parent"
-msgstr ""
+msgstr "Übergeordnet"
 
 #: includes/CLI.php:2357
 msgctxt "table column heading"
 msgid "Required"
-msgstr ""
+msgstr "Erforderlich"
 
 #: includes/CLI.php:2359
 msgctxt "table column heading"
 msgid "Recommended"
-msgstr ""
+msgstr "Empfohlen"
 
 #: includes/CLI.php:2361
 msgctxt "table column heading"
 msgid "Total Props"
-msgstr ""
+msgstr "Eigenschaften gesamt"
 
 #: includes/CLI.php:2363
 msgctxt "table column heading"
 msgid "Category"
-msgstr ""
+msgstr "Kategorie"
 
 #: includes/CLI.php:2365
 msgctxt "table column heading"
 msgid "Variable"
-msgstr ""
+msgstr "Variable"
 
 #: includes/CLI.php:2367
 msgctxt "table column heading"
 msgid "Desc"
-msgstr ""
+msgstr "Beschreibung"
 
 #: includes/CLI.php:2369
 msgctxt "table column heading"
 msgid "Key"
-msgstr ""
+msgstr "Schlüssel"
 
 #: includes/CLI.php:2371
 msgctxt "table column heading"
 msgid "Value"
-msgstr ""
+msgstr "Wert"
 
 #: includes/CLI.php:2373
 msgctxt "table column heading"
 msgid "Conditions"
-msgstr ""
+msgstr "Bedingungen"
 
 #: includes/CLI.php:2375
 msgctxt "table column heading"
 msgid "Priority"
-msgstr ""
+msgstr "Priorität"
 
 #: includes/CLI.php:2377
 msgctxt "table column heading"
 msgid "Context"
-msgstr ""
+msgstr "Kontext"
 
 #: includes/CLI.php:2379
 msgctxt "table column heading"
 msgid "Schemas"
-msgstr ""
+msgstr "Schemas"
 
 #: includes/CLI.php:2394
 msgctxt "schema status"
 msgid "Active"
-msgstr ""
+msgstr "Aktiv"
 
 #: includes/CLI.php:2396
 msgctxt "schema status"
 msgid "Draft"
-msgstr ""
+msgstr "Entwurf"
 
 #: includes/ContextDetector.php:123
 msgctxt "condition label"
 msgid "Front Page"
-msgstr ""
+msgstr "Startseite"
 
-#: includes/ContextDetector.php:123
-#: includes/ContextDetector.php:124
-#: includes/ContextDetector.php:125
-#: includes/ContextDetector.php:126
-#: includes/ContextDetector.php:127
-#: includes/ContextDetector.php:128
+#: includes/ContextDetector.php:123 includes/ContextDetector.php:124
+#: includes/ContextDetector.php:125 includes/ContextDetector.php:126
+#: includes/ContextDetector.php:127 includes/ContextDetector.php:128
 msgctxt "condition group"
 msgid "Template"
-msgstr ""
+msgstr "Template"
 
 #: includes/ContextDetector.php:124
 msgctxt "condition label"
 msgid "Search Results"
-msgstr ""
+msgstr "Suchergebnisse"
 
 #: includes/ContextDetector.php:125
 msgctxt "condition label"
 msgid "404 Page"
-msgstr ""
+msgstr "404-Seite"
 
 #: includes/ContextDetector.php:126
 msgctxt "condition label"
 msgid "Date Archives"
-msgstr ""
+msgstr "Datumsarchive"
 
 #: includes/ContextDetector.php:127
 msgctxt "condition label"
 msgid "All Author Archives"
-msgstr ""
+msgstr "Alle Autorenarchive"
 
 #: includes/ContextDetector.php:128
 msgctxt "condition label"
 msgid "Blog Index"
-msgstr ""
+msgstr "Blogübersicht"
 
 #. translators: %s: localized post type label supplied by WordPress.
 #: includes/ContextDetector.php:141
 #, php-format
 msgctxt "condition label"
 msgid "All %1$s (single)"
-msgstr ""
+msgstr "Alle %1$s (Einzelansicht)"
 
 #: includes/ContextDetector.php:144
 msgctxt "condition group"
 msgid "Single Content"
-msgstr ""
+msgstr "Einzelinhalte"
 
 #. translators: %s: localized post type label supplied by WordPress.
 #: includes/ContextDetector.php:156
 #, php-format
 msgctxt "condition label"
 msgid "%1$s Archive"
-msgstr ""
+msgstr "%1$s-Archiv"
 
 #: includes/ContextDetector.php:159
 msgctxt "condition group"
 msgid "Archives"
-msgstr ""
+msgstr "Archive"
 
 #. translators: %s: localized taxonomy label supplied by WordPress.
 #: includes/ContextDetector.php:171
 #, php-format
 msgctxt "condition label"
 msgid "All %1$s Archives"
-msgstr ""
+msgstr "Alle %1$s-Archive"
 
-#: includes/ContextDetector.php:174
-#: includes/ContextDetector.php:195
+#: includes/ContextDetector.php:174 includes/ContextDetector.php:195
 msgctxt "condition group"
 msgid "Taxonomies"
-msgstr ""
+msgstr "Taxonomien"
 
 #. translators: 1: localized taxonomy label supplied by WordPress; 2: taxonomy term name.
 #: includes/ContextDetector.php:191
 #, php-format
 msgctxt "condition label"
 msgid "%1$s: %2$s"
-msgstr ""
+msgstr "%1$s: %2$s"
 
 #. translators: %s: author display name.
 #: includes/ContextDetector.php:209
 #, php-format
 msgctxt "condition label"
 msgid "Author: %1$s"
-msgstr ""
+msgstr "Autor: %1$s"
 
 #: includes/ContextDetector.php:212
 msgctxt "condition group"
 msgid "Authors"
-msgstr ""
+msgstr "Autoren"
 
 #. translators: %s: parent page title.
 #: includes/ContextDetector.php:234
 #, php-format
 msgctxt "condition label"
 msgid "Children of: %1$s"
-msgstr ""
+msgstr "Unterseiten von: %1$s"
 
-#: includes/ContextDetector.php:237
-#: includes/ContextDetector.php:267
+#: includes/ContextDetector.php:237 includes/ContextDetector.php:267
 msgctxt "condition group"
 msgid "Page Hierarchy"
-msgstr ""
+msgstr "Seitenhierarchie"
 
 #. translators: 1: top-level parent page title; 2: child page title.
 #: includes/ContextDetector.php:263
 #, php-format
 msgctxt "condition label"
 msgid "Children of: %1$s → %2$s"
-msgstr ""
+msgstr "Unterseiten von: %1$s → %2$s"
 
 #: includes/Frontend.php:306
 msgid "Home"
-msgstr ""
+msgstr "Startseite"
 
 #: includes/MetaBox.php:44
 msgid "🔮 Teil1 Schema Manager — Local Schemas"
-msgstr ""
+msgstr "🔮 Teil1 Schema Manager — Lokale Schemas"
 
 #: includes/MetaBox.php:81
 msgid "No local schemas on this page."
-msgstr ""
+msgstr "Keine lokalen Schemas auf dieser Seite."
 
 #: includes/MetaBox.php:81
 msgid "Global schemas still apply."
-msgstr ""
+msgstr "Globale Schemas gelten weiterhin."
 
 #: includes/MetaBox.php:87
 msgid "Add a schema →"
-msgstr ""
+msgstr "Schema hinzufügen →"
 
 #: includes/MetaBox.php:88
 msgid "Edit in Teil1 Schema Manager →"
-msgstr ""
+msgstr "In Teil1 Schema Manager bearbeiten →"
 
 #. translators: %d: number of validation errors.
 #: includes/MetaBox.php:113
 #, php-format
 msgid "%d error"
 msgid_plural "%d errors"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%d Fehler"
+msgstr[1] "%d Fehler"
 
 #. translators: %d: number of validation warnings.
 #: includes/MetaBox.php:117
 #, php-format
 msgid "%d warning"
 msgid_plural "%d warnings"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%d Warnung"
+msgstr[1] "%d Warnungen"
 
-#: includes/MetaBox.php:120
-#: admin/src/components/Dashboard/HealthDetail.jsx:90
+#: includes/MetaBox.php:120 admin/src/components/Dashboard/HealthDetail.jsx:90
 msgid "Valid (Custom)"
-msgstr ""
+msgstr "Gültig (benutzerdefiniert)"
 
-#: includes/MetaBox.php:123
-#: admin/src/components/Dashboard/BentoGrid.jsx:163
+#: includes/MetaBox.php:123 admin/src/components/Dashboard/BentoGrid.jsx:163
 #: admin/src/components/Dashboard/HealthScorecard.jsx:64
 #: admin/src/components/Help/HelpPanel.jsx:239
 msgid "Valid"
-msgstr ""
+msgstr "Gültig"
 
 #. translators: %d: number of additional warnings not shown.
 #: includes/MetaBox.php:143
 #, php-format
 msgid "… and %d more"
-msgstr ""
+msgstr "… und %d weitere"
 
 #: includes/MetaBox.php:155
 msgid "↑ Overrides global"
-msgstr ""
+msgstr "↑ Überschreibt globales Schema"
 
 #: includes/MetaBox.php:156
 msgid "∥ Coexists with global"
-msgstr ""
+msgstr "∥ Besteht neben globalem Schema"
 
-#: includes/RestApi.php:249
-#: includes/RestApi.php:303
-#: includes/RestApi.php:340
+#: includes/RestApi.php:249 includes/RestApi.php:303 includes/RestApi.php:340
 msgid "Schema not found."
-msgstr ""
+msgstr "Schema wurde nicht gefunden."
 
 #. translators: 1: First required REST field name; 2: Second required REST field name.
-#: includes/RestApi.php:271
-#: includes/RestApi.php:829
+#: includes/RestApi.php:271 includes/RestApi.php:829
 #, php-format
 msgid "%1$s and %2$s are required."
-msgstr ""
+msgstr "%1$s und %2$s sind erforderlich."
 
-#: includes/RestApi.php:324
-#: includes/RestApi.php:905
+#: includes/RestApi.php:324 includes/RestApi.php:905
 msgid "No fields to update."
-msgstr ""
+msgstr "Keine zu aktualisierenden Felder."
 
-#: includes/RestApi.php:354
-#: includes/RestApi.php:371
-#: includes/RestApi.php:471
+#: includes/RestApi.php:354 includes/RestApi.php:371 includes/RestApi.php:471
 msgid "Post not found."
-msgstr ""
+msgstr "Beitrag wurde nicht gefunden."
 
 #. translators: %s: schemas REST field name.
 #: includes/RestApi.php:381
 #, php-format
 msgid "%1$s must be an array."
-msgstr ""
+msgstr "%1$s muss ein Array sein."
 
 #. translators: %s: jsonld REST field name.
 #: includes/RestApi.php:676
 #, php-format
 msgid "%1$s string is required."
-msgstr ""
+msgstr "Eine Zeichenkette für %1$s ist erforderlich."
 
 #: includes/RestApi.php:757
 msgid "Expected an object of key-value pairs."
-msgstr ""
+msgstr "Erwartet wird ein Objekt aus Schlüssel-Wert-Paaren."
 
-#: includes/RestApi.php:802
-#: includes/RestApi.php:872
-#: includes/RestApi.php:921
+#: includes/RestApi.php:802 includes/RestApi.php:872 includes/RestApi.php:921
 msgid "Rule not found."
-msgstr ""
+msgstr "Regel wurde nicht gefunden."
 
 #. translators: 1: condition type identifier; 2: condition value.
 #: includes/RestApi.php:938
 #, php-format
 msgctxt "generated rule condition"
 msgid "%1$s:%2$s"
-msgstr ""
+msgstr "%1$s:%2$s"
 
 #. translators: 1: Schema.org type identifier; 2: rule conditions summary.
 #: includes/RestApi.php:948
 #, php-format
 msgctxt "generated rule name"
 msgid "%1$s → %2$s"
-msgstr ""
+msgstr "%1$s → %2$s"
 
 #: includes/RestApi.php:983
 msgctxt "site structure label"
 msgid "Front Page"
-msgstr ""
+msgstr "Startseite"
 
 #: includes/RestApi.php:995
 msgctxt "site structure label"
 msgid "Blog Index"
-msgstr ""
+msgstr "Blogübersicht"
 
 #. translators: %s: localized post type label supplied by WordPress.
 #: includes/RestApi.php:1026
 #, php-format
 msgctxt "site structure label"
 msgid "%1$s Archive"
-msgstr ""
+msgstr "%1$s-Archiv"
 
 #: includes/RestApi.php:1069
 msgctxt "site structure label"
 msgid "Author Archives"
-msgstr ""
+msgstr "Autorenarchive"
 
 #: includes/RestApi.php:1077
 msgctxt "site structure label"
 msgid "Search Results"
-msgstr ""
+msgstr "Suchergebnisse"
 
 #. translators: 1: covered site contexts; 2: total site contexts.
 #: includes/RestApi.php:1244
 #, php-format
 msgid "%1$d/%2$d context"
 msgid_plural "%1$d/%2$d contexts"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%1$d/%2$d Kontext"
+msgstr[1] "%1$d/%2$d Kontexte"
 
 #. translators: 1: valid schemas; 2: total schemas.
 #: includes/RestApi.php:1254
 #, php-format
 msgid "%1$d/%2$d schema valid"
 msgid_plural "%1$d/%2$d schemas valid"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%1$d/%2$d Schema gültig"
+msgstr[1] "%1$d/%2$d Schemas gültig"
 
 #. translators: 1: filled schema properties; 2: total recommended schema properties.
 #: includes/RestApi.php:1264
 #, php-format
 msgid "%1$d/%2$d property"
 msgid_plural "%1$d/%2$d properties"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%1$d/%2$d Eigenschaft"
+msgstr[1] "%1$d/%2$d Eigenschaften"
 
 #. translators: %1$d: Number of Schema.org types used.
 #: includes/RestApi.php:1274
 #, php-format
 msgid "%1$d type used"
 msgid_plural "%1$d types used"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%1$d Typ verwendet"
+msgstr[1] "%1$d verwendete Typen"
 
 #: includes/RestApi.php:1325
 msgid "Unknown template key"
-msgstr ""
+msgstr "Unbekannter Template-Schlüssel"
 
 #. translators: %1$s: Schema.org type identifier.
 #: includes/RestApi.php:1346
 #, php-format
 msgctxt "recommended rule name"
 msgid "%1$s → All Blog Posts"
-msgstr ""
+msgstr "%1$s → Alle Blogbeiträge"
 
 #. translators: %1$s: Schema.org type identifier.
 #: includes/RestApi.php:1351
 #, php-format
-msgid "Adds %1$s schema with headline, date, author, and image to every blog post."
+msgid ""
+"Adds %1$s schema with headline, date, author, and image to every blog post."
 msgstr ""
+"Fügt jedem Blogbeitrag ein %1$s-Schema mit Überschrift, Datum, Autor und "
+"Bild hinzu."
 
 #. translators: %1$s: Schema.org type identifier.
 #: includes/RestApi.php:1371
 #, php-format
 msgctxt "recommended rule name"
 msgid "%1$s → All Pages"
-msgstr ""
+msgstr "%1$s → Alle Seiten"
 
 #. translators: %1$s: Schema.org type identifier.
 #: includes/RestApi.php:1376
 #, php-format
 msgid "Adds %1$s schema with name and URL to every static page."
-msgstr ""
+msgstr "Fügt jeder statischen Seite ein %1$s-Schema mit Name und URL hinzu."
 
 #. translators: %1$s: Schema.org type identifier.
 #: includes/RestApi.php:1394
 #, php-format
 msgctxt "recommended rule name"
 msgid "%1$s → All Singulars"
-msgstr ""
+msgstr "%1$s → Alle Einzelansichten"
 
 #. translators: %1$s: Schema.org type identifier.
 #: includes/RestApi.php:1399
 #, php-format
 msgid "Adds %1$s schema to every post and page for enhanced SERP display."
 msgstr ""
+"Fügt jedem Beitrag und jeder Seite ein %1$s-Schema für eine mögliche "
+"erweiterte Darstellung in den Suchergebnissen hinzu."
 
 #. translators: %1$s: Schema.org type identifier.
 #: includes/RestApi.php:1418
 #, php-format
 msgctxt "recommended rule name"
 msgid "%1$s → Post Archives"
-msgstr ""
+msgstr "%1$s → Beitragsarchive"
 
 #. translators: %1$s: Schema.org type identifier.
 #: includes/RestApi.php:1423
 #, php-format
 msgid "Adds %1$s schema to the blog archive and category pages."
-msgstr ""
+msgstr "Fügt dem Blogarchiv und den Kategorieseiten ein %1$s-Schema hinzu."
 
 #. translators: %1$s: Schema.org type identifier.
 #: includes/RestApi.php:1440
 #, php-format
 msgctxt "recommended rule name"
 msgid "%1$s → Search"
-msgstr ""
+msgstr "%1$s → Suche"
 
 #. translators: %1$s: Schema.org type identifier. WordPress is a brand name.
 #: includes/RestApi.php:1445
 #, php-format
 msgid "Adds %1$s schema to the WordPress search results page."
-msgstr ""
+msgstr "Fügt der WordPress-Suchergebnisseite ein %1$s-Schema hinzu."
 
 #. translators: %s: dynamic {{search_query}} variable token; do not translate it.
 #: includes/RestApi.php:1455
 #, php-format
 msgctxt "SearchResultsPage schema name"
 msgid "Search: %1$s"
-msgstr ""
+msgstr "Suche: %1$s"
 
 #: includes/SchemaTypeTranslations.php:53
 msgctxt "Schema.org type label"
 msgid "Aggregate Offer"
-msgstr ""
+msgstr "Zusammengefasstes Angebot"
 
 #: includes/SchemaTypeTranslations.php:54
 msgctxt "Schema.org type label"
 msgid "Aggregate Rating"
-msgstr ""
+msgstr "Gesamtbewertung"
 
 #: includes/SchemaTypeTranslations.php:55
 msgctxt "Schema.org type label"
 msgid "Answer"
-msgstr ""
+msgstr "Antwort"
 
 #: includes/SchemaTypeTranslations.php:56
 msgctxt "Schema.org type label"
 msgid "Article"
-msgstr ""
+msgstr "Artikel"
 
 #: includes/SchemaTypeTranslations.php:57
 msgctxt "Schema.org type label"
 msgid "Blog Posting"
-msgstr ""
+msgstr "Blogbeitrag"
 
 #: includes/SchemaTypeTranslations.php:58
 msgctxt "Schema.org type label"
 msgid "Breadcrumb List"
-msgstr ""
+msgstr "Breadcrumb-Liste"
 
 #: includes/SchemaTypeTranslations.php:59
 msgctxt "Schema.org type label"
 msgid "Collection Page"
-msgstr ""
+msgstr "Sammlungsseite"
 
 #: includes/SchemaTypeTranslations.php:60
 msgctxt "Schema.org type label"
 msgid "Course"
-msgstr ""
+msgstr "Kurs"
 
 #: includes/SchemaTypeTranslations.php:61
 msgctxt "Schema.org type label"
 msgid "Creative Work"
-msgstr ""
+msgstr "Kreatives Werk"
 
 #: includes/SchemaTypeTranslations.php:62
 msgctxt "Schema.org type label"
 msgid "Defined Term"
-msgstr ""
+msgstr "Definierter Begriff"
 
 #: includes/SchemaTypeTranslations.php:63
 msgctxt "Schema.org type label"
 msgid "Defined Term Set"
-msgstr ""
+msgstr "Sammlung definierter Begriffe"
 
 #: includes/SchemaTypeTranslations.php:64
 msgctxt "Schema.org type label"
 msgid "Event"
-msgstr ""
+msgstr "Veranstaltung"
 
 #: includes/SchemaTypeTranslations.php:65
 msgctxt "Schema.org type label"
 msgid "FAQ Page"
-msgstr ""
+msgstr "FAQ-Seite"
 
 #: includes/SchemaTypeTranslations.php:66
 msgctxt "Schema.org type label"
 msgid "How-To"
-msgstr ""
+msgstr "Anleitung"
 
 #: includes/SchemaTypeTranslations.php:67
 msgctxt "Schema.org type label"
 msgid "How-To Step"
-msgstr ""
+msgstr "Anleitungsschritt"
 
 #: includes/SchemaTypeTranslations.php:68
 msgctxt "Schema.org type label"
 msgid "Image"
-msgstr ""
+msgstr "Bild"
 
 #: includes/SchemaTypeTranslations.php:69
 msgctxt "Schema.org type label"
 msgid "Job Posting"
-msgstr ""
+msgstr "Stellenanzeige"
 
 #: includes/SchemaTypeTranslations.php:70
 msgctxt "Schema.org type label"
 msgid "List Item"
-msgstr ""
+msgstr "Listenelement"
 
 #: includes/SchemaTypeTranslations.php:71
 msgctxt "Schema.org type label"
 msgid "Local Business"
-msgstr ""
+msgstr "Lokales Unternehmen"
 
 #: includes/SchemaTypeTranslations.php:72
 msgctxt "Schema.org type label"
 msgid "Offer"
-msgstr ""
+msgstr "Angebot"
 
 #: includes/SchemaTypeTranslations.php:73
 msgctxt "Schema.org type label"
 msgid "Organization"
-msgstr ""
+msgstr "Organisation"
 
 #: includes/SchemaTypeTranslations.php:74
 msgctxt "Schema.org type label"
 msgid "Person"
-msgstr ""
+msgstr "Person"
 
 #: includes/SchemaTypeTranslations.php:75
 msgctxt "Schema.org type label"
 msgid "Product"
-msgstr ""
+msgstr "Produkt"
 
 #: includes/SchemaTypeTranslations.php:76
 msgctxt "Schema.org type label"
 msgid "Professional Service"
-msgstr ""
+msgstr "Professionelle Dienstleistung"
 
 #: includes/SchemaTypeTranslations.php:77
 msgctxt "Schema.org type label"
 msgid "Question"
-msgstr ""
+msgstr "Frage"
 
 #: includes/SchemaTypeTranslations.php:78
 msgctxt "Schema.org type label"
 msgid "Recipe"
-msgstr ""
+msgstr "Rezept"
 
 #: includes/SchemaTypeTranslations.php:79
 msgctxt "Schema.org type label"
 msgid "Review"
-msgstr ""
+msgstr "Rezension"
 
 #: includes/SchemaTypeTranslations.php:80
 msgctxt "Schema.org type label"
 msgid "Service"
-msgstr ""
+msgstr "Dienstleistung"
 
 #: includes/SchemaTypeTranslations.php:81
 msgctxt "Schema.org type label"
 msgid "Software Application"
-msgstr ""
+msgstr "Softwareanwendung"
 
 #: includes/SchemaTypeTranslations.php:82
 msgctxt "Schema.org type label"
 msgid "Technical Article"
-msgstr ""
+msgstr "Fachartikel"
 
 #: includes/SchemaTypeTranslations.php:83
 msgctxt "Schema.org type label"
 msgid "Thing"
-msgstr ""
+msgstr "Objekt"
 
 #: includes/SchemaTypeTranslations.php:84
 msgctxt "Schema.org type label"
 msgid "Video"
-msgstr ""
+msgstr "Video"
 
 #: includes/SchemaTypeTranslations.php:85
 msgctxt "Schema.org type label"
 msgid "Web Page"
-msgstr ""
+msgstr "Webseite"
 
 #: includes/SchemaTypeTranslations.php:86
 msgctxt "Schema.org type label"
 msgid "WebSite"
-msgstr ""
+msgstr "Website"
 
 #: includes/SchemaTypeTranslations.php:93
 msgctxt "Schema.org type or property description"
 msgid "A blog post."
-msgstr ""
+msgstr "Ein Blogbeitrag."
 
 #: includes/SchemaTypeTranslations.php:94
 msgctxt "Schema.org type or property description"
 msgid "A breadcrumb trail for navigation."
-msgstr ""
+msgstr "Ein Navigationspfad zur Orientierung."
 
 #: includes/SchemaTypeTranslations.php:95
 msgctxt "Schema.org type or property description"
 msgid "A code identifying this term within a term set."
 msgstr ""
+"Ein Code, der diesen Begriff innerhalb einer Begriffssammlung identifiziert."
 
 #: includes/SchemaTypeTranslations.php:96
 msgctxt "Schema.org type or property description"
 msgid "A job posting."
-msgstr ""
+msgstr "Eine Stellenanzeige."
 
 #: includes/SchemaTypeTranslations.php:97
 msgctxt "Schema.org type or property description"
 msgid "A page containing FAQ entries."
-msgstr ""
+msgstr "Eine Seite mit FAQ-Einträgen."
 
 #: includes/SchemaTypeTranslations.php:98
 msgctxt "Schema.org type or property description"
-msgid "A page that lists or aggregates items, such as an archive or index page."
+msgid ""
+"A page that lists or aggregates items, such as an archive or index page."
 msgstr ""
+"Eine Seite, die Elemente auflistet oder zusammenfasst, beispielsweise eine "
+"Archiv- oder Übersichtsseite."
 
 #: includes/SchemaTypeTranslations.php:99
 msgctxt "Schema.org type or property description"
 msgid "A person (alive, dead, undead, or fictional)."
-msgstr ""
+msgstr "Eine lebende, verstorbene, untote oder fiktive Person."
 
 #: includes/SchemaTypeTranslations.php:100
 msgctxt "Schema.org type or property description"
 msgid "A physical business with a local presence."
-msgstr ""
+msgstr "Ein Unternehmen mit einem lokalen Standort."
 
 #: includes/SchemaTypeTranslations.php:101
 msgctxt "Schema.org type or property description"
-msgid "A price range across multiple offers for the same item, e.g. a product with several variations."
+msgid ""
+"A price range across multiple offers for the same item, e.g. a product with "
+"several variations."
 msgstr ""
+"Eine Preisspanne aus mehreren Angeboten für dasselbe Element, beispielsweise "
+"für ein Produkt mit mehreren Varianten."
 
 #: includes/SchemaTypeTranslations.php:102
 msgctxt "Schema.org type or property description"
 msgid "A product offered for sale."
-msgstr ""
+msgstr "Ein zum Verkauf angebotenes Produkt."
 
 #: includes/SchemaTypeTranslations.php:103
 msgctxt "Schema.org type or property description"
 msgid "A professional service business (agency, consultancy, law firm, etc.)."
 msgstr ""
+"Ein professioneller Dienstleistungsbetrieb, beispielsweise eine Agentur, "
+"Beratung oder Kanzlei."
 
 #: includes/SchemaTypeTranslations.php:104
 msgctxt "Schema.org type or property description"
 msgid "A question with an accepted answer."
-msgstr ""
+msgstr "Eine Frage mit einer akzeptierten Antwort."
 
 #: includes/SchemaTypeTranslations.php:105
 msgctxt "Schema.org type or property description"
 msgid "A recipe for cooking."
-msgstr ""
+msgstr "Ein Kochrezept."
 
 #: includes/SchemaTypeTranslations.php:106
 msgctxt "Schema.org type or property description"
 msgid "A review of an item."
-msgstr ""
+msgstr "Eine Rezension eines Elements."
 
 #: includes/SchemaTypeTranslations.php:107
 msgctxt "Schema.org type or property description"
 msgid "A service provided by an organization."
-msgstr ""
+msgstr "Eine von einer Organisation angebotene Dienstleistung."
 
 #: includes/SchemaTypeTranslations.php:108
 msgctxt "Schema.org type or property description"
-msgid "A set of defined terms — a glossary, taxonomy, or controlled vocabulary."
+msgid ""
+"A set of defined terms — a glossary, taxonomy, or controlled vocabulary."
 msgstr ""
+"Eine Sammlung definierter Begriffe, beispielsweise ein Glossar, eine "
+"Taxonomie oder ein kontrolliertes Vokabular."
 
 #: includes/SchemaTypeTranslations.php:109
 msgctxt "Schema.org type or property description"
 msgid "A short description."
-msgstr ""
+msgstr "Eine Kurzbeschreibung."
 
 #: includes/SchemaTypeTranslations.php:110
 msgctxt "Schema.org type or property description"
 msgid "A single step in a how-to."
-msgstr ""
+msgstr "Ein einzelner Schritt einer Anleitung."
 
 #: includes/SchemaTypeTranslations.php:111
 msgctxt "Schema.org type or property description"
 msgid "A single web page."
-msgstr ""
+msgstr "Eine einzelne Webseite."
 
 #: includes/SchemaTypeTranslations.php:112
 msgctxt "Schema.org type or property description"
 msgid "A software application."
-msgstr ""
+msgstr "Eine Softwareanwendung."
 
 #: includes/SchemaTypeTranslations.php:113
 msgctxt "Schema.org type or property description"
 msgid "A technical article — how-to, reference, or documentation."
 msgstr ""
+"Ein Fachartikel, beispielsweise eine Anleitung, Referenz oder Dokumentation."
 
 #: includes/SchemaTypeTranslations.php:114
 msgctxt "Schema.org type or property description"
 msgid "A video file or embed."
-msgstr ""
+msgstr "Eine Videodatei oder ein eingebettetes Video."
 
 #: includes/SchemaTypeTranslations.php:115
 msgctxt "Schema.org type or property description"
 msgid "A website."
-msgstr ""
+msgstr "Eine Website."
 
 #: includes/SchemaTypeTranslations.php:116
 msgctxt "Schema.org type or property description"
-msgid "A word, name, acronym, or phrase with a formal definition — ideal for glossary/lexicon entries."
+msgid ""
+"A word, name, acronym, or phrase with a formal definition — ideal for "
+"glossary/lexicon entries."
 msgstr ""
+"Ein Wort, Name, Akronym oder Ausdruck mit einer formalen Definition, etwa "
+"für Glossar- oder Lexikoneinträge."
 
 #: includes/SchemaTypeTranslations.php:117
 msgctxt "Schema.org type or property description"
 msgid "An answer to a question."
-msgstr ""
+msgstr "Eine Antwort auf eine Frage."
 
 #: includes/SchemaTypeTranslations.php:118
 msgctxt "Schema.org type or property description"
 msgid "An article, such as a news or blog article."
-msgstr ""
+msgstr "Ein Artikel, beispielsweise ein Nachrichten- oder Blogartikel."
 
 #: includes/SchemaTypeTranslations.php:119
 msgctxt "Schema.org type or property description"
 msgid "An educational course."
-msgstr ""
+msgstr "Ein Bildungsangebot oder Kurs."
 
 #: includes/SchemaTypeTranslations.php:120
 msgctxt "Schema.org type or property description"
 msgid "An event happening at a certain time and location."
 msgstr ""
+"Eine Veranstaltung zu einem bestimmten Zeitpunkt und an einem bestimmten Ort."
 
 #: includes/SchemaTypeTranslations.php:121
 msgctxt "Schema.org type or property description"
 msgid "An image file."
-msgstr ""
+msgstr "Eine Bilddatei."
 
 #: includes/SchemaTypeTranslations.php:122
 msgctxt "Schema.org type or property description"
 msgid "An item in a list."
-msgstr ""
+msgstr "Ein Element in einer Liste."
 
 #: includes/SchemaTypeTranslations.php:123
 msgctxt "Schema.org type or property description"
 msgid "An offer to sell a product or service."
-msgstr ""
+msgstr "Ein Angebot zum Verkauf eines Produkts oder einer Dienstleistung."
 
 #: includes/SchemaTypeTranslations.php:124
 msgctxt "Schema.org type or property description"
 msgid "An organization such as a company, NGO, club, etc."
 msgstr ""
+"Eine Organisation, beispielsweise ein Unternehmen, eine NGO oder ein Verein."
 
 #: includes/SchemaTypeTranslations.php:125
 msgctxt "Schema.org type or property description"
 msgid "App category."
-msgstr ""
+msgstr "Anwendungskategorie."
 
 #: includes/SchemaTypeTranslations.php:126
 msgctxt "Schema.org type or property description"
 msgid "Application deadline."
-msgstr ""
+msgstr "Bewerbungsfrist."
 
 #: includes/SchemaTypeTranslations.php:127
 msgctxt "Schema.org type or property description"
 msgid "Application name."
-msgstr ""
+msgstr "Name der Anwendung."
 
 #: includes/SchemaTypeTranslations.php:128
 msgctxt "Schema.org type or property description"
 msgid "Array of Question items."
-msgstr ""
+msgstr "Array mit Question-Elementen."
 
 #: includes/SchemaTypeTranslations.php:129
 msgctxt "Schema.org type or property description"
 msgid "Article author."
-msgstr ""
+msgstr "Autor des Artikels."
 
 #: includes/SchemaTypeTranslations.php:130
 msgctxt "Schema.org type or property description"
 msgid "Article headline (max 110 chars)."
-msgstr ""
+msgstr "Überschrift des Artikels (maximal 110 Zeichen)."
 
 #: includes/SchemaTypeTranslations.php:131
 msgctxt "Schema.org type or property description"
 msgid "Article image URL."
-msgstr ""
+msgstr "URL des Artikelbildes."
 
 #: includes/SchemaTypeTranslations.php:132
 msgctxt "Schema.org type or property description"
 msgid "Article summary."
-msgstr ""
+msgstr "Zusammenfassung des Artikels."
 
 #: includes/SchemaTypeTranslations.php:133
 msgctxt "Schema.org type or property description"
 msgid "Availability status URL."
-msgstr ""
+msgstr "URL des Verfügbarkeitsstatus."
 
 #: includes/SchemaTypeTranslations.php:134
 msgctxt "Schema.org type or property description"
 msgid "Average rating from multiple sources."
-msgstr ""
+msgstr "Durchschnittsbewertung aus mehreren Quellen."
 
 #: includes/SchemaTypeTranslations.php:135
 msgctxt "Schema.org type or property description"
 msgid "Average rating."
-msgstr ""
+msgstr "Durchschnittsbewertung."
 
 #: includes/SchemaTypeTranslations.php:136
 msgctxt "Schema.org type or property description"
 msgid "Business description."
-msgstr ""
+msgstr "Beschreibung des Unternehmens."
 
 #: includes/SchemaTypeTranslations.php:137
 msgctxt "Schema.org type or property description"
 msgid "Business logo."
-msgstr ""
+msgstr "Logo des Unternehmens."
 
 #: includes/SchemaTypeTranslations.php:138
 msgctxt "Schema.org type or property description"
 msgid "Business name."
-msgstr ""
+msgstr "Name des Unternehmens."
 
 #: includes/SchemaTypeTranslations.php:139
 msgctxt "Schema.org type or property description"
 msgid "Business website URL."
-msgstr ""
+msgstr "URL der Unternehmenswebsite."
 
 #: includes/SchemaTypeTranslations.php:140
 msgctxt "Schema.org type or property description"
 msgid "Canonical references (e.g. Wikipedia, Wikidata URLs)."
 msgstr ""
+"Kanonische Referenzen, beispielsweise URLs von Wikipedia oder Wikidata."
 
 #: includes/SchemaTypeTranslations.php:141
 msgctxt "Schema.org type or property description"
 msgid "Contact email."
-msgstr ""
+msgstr "Kontakt-E-Mail-Adresse."
 
 #: includes/SchemaTypeTranslations.php:142
 msgctxt "Schema.org type or property description"
 msgid "Contact phone number."
-msgstr ""
+msgstr "Kontakttelefonnummer."
 
 #: includes/SchemaTypeTranslations.php:143
 msgctxt "Schema.org type or property description"
 msgid "Cooking steps."
-msgstr ""
+msgstr "Zubereitungsschritte."
 
 #: includes/SchemaTypeTranslations.php:144
 msgctxt "Schema.org type or property description"
 msgid "Cooking time."
-msgstr ""
+msgstr "Kochzeit."
 
 #: includes/SchemaTypeTranslations.php:145
 msgctxt "Schema.org type or property description"
 msgid "Course description."
-msgstr ""
+msgstr "Kursbeschreibung."
 
 #: includes/SchemaTypeTranslations.php:146
 msgctxt "Schema.org type or property description"
 msgid "Course name."
-msgstr ""
+msgstr "Kursname."
 
 #: includes/SchemaTypeTranslations.php:147
 msgctxt "Schema.org type or property description"
 msgid "Course provider."
-msgstr ""
+msgstr "Kursanbieter."
 
 #: includes/SchemaTypeTranslations.php:148
 msgctxt "Schema.org type or property description"
 msgid "Creator."
-msgstr ""
+msgstr "Urheber."
 
 #: includes/SchemaTypeTranslations.php:149
 msgctxt "Schema.org type or property description"
 msgid "Currency code (e.g. EUR)."
-msgstr ""
+msgstr "Währungscode, beispielsweise EUR."
 
 #: includes/SchemaTypeTranslations.php:150
 msgctxt "Schema.org type or property description"
 msgid "Date founded."
-msgstr ""
+msgstr "Gründungsdatum."
 
 #: includes/SchemaTypeTranslations.php:151
 msgctxt "Schema.org type or property description"
 msgid "Date posted."
-msgstr ""
+msgstr "Veröffentlichungsdatum."
 
 #: includes/SchemaTypeTranslations.php:152
 msgctxt "Schema.org type or property description"
 msgid "Definition or explanation of the term."
-msgstr ""
+msgstr "Definition oder Erläuterung des Begriffs."
 
 #: includes/SchemaTypeTranslations.php:153
 msgctxt "Schema.org type or property description"
 msgid "Description of the glossary."
-msgstr ""
+msgstr "Beschreibung des Glossars."
 
 #: includes/SchemaTypeTranslations.php:154
 msgctxt "Schema.org type or property description"
 msgid "Description."
-msgstr ""
+msgstr "Beschreibung."
 
 #: includes/SchemaTypeTranslations.php:155
 msgctxt "Schema.org type or property description"
 msgid "Direct video file URL."
-msgstr ""
+msgstr "Direkte URL der Videodatei."
 
 #: includes/SchemaTypeTranslations.php:156
 msgctxt "Schema.org type or property description"
 msgid "Embed player URL."
-msgstr ""
+msgstr "URL des eingebetteten Players."
 
 #: includes/SchemaTypeTranslations.php:157
 msgctxt "Schema.org type or property description"
 msgid "End date/time."
-msgstr ""
+msgstr "Enddatum und -uhrzeit."
 
 #: includes/SchemaTypeTranslations.php:158
 msgctxt "Schema.org type or property description"
 msgid "Event description."
-msgstr ""
+msgstr "Beschreibung der Veranstaltung."
 
 #: includes/SchemaTypeTranslations.php:159
 msgctxt "Schema.org type or property description"
 msgid "Event image."
-msgstr ""
+msgstr "Bild der Veranstaltung."
 
 #: includes/SchemaTypeTranslations.php:160
 msgctxt "Schema.org type or property description"
 msgid "Event location."
-msgstr ""
+msgstr "Veranstaltungsort."
 
 #: includes/SchemaTypeTranslations.php:161
 msgctxt "Schema.org type or property description"
 msgid "Event name."
-msgstr ""
+msgstr "Name der Veranstaltung."
 
 #: includes/SchemaTypeTranslations.php:162
 msgctxt "Schema.org type or property description"
 msgid "Full name."
-msgstr ""
+msgstr "Vollständiger Name."
 
 #: includes/SchemaTypeTranslations.php:163
 msgctxt "Schema.org type or property description"
 msgid "Geographic area served."
-msgstr ""
+msgstr "Bedientes geografisches Gebiet."
 
 #: includes/SchemaTypeTranslations.php:164
 msgctxt "Schema.org type or property description"
 msgid "Geographic coordinates."
-msgstr ""
+msgstr "Geografische Koordinaten."
 
 #: includes/SchemaTypeTranslations.php:165
 msgctxt "Schema.org type or property description"
 msgid "Highest possible rating."
-msgstr ""
+msgstr "Höchstmöglicher Bewertungswert."
 
 #: includes/SchemaTypeTranslations.php:166
 msgctxt "Schema.org type or property description"
 msgid "Highest price across all offers."
-msgstr ""
+msgstr "Höchster Preis aller Angebote."
 
 #: includes/SchemaTypeTranslations.php:167
 msgctxt "Schema.org type or property description"
 msgid "Hiring company."
-msgstr ""
+msgstr "Einstellendes Unternehmen."
 
 #: includes/SchemaTypeTranslations.php:168
 msgctxt "Schema.org type or property description"
 msgid "Image URL."
-msgstr ""
+msgstr "Bild-URL."
 
 #: includes/SchemaTypeTranslations.php:169
 msgctxt "Schema.org type or property description"
 msgid "Image caption."
-msgstr ""
+msgstr "Bildunterschrift."
 
 #: includes/SchemaTypeTranslations.php:170
 msgctxt "Schema.org type or property description"
 msgid "Image file URL."
-msgstr ""
+msgstr "URL der Bilddatei."
 
 #: includes/SchemaTypeTranslations.php:171
 msgctxt "Schema.org type or property description"
 msgid "Image for the how-to."
-msgstr ""
+msgstr "Bild zur Anleitung."
 
 #: includes/SchemaTypeTranslations.php:172
 msgctxt "Schema.org type or property description"
 msgid "Image height in pixels."
-msgstr ""
+msgstr "Bildhöhe in Pixeln."
 
 #: includes/SchemaTypeTranslations.php:173
 msgctxt "Schema.org type or property description"
 msgid "Image of the business."
-msgstr ""
+msgstr "Bild des Unternehmens."
 
 #: includes/SchemaTypeTranslations.php:174
 msgctxt "Schema.org type or property description"
 msgid "Image width in pixels."
-msgstr ""
+msgstr "Bildbreite in Pixeln."
 
 #: includes/SchemaTypeTranslations.php:175
 msgctxt "Schema.org type or property description"
 msgid "Instructions for a task."
-msgstr ""
+msgstr "Anweisungen für eine Aufgabe."
 
 #: includes/SchemaTypeTranslations.php:176
 msgctxt "Schema.org type or property description"
 msgid "Item URL."
-msgstr ""
+msgstr "URL des Elements."
 
 #: includes/SchemaTypeTranslations.php:177
 msgctxt "Schema.org type or property description"
 msgid "Item name."
-msgstr ""
+msgstr "Name des Elements."
 
 #: includes/SchemaTypeTranslations.php:178
 msgctxt "Schema.org type or property description"
 msgid "Job description."
-msgstr ""
+msgstr "Stellenbeschreibung."
 
 #: includes/SchemaTypeTranslations.php:179
 msgctxt "Schema.org type or property description"
 msgid "Job location."
-msgstr ""
+msgstr "Arbeitsort."
 
 #: includes/SchemaTypeTranslations.php:180
 msgctxt "Schema.org type or property description"
 msgid "Job title."
-msgstr ""
+msgstr "Stellenbezeichnung."
 
 #: includes/SchemaTypeTranslations.php:181
 msgctxt "Schema.org type or property description"
 msgid "Last modified date."
-msgstr ""
+msgstr "Datum der letzten Änderung."
 
 #: includes/SchemaTypeTranslations.php:182
 msgctxt "Schema.org type or property description"
 msgid "List of ingredients."
-msgstr ""
+msgstr "Zutatenliste."
 
 #: includes/SchemaTypeTranslations.php:183
 msgctxt "Schema.org type or property description"
 msgid "Lowest possible rating."
-msgstr ""
+msgstr "Niedrigstmöglicher Bewertungswert."
 
 #: includes/SchemaTypeTranslations.php:184
 msgctxt "Schema.org type or property description"
 msgid "Lowest price across all offers."
-msgstr ""
+msgstr "Niedrigster Preis aller Angebote."
 
 #: includes/SchemaTypeTranslations.php:185
 msgctxt "Schema.org type or property description"
 msgid "Modified date."
-msgstr ""
+msgstr "Änderungsdatum."
 
 #: includes/SchemaTypeTranslations.php:186
 msgctxt "Schema.org type or property description"
 msgid "Name of the item."
-msgstr ""
+msgstr "Name des Elements."
 
 #: includes/SchemaTypeTranslations.php:187
 msgctxt "Schema.org type or property description"
 msgid "Name of the term set (e.g. 'SEO Glossary')."
-msgstr ""
+msgstr "Name der Begriffssammlung, beispielsweise „SEO-Glossar“."
 
 #: includes/SchemaTypeTranslations.php:188
 msgctxt "Schema.org type or property description"
 msgid "Number of distinct offers in the range."
-msgstr ""
+msgstr "Anzahl der unterschiedlichen Angebote in der Preisspanne."
 
 #: includes/SchemaTypeTranslations.php:189
 msgctxt "Schema.org type or property description"
 msgid "Number of reviews."
-msgstr ""
+msgstr "Anzahl der Rezensionen."
 
 #: includes/SchemaTypeTranslations.php:190
 msgctxt "Schema.org type or property description"
 msgid "Number of servings."
-msgstr ""
+msgstr "Anzahl der Portionen."
 
 #: includes/SchemaTypeTranslations.php:191
 msgctxt "Schema.org type or property description"
 msgid "Opening hours."
-msgstr ""
+msgstr "Öffnungszeiten."
 
 #: includes/SchemaTypeTranslations.php:192
 msgctxt "Schema.org type or property description"
 msgid "Ordered breadcrumb items."
-msgstr ""
+msgstr "Geordnete Elemente des Navigationspfads."
 
 #: includes/SchemaTypeTranslations.php:193
 msgctxt "Schema.org type or property description"
 msgid "Page URL."
-msgstr ""
+msgstr "Seiten-URL."
 
 #: includes/SchemaTypeTranslations.php:194
 msgctxt "Schema.org type or property description"
 msgid "Page description."
-msgstr ""
+msgstr "Seitenbeschreibung."
 
 #: includes/SchemaTypeTranslations.php:195
 msgctxt "Schema.org type or property description"
 msgid "Page title."
-msgstr ""
+msgstr "Seitentitel."
 
 #: includes/SchemaTypeTranslations.php:196
 msgctxt "Schema.org type or property description"
 msgid "Page where image appears."
-msgstr ""
+msgstr "Seite, auf der das Bild erscheint."
 
 #: includes/SchemaTypeTranslations.php:197
 msgctxt "Schema.org type or property description"
 msgid "Personal website."
-msgstr ""
+msgstr "Persönliche Website."
 
 #: includes/SchemaTypeTranslations.php:198
 msgctxt "Schema.org type or property description"
 msgid "Phone number."
-msgstr ""
+msgstr "Telefonnummer."
 
 #: includes/SchemaTypeTranslations.php:199
 msgctxt "Schema.org type or property description"
 msgid "Photo URL."
-msgstr ""
+msgstr "Foto-URL."
 
 #: includes/SchemaTypeTranslations.php:200
 msgctxt "Schema.org type or property description"
 msgid "Physical address."
-msgstr ""
+msgstr "Postanschrift."
 
 #: includes/SchemaTypeTranslations.php:201
 msgctxt "Schema.org type or property description"
 msgid "Position in the list."
-msgstr ""
+msgstr "Position in der Liste."
 
 #: includes/SchemaTypeTranslations.php:202
 msgctxt "Schema.org type or property description"
 msgid "Post author."
-msgstr ""
+msgstr "Autor des Beitrags."
 
 #: includes/SchemaTypeTranslations.php:203
 msgctxt "Schema.org type or property description"
 msgid "Post headline."
-msgstr ""
+msgstr "Überschrift des Beitrags."
 
 #: includes/SchemaTypeTranslations.php:204
 msgctxt "Schema.org type or property description"
 msgid "Post image."
-msgstr ""
+msgstr "Beitragsbild."
 
 #: includes/SchemaTypeTranslations.php:205
 msgctxt "Schema.org type or property description"
 msgid "Preparation time."
-msgstr ""
+msgstr "Vorbereitungszeit."
 
 #: includes/SchemaTypeTranslations.php:206
 msgctxt "Schema.org type or property description"
 msgid "Prerequisites or dependencies."
-msgstr ""
+msgstr "Voraussetzungen oder Abhängigkeiten."
 
 #: includes/SchemaTypeTranslations.php:207
 msgctxt "Schema.org type or property description"
 msgid "Price range (e.g. $$$)."
-msgstr ""
+msgstr "Preisspanne, beispielsweise $$$."
 
 #: includes/SchemaTypeTranslations.php:208
 msgctxt "Schema.org type or property description"
 msgid "Price value."
-msgstr ""
+msgstr "Preiswert."
 
 #: includes/SchemaTypeTranslations.php:209
 msgctxt "Schema.org type or property description"
 msgid "Pricing and availability."
-msgstr ""
+msgstr "Preis und Verfügbarkeit."
 
 #: includes/SchemaTypeTranslations.php:210
 msgctxt "Schema.org type or property description"
 msgid "Pricing information."
-msgstr ""
+msgstr "Preisinformationen."
 
 #: includes/SchemaTypeTranslations.php:211
 msgctxt "Schema.org type or property description"
 msgid "Primary image."
-msgstr ""
+msgstr "Hauptbild."
 
 #: includes/SchemaTypeTranslations.php:212
 msgctxt "Schema.org type or property description"
 msgid "Product brand."
-msgstr ""
+msgstr "Produktmarke."
 
 #: includes/SchemaTypeTranslations.php:213
 msgctxt "Schema.org type or property description"
 msgid "Product description."
-msgstr ""
+msgstr "Produktbeschreibung."
 
 #: includes/SchemaTypeTranslations.php:214
 msgctxt "Schema.org type or property description"
 msgid "Product image."
-msgstr ""
+msgstr "Produktbild."
 
 #: includes/SchemaTypeTranslations.php:215
 msgctxt "Schema.org type or property description"
 msgid "Product name."
-msgstr ""
+msgstr "Produktname."
 
 #: includes/SchemaTypeTranslations.php:216
 msgctxt "Schema.org type or property description"
 msgid "Product review."
-msgstr ""
+msgstr "Produktrezension."
 
 #: includes/SchemaTypeTranslations.php:217
 msgctxt "Schema.org type or property description"
 msgid "Proficiency level (Beginner, Expert)."
-msgstr ""
+msgstr "Kenntnisstand, beispielsweise Anfänger oder Experte."
 
 #: includes/SchemaTypeTranslations.php:218
 msgctxt "Schema.org type or property description"
 msgid "Publication date."
-msgstr ""
+msgstr "Veröffentlichungsdatum."
 
 #: includes/SchemaTypeTranslations.php:219
 msgctxt "Schema.org type or property description"
 msgid "Publish date in ISO 8601."
-msgstr ""
+msgstr "Veröffentlichungsdatum nach ISO 8601."
 
 #: includes/SchemaTypeTranslations.php:220
 msgctxt "Schema.org type or property description"
 msgid "Publish date."
-msgstr ""
+msgstr "Veröffentlichungsdatum."
 
 #: includes/SchemaTypeTranslations.php:221
 msgctxt "Schema.org type or property description"
 msgid "Publisher."
-msgstr ""
+msgstr "Herausgeber."
 
 #: includes/SchemaTypeTranslations.php:222
 msgctxt "Schema.org type or property description"
 msgid "Publishing organization."
-msgstr ""
+msgstr "Veröffentlichende Organisation."
 
 #: includes/SchemaTypeTranslations.php:223
 msgctxt "Schema.org type or property description"
 msgid "Rating given."
-msgstr ""
+msgstr "Vergebener Bewertungswert."
 
 #: includes/SchemaTypeTranslations.php:224
 msgctxt "Schema.org type or property description"
 msgid "Recipe image."
-msgstr ""
+msgstr "Rezeptbild."
 
 #: includes/SchemaTypeTranslations.php:225
 msgctxt "Schema.org type or property description"
 msgid "Recipe name."
-msgstr ""
+msgstr "Rezeptname."
 
 #: includes/SchemaTypeTranslations.php:226
 msgctxt "Schema.org type or property description"
 msgid "Review author."
-msgstr ""
+msgstr "Autor der Rezension."
 
 #: includes/SchemaTypeTranslations.php:227
 msgctxt "Schema.org type or property description"
 msgid "Review text."
-msgstr ""
+msgstr "Rezensionstext."
 
 #: includes/SchemaTypeTranslations.php:228
 msgctxt "Schema.org type or property description"
 msgid "Salary information."
-msgstr ""
+msgstr "Gehaltsangaben."
 
 #: includes/SchemaTypeTranslations.php:229
 msgctxt "Schema.org type or property description"
 msgid "Search action for sitelinks search box."
-msgstr ""
+msgstr "Suchaktion für das Sitelinks-Suchfeld."
 
 #: includes/SchemaTypeTranslations.php:230
 msgctxt "Schema.org type or property description"
 msgid "Service description."
-msgstr ""
+msgstr "Beschreibung der Dienstleistung."
 
 #: includes/SchemaTypeTranslations.php:231
 msgctxt "Schema.org type or property description"
 msgid "Service name."
-msgstr ""
+msgstr "Name der Dienstleistung."
 
 #: includes/SchemaTypeTranslations.php:232
 msgctxt "Schema.org type or property description"
 msgid "Service provider."
-msgstr ""
+msgstr "Dienstleister."
 
 #: includes/SchemaTypeTranslations.php:233
 msgctxt "Schema.org type or property description"
 msgid "Social media profile URLs."
-msgstr ""
+msgstr "URLs der Social-Media-Profile."
 
 #: includes/SchemaTypeTranslations.php:234
 msgctxt "Schema.org type or property description"
 msgid "Social profile URLs."
-msgstr ""
+msgstr "URLs der sozialen Profile."
 
 #: includes/SchemaTypeTranslations.php:235
 msgctxt "Schema.org type or property description"
 msgid "Start date/time."
-msgstr ""
+msgstr "Startdatum und -uhrzeit."
 
 #: includes/SchemaTypeTranslations.php:236
 msgctxt "Schema.org type or property description"
 msgid "Step image."
-msgstr ""
+msgstr "Bild des Schritts."
 
 #: includes/SchemaTypeTranslations.php:237
 msgctxt "Schema.org type or property description"
 msgid "Step instructions."
-msgstr ""
+msgstr "Anweisungen für den Schritt."
 
 #: includes/SchemaTypeTranslations.php:238
 msgctxt "Schema.org type or property description"
 msgid "Step title."
-msgstr ""
+msgstr "Titel des Schritts."
 
 #: includes/SchemaTypeTranslations.php:239
 msgctxt "Schema.org type or property description"
 msgid "Steps to complete."
-msgstr ""
+msgstr "Erforderliche Schritte."
 
 #: includes/SchemaTypeTranslations.php:240
 msgctxt "Schema.org type or property description"
 msgid "Stock keeping unit."
-msgstr ""
+msgstr "Artikelnummer (SKU)."
 
 #: includes/SchemaTypeTranslations.php:241
 msgctxt "Schema.org type or property description"
 msgid "Supported OS."
-msgstr ""
+msgstr "Unterstütztes Betriebssystem."
 
 #: includes/SchemaTypeTranslations.php:242
 msgctxt "Schema.org type or property description"
 msgid "Terms in this set."
-msgstr ""
+msgstr "Begriffe in dieser Sammlung."
 
 #: includes/SchemaTypeTranslations.php:243
 msgctxt "Schema.org type or property description"
 msgid "The URL of the organization's website."
-msgstr ""
+msgstr "URL der Website der Organisation."
 
 #: includes/SchemaTypeTranslations.php:244
 msgctxt "Schema.org type or property description"
 msgid "The accepted answer."
-msgstr ""
+msgstr "Die akzeptierte Antwort."
 
 #: includes/SchemaTypeTranslations.php:245
 msgctxt "Schema.org type or property description"
 msgid "The answer text."
-msgstr ""
+msgstr "Der Antworttext."
 
 #: includes/SchemaTypeTranslations.php:246
 msgctxt "Schema.org type or property description"
 msgid "The glossary/taxonomy this term belongs to."
-msgstr ""
+msgstr "Das Glossar oder die Taxonomie, zu dem bzw. der dieser Begriff gehört."
 
 #: includes/SchemaTypeTranslations.php:247
 msgctxt "Schema.org type or property description"
 msgid "The most generic kind of creative work."
-msgstr ""
+msgstr "Die allgemeinste Art eines kreativen Werks."
 
 #: includes/SchemaTypeTranslations.php:248
 msgctxt "Schema.org type or property description"
-msgid "The most generic type. Every Schema.org type is a specialization of Thing."
+msgid ""
+"The most generic type. Every Schema.org type is a specialization of Thing."
 msgstr ""
+"Der allgemeinste Typ. Jeder Schema.org-Typ ist eine Spezialisierung von "
+"Thing."
 
 #: includes/SchemaTypeTranslations.php:249
 msgctxt "Schema.org type or property description"
 msgid "The name of the organization."
-msgstr ""
+msgstr "Name der Organisation."
 
 #: includes/SchemaTypeTranslations.php:250
 msgctxt "Schema.org type or property description"
 msgid "The question text."
-msgstr ""
+msgstr "Der Fragetext."
 
 #: includes/SchemaTypeTranslations.php:251
 msgctxt "Schema.org type or property description"
 msgid "The term being defined."
-msgstr ""
+msgstr "Der zu definierende Begriff."
 
 #: includes/SchemaTypeTranslations.php:252
 msgctxt "Schema.org type or property description"
 msgid "Thumbnail image URL."
-msgstr ""
+msgstr "URL des Vorschaubildes."
 
 #: includes/SchemaTypeTranslations.php:253
 msgctxt "Schema.org type or property description"
 msgid "Ticket information."
-msgstr ""
+msgstr "Ticketinformationen."
 
 #: includes/SchemaTypeTranslations.php:254
 msgctxt "Schema.org type or property description"
 msgid "Title of the how-to."
-msgstr ""
+msgstr "Titel der Anleitung."
 
 #: includes/SchemaTypeTranslations.php:255
 msgctxt "Schema.org type or property description"
 msgid "Title of the work."
-msgstr ""
+msgstr "Titel des Werks."
 
 #: includes/SchemaTypeTranslations.php:256
 msgctxt "Schema.org type or property description"
 msgid "Total time required."
-msgstr ""
+msgstr "Insgesamt benötigte Zeit."
 
 #: includes/SchemaTypeTranslations.php:257
 msgctxt "Schema.org type or property description"
 msgid "Total time."
-msgstr ""
+msgstr "Gesamtzeit."
 
 #: includes/SchemaTypeTranslations.php:258
 msgctxt "Schema.org type or property description"
 msgid "Type of service."
-msgstr ""
+msgstr "Art der Dienstleistung."
 
 #: includes/SchemaTypeTranslations.php:259
 msgctxt "Schema.org type or property description"
 msgid "URL of the item."
-msgstr ""
+msgstr "URL des Elements."
 
 #: includes/SchemaTypeTranslations.php:260
 msgctxt "Schema.org type or property description"
 msgid "URL of the organization logo."
-msgstr ""
+msgstr "URL des Logos der Organisation."
 
 #: includes/SchemaTypeTranslations.php:261
 msgctxt "Schema.org type or property description"
 msgid "URL of the term set page."
-msgstr ""
+msgstr "URL der Seite der Begriffssammlung."
 
 #: includes/SchemaTypeTranslations.php:262
 msgctxt "Schema.org type or property description"
 msgid "URL of the term's page."
-msgstr ""
+msgstr "URL der Begriffsseite."
 
 #: includes/SchemaTypeTranslations.php:263
 msgctxt "Schema.org type or property description"
 msgid "URL to purchase."
-msgstr ""
+msgstr "Kauf-URL."
 
 #: includes/SchemaTypeTranslations.php:264
 msgctxt "Schema.org type or property description"
 msgid "Upload date."
-msgstr ""
+msgstr "Uploaddatum."
 
 #: includes/SchemaTypeTranslations.php:265
 msgctxt "Schema.org type or property description"
 msgid "Video description."
-msgstr ""
+msgstr "Videobeschreibung."
 
 #: includes/SchemaTypeTranslations.php:266
 msgctxt "Schema.org type or property description"
 msgid "Video duration (ISO 8601)."
-msgstr ""
+msgstr "Videodauer nach ISO 8601."
 
 #: includes/SchemaTypeTranslations.php:267
 msgctxt "Schema.org type or property description"
 msgid "Video title."
-msgstr ""
+msgstr "Videotitel."
 
 #: includes/SchemaTypeTranslations.php:268
 msgctxt "Schema.org type or property description"
 msgid "Website URL."
-msgstr ""
+msgstr "Website-URL."
 
 #: includes/SchemaTypeTranslations.php:269
 msgctxt "Schema.org type or property description"
 msgid "Website name."
-msgstr ""
+msgstr "Name der Website."
 
 #: includes/SchemaValidator.php:41
 msgid "Missing required @type property."
-msgstr ""
+msgstr "Erforderliche Eigenschaft @type fehlt."
 
 #. translators: %s: Schema.org type name.
 #: includes/SchemaValidator.php:58
 #, php-format
-msgid "Type '%s' is a valid custom Schema.org type. Property validation is skipped."
+msgid ""
+"Type '%s' is a valid custom Schema.org type. Property validation is skipped."
 msgstr ""
+"Der Typ „%s“ ist ein gültiger benutzerdefinierter Schema.org-Typ. Die "
+"Eigenschaften werden nicht validiert."
 
 #. translators: %s: Schema.org type name.
 #: includes/SchemaValidator.php:64
 #, php-format
 msgid "Type '%s' is not recognized as a valid Schema.org type."
-msgstr ""
+msgstr "Der Typ „%s“ wurde nicht als gültiger Schema.org-Typ erkannt."
 
 #. translators: %1$s: Schema.org property name. %2$s: Schema.org type name.
 #: includes/SchemaValidator.php:91
 #: admin/src/components/Editor/SchemaBuilder.jsx:130
-#, php-format,js-format
+#, php-format
 msgid "Missing required property: '%1$s' for type '%2$s'."
-msgstr ""
+msgstr "Erforderliche Eigenschaft „%1$s“ für den Typ „%2$s“ fehlt."
 
 #. translators: %1$s: Schema.org property name. %2$s: Schema.org type name.
 #: includes/SchemaValidator.php:112
 #, php-format
-msgid "Missing recommended property: '%1$s' for type '%2$s'. May be set per-post."
+msgid ""
+"Missing recommended property: '%1$s' for type '%2$s'. May be set per-post."
 msgstr ""
+"Empfohlene Eigenschaft „%1$s“ für den Typ „%2$s“ fehlt. Sie kann pro Beitrag "
+"festgelegt werden."
 
 #. translators: %1$s: Schema.org property name. %2$s: Schema.org type name.
 #: includes/SchemaValidator.php:119
 #: admin/src/components/Editor/SchemaBuilder.jsx:139
-#, php-format,js-format
+#, php-format
 msgid "Missing recommended property: '%1$s' for type '%2$s'."
-msgstr ""
+msgstr "Empfohlene Eigenschaft „%1$s“ für den Typ „%2$s“ fehlt."
 
 #: includes/SchemaValidator.php:130
 msgid "Missing @context. Will be added automatically at output."
-msgstr ""
+msgstr "@context fehlt und wird bei der Ausgabe automatisch ergänzt."
 
 #: includes/VariableResolver.php:28
 msgid "Post/Page title"
-msgstr ""
+msgstr "Beitrags-/Seitentitel"
 
 #: includes/VariableResolver.php:29
 msgid "Post excerpt"
-msgstr ""
+msgstr "Beitragsauszug"
 
 #: includes/VariableResolver.php:30
 msgid "Full post content (plain text)"
-msgstr ""
+msgstr "Vollständiger Beitragsinhalt (Klartext)"
 
 #. translators: %s: ISO date standard version.
 #: includes/VariableResolver.php:33
 #, php-format
 msgid "Publish date (%1$s)"
-msgstr ""
+msgstr "Veröffentlichungsdatum (%1$s)"
 
 #. translators: %s: ISO date standard version.
 #: includes/VariableResolver.php:38
 #, php-format
 msgid "Last modified date (%1$s)"
-msgstr ""
+msgstr "Datum der letzten Änderung (%1$s)"
 
 #: includes/VariableResolver.php:41
 msgid "Post permalink"
-msgstr ""
+msgstr "Beitrags-Permalink"
 
 #: includes/VariableResolver.php:42
 msgctxt "variable description"
 msgid "Post ID"
-msgstr ""
+msgstr "Beitrags-ID"
 
 #: includes/VariableResolver.php:43
 msgid "Post slug"
-msgstr ""
+msgstr "Beitrags-Titelform"
 
 #: includes/VariableResolver.php:44
 msgctxt "variable description"
 msgid "Post type"
-msgstr ""
+msgstr "Inhaltstyp"
 
 #: includes/VariableResolver.php:45
 msgid "Featured image URL (full size)"
-msgstr ""
+msgstr "URL des Beitragsbildes (volle Größe)"
 
 #: includes/VariableResolver.php:46
 msgid "Featured image alt text"
-msgstr ""
+msgstr "Alternativtext des Beitragsbildes"
 
 #: includes/VariableResolver.php:49
 msgid "Author display name"
-msgstr ""
+msgstr "Anzeigename des Autors"
 
 #: includes/VariableResolver.php:50
 msgid "Author posts URL"
-msgstr ""
+msgstr "URL der Beiträge des Autors"
 
 #: includes/VariableResolver.php:51
 msgid "Author bio/description"
-msgstr ""
+msgstr "Biografie/Beschreibung des Autors"
 
 #: includes/VariableResolver.php:52
 msgid "Author avatar URL"
-msgstr ""
+msgstr "URL des Autoren-Avatars"
 
 #: includes/VariableResolver.php:55
 msgid "Site title"
-msgstr ""
+msgstr "Website-Titel"
 
 #: includes/VariableResolver.php:56
 msgid "Site home URL"
-msgstr ""
+msgstr "Startseiten-URL"
 
 #: includes/VariableResolver.php:57
 msgid "Site tagline"
-msgstr ""
+msgstr "Untertitel der Website"
 
 #: includes/VariableResolver.php:58
 msgid "Custom logo URL"
-msgstr ""
+msgstr "URL des individuellen Logos"
 
 #: includes/VariableResolver.php:59
 msgid "Site language code"
-msgstr ""
+msgstr "Sprachcode der Website"
 
 #: includes/VariableResolver.php:62
 msgid "Primary category name"
-msgstr ""
+msgstr "Name der Hauptkategorie"
 
 #: includes/VariableResolver.php:63
 msgid "Primary category URL"
-msgstr ""
+msgstr "URL der Hauptkategorie"
 
 #: includes/VariableResolver.php:64
 msgid "Comma-separated category names"
-msgstr ""
+msgstr "Kommagetrennte Kategorienamen"
 
 #: includes/VariableResolver.php:65
 msgid "Comma-separated tag names"
-msgstr ""
+msgstr "Kommagetrennte Schlagwortnamen"
 
 #: includes/VariableResolver.php:68
 msgid "Current taxonomy term name (on archive)"
-msgstr ""
+msgstr "Name des aktuellen Taxonomiebegriffs (im Archiv)"
 
 #: includes/VariableResolver.php:69
 msgid "Current taxonomy term description"
-msgstr ""
+msgstr "Beschreibung des aktuellen Taxonomiebegriffs"
 
 #: includes/VariableResolver.php:70
 msgid "Current taxonomy term URL"
-msgstr ""
+msgstr "URL des aktuellen Taxonomiebegriffs"
 
 #: includes/VariableResolver.php:71
 msgid "Archive page title"
-msgstr ""
+msgstr "Titel der Archivseite"
 
 #: includes/VariableResolver.php:72
 msgid "Current archive URL"
-msgstr ""
+msgstr "URL des aktuellen Archivs"
 
 #: includes/VariableResolver.php:73
 msgid "Current search query"
-msgstr ""
+msgstr "Aktuelle Suchanfrage"
 
 #. translators: %s: literal {key} placeholder used in variable names.
 #: includes/VariableResolver.php:78
 #, php-format
 msgid "Custom post meta value (replace %1$s with meta key)"
 msgstr ""
+"Wert eines benutzerdefinierten Beitrags-Metafelds (%1$s durch den "
+"Metaschlüssel ersetzen)"
 
 #. translators: 1: Schema.org Offer.price property; 2: Schema.org AggregateOffer type.
 #: includes/VariableResolver.php:100
 #, php-format
-msgid "Current price (sale price if on sale, else regular price). In an %1$s, auto-upgrades to an %2$s range for variable products"
+msgid ""
+"Current price (sale price if on sale, else regular price). In an %1$s, auto-"
+"upgrades to an %2$s range for variable products"
 msgstr ""
+"Aktueller Preis (Aktionspreis, falls im Angebot, sonst regulärer Preis). In "
+"einem %1$s wird er bei variablen Produkten automatisch zu einer %2$s-"
+"Preisspanne erweitert."
 
 #: includes/VariableResolver.php:104
 msgid "Regular (non-sale) price"
-msgstr ""
+msgstr "Regulärer Preis (kein Aktionspreis)"
 
 #: includes/VariableResolver.php:105
 msgid "Sale price, or empty if not on sale"
-msgstr ""
+msgstr "Aktionspreis; leer, wenn das Produkt nicht im Angebot ist"
 
 #. translators: %s: example ISO currency code.
 #: includes/VariableResolver.php:108
 #, php-format
 msgid "Store currency code (e.g. %1$s)"
-msgstr ""
+msgstr "Währungscode des Shops (z. B. %1$s)"
 
 #: includes/VariableResolver.php:111
 msgid "Product SKU"
-msgstr ""
+msgstr "Produkt-SKU"
 
 #. translators: %s: example Schema.org availability URL.
 #: includes/VariableResolver.php:114
 #, php-format
 msgid "Stock status as a schema.org URL (e.g. %1$s)"
-msgstr ""
+msgstr "Lagerstatus als schema.org-URL (z. B. %1$s)"
 
 #: includes/VariableResolver.php:117
 msgid "Average rating, or empty with no reviews"
-msgstr ""
+msgstr "Durchschnittsbewertung; leer, wenn keine Rezensionen vorliegen"
 
 #: includes/VariableResolver.php:118
 msgid "Number of approved reviews"
-msgstr ""
+msgstr "Anzahl freigegebener Rezensionen"
 
 #: includes/VariableResolver.php:119
 msgid "First term from the Product Brand taxonomy, if set"
-msgstr ""
+msgstr "Erster Begriff aus der Taxonomie Product Brand, sofern festgelegt"
 
 #: includes/VariableResolver.php:130
 msgid "User-defined site constant (create in Dashboard → Settings)"
 msgstr ""
+"Benutzerdefinierte Website-Konstante (unter Dashboard → Einstellungen "
+"erstellen)"
 
 #. translators: %s: preview of a user-defined site constant.
 #: includes/VariableResolver.php:139
 #, php-format
 msgid "Site constant: %1$s"
-msgstr ""
+msgstr "Website-Konstante: %1$s"
 
 #. translators: %1$d: HTTP response status code.
 #: admin/src/api/client.js:69
-#, js-format
 msgid "API error: %1$d"
-msgstr ""
+msgstr "API-Fehler: %1$d"
 
 #: admin/src/App.jsx:89
 msgid "Globals"
-msgstr ""
+msgstr "Globale Schemas"
 
 #: admin/src/App.jsx:90
 msgid "Rules"
-msgstr ""
+msgstr "Regeln"
 
 #: admin/src/App.jsx:91
 msgid "Site Map"
-msgstr ""
+msgstr "Website-Übersicht"
 
 #: admin/src/App.jsx:92
 msgid "Pages"
-msgstr ""
+msgstr "Seiten"
 
 #: admin/src/App.jsx:93
 msgid "Help"
-msgstr ""
+msgstr "Hilfe"
 
 #: admin/src/App.jsx:109
 msgid "Structured Data Engine"
-msgstr ""
+msgstr "System für strukturierte Daten"
 
 #: admin/src/App.jsx:123
 msgid "Back"
-msgstr ""
+msgstr "Zurück"
 
 #: admin/src/App.jsx:131
 msgid "+ New Global"
-msgstr ""
+msgstr "+ Neues globales Schema"
 
-#: admin/src/App.jsx:139
-#: admin/src/components/Rules/RulesList.jsx:53
+#: admin/src/App.jsx:139 admin/src/components/Rules/RulesList.jsx:53
 msgid "+ New Rule"
-msgstr ""
+msgstr "+ Neue Regel"
 
 #: admin/src/components/Dashboard/BentoGrid.jsx:20
 msgid "Delete this global schema? This cannot be undone."
 msgstr ""
+"Dieses globale Schema löschen? Dies kann nicht rückgängig gemacht werden."
 
 #: admin/src/components/Dashboard/BentoGrid.jsx:31
 msgid "Loading global schemas…"
-msgstr ""
+msgstr "Globale Schemas werden geladen…"
 
 #: admin/src/components/Dashboard/BentoGrid.jsx:71
 #: admin/src/components/Help/HelpPanel.jsx:79
 msgid "Global Schemas"
-msgstr ""
+msgstr "Globale Schemas"
 
 #: admin/src/components/Dashboard/BentoGrid.jsx:74
 msgid "Site-wide structured data applied to every page"
-msgstr ""
+msgstr "Websiteweite strukturierte Daten für jede Seite"
 
 #. translators: %1$d: Number of active global schemas.
 #: admin/src/components/Dashboard/BentoGrid.jsx:80
-#, js-format
 msgid "%1$d active"
-msgstr ""
+msgstr "%1$d aktiv"
 
 #: admin/src/components/Dashboard/BentoGrid.jsx:119
 #: admin/src/components/Help/HelpPanel.jsx:162
 msgid "Add Schema"
-msgstr ""
+msgstr "Schema hinzufügen"
 
 #: admin/src/components/Dashboard/BentoGrid.jsx:145
 msgid "Unknown"
-msgstr ""
+msgstr "Unbekannt"
 
 #: admin/src/components/Dashboard/BentoGrid.jsx:161
 msgid "Unchecked"
-msgstr ""
+msgstr "Nicht geprüft"
 
 #: admin/src/components/Dashboard/BentoGrid.jsx:203
 msgid "Click to inspect health details"
-msgstr ""
+msgstr "Klicken, um Statusdetails anzuzeigen"
 
 #: admin/src/components/Dashboard/BentoGrid.jsx:204
 msgid "Schema is valid"
-msgstr ""
+msgstr "Schema ist gültig"
 
 #: admin/src/components/Dashboard/BentoGrid.jsx:225
 msgid "No preview data"
-msgstr ""
+msgstr "Keine Vorschaudaten"
 
 #: admin/src/components/Dashboard/BentoGrid.jsx:236
 #: admin/src/components/Rules/RulesList.jsx:142
 msgid "Edit"
-msgstr ""
+msgstr "Bearbeiten"
 
 #: admin/src/components/Dashboard/BentoGrid.jsx:242
 msgid "Inspect health"
-msgstr ""
+msgstr "Status prüfen"
 
 #: admin/src/components/Dashboard/BentoGrid.jsx:250
 msgid "Delete"
-msgstr ""
+msgstr "Löschen"
 
 #: admin/src/components/Dashboard/BentoGrid.jsx:296
 msgid "No schemas yet"
-msgstr ""
+msgstr "Noch keine Schemas"
 
 #. translators: Organization and WebSite are Schema.org type identifiers.
 #: admin/src/components/Dashboard/BentoGrid.jsx:301
-msgid "Start by creating your Organization or WebSite schema. These are the foundation of your structured data."
+msgid ""
+"Start by creating your Organization or WebSite schema. These are the "
+"foundation of your structured data."
 msgstr ""
+"Erstellen Sie zunächst ein Organization- oder WebSite-Schema. Diese Schemas "
+"bilden die Grundlage Ihrer strukturierten Daten."
 
 #. translators: %1$s: Custom variable syntax example.
 #: admin/src/components/Dashboard/CustomVariables.jsx:16
-#, js-format
 msgid "Define site-wide constants. Use %1$s in any schema."
 msgstr ""
+"Definieren Sie websiteweite Konstanten. Verwenden Sie %1$s in einem "
+"beliebigen Schema."
 
 #: admin/src/components/Dashboard/CustomVariables.jsx:72
 msgid "Loading custom variables…"
-msgstr ""
+msgstr "Benutzerdefinierte Variablen werden geladen…"
 
 #: admin/src/components/Dashboard/CustomVariables.jsx:85
 msgid "Custom Variables"
-msgstr ""
+msgstr "Benutzerdefinierte Variablen"
 
 #: admin/src/components/Dashboard/CustomVariables.jsx:101
 #: admin/src/components/Editor/LocalSchemaEditor.jsx:375
 #: admin/src/components/Editor/SchemaBuilder.jsx:292
 #: admin/src/components/Rules/RuleBuilder.jsx:401
 msgid "Saving…"
-msgstr ""
+msgstr "Wird gespeichert…"
 
 #: admin/src/components/Dashboard/CustomVariables.jsx:103
 #: admin/src/components/Editor/LocalSchemaEditor.jsx:376
 #: admin/src/components/Editor/SchemaBuilder.jsx:295
 #: admin/src/components/Rules/RuleBuilder.jsx:404
 msgid "Save Changes"
-msgstr ""
+msgstr "Änderungen speichern"
 
 #: admin/src/components/Dashboard/CustomVariables.jsx:104
 msgid "Saved ✓"
-msgstr ""
+msgstr "Gespeichert ✓"
 
 #: admin/src/components/Dashboard/CustomVariables.jsx:121
 msgctxt "custom variable key placeholder"
 msgid "key"
-msgstr ""
+msgstr "key"
 
 #: admin/src/components/Dashboard/CustomVariables.jsx:138
 msgid "Value (e.g. +43 1 234 5678)"
-msgstr ""
+msgstr "Wert (z. B. +43 1 234 5678)"
 
 #: admin/src/components/Dashboard/CustomVariables.jsx:146
 msgid "Remove variable"
-msgstr ""
+msgstr "Variable entfernen"
 
 #: admin/src/components/Dashboard/CustomVariables.jsx:164
 msgid "Add Variable"
-msgstr ""
+msgstr "Variable hinzufügen"
 
 #: admin/src/components/Dashboard/CustomVariables.jsx:171
 msgid "Usage"
-msgstr ""
+msgstr "Verwendung"
 
 #: admin/src/components/Dashboard/HealthDetail.jsx:17
 msgid "Schema"
-msgstr ""
+msgstr "Schema"
 
 #. translators: %1$s: Schema.org type identifier or the generic word "Schema".
 #: admin/src/components/Dashboard/HealthDetail.jsx:27
-#, js-format
 msgid "%1$s is valid — no issues found"
-msgstr ""
+msgstr "%1$s ist gültig — keine Probleme gefunden"
 
 #. translators: %1$s: Schema.org type identifier or the generic word "Schema".
 #: admin/src/components/Dashboard/HealthDetail.jsx:54
-#, js-format
 msgid "Health: %1$s"
-msgstr ""
+msgstr "Status: %1$s"
 
 #: admin/src/components/Dashboard/HealthDetail.jsx:142
-msgid "Based on Google Rich Results requirements. Fixing errors is mandatory for eligibility; warnings improve quality."
+msgid ""
+"Based on Google Rich Results requirements. Fixing errors is mandatory for "
+"eligibility; warnings improve quality."
 msgstr ""
+"Basierend auf den Anforderungen von Google Rich Results. Fehler müssen für "
+"die Eignung behoben werden; Warnungen weisen auf Verbesserungsmöglichkeiten "
+"hin."
 
 #. translators: {{site_name}} and {{post_title}} are dynamic variable tokens.
 #: admin/src/components/Dashboard/HealthDetail.jsx:159
 msgid "Tip: Use {{site_name}} or {{post_title}} as a dynamic value"
 msgstr ""
+"Tipp: Verwenden Sie {{site_name}} oder {{post_title}} als dynamischen Wert"
 
 #. translators: {{site_url}} and {{post_url}} are dynamic variable tokens.
 #: admin/src/components/Dashboard/HealthDetail.jsx:163
 msgid "Tip: Use {{site_url}} or {{post_url}}"
-msgstr ""
+msgstr "Tipp: Verwenden Sie {{site_url}} oder {{post_url}}"
 
 #. translators: {{site_logo}} is a dynamic variable token.
 #: admin/src/components/Dashboard/HealthDetail.jsx:167
 msgid "Tip: Use {{site_logo}} to pull from theme settings"
 msgstr ""
+"Tipp: Verwenden Sie {{site_logo}}, um das Logo aus den Theme-Einstellungen "
+"zu übernehmen"
 
 #. translators: {{featured_image_url}} is a dynamic variable token.
 #: admin/src/components/Dashboard/HealthDetail.jsx:171
 msgid "Tip: Use {{featured_image_url}} for the post thumbnail"
-msgstr ""
+msgstr "Tipp: Verwenden Sie {{featured_image_url}} für das Beitragsbild"
 
 #. translators: {{post_title}} is a dynamic variable token.
 #: admin/src/components/Dashboard/HealthDetail.jsx:175
 msgid "Tip: Use {{post_title}} for the article headline"
-msgstr ""
+msgstr "Tipp: Verwenden Sie {{post_title}} für die Artikelüberschrift"
 
 #. translators: {{post_date}} is a dynamic variable token.
 #: admin/src/components/Dashboard/HealthDetail.jsx:179
 msgid "Tip: Use {{post_date}} for auto-dated articles"
 msgstr ""
+"Tipp: Verwenden Sie {{post_date}}, um das Artikeldatum automatisch "
+"einzusetzen"
 
 #. translators: Person is a Schema.org type and {{author_name}} is a dynamic variable token.
 #: admin/src/components/Dashboard/HealthDetail.jsx:183
 msgid "Tip: Use a nested Person object or {{author_name}}"
 msgstr ""
+"Tipp: Verwenden Sie ein verschachteltes Person-Objekt oder {{author_name}}"
 
 #. translators: {{post_excerpt}} and {{site_description}} are dynamic variable tokens.
 #: admin/src/components/Dashboard/HealthDetail.jsx:187
 msgid "Tip: Use {{post_excerpt}} or {{site_description}}"
-msgstr ""
+msgstr "Tipp: Verwenden Sie {{post_excerpt}} oder {{site_description}}"
 
 #: admin/src/components/Dashboard/HealthDetail.jsx:190
 msgid "Add your social media profile URLs as an array"
-msgstr ""
+msgstr "Fügen Sie die URLs Ihrer Social-Media-Profile als Array hinzu"
 
 #. translators: PostalAddress is a Schema.org type and JSON is a technical format name.
 #: admin/src/components/Dashboard/HealthDetail.jsx:194
 msgid "Add a nested PostalAddress object via JSON import"
 msgstr ""
+"Fügen Sie über den JSON-Import ein verschachteltes PostalAddress-Objekt hinzu"
 
 #: admin/src/components/Dashboard/HealthDetail.jsx:197
 msgid "Add your business phone number"
-msgstr ""
+msgstr "Fügen Sie die Telefonnummer Ihres Unternehmens hinzu"
 
 #: admin/src/components/Dashboard/HealthDetail.jsx:200
 msgid "This is added automatically when rendered — no action needed"
 msgstr ""
+"Dies wird bei der Ausgabe automatisch ergänzt — keine Aktion erforderlich"
 
 #: admin/src/components/Dashboard/HealthDetail.jsx:203
-msgid "Google may support this type, but validation is limited to syntax checks."
+msgid ""
+"Google may support this type, but validation is limited to syntax checks."
 msgstr ""
+"Google unterstützt diesen Typ möglicherweise; die Validierung ist jedoch auf "
+"Syntaxprüfungen beschränkt."
 
 #: admin/src/components/Dashboard/HealthDetail.jsx:205
 msgid "Set this property in the editor above to resolve"
 msgstr ""
+"Legen Sie diese Eigenschaft im obigen Editor fest, um das Problem zu beheben"
 
 #: admin/src/components/Dashboard/HealthScorecard.jsx:13
 msgid "Loading health data…"
-msgstr ""
+msgstr "Statusdaten werden geladen…"
 
 #: admin/src/components/Dashboard/HealthScorecard.jsx:26
 msgid "All schemas are valid and complete"
-msgstr ""
+msgstr "Alle Schemas sind gültig und vollständig"
 
 #. translators: %1$d: Number of schema recommendations.
 #: admin/src/components/Dashboard/HealthScorecard.jsx:30
-#, js-format
 msgid "Valid with %1$d recommendation"
 msgid_plural "Valid with %1$d recommendations"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Gültig mit %1$d Empfehlung"
+msgstr[1] "Gültig mit %1$d Empfehlungen"
 
 #. translators: %1$d: Number of schema errors requiring attention.
 #: admin/src/components/Dashboard/HealthScorecard.jsx:41
-#, js-format
 msgid "%1$d error needs attention"
 msgid_plural "%1$d errors need attention"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%1$d Fehler erfordert Aufmerksamkeit"
+msgstr[1] "%1$d Fehler erfordern Aufmerksamkeit"
 
 #: admin/src/components/Dashboard/HealthScorecard.jsx:56
 msgid "Total Schemas"
-msgstr ""
+msgstr "Schemas insgesamt"
 
 #: admin/src/components/Dashboard/HealthScorecard.jsx:72
 #: admin/src/components/Help/HelpPanel.jsx:225
 msgid "Warnings"
-msgstr ""
+msgstr "Warnungen"
 
 #: admin/src/components/Dashboard/HealthScorecard.jsx:80
 #: admin/src/components/Help/HelpPanel.jsx:207
 msgid "Errors"
-msgstr ""
+msgstr "Fehler"
 
 #: admin/src/components/Dashboard/HealthScorecard.jsx:99
 msgid "Action Items"
-msgstr ""
+msgstr "Erforderliche Maßnahmen"
 
 #: admin/src/components/Dashboard/HealthScorecard.jsx:107
 msgid "Fix Global Schema"
-msgstr ""
+msgstr "Globales Schema korrigieren"
 
 #: admin/src/components/Dashboard/HealthScorecard.jsx:115
 msgid "Go to Rules"
-msgstr ""
+msgstr "Zu den Regeln"
 
 #: admin/src/components/Dashboard/HealthScorecard.jsx:144
 msgctxt "schema layer label"
 msgid "Global"
-msgstr ""
+msgstr "Global"
 
 #: admin/src/components/Dashboard/HealthScorecard.jsx:145
 msgctxt "schema layer label"
 msgid "Rule"
-msgstr ""
+msgstr "Regel"
 
 #. translators: %1$d: Number of schema issues.
 #: admin/src/components/Dashboard/HealthScorecard.jsx:156
-#, js-format
 msgid "%1$d issue"
 msgid_plural "%1$d issues"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%1$d Problem"
+msgstr[1] "%1$d Probleme"
 
 #: admin/src/components/Dashboard/RuleTemplates.jsx:29
 msgid "Recommended Rules"
-msgstr ""
+msgstr "Empfohlene Regeln"
 
 #. translators: %1$d: Number of recommended rule suggestions.
 #: admin/src/components/Dashboard/RuleTemplates.jsx:34
-#, js-format
 msgid "%1$d suggestion"
 msgid_plural "%1$d suggestions"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%1$d Vorschlag"
+msgstr[1] "%1$d Vorschläge"
 
 #: admin/src/components/Dashboard/RuleTemplates.jsx:52
 msgid "Expand"
-msgstr ""
+msgstr "Erweitern"
 
 #: admin/src/components/Dashboard/RuleTemplates.jsx:53
 msgid "Minimize"
-msgstr ""
+msgstr "Minimieren"
 
 #: admin/src/components/Dashboard/RuleTemplates.jsx:69
 msgid "Dismiss recommendations"
-msgstr ""
+msgstr "Empfehlungen ausblenden"
 
 #: admin/src/components/Dashboard/RuleTemplates.jsx:81
 msgid "Opt-in templates to improve your coverage"
-msgstr ""
+msgstr "Optionale Templates zur Verbesserung der Abdeckung"
 
 #: admin/src/components/Dashboard/RuleTemplates.jsx:105
 msgctxt "activating a recommended rule loading indicator"
 msgid "..."
-msgstr ""
+msgstr "..."
 
 #: admin/src/components/Dashboard/RuleTemplates.jsx:106
 msgid "Activate"
-msgstr ""
+msgstr "Aktivieren"
 
 #: admin/src/components/Dashboard/SchemaScore.jsx:20
 msgid "Coverage"
-msgstr ""
+msgstr "Abdeckung"
 
 #: admin/src/components/Dashboard/SchemaScore.jsx:21
 msgid "Health"
-msgstr ""
+msgstr "Status"
 
 #: admin/src/components/Dashboard/SchemaScore.jsx:22
 msgid "Depth"
-msgstr ""
+msgstr "Tiefe"
 
 #: admin/src/components/Dashboard/SchemaScore.jsx:23
 msgid "Diversity"
-msgstr ""
+msgstr "Vielfalt"
 
 #: admin/src/components/Dashboard/SchemaScore.jsx:34
 msgid "Loading schema quality score…"
-msgstr ""
+msgstr "Schema-Qualitätsbewertung wird geladen…"
 
 #: admin/src/components/Dashboard/SchemaScore.jsx:71
 msgid "Schema Quality Score"
-msgstr ""
+msgstr "Schema-Qualitätsbewertung"
 
 #: admin/src/components/Editor/AddCustomProperty.jsx:25
 #: admin/src/components/Rules/RuleBuilder.jsx:510
 msgid "+ Add Custom Property"
-msgstr ""
+msgstr "+ Benutzerdefinierte Eigenschaft hinzufügen"
 
 #: admin/src/components/Editor/AddCustomProperty.jsx:37
 msgid "propertyName"
-msgstr ""
+msgstr "propertyName"
 
 #: admin/src/components/Editor/AddCustomProperty.jsx:45
 msgctxt "custom property button"
 msgid "Add"
-msgstr ""
+msgstr "Hinzufügen"
 
 #: admin/src/components/Editor/AddCustomProperty.jsx:51
 #: admin/src/components/Rules/RuleBuilder.jsx:536
 msgid "Cancel"
-msgstr ""
+msgstr "Abbrechen"
 
 #. translators: %1$d: One-based item number.
 #: admin/src/components/Editor/ArrayEditor.jsx:45
-#, js-format
 msgid "Item %1$d"
-msgstr ""
+msgstr "Element %1$d"
 
 #: admin/src/components/Editor/ArrayEditor.jsx:54
 msgctxt "array item button"
 msgid "Remove"
-msgstr ""
+msgstr "Entfernen"
 
 #: admin/src/components/Editor/ArrayEditor.jsx:65
 #: admin/src/components/Editor/PropertyCard.jsx:201
 msgid "https://…"
-msgstr ""
+msgstr "https://…"
 
 #. translators: %1$s: Schema.org type name.
 #: admin/src/components/Editor/ArrayEditor.jsx:68
-#, js-format
 msgid "Enter %1$s"
-msgstr ""
+msgstr "%1$s eingeben"
 
 #. translators: %1$s: Schema.org type name.
 #: admin/src/components/Editor/ArrayEditor.jsx:95
-#, js-format
 msgid "+ Add %1$s"
-msgstr ""
+msgstr "+ %1$s hinzufügen"
 
 #: admin/src/components/Editor/JsonImporter.jsx:22
 msgid "JSON must contain an @type property."
-msgstr ""
+msgstr "JSON muss eine Eigenschaft @type enthalten."
 
 #: admin/src/components/Editor/JsonImporter.jsx:53
 msgid "Paste JSON-LD"
-msgstr ""
+msgstr "JSON-LD einfügen"
 
 #: admin/src/components/Editor/JsonImporter.jsx:56
 msgid "Paste raw JSON-LD markup. Script tags will be stripped automatically."
 msgstr ""
+"Fügen Sie unformatiertes JSON-LD-Markup ein. Script-Tags werden automatisch "
+"entfernt."
 
 #: admin/src/components/Editor/JsonImporter.jsx:62
 msgid ""
@@ -3017,929 +3073,956 @@ msgid ""
 "  \"name\": \"Your Company\"\n"
 "}"
 msgstr ""
+"{\n"
+"  \"@context\": \"https://schema.org\",\n"
+"  \"@type\": \"Organization\",\n"
+"  \"name\": \"Your Company\"\n"
+"}"
 
 #: admin/src/components/Editor/JsonImporter.jsx:80
 msgctxt "JSON importer button"
 msgid "Clear"
-msgstr ""
+msgstr "Leeren"
 
 #: admin/src/components/Editor/JsonImporter.jsx:87
 msgid "Import & Populate"
-msgstr ""
+msgstr "Importieren und ausfüllen"
 
 #: admin/src/components/Editor/LocalSchemaEditor.jsx:100
 msgid "Remove this schema from this page?"
-msgstr ""
+msgstr "Dieses Schema von der Seite entfernen?"
 
 #. translators: %1$s: Error message returned while saving.
 #: admin/src/components/Editor/LocalSchemaEditor.jsx:131
 #: admin/src/components/Editor/SchemaBuilder.jsx:108
 #: admin/src/components/Rules/RuleBuilder.jsx:128
-#, js-format
 msgid "Save failed: %1$s"
-msgstr ""
+msgstr "Speichern fehlgeschlagen: %1$s"
 
 #: admin/src/components/Editor/LocalSchemaEditor.jsx:157
 msgid "Loading schemas…"
-msgstr ""
+msgstr "Schemas werden geladen…"
 
 #. translators: %1$s: Post ID.
 #: admin/src/components/Editor/LocalSchemaEditor.jsx:178
-#, js-format
 msgid "ID: %1$s"
-msgstr ""
+msgstr "ID: %1$s"
 
 #: admin/src/components/Editor/LocalSchemaEditor.jsx:194
 msgid "View page ↗"
-msgstr ""
+msgstr "Seite ansehen ↗"
 
 #. translators: %1$d: One-based schema number.
 #: admin/src/components/Editor/LocalSchemaEditor.jsx:216
-#, js-format
 msgid "Schema %1$d"
-msgstr ""
+msgstr "Schema %1$d"
 
 #: admin/src/components/Editor/LocalSchemaEditor.jsx:238
 #: admin/src/components/Pages/PageBrowser.jsx:235
 msgid "+ Add Schema"
-msgstr ""
+msgstr "+ Schema hinzufügen"
 
 #. translators: %1$s: Schema.org type name.
 #: admin/src/components/Editor/LocalSchemaEditor.jsx:251
-#, js-format
 msgid "Editing: %1$s"
-msgstr ""
+msgstr "Bearbeiten: %1$s"
 
 #: admin/src/components/Editor/LocalSchemaEditor.jsx:254
 msgid "Configure Schema"
-msgstr ""
+msgstr "Schema konfigurieren"
 
 #: admin/src/components/Editor/LocalSchemaEditor.jsx:262
 #: admin/src/components/Editor/SchemaBuilder.jsx:188
 #: admin/src/components/Rules/RuleBuilder.jsx:203
 msgid "Visual Editor"
-msgstr ""
+msgstr "Visueller Editor"
 
 #: admin/src/components/Editor/LocalSchemaEditor.jsx:263
 #: admin/src/components/Editor/SchemaBuilder.jsx:189
 #: admin/src/components/Rules/RuleBuilder.jsx:204
 msgid "{ } Import JSON"
-msgstr ""
+msgstr "{ } JSON importieren"
 
 #: admin/src/components/Editor/LocalSchemaEditor.jsx:298
 #: admin/src/components/Help/HelpPanel.jsx:114
 msgid "Override global"
-msgstr ""
+msgstr "Globales Schema überschreiben"
 
 #: admin/src/components/Editor/LocalSchemaEditor.jsx:300
 msgid "schema on this page"
-msgstr ""
+msgstr "Schema auf dieser Seite"
 
 #: admin/src/components/Editor/LocalSchemaEditor.jsx:326
 msgid "Select a type above to start building"
-msgstr ""
+msgstr "Wählen Sie oben einen Typ aus, um das Schema zu erstellen"
 
 #. translators: %1$d: Number of schemas on the current page.
 #: admin/src/components/Editor/LocalSchemaEditor.jsx:339
-#, js-format
 msgid "%1$d schema on this page"
 msgid_plural "%1$d schemas on this page"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%1$d Schema auf dieser Seite"
+msgstr[1] "%1$d Schemas auf dieser Seite"
 
 #. translators: %1$d: Number of properties set.
 #: admin/src/components/Editor/LocalSchemaEditor.jsx:352
 #: admin/src/components/Editor/SchemaBuilder.jsx:270
 #: admin/src/components/Rules/RuleBuilder.jsx:380
-#, js-format
 msgid "%1$d property set"
 msgid_plural "%1$d properties set"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%1$d Eigenschaft festgelegt"
+msgstr[1] "%1$d Eigenschaften festgelegt"
 
 #: admin/src/components/Editor/LocalSchemaEditor.jsx:365
 #: admin/src/components/Editor/SchemaBuilder.jsx:283
 #: admin/src/components/Rules/RuleBuilder.jsx:392
 msgid "✓ Saved"
-msgstr ""
+msgstr "✓ Gespeichert"
 
 #: admin/src/components/Editor/LocalSchemaEditor.jsx:386
 msgid "No local schemas for this page yet"
-msgstr ""
+msgstr "Für diese Seite sind noch keine lokalen Schemas vorhanden"
 
 #: admin/src/components/Editor/LocalSchemaEditor.jsx:392
 msgid "+ Add First Schema"
-msgstr ""
+msgstr "+ Erstes Schema hinzufügen"
 
 #: admin/src/components/Editor/LocalSchemaEditor.jsx:460
 #: admin/src/components/Editor/SchemaBuilder.jsx:324
 #: admin/src/components/Rules/RuleBuilder.jsx:475
 msgid "JSON-LD Output"
-msgstr ""
+msgstr "JSON-LD-Ausgabe"
 
 #: admin/src/components/Editor/LocalSchemaEditor.jsx:475
 msgid "Copied"
-msgstr ""
+msgstr "Kopiert"
 
 #: admin/src/components/Editor/LocalSchemaEditor.jsx:483
 msgctxt "JSON preview button"
 msgid "Copy"
-msgstr ""
+msgstr "Kopieren"
 
 #. translators: %1$s: Schema.org type name.
 #: admin/src/components/Editor/ObjectEditor.jsx:24
-#, js-format
 msgid "Definition for type '%1$s' not found in registry."
-msgstr ""
+msgstr "Definition für den Typ „%1$s“ wurde nicht im Schema-Register gefunden."
 
 #: admin/src/components/Editor/ObjectEditor.jsx:57
 msgid "Custom property"
-msgstr ""
+msgstr "Benutzerdefinierte Eigenschaft"
 
 #: admin/src/components/Editor/PropertyCard.jsx:58
 msgid "Required"
-msgstr ""
+msgstr "Erforderlich"
 
 #: admin/src/components/Editor/PropertyCard.jsx:63
 msgid "Recommended"
-msgstr ""
+msgstr "Empfohlen"
 
 #: admin/src/components/Editor/PropertyCard.jsx:82
 msgid "Toggle input mode"
-msgstr ""
+msgstr "Eingabemodus umschalten"
 
 #: admin/src/components/Editor/PropertyCard.jsx:86
 msgid "Use Text/Var"
-msgstr ""
+msgstr "Text/Variable verwenden"
 
 #: admin/src/components/Editor/PropertyCard.jsx:87
 msgid "Build Object"
-msgstr ""
+msgstr "Objekt erstellen"
 
 #: admin/src/components/Editor/PropertyCard.jsx:96
 msgid "Insert dynamic variable"
-msgstr ""
+msgstr "Dynamische Variable einfügen"
 
 #: admin/src/components/Editor/PropertyCard.jsx:107
 msgid "Clear value"
-msgstr ""
+msgstr "Wert leeren"
 
 #: admin/src/components/Editor/PropertyCard.jsx:132
 msgid "Linked:"
-msgstr ""
+msgstr "Verknüpft:"
 
 #: admin/src/components/Editor/PropertyCard.jsx:144
 msgid "Expand to full object editor"
-msgstr ""
+msgstr "Zum vollständigen Objekteditor erweitern"
 
 #: admin/src/components/Editor/PropertyCard.jsx:146
 msgctxt "linked object button"
 msgid "Expand"
-msgstr ""
+msgstr "Erweitern"
 
 #. translators: %1$s: Date format example. %2$s: Dynamic post date variable token.
 #: admin/src/components/Editor/PropertyCard.jsx:205
-#, js-format
 msgid "%1$s or %2$s"
-msgstr ""
+msgstr "%1$s oder %2$s"
 
 #: admin/src/components/Editor/PropertyCard.jsx:210
 msgctxt "number input placeholder"
 msgid "0"
-msgstr ""
+msgstr "0"
 
 #. translators: %1$s: Dynamic site name variable token.
 #: admin/src/components/Editor/PropertyCard.jsx:214
-#, js-format
 msgid "%1$s or enter text"
-msgstr ""
+msgstr "%1$s oder Text eingeben"
 
 #. translators: %1$s: Schema.org property name. %2$s: Example dynamic variable token.
 #: admin/src/components/Editor/PropertyCard.jsx:220
-#, js-format
 msgid "Enter %1$s or use %2$s"
-msgstr ""
+msgstr "%1$s eingeben oder %2$s verwenden"
 
 #: admin/src/components/Editor/SchemaBuilder.jsx:162
 msgid "New Schema"
-msgstr ""
+msgstr "Neues Schema"
 
 #. translators: %1$s: Primary Schema.org type name. %2$d: Number of additional types.
 #: admin/src/components/Editor/SchemaBuilder.jsx:166
-#, js-format
 msgid "Edit: %1$s + %2$d more type"
 msgid_plural "Edit: %1$s + %2$d more types"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Bearbeiten: %1$s + %2$d weiterer Typ"
+msgstr[1] "Bearbeiten: %1$s + %2$d weitere Typen"
 
 #. translators: %1$s: Schema.org type name.
 #: admin/src/components/Editor/SchemaBuilder.jsx:177
-#, js-format
 msgid "Edit: %1$s"
-msgstr ""
+msgstr "Bearbeiten: %1$s"
 
 #: admin/src/components/Editor/SchemaBuilder.jsx:196
 msgid "👁 Preview"
-msgstr ""
+msgstr "👁 Vorschau"
 
 #: admin/src/components/Editor/SchemaBuilder.jsx:220
 #: admin/src/components/Rules/RuleBuilder.jsx:335
 msgid "Properties"
-msgstr ""
+msgstr "Eigenschaften"
 
 #. translators: %1$d: Number of available properties.
 #: admin/src/components/Editor/SchemaBuilder.jsx:227
-#, js-format
 msgid "%1$d available property"
 msgid_plural "%1$d available properties"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%1$d verfügbare Eigenschaft"
+msgstr[1] "%1$d verfügbare Eigenschaften"
 
 #: admin/src/components/Editor/SchemaBuilder.jsx:255
 msgid "Select a Schema type above to start building"
-msgstr ""
+msgstr "Wählen Sie oben einen Schema-Typ aus, um das Schema zu erstellen"
 
 #: admin/src/components/Editor/SchemaBuilder.jsx:294
 msgid "Create Schema"
-msgstr ""
+msgstr "Schema erstellen"
 
 #: admin/src/components/Editor/TypeSelector.jsx:18
 msgctxt "schema type group"
 msgid "Core"
-msgstr ""
+msgstr "Kern"
 
 #: admin/src/components/Editor/TypeSelector.jsx:19
 msgctxt "schema type group"
 msgid "Content"
-msgstr ""
+msgstr "Inhalt"
 
 #: admin/src/components/Editor/TypeSelector.jsx:20
 msgctxt "schema type group"
 msgid "Commerce"
-msgstr ""
+msgstr "E-Commerce"
 
 #: admin/src/components/Editor/TypeSelector.jsx:21
 msgctxt "schema type group"
 msgid "Rich Results"
-msgstr ""
+msgstr "Rich Results"
 
 #: admin/src/components/Editor/TypeSelector.jsx:22
 msgctxt "schema type group"
 msgid "Other"
-msgstr ""
+msgstr "Sonstiges"
 
 #: admin/src/components/Editor/TypeSelector.jsx:58
 #: admin/src/components/Rules/RuleBuilder.jsx:316
 msgid "Schema Type"
-msgstr ""
+msgstr "Schema-Typ"
 
 #: admin/src/components/Editor/TypeSelector.jsx:65
 msgid "Select a type…"
-msgstr ""
+msgstr "Typ auswählen…"
 
 #. translators: %1$s: Parent Schema.org type name.
 #: admin/src/components/Editor/TypeSelector.jsx:91
-#, js-format
 msgid "Inherits from: %1$s"
-msgstr ""
+msgstr "Übernimmt Eigenschaften von: %1$s"
 
 #: admin/src/components/Editor/TypeSelector.jsx:109
 msgid "+ Add secondary type (multi-type)"
-msgstr ""
+msgstr "+ Sekundären Typ hinzufügen (Mehrfachtyp)"
 
 #: admin/src/components/Editor/TypeSelector.jsx:114
 msgid "Multi-Type (@type array)"
-msgstr ""
+msgstr "Mehrfachtyp (@type-Array)"
 
 #: admin/src/components/Editor/TypeSelector.jsx:122
 msgid "(primary)"
-msgstr ""
+msgstr "(primär)"
 
 #. translators: %1$s: Example Schema.org type name.
 #: admin/src/components/Editor/TypeSelector.jsx:152
-#, js-format
 msgid "e.g. %1$s"
-msgstr ""
+msgstr "z. B. %1$s"
 
 #: admin/src/components/Editor/TypeSelector.jsx:172
 msgctxt "secondary schema type button"
 msgid "Add"
-msgstr ""
+msgstr "Hinzufügen"
 
 #: admin/src/components/Editor/TypeSelector.jsx:177
 msgid "Multi-type creates"
-msgstr ""
+msgstr "Mehrfachtyp erzeugt"
 
 #. translators: %1$s and %2$s: Example Schema.org type names.
 #: admin/src/components/Editor/TypeSelector.jsx:183
-#, js-format
 msgid "useful for entities like %1$s + %2$s."
-msgstr ""
+msgstr "Nützlich für Entitäten wie %1$s + %2$s."
 
 #: admin/src/components/Editor/VariablePicker.jsx:11
 msgctxt "variable category"
 msgid "📄 Post"
-msgstr ""
+msgstr "📄 Beitrag"
 
 #: admin/src/components/Editor/VariablePicker.jsx:12
 msgctxt "variable category"
 msgid "👤 Author"
-msgstr ""
+msgstr "👤 Autor"
 
 #: admin/src/components/Editor/VariablePicker.jsx:13
 msgctxt "variable category"
 msgid "🌐 Site"
-msgstr ""
+msgstr "🌐 Website"
 
 #: admin/src/components/Editor/VariablePicker.jsx:14
 msgctxt "variable category"
 msgid "🏷️ Taxonomy"
-msgstr ""
+msgstr "🏷️ Taxonomie"
 
 #: admin/src/components/Editor/VariablePicker.jsx:15
 msgctxt "variable category"
 msgid "🔧 Custom Meta"
-msgstr ""
+msgstr "🔧 Benutzerdefinierte Metadaten"
 
 #: admin/src/components/Editor/VariablePicker.jsx:23
 msgid "Insert Variable"
-msgstr ""
+msgstr "Variable einfügen"
 
 #: admin/src/components/Editor/VariablePicker.jsx:26
 msgctxt "target field prefix"
 msgid "for"
-msgstr ""
+msgstr "für"
 
 #: admin/src/components/Help/HelpPanel.jsx:15
 msgid "Post / Page Variables"
-msgstr ""
+msgstr "Beitrags-/Seitenvariablen"
 
 #: admin/src/components/Help/HelpPanel.jsx:16
 msgid "Dynamic data from the current post or page"
-msgstr ""
+msgstr "Dynamische Daten aus dem aktuellen Beitrag oder der aktuellen Seite"
 
 #: admin/src/components/Help/HelpPanel.jsx:20
 msgid "Author Variables"
-msgstr ""
+msgstr "Autorenvariablen"
 
 #: admin/src/components/Help/HelpPanel.jsx:21
 msgid "Data about the post author"
-msgstr ""
+msgstr "Daten über den Autor des Beitrags"
 
 #: admin/src/components/Help/HelpPanel.jsx:25
 msgid "Site Variables"
-msgstr ""
+msgstr "Website-Variablen"
 
 #. translators: %1$s: WordPress brand name.
 #: admin/src/components/Help/HelpPanel.jsx:28
-#, js-format
 msgid "Global site information from %1$s settings"
-msgstr ""
+msgstr "Globale Website-Informationen aus den %1$s-Einstellungen"
 
 #: admin/src/components/Help/HelpPanel.jsx:34
 msgid "Taxonomy Variables"
-msgstr ""
+msgstr "Taxonomievariablen"
 
 #: admin/src/components/Help/HelpPanel.jsx:35
 msgid "Categories, tags, and custom taxonomies"
-msgstr ""
+msgstr "Kategorien, Schlagwörter und benutzerdefinierte Taxonomien"
 
 #: admin/src/components/Help/HelpPanel.jsx:39
 msgid "Custom Meta Variables"
-msgstr ""
+msgstr "Variablen für benutzerdefinierte Metadaten"
 
 #. translators: %1$s: WordPress post meta field name.
 #: admin/src/components/Help/HelpPanel.jsx:42
-#, js-format
 msgid "Access any %1$s field by key"
-msgstr ""
+msgstr "Über den Schlüssel auf jedes %1$s-Feld zugreifen"
 
 #. translators: %1$s: WooCommerce brand name.
 #: admin/src/components/Help/HelpPanel.jsx:50
-#, js-format
 msgid "%1$s Variables"
-msgstr ""
+msgstr "%1$s-Variablen"
 
 #. translators: %1$s: WooCommerce brand name.
 #: admin/src/components/Help/HelpPanel.jsx:55
-#, js-format
 msgid "Live product data — only shown when %1$s is active"
-msgstr ""
+msgstr "Aktuelle Produktdaten — nur sichtbar, wenn %1$s aktiv ist"
 
 #. translators: %1$s: Plugin name.
 #: admin/src/components/Help/HelpPanel.jsx:69
-#, js-format
 msgid "📖 How %1$s Works"
-msgstr ""
+msgstr "📖 Funktionsweise von %1$s"
 
 #. translators: %1$s: Organization Schema.org type, %2$s: WebSite Schema.org type.
 #: admin/src/components/Help/HelpPanel.jsx:82
-#, js-format
-msgid "Site-wide schemas (%1$s, %2$s) that apply to every page automatically. Manage these in the Dashboard tab."
+msgid ""
+"Site-wide schemas (%1$s, %2$s) that apply to every page automatically. "
+"Manage these in the Dashboard tab."
 msgstr ""
+"Websiteweite Schemas (%1$s, %2$s), die automatisch für jede Seite gelten. "
+"Verwalten Sie sie im Tab „Dashboard“."
 
 #: admin/src/components/Help/HelpPanel.jsx:92
 msgid "Local Schemas"
-msgstr ""
+msgstr "Lokale Schemas"
 
 #. translators: %1$s: Article Schema.org type, %2$s: Product Schema.org type, %3$s: FAQ schema name.
 #: admin/src/components/Help/HelpPanel.jsx:95
-#, js-format
-msgid "Page-specific schemas (%1$s, %2$s, %3$s) that apply to a single post or page. Manage these in the Pages tab."
+msgid ""
+"Page-specific schemas (%1$s, %2$s, %3$s) that apply to a single post or "
+"page. Manage these in the Pages tab."
 msgstr ""
+"Seitenspezifische Schemas (%1$s, %2$s, %3$s), die für einen einzelnen "
+"Beitrag oder eine einzelne Seite gelten. Verwalten Sie sie im Tab „Seiten“."
 
 #: admin/src/components/Help/HelpPanel.jsx:106
 msgid "Override Logic"
-msgstr ""
+msgstr "Überschreibungslogik"
 
 #. translators: %1$s: @type JSON-LD key, %2$s: translated checkbox label.
 #: admin/src/components/Help/HelpPanel.jsx:109
-#, js-format
-msgid "If a local schema has the same %1$s as a global one, the local schema replaces the global one on that page. Toggle this per-schema with the \"%2$s\" checkbox."
+msgid ""
+"If a local schema has the same %1$s as a global one, the local schema "
+"replaces the global one on that page. Toggle this per-schema with the "
+"\"%2$s\" checkbox."
 msgstr ""
+"Wenn ein lokales Schema denselben Wert für %1$s wie ein globales Schema hat, "
+"ersetzt es das globale Schema auf dieser Seite. Dies lässt sich mit dem "
+"Kontrollkästchen „%2$s“ für jedes Schema festlegen."
 
 #: admin/src/components/Help/HelpPanel.jsx:119
 msgid "Dynamic Variables"
-msgstr ""
+msgstr "Dynamische Variablen"
 
 #. translators: %1$s: {{variable}} token, %2$s: {{post_title}} token.
 #: admin/src/components/Help/HelpPanel.jsx:122
-#, js-format
-msgid "Use %1$s tags instead of hardcoded values. These resolve to real data at render time — e.g. %2$s becomes the actual page title."
+msgid ""
+"Use %1$s tags instead of hardcoded values. These resolve to real data at "
+"render time — e.g. %2$s becomes the actual page title."
 msgstr ""
+"Verwenden Sie %1$s-Tags anstelle fest codierter Werte. Bei der Ausgabe "
+"werden sie durch tatsächliche Daten ersetzt — so wird beispielsweise %2$s "
+"zum aktuellen Seitentitel."
 
 #: admin/src/components/Help/HelpPanel.jsx:135
 msgid "Typical Workflow"
-msgstr ""
+msgstr "Typischer Ablauf"
 
 #. translators: %1$s: Organization Schema.org type, %2$s: WebSite Schema.org type.
 #: admin/src/components/Help/HelpPanel.jsx:142
-#, js-format
 msgid "Set up global %1$s and %2$s schemas in the Dashboard"
-msgstr ""
+msgstr "Globale %1$s- und %2$s-Schemas im Dashboard einrichten"
 
 #: admin/src/components/Help/HelpPanel.jsx:149
-msgid "Go to the Pages tab and find the post you want to add structured data to"
+msgid ""
+"Go to the Pages tab and find the post you want to add structured data to"
 msgstr ""
+"Zum Tab „Seiten“ wechseln und den Beitrag auswählen, dem strukturierte Daten "
+"hinzugefügt werden sollen"
 
 #. translators: %1$s: translated Add Schema button label, %2$s: Article Schema.org type, %3$s: Product Schema.org type, %4$s: FAQ schema name.
 #: admin/src/components/Help/HelpPanel.jsx:158
-#, js-format
 msgid "Click \"%1$s\" → select a type (e.g. %2$s, %3$s, %4$s)"
-msgstr ""
+msgstr "Auf „%1$s“ klicken → einen Typ auswählen (z. B. %2$s, %3$s, %4$s)"
 
 #. translators: %1$s: {{variables}} token.
 #: admin/src/components/Help/HelpPanel.jsx:172
-#, js-format
-msgid "Fill in properties using %1$s for dynamic data or plain text for static values"
+msgid ""
+"Fill in properties using %1$s for dynamic data or plain text for static "
+"values"
 msgstr ""
+"Eigenschaften mit %1$s für dynamische Daten oder mit Klartext für statische "
+"Werte ausfüllen"
 
 #: admin/src/components/Help/HelpPanel.jsx:181
-msgid "Check the Health panel on the right for missing required/recommended properties"
+msgid ""
+"Check the Health panel on the right for missing required/recommended "
+"properties"
 msgstr ""
+"Im Statusbereich rechts prüfen, ob erforderliche oder empfohlene "
+"Eigenschaften fehlen"
 
 #. translators: %1$s: JSON-LD data format name.
 #: admin/src/components/Help/HelpPanel.jsx:190
-#, js-format
 msgid "Save → verify the %1$s output in your page source"
-msgstr ""
+msgstr "Speichern → die %1$s-Ausgabe im Seitenquelltext prüfen"
 
 #: admin/src/components/Help/HelpPanel.jsx:200
 msgid "Understanding Health Status"
-msgstr ""
+msgstr "Schema-Status verstehen"
 
 #. translators: %1$s: Google Rich Results product name.
 #: admin/src/components/Help/HelpPanel.jsx:212
-#, js-format
-msgid "Missing required properties. Your schema won't qualify for %1$s without these."
+msgid ""
+"Missing required properties. Your schema won't qualify for %1$s without "
+"these."
 msgstr ""
+"Erforderliche Eigenschaften fehlen. Ohne sie ist das Schema nicht für %1$s "
+"geeignet."
 
 #: admin/src/components/Help/HelpPanel.jsx:228
-msgid "Missing recommended properties. The schema is technically valid, but adding these improves your chances of rich result display."
+msgid ""
+"Missing recommended properties. The schema is technically valid, but adding "
+"these improves your chances of rich result display."
 msgstr ""
+"Empfohlene Eigenschaften fehlen. Das Schema ist technisch gültig; das "
+"Ergänzen dieser Eigenschaften kann die Eignung für Rich Results verbessern."
 
 #. translators: %1$s: Google Rich Result product name.
 #: admin/src/components/Help/HelpPanel.jsx:244
-#, js-format
-msgid "All required and recommended properties are set. Maximum chance of %1$s display."
+msgid ""
+"All required and recommended properties are set. Maximum chance of %1$s "
+"display."
 msgstr ""
+"Alle erforderlichen und empfohlenen Eigenschaften sind festgelegt. Damit "
+"sind die Voraussetzungen für eine mögliche Anzeige als %1$s erfüllt; eine "
+"Anzeige ist nicht garantiert."
 
 #: admin/src/components/Help/HelpPanel.jsx:262
 msgid "🏷️ Variable Reference"
-msgstr ""
+msgstr "🏷️ Variablenreferenz"
 
 #. translators: %1$s: JSON-LD data format name.
 #: admin/src/components/Help/HelpPanel.jsx:267
-#, js-format
-msgid "Use these tags in any property value. They are resolved to real data when the %1$s is rendered."
+msgid ""
+"Use these tags in any property value. They are resolved to real data when "
+"the %1$s is rendered."
 msgstr ""
+"Verwenden Sie diese Tags in beliebigen Eigenschaftswerten. Bei der Ausgabe "
+"von %1$s werden sie durch tatsächliche Daten ersetzt."
 
 #: admin/src/components/Help/HelpPanel.jsx:295
 msgid "Variable"
-msgstr ""
+msgstr "Variable"
 
 #: admin/src/components/Help/HelpPanel.jsx:298
 msgid "Description"
-msgstr ""
+msgstr "Beschreibung"
 
 #: admin/src/components/Help/HelpPanel.jsx:301
 msgid "Example Output"
-msgstr ""
+msgstr "Beispielausgabe"
 
 #: admin/src/components/Help/HelpPanel.jsx:330
 msgid "⚙️ Settings"
-msgstr ""
+msgstr "⚙️ Einstellungen"
 
 #: admin/src/components/Help/HelpPanel.jsx:335
 msgid "Suppress conflicting schema output"
-msgstr ""
+msgstr "Konfliktverursachende Schema-Ausgabe unterdrücken"
 
 #. translators: %1$s: JSON-LD format, %2$s: WooCommerce brand, %3$s: Product type, %4$s: Review type, %5$s: BreadcrumbList type, %6$s: WebSite type, %7$s: plugin name.
 #: admin/src/components/Help/HelpPanel.jsx:338
-#, js-format
-msgid "Removes %1$s emitted by other plugins — or by %2$s's own %3$s/%4$s/%5$s/%6$s markup — wherever it would duplicate what %7$s outputs. Leave this off unless you actually see duplicate structured data on your pages."
+msgid ""
+"Removes %1$s emitted by other plugins — or by %2$s's own %3$s/%4$s/%5$s/%6$s "
+"markup — wherever it would duplicate what %7$s outputs. Leave this off "
+"unless you actually see duplicate structured data on your pages."
 msgstr ""
+"Entfernt von anderen Plugins ausgegebenes %1$s sowie %2$s-eigenes %3$s/%4$s/"
+"%5$s/%6$s-Markup, wenn es die Ausgabe von %7$s duplizieren würde. Lassen Sie "
+"diese Option deaktiviert, solange auf Ihren Seiten keine doppelten "
+"strukturierten Daten auftreten."
 
 #: admin/src/components/Help/HelpPanel.jsx:355
 msgid "Delete all data on uninstall"
-msgstr ""
+msgstr "Alle Daten bei der Deinstallation löschen"
 
 #: admin/src/components/Help/HelpPanel.jsx:356
-msgid "When the plugin is deleted, drop its database tables, options, and per-page schemas. Off means your schemas survive a reinstall."
+msgid ""
+"When the plugin is deleted, drop its database tables, options, and per-page "
+"schemas. Off means your schemas survive a reinstall."
 msgstr ""
+"Beim Löschen des Plugins werden seine Datenbanktabellen, Optionen und "
+"seitenspezifischen Schemas entfernt. Ist die Option deaktiviert, bleiben die "
+"Schemas für eine erneute Installation erhalten."
 
 #: admin/src/components/Help/HelpPanel.jsx:413
 msgid "My Blog Post Title"
-msgstr ""
+msgstr "Titel meines Blogbeitrags"
 
 #: admin/src/components/Help/HelpPanel.jsx:414
 msgid "A short summary of the post…"
-msgstr ""
+msgstr "Eine kurze Zusammenfassung des Beitrags…"
 
 #: admin/src/components/Help/HelpPanel.jsx:415
 msgid "Full post content as plain text"
-msgstr ""
+msgstr "Vollständiger Beitragsinhalt als Klartext"
 
 #: admin/src/components/Help/HelpPanel.jsx:423
 msgid "Hero image description"
-msgstr ""
+msgstr "Beschreibung des Hero-Bildes"
 
 #. translators: %1$s: WordPress brand name.
 #: admin/src/components/Help/HelpPanel.jsx:428
-#, js-format
 msgid "Senior %1$s Developer"
-msgstr ""
+msgstr "Senior-%1$s-Entwickler"
 
 #: admin/src/components/Help/HelpPanel.jsx:432
 msgid "My Website"
-msgstr ""
+msgstr "Meine Website"
 
 #: admin/src/components/Help/HelpPanel.jsx:434
 msgid "Your site tagline from Settings → General"
-msgstr ""
+msgstr "Untertitel Ihrer Website aus Einstellungen → Allgemein"
 
 #: admin/src/components/Help/HelpPanel.jsx:441
 msgid "(any custom post meta value)"
-msgstr ""
+msgstr "(beliebiger Wert eines benutzerdefinierten Beitrags-Metafelds)"
 
 #: admin/src/components/Pages/PageBrowser.jsx:41
 msgid "Pages & Posts"
-msgstr ""
+msgstr "Seiten und Beiträge"
 
 #: admin/src/components/Pages/PageBrowser.jsx:44
-msgid "Manage local schemas for individual pages — these override global schemas per type"
+msgid ""
+"Manage local schemas for individual pages — these override global schemas "
+"per type"
 msgstr ""
+"Lokale Schemas für einzelne Seiten verwalten — sie überschreiben globale "
+"Schemas desselben Typs"
 
 #. translators: %1$d: Total number of pages and posts.
 #: admin/src/components/Pages/PageBrowser.jsx:53
-#, js-format
 msgid "%1$d item total"
 msgid_plural "%1$d items total"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%1$d Element insgesamt"
+msgstr[1] "%1$d Elemente insgesamt"
 
 #: admin/src/components/Pages/PageBrowser.jsx:70
 msgid "Search pages…"
-msgstr ""
+msgstr "Seiten durchsuchen…"
 
 #: admin/src/components/Pages/PageBrowser.jsx:78
 msgid "Search"
-msgstr ""
+msgstr "Suchen"
 
 #: admin/src/components/Pages/PageBrowser.jsx:88
 msgid "All pages"
-msgstr ""
+msgstr "Alle Seiten"
 
 #: admin/src/components/Pages/PageBrowser.jsx:89
 msgid "With schema"
-msgstr ""
+msgstr "Mit Schema"
 
 #: admin/src/components/Pages/PageBrowser.jsx:90
 msgid "Without schema"
-msgstr ""
+msgstr "Ohne Schema"
 
 #: admin/src/components/Pages/PageBrowser.jsx:98
 msgid "All types"
-msgstr ""
+msgstr "Alle Typen"
 
 #: admin/src/components/Pages/PageBrowser.jsx:113
 msgid "Loading pages and posts…"
-msgstr ""
+msgstr "Seiten und Beiträge werden geladen…"
 
 #: admin/src/components/Pages/PageBrowser.jsx:121
 msgid "No posts found matching your criteria"
-msgstr ""
+msgstr "Keine Beiträge gefunden, die den Kriterien entsprechen"
 
 #. translators: %1$d: Current page number, %2$d: Total number of pages.
 #: admin/src/components/Pages/PageBrowser.jsx:138
-#, js-format
 msgid "Page %1$d of %2$d"
-msgstr ""
+msgstr "Seite %1$d von %2$d"
 
 #: admin/src/components/Pages/PageBrowser.jsx:149
 msgid "← Prev"
-msgstr ""
+msgstr "← Zurück"
 
 #: admin/src/components/Pages/PageBrowser.jsx:156
 msgid "Next →"
-msgstr ""
+msgstr "Weiter →"
 
 #: admin/src/components/Pages/PageBrowser.jsx:222
 msgid "No local schema"
-msgstr ""
+msgstr "Kein lokales Schema"
 
 #: admin/src/components/Pages/PageBrowser.jsx:234
 msgid "Edit Schema"
-msgstr ""
+msgstr "Schema bearbeiten"
 
 #: admin/src/components/Preview/RichSnippet.jsx:26
 msgid "Select a schema type to see the preview"
-msgstr ""
+msgstr "Wählen Sie einen Schema-Typ aus, um die Vorschau anzuzeigen"
 
 #: admin/src/components/Preview/RichSnippet.jsx:36
 msgid "Rich Result Preview"
-msgstr ""
+msgstr "Rich-Result-Vorschau"
 
 #: admin/src/components/Preview/RichSnippet.jsx:55
 msgid "Page Title"
-msgstr ""
+msgstr "Seitentitel"
 
 #: admin/src/components/Preview/RichSnippet.jsx:62
 msgid "A description of this page will appear here…"
-msgstr ""
+msgstr "Hier wird eine Beschreibung dieser Seite angezeigt…"
 
 #: admin/src/components/Preview/RichSnippet.jsx:85
 msgctxt "rich result preview fallback"
 msgid "Date"
-msgstr ""
+msgstr "Datum"
 
 #: admin/src/components/Preview/RichSnippet.jsx:91
 msgctxt "rich result preview fallback"
 msgid "Author"
-msgstr ""
+msgstr "Autor"
 
 #: admin/src/components/Preview/RichSnippet.jsx:104
 msgid "✓ In stock"
-msgstr ""
+msgstr "✓ Auf Lager"
 
 #: admin/src/components/Preview/RichSnippet.jsx:113
 msgid "People also ask"
-msgstr ""
+msgstr "Weitere Fragen"
 
 #: admin/src/components/Preview/RichSnippet.jsx:116
 msgid "▸ First question…"
-msgstr ""
+msgstr "▸ Erste Frage…"
 
 #: admin/src/components/Preview/RichSnippet.jsx:119
 msgid "▸ Second question…"
-msgstr ""
+msgstr "▸ Zweite Frage…"
 
 #: admin/src/components/Preview/RichSnippet.jsx:129
 msgctxt "rich result preview fallback"
 msgid "Start date"
-msgstr ""
+msgstr "Startdatum"
 
 #: admin/src/components/Preview/RichSnippet.jsx:135
 msgctxt "rich result preview fallback"
 msgid "Location"
-msgstr ""
+msgstr "Ort"
 
 #. translators: %1$s: Schema.org type identifier.
 #: admin/src/components/Preview/RichSnippet.jsx:145
-#, js-format
 msgid "Preview based on %1$s schema"
-msgstr ""
+msgstr "Vorschau auf Grundlage des %1$s-Schemas"
 
 #: admin/src/components/Rules/RuleBuilder.jsx:56
 msgctxt "context group label"
 msgid "Other"
-msgstr ""
+msgstr "Sonstiges"
 
 #. translators: %1$s: Schema.org property identifier, %2$s: Schema.org type identifier.
 #: admin/src/components/Rules/RuleBuilder.jsx:152
-#, js-format
 msgid "Missing required: '%1$s' for %2$s."
-msgstr ""
+msgstr "Erforderliche Eigenschaft „%1$s“ für %2$s fehlt."
 
 #. translators: %1$s: Schema.org property identifier, %2$s: Schema.org type identifier.
 #: admin/src/components/Rules/RuleBuilder.jsx:161
-#, js-format
 msgid "Missing recommended: '%1$s' for %2$s."
-msgstr ""
+msgstr "Empfohlene Eigenschaft „%1$s“ für %2$s fehlt."
 
 #: admin/src/components/Rules/RuleBuilder.jsx:178
 msgid "← Back to Rules"
-msgstr ""
+msgstr "← Zurück zu den Regeln"
 
 #: admin/src/components/Rules/RuleBuilder.jsx:191
 msgid "New Schema Rule"
-msgstr ""
+msgstr "Neue Schema-Regel"
 
 #. translators: %1$s: Rule name.
 #: admin/src/components/Rules/RuleBuilder.jsx:194
-#, js-format
 msgid "Edit Rule: %1$s"
-msgstr ""
+msgstr "Regel bearbeiten: %1$s"
 
 #: admin/src/components/Rules/RuleBuilder.jsx:217
 msgid "Rule Configuration"
-msgstr ""
+msgstr "Regelkonfiguration"
 
 #: admin/src/components/Rules/RuleBuilder.jsx:223
 msgid "Rule Name"
-msgstr ""
+msgstr "Regelname"
 
 #: admin/src/components/Rules/RuleBuilder.jsx:225
 msgid "(optional)"
-msgstr ""
+msgstr "(optional)"
 
 #: admin/src/components/Rules/RuleBuilder.jsx:232
 msgid "Auto-generated from conditions…"
-msgstr ""
+msgstr "Automatisch aus den Bedingungen erzeugt…"
 
 #: admin/src/components/Rules/RuleBuilder.jsx:241
 msgid "Conditions — \"Apply this schema when…\""
-msgstr ""
+msgstr "Bedingungen — „Dieses Schema anwenden, wenn…“"
 
 #: admin/src/components/Rules/RuleBuilder.jsx:247
 msgid "+ Add"
-msgstr ""
+msgstr "+ Hinzufügen"
 
 #: admin/src/components/Rules/RuleBuilder.jsx:264
 msgid "Select condition…"
-msgstr ""
+msgstr "Bedingung auswählen…"
 
 #: admin/src/components/Rules/RuleBuilder.jsx:279
 msgid "Remove condition"
-msgstr ""
+msgstr "Bedingung entfernen"
 
 #: admin/src/components/Rules/RuleBuilder.jsx:290
 msgid "Multiple conditions use AND logic — all must match."
-msgstr ""
+msgstr "Mehrere Bedingungen werden mit UND verknüpft — alle müssen zutreffen."
 
 #: admin/src/components/Rules/RuleBuilder.jsx:298
 #: admin/src/components/Rules/RuleBuilder.jsx:461
 msgid "Priority:"
-msgstr ""
+msgstr "Priorität:"
 
 #: admin/src/components/Rules/RuleBuilder.jsx:308
 msgid "Lower = higher priority"
-msgstr ""
+msgstr "Niedrigerer Wert = höhere Priorität"
 
 #: admin/src/components/Rules/RuleBuilder.jsx:323
 msgid "Select type…"
-msgstr ""
+msgstr "Typ auswählen…"
 
 #. translators: %1$d: Number of properties set, %2$d: Total number of properties.
 #: admin/src/components/Rules/RuleBuilder.jsx:340
-#, js-format
 msgid "%1$d / %2$d property set"
 msgid_plural "%1$d / %2$d properties set"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%1$d von %2$d Eigenschaften festgelegt"
+msgstr[1] "%1$d von %2$d Eigenschaften festgelegt"
 
 #: admin/src/components/Rules/RuleBuilder.jsx:367
 msgid "Select a schema type above to configure properties"
 msgstr ""
+"Wählen Sie oben einen Schema-Typ aus, um die Eigenschaften zu konfigurieren"
 
 #: admin/src/components/Rules/RuleBuilder.jsx:403
 msgid "Create Rule"
-msgstr ""
+msgstr "Regel erstellen"
 
 #: admin/src/components/Rules/RuleBuilder.jsx:428
 msgid "Rule Summary"
-msgstr ""
+msgstr "Regelübersicht"
 
 #: admin/src/components/Rules/RuleBuilder.jsx:433
 msgid "Type:"
-msgstr ""
+msgstr "Typ:"
 
 #: admin/src/components/Rules/RuleBuilder.jsx:440
 msgid "Applies to:"
-msgstr ""
+msgstr "Gilt für:"
 
 #: admin/src/components/Rules/RuleBuilder.jsx:444
 msgid "No conditions set"
-msgstr ""
+msgstr "Keine Bedingungen festgelegt"
 
 #: admin/src/components/Rules/RuleBuilder.jsx:530
 msgid "Add"
-msgstr ""
+msgstr "Hinzufügen"
 
 #. translators: %1$s: Rule name.
 #: admin/src/components/Rules/RulesList.jsx:15
-#, js-format
 msgid "Delete rule \"%1$s\"?"
-msgstr ""
+msgstr "Regel „%1$s“ löschen?"
 
 #: admin/src/components/Rules/RulesList.jsx:27
 msgid "Loading rules…"
-msgstr ""
+msgstr "Regeln werden geladen…"
 
 #: admin/src/components/Rules/RulesList.jsx:40
 msgid "Schema Rules"
-msgstr ""
+msgstr "Schema-Regeln"
 
 #: admin/src/components/Rules/RulesList.jsx:43
-msgid "Conditional schemas that apply to specific page types, archives, and taxonomies"
-msgstr ""
+msgid ""
+"Conditional schemas that apply to specific page types, archives, and "
+"taxonomies"
+msgstr "Bedingte Schemas für bestimmte Seitentypen, Archive und Taxonomien"
 
 #: admin/src/components/Rules/RulesList.jsx:62
 msgid "No schema rules yet"
-msgstr ""
+msgstr "Noch keine Schema-Regeln"
 
 #: admin/src/components/Rules/RulesList.jsx:65
 msgid "Rules let you target archives, CPTs, taxonomies, and more"
 msgstr ""
+"Mit Regeln können Sie Archive, CPTs, Taxonomien und weitere Kontexte gezielt "
+"ansprechen"
 
 #: admin/src/components/Rules/RulesList.jsx:74
 msgid "Create Your First Rule"
-msgstr ""
+msgstr "Erste Regel erstellen"
 
 #: admin/src/components/Rules/RulesList.jsx:94
 msgctxt "rule status"
 msgid "Active"
-msgstr ""
+msgstr "Aktiv"
 
 #: admin/src/components/Rules/RulesList.jsx:96
 msgctxt "rule status"
 msgid "Draft"
-msgstr ""
+msgstr "Entwurf"
 
 #: admin/src/components/Rules/RulesList.jsx:98
 msgctxt "rule status"
 msgid "Inactive"
-msgstr ""
+msgstr "Inaktiv"
 
 #. translators: %1$d: Rule priority.
 #: admin/src/components/Rules/RulesList.jsx:126
-#, js-format
 msgid "P%1$d"
-msgstr ""
+msgstr "P%1$d"
 
 #. translators: %1$s: Rule name.
 #: admin/src/components/Rules/RulesList.jsx:148
-#, js-format
 msgid "Delete rule \"%1$s\""
-msgstr ""
+msgstr "Regel „%1$s“ löschen"
 
 #: admin/src/components/SiteMap/SiteStructure.jsx:16
 msgid "Loading site structure…"
-msgstr ""
+msgstr "Website-Struktur wird geladen…"
 
 #: admin/src/components/SiteMap/SiteStructure.jsx:33
 msgid "Site Structure"
-msgstr ""
+msgstr "Website-Struktur"
 
 #: admin/src/components/SiteMap/SiteStructure.jsx:36
 msgid "Overview of all page contexts and their schema coverage"
-msgstr ""
+msgstr "Übersicht aller Seitenkontexte und ihrer Schema-Abdeckung"
 
 #. translators: %1$d: Number of covered contexts, %2$d: Total number of contexts.
 #: admin/src/components/SiteMap/SiteStructure.jsx:43
-#, js-format
 msgid "%1$d/%2$d context covered"
 msgid_plural "%1$d/%2$d contexts covered"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%1$d/%2$d Kontext abgedeckt"
+msgstr[1] "%1$d/%2$d Kontexte abgedeckt"
 
 #: admin/src/components/SiteMap/SiteStructure.jsx:60
 msgid "Schema Coverage"
-msgstr ""
+msgstr "Schema-Abdeckung"
 
 #. translators: %1$d: Number of items in this site-structure context.
 #: admin/src/components/SiteMap/SiteStructure.jsx:123
-#, js-format
 msgid "(%1$d item)"
 msgid_plural "(%1$d items)"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "(%1$d Element)"
+msgstr[1] "(%1$d Elemente)"
 
 #: admin/src/components/SiteMap/SiteStructure.jsx:145
 msgid "✓ Covered"
-msgstr ""
+msgstr "✓ Abgedeckt"
 
 #: admin/src/components/SiteMap/SiteStructure.jsx:152
 #: admin/src/components/SiteMap/SiteStructure.jsx:193
 msgid "+ Add Rule"
-msgstr ""
+msgstr "+ Regel hinzufügen"

@@ -314,14 +314,14 @@ msgid ""
 "No custom variables defined. Use `wp t1-schema set-var <key> <value>` to "
 "create one."
 msgstr ""
-"Keine benutzerdefinierten Variablen definiert. Erstellen Sie eine mit `wp t1-"
-"schema set-var <key> <value>`."
+"Keine benutzerdefinierten Variablen definiert. Mit `wp t1-schema set-var "
+"<key> <value>` kann eine erstellt werden."
 
 #: includes/CLI.php:1057
 msgid "Invalid key. Use lowercase letters, numbers, and underscores only."
 msgstr ""
-"Ungültiger Schlüssel. Verwenden Sie ausschließlich Kleinbuchstaben, Zahlen "
-"und Unterstriche."
+"Ungültiger Schlüssel. Ausschließlich Kleinbuchstaben, Zahlen und "
+"Unterstriche verwenden."
 
 #. translators: 1: Custom variable key, 2: Custom variable value.
 #: includes/CLI.php:1074
@@ -561,77 +561,77 @@ msgid "Deleted rule ID %1$d."
 msgstr "Regel mit ID %1$d gelöscht."
 
 #. translators: 1: Number of schemas, 2: Post title, 3: Post ID.
-#: includes/CLI.php:1887
+#: includes/CLI.php:1888
 #, php-format
 msgid "Total: %1$d schema for \"%2$s\" (ID: %3$d)."
 msgid_plural "Total: %1$d schemas for \"%2$s\" (ID: %3$d)."
 msgstr[0] "Gesamt: %1$d Schema für „%2$s“ (ID: %3$d)."
 msgstr[1] "Gesamt: %1$d Schemas für „%2$s“ (ID: %3$d)."
 
-#: includes/CLI.php:1935
+#: includes/CLI.php:1936
 msgctxt "site context table value"
 msgid "🏠 Front Page"
 msgstr "🏠 Startseite"
 
 #. translators: 1: Post type label, 2: Number of published posts.
-#: includes/CLI.php:1953
+#: includes/CLI.php:1954
 #, php-format
 msgctxt "site context table value"
 msgid "📄 %1$s (%2$d)"
 msgstr "📄 %1$s (%2$d)"
 
 #. translators: %1$s: Post type label.
-#: includes/CLI.php:1971
+#: includes/CLI.php:1972
 #, php-format
 msgctxt "site context table value"
 msgid "  📋 %1$s Archive"
 msgstr "  📋 %1$s-Archiv"
 
 #. translators: 1: Taxonomy label, 2: Number of taxonomy terms.
-#: includes/CLI.php:1993
+#: includes/CLI.php:1994
 #, php-format
 msgctxt "site context table value"
 msgid "🏷️ %1$s (%2$d)"
 msgstr "🏷️ %1$s (%2$d)"
 
-#: includes/CLI.php:2007
+#: includes/CLI.php:2008
 msgctxt "site context table value"
 msgid "🔍 Search Results"
 msgstr "🔍 Suchergebnisse"
 
-#: includes/CLI.php:2008
+#: includes/CLI.php:2009
 msgctxt "site context table value"
 msgid "⚠️  404 Page"
 msgstr "⚠️  404-Seite"
 
-#: includes/CLI.php:2009
+#: includes/CLI.php:2010
 msgctxt "site context table value"
 msgid "👤 Author Archives"
 msgstr "👤 Autorenarchive"
 
-#: includes/CLI.php:2010
+#: includes/CLI.php:2011
 msgctxt "site context table value"
 msgid "📅 Date Archives"
 msgstr "📅 Datumsarchive"
 
 #. translators: 1: Covered site contexts, 2: Total site contexts, 3: Coverage percentage.
-#: includes/CLI.php:2026
+#: includes/CLI.php:2027
 #, php-format
 msgid "Coverage: %1$d/%2$d context (%3$d%%)."
 msgid_plural "Coverage: %1$d/%2$d contexts (%3$d%%)."
 msgstr[0] "Abdeckung: %1$d/%2$d Kontext (%3$d%%)."
 msgstr[1] "Abdeckung: %1$d/%2$d Kontexte (%3$d%%)."
 
-#: includes/CLI.php:2070
+#: includes/CLI.php:2071
 msgid "🩺 Teil1 Schema Manager Doctor"
 msgstr "🩺 Teil1 Schema Manager Diagnose"
 
-#: includes/CLI.php:2074
+#: includes/CLI.php:2075
 msgid "1. Database tables:"
 msgstr "1. Datenbanktabellen:"
 
 #. translators: 1: Database table name, 2: Number of rows.
-#: includes/CLI.php:2082
+#: includes/CLI.php:2083
 #, php-format
 msgid "   ✓ %1$s (%2$d row)"
 msgid_plural "   ✓ %1$s (%2$d rows)"
@@ -639,21 +639,21 @@ msgstr[0] "   ✓ %1$s (%2$d Zeile)"
 msgstr[1] "   ✓ %1$s (%2$d Zeilen)"
 
 #. translators: %1$s: Database table name.
-#: includes/CLI.php:2091
+#: includes/CLI.php:2092
 #, php-format
 msgid "   ✗ %1$s — MISSING! Deactivate and reactivate the plugin."
-msgstr "   ✗ %1$s — FEHLT! Deaktivieren und reaktivieren Sie das Plugin."
+msgstr "   ✗ %1$s — FEHLT! Plugin deaktivieren und reaktivieren."
 
-#: includes/CLI.php:2100
+#: includes/CLI.php:2101
 msgid "2. Duplicate global types:"
 msgstr "2. Doppelte globale Typen:"
 
-#: includes/CLI.php:2104
+#: includes/CLI.php:2105
 msgid "   ✓ No duplicates"
 msgstr "   ✓ Keine Duplikate"
 
 #. translators: 1: Schema.org type, 2: Number of active global schemas.
-#: includes/CLI.php:2110
+#: includes/CLI.php:2111
 #, php-format
 msgid "   ⚠ %1$s has %2$d active global — only one will render"
 msgid_plural "   ⚠ %1$s has %2$d active globals — only one will render"
@@ -662,32 +662,32 @@ msgstr[0] ""
 msgstr[1] ""
 "   ⚠ %1$s hat %2$d aktive globale Schemas — nur eines wird ausgegeben"
 
-#: includes/CLI.php:2125
+#: includes/CLI.php:2126
 msgid "3. Plugin conflicts:"
 msgstr "3. Plugin-Konflikte:"
 
-#: includes/CLI.php:2127
+#: includes/CLI.php:2128
 msgctxt "plugin conflict label"
 msgid "teil1-content (mu-plugin schema)"
 msgstr "teil1-content (MU-Plugin-Schema)"
 
-#: includes/CLI.php:2128
+#: includes/CLI.php:2129
 msgctxt "plugin conflict label"
 msgid "Schema Pro (wpschema.com)"
 msgstr "Schema Pro (wpschema.com)"
 
-#: includes/CLI.php:2129
+#: includes/CLI.php:2130
 msgctxt "plugin conflict label"
 msgid "WP SEO Schema Pro"
 msgstr "WP SEO Schema Pro"
 
 #. translators: %1$s: Conflicting plugin name.
-#: includes/CLI.php:2137
+#: includes/CLI.php:2138
 #, php-format
 msgid "   ⚠ %1$s is active — may output duplicate JSON-LD"
 msgstr "   ⚠ %1$s ist aktiv — möglicherweise wird doppeltes JSON-LD ausgegeben"
 
-#: includes/CLI.php:2148
+#: includes/CLI.php:2149
 msgid ""
 "   ⚠ teil1_schema_output() detected — suppression is ON, Teil1 Schema "
 "Manager removes it"
@@ -695,15 +695,15 @@ msgstr ""
 "   ⚠ teil1_schema_output() erkannt — Unterdrückung ist EIN; Teil1 Schema "
 "Manager entfernt die Ausgabe"
 
-#: includes/CLI.php:2149
+#: includes/CLI.php:2150
 msgid ""
 "   ⚠ teil1_schema_output() detected — suppression is OFF, enable it in "
 "Settings if you see duplicates"
 msgstr ""
-"   ⚠ teil1_schema_output() erkannt — Unterdrückung ist AUS; aktivieren Sie "
-"sie bei doppelten Ausgaben in den Einstellungen"
+"   ⚠ teil1_schema_output() erkannt — Unterdrückung ist AUS; bei doppelten "
+"Ausgaben in den Einstellungen aktivieren"
 
-#: includes/CLI.php:2159
+#: includes/CLI.php:2160
 msgid ""
 "   ⚠ WooCommerce detected — suppression is ON, Teil1 Schema Manager removes "
 "WooCommerce's own Product/Review/BreadcrumbList/WebSite markup wherever a "
@@ -713,26 +713,27 @@ msgstr ""
 "entfernt WooCommerce-eigenes Product-/Review-/BreadcrumbList-/WebSite-"
 "Markup, wenn eine konfigurierte Regel denselben Typ abdeckt"
 
-#: includes/CLI.php:2160
+#: includes/CLI.php:2161
 msgid ""
 "   ⚠ WooCommerce detected — suppression is OFF; if a configured rule also "
 "covers Product, Review, BreadcrumbList, or WebSite, enable it in Settings to "
 "avoid duplicate JSON-LD"
 msgstr ""
 "   ⚠ WooCommerce erkannt — Unterdrückung ist AUS; wenn eine konfigurierte "
-"Regel auch Product, Review, BreadcrumbList oder WebSite abdeckt, aktivieren "
-"Sie die Unterdrückung in den Einstellungen, um doppeltes JSON-LD zu vermeiden"
+"Regel auch Product, Review, BreadcrumbList oder WebSite abdeckt, die "
+"Unterdrückung in den Einstellungen aktivieren, um doppeltes JSON-LD zu "
+"vermeiden"
 
-#: includes/CLI.php:2165
+#: includes/CLI.php:2166
 msgid "   ✓ No conflicts detected"
 msgstr "   ✓ Keine Konflikte erkannt"
 
-#: includes/CLI.php:2169
+#: includes/CLI.php:2170
 msgid "4. Schema health (all layers):"
 msgstr "4. Schema-Status (alle Ebenen):"
 
 #. translators: 1: Global schema ID, 2: Schema.org type, 3: Number of validation errors.
-#: includes/CLI.php:2186
+#: includes/CLI.php:2187
 #, php-format
 msgid "   ✗ Global #%1$d (%2$s): %3$d error"
 msgid_plural "   ✗ Global #%1$d (%2$s): %3$d errors"
@@ -740,7 +741,7 @@ msgstr[0] "   ✗ Global #%1$d (%2$s): %3$d Fehler"
 msgstr[1] "   ✗ Global #%1$d (%2$s): %3$d Fehler"
 
 #. translators: 1: Schema rule ID, 2: Schema.org type, 3: Number of validation errors.
-#: includes/CLI.php:2214
+#: includes/CLI.php:2215
 #, php-format
 msgid "   ✗ Rule #%1$d (%2$s): %3$d error"
 msgid_plural "   ✗ Rule #%1$d (%2$s): %3$d errors"
@@ -748,182 +749,182 @@ msgstr[0] "   ✗ Regel #%1$d (%2$s): %3$d Fehler"
 msgstr[1] "   ✗ Regel #%1$d (%2$s): %3$d Fehler"
 
 #. translators: %1$d: Number of validation warnings.
-#: includes/CLI.php:2232
+#: includes/CLI.php:2233
 #, php-format
 msgid "   ✓ All schemas valid (%1$d warning)"
 msgid_plural "   ✓ All schemas valid (%1$d warnings)"
 msgstr[0] "   ✓ Alle Schemas gültig (%1$d Warnung)"
 msgstr[1] "   ✓ Alle Schemas gültig (%1$d Warnungen)"
 
-#: includes/CLI.php:2246
+#: includes/CLI.php:2247
 msgid "5. Orphaned local schemas:"
 msgstr "5. Verwaiste lokale Schemas:"
 
-#: includes/CLI.php:2252
+#: includes/CLI.php:2253
 msgid "   ✓ No orphaned schemas"
 msgstr "   ✓ Keine verwaisten Schemas"
 
 #. translators: 1: Number of orphaned local schemas, 2: Comma-separated post IDs.
-#: includes/CLI.php:2259
+#: includes/CLI.php:2260
 #, php-format
 msgid "   ⚠ %1$d orphaned local schema on deleted posts: %2$s"
 msgid_plural "   ⚠ %1$d orphaned local schemas on deleted posts: %2$s"
 msgstr[0] "   ⚠ %1$d verwaistes lokales Schema bei gelöschten Beiträgen: %2$s"
 msgstr[1] "   ⚠ %1$d verwaiste lokale Schemas bei gelöschten Beiträgen: %2$s"
 
-#: includes/CLI.php:2275
+#: includes/CLI.php:2276
 msgid "No issues found. Teil1 Schema Manager is healthy."
 msgstr "Keine Probleme gefunden. Teil1 Schema Manager ist fehlerfrei."
 
 #. translators: %1$d: Number of issues found.
-#: includes/CLI.php:2280
+#: includes/CLI.php:2281
 #, php-format
 msgid "%1$d issue found."
 msgid_plural "%1$d issues found."
 msgstr[0] "%1$d Problem gefunden."
 msgstr[1] "%1$d Probleme gefunden."
 
-#: includes/CLI.php:2326
+#: includes/CLI.php:2327
 msgctxt "table column heading"
 msgid "#"
 msgstr "#"
 
-#: includes/CLI.php:2328
+#: includes/CLI.php:2329
 msgctxt "table column heading"
 msgid "ID"
 msgstr "ID"
 
-#: includes/CLI.php:2330
+#: includes/CLI.php:2331
 msgctxt "table column heading"
 msgid "Index"
 msgstr "Index"
 
-#: includes/CLI.php:2332
+#: includes/CLI.php:2333
 msgctxt "table column heading"
 msgid "Type"
 msgstr "Typ"
 
-#: includes/CLI.php:2334
+#: includes/CLI.php:2335
 msgctxt "table column heading"
 msgid "Status"
 msgstr "Status"
 
-#: includes/CLI.php:2336
+#: includes/CLI.php:2337
 msgctxt "table column heading"
 msgid "Name"
 msgstr "Name"
 
-#: includes/CLI.php:2338
+#: includes/CLI.php:2339
 msgctxt "table column heading"
 msgid "Created"
 msgstr "Erstellt"
 
-#: includes/CLI.php:2340
+#: includes/CLI.php:2341
 msgctxt "table column heading"
 msgid "Override"
 msgstr "Überschreibung"
 
-#: includes/CLI.php:2342
+#: includes/CLI.php:2343
 msgctxt "table column heading"
 msgid "Props"
 msgstr "Eigenschaften"
 
-#: includes/CLI.php:2344
+#: includes/CLI.php:2345
 msgctxt "table column heading"
 msgid "Layer"
 msgstr "Ebene"
 
-#: includes/CLI.php:2346
+#: includes/CLI.php:2347
 msgctxt "table column heading"
 msgid "Errors"
 msgstr "Fehler"
 
-#: includes/CLI.php:2348
+#: includes/CLI.php:2349
 msgctxt "table column heading"
 msgid "Warnings"
 msgstr "Warnungen"
 
-#: includes/CLI.php:2350
+#: includes/CLI.php:2351
 msgctxt "table column heading"
 msgid "Infos"
 msgstr "Infos"
 
-#: includes/CLI.php:2352
+#: includes/CLI.php:2353
 msgctxt "table column heading"
 msgid "Details"
 msgstr "Details"
 
-#: includes/CLI.php:2354
+#: includes/CLI.php:2355
 msgctxt "table column heading"
 msgid "Parent"
 msgstr "Übergeordnet"
 
-#: includes/CLI.php:2356
+#: includes/CLI.php:2357
 msgctxt "table column heading"
 msgid "Required"
 msgstr "Erforderlich"
 
-#: includes/CLI.php:2358
+#: includes/CLI.php:2359
 msgctxt "table column heading"
 msgid "Recommended"
 msgstr "Empfohlen"
 
-#: includes/CLI.php:2360
+#: includes/CLI.php:2361
 msgctxt "table column heading"
 msgid "Total Props"
 msgstr "Eigenschaften gesamt"
 
-#: includes/CLI.php:2362
+#: includes/CLI.php:2363
 msgctxt "table column heading"
 msgid "Category"
 msgstr "Kategorie"
 
-#: includes/CLI.php:2364
+#: includes/CLI.php:2365
 msgctxt "table column heading"
 msgid "Variable"
 msgstr "Variable"
 
-#: includes/CLI.php:2366
+#: includes/CLI.php:2367
 msgctxt "table column heading"
 msgid "Desc"
 msgstr "Beschreibung"
 
-#: includes/CLI.php:2368
+#: includes/CLI.php:2369
 msgctxt "table column heading"
 msgid "Key"
 msgstr "Schlüssel"
 
-#: includes/CLI.php:2370
+#: includes/CLI.php:2371
 msgctxt "table column heading"
 msgid "Value"
 msgstr "Wert"
 
-#: includes/CLI.php:2372
+#: includes/CLI.php:2373
 msgctxt "table column heading"
 msgid "Conditions"
 msgstr "Bedingungen"
 
-#: includes/CLI.php:2374
+#: includes/CLI.php:2375
 msgctxt "table column heading"
 msgid "Priority"
 msgstr "Priorität"
 
-#: includes/CLI.php:2376
+#: includes/CLI.php:2377
 msgctxt "table column heading"
 msgid "Context"
 msgstr "Kontext"
 
-#: includes/CLI.php:2378
+#: includes/CLI.php:2379
 msgctxt "table column heading"
 msgid "Schemas"
 msgstr "Schemas"
 
-#: includes/CLI.php:2393
+#: includes/CLI.php:2394
 msgctxt "schema status"
 msgid "Active"
 msgstr "Aktiv"
 
-#: includes/CLI.php:2395
+#: includes/CLI.php:2396
 msgctxt "schema status"
 msgid "Draft"
 msgstr "Entwurf"
@@ -1039,7 +1040,7 @@ msgctxt "condition label"
 msgid "Children of: %1$s → %2$s"
 msgstr "Unterseiten von: %1$s → %2$s"
 
-#: includes/Frontend.php:296
+#: includes/Frontend.php:306
 msgid "Home"
 msgstr "Startseite"
 
@@ -2406,7 +2407,7 @@ msgstr "Erforderliche Eigenschaft „%1$s“ für den Typ „%2$s“ fehlt."
 msgid ""
 "Missing recommended property: '%1$s' for type '%2$s'. May be set per-post."
 msgstr ""
-"Empfohlene Eigenschaft „%1$s“ für den Typ „%2$s“ fehlt. Sie kann pro Beitrag "
+"Empfohlene Eigenschaft „%1$s“ für den Typ „%2$s“ fehlt und kann pro Beitrag "
 "festgelegt werden."
 
 #. translators: %1$s: Schema.org property name. %2$s: Schema.org type name.
@@ -2725,15 +2726,15 @@ msgid ""
 "Start by creating your Organization or WebSite schema. These are the "
 "foundation of your structured data."
 msgstr ""
-"Erstellen Sie zunächst ein Organization- oder WebSite-Schema. Diese Schemas "
-"bilden die Grundlage Ihrer strukturierten Daten."
+"Zunächst ein Organization- oder WebSite-Schema erstellen. Diese Schemas "
+"bilden die Grundlage für strukturierte Daten."
 
 #. translators: %1$s: Custom variable syntax example.
 #: admin/src/components/Dashboard/CustomVariables.jsx:16
 msgid "Define site-wide constants. Use %1$s in any schema."
 msgstr ""
-"Definieren Sie websiteweite Konstanten. Verwenden Sie %1$s in einem "
-"beliebigen Schema."
+"Websiteweite Konstanten definieren. %1$s in einem beliebigen Schema "
+"verwenden."
 
 #: admin/src/components/Dashboard/CustomVariables.jsx:72
 msgid "Loading custom variables…"
@@ -2808,62 +2809,59 @@ msgstr ""
 #. translators: {{site_name}} and {{post_title}} are dynamic variable tokens.
 #: admin/src/components/Dashboard/HealthDetail.jsx:159
 msgid "Tip: Use {{site_name}} or {{post_title}} as a dynamic value"
-msgstr ""
-"Tipp: Verwenden Sie {{site_name}} oder {{post_title}} als dynamischen Wert"
+msgstr "Tipp: {{site_name}} oder {{post_title}} als dynamischen Wert verwenden"
 
 #. translators: {{site_url}} and {{post_url}} are dynamic variable tokens.
 #: admin/src/components/Dashboard/HealthDetail.jsx:163
 msgid "Tip: Use {{site_url}} or {{post_url}}"
-msgstr "Tipp: Verwenden Sie {{site_url}} oder {{post_url}}"
+msgstr "Tipp: {{site_url}} oder {{post_url}} verwenden"
 
 #. translators: {{site_logo}} is a dynamic variable token.
 #: admin/src/components/Dashboard/HealthDetail.jsx:167
 msgid "Tip: Use {{site_logo}} to pull from theme settings"
 msgstr ""
-"Tipp: Verwenden Sie {{site_logo}}, um das Logo aus den Theme-Einstellungen "
-"zu übernehmen"
+"Tipp: {{site_logo}} verwenden, um das Logo aus den Theme-Einstellungen zu "
+"übernehmen"
 
 #. translators: {{featured_image_url}} is a dynamic variable token.
 #: admin/src/components/Dashboard/HealthDetail.jsx:171
 msgid "Tip: Use {{featured_image_url}} for the post thumbnail"
-msgstr "Tipp: Verwenden Sie {{featured_image_url}} für das Beitragsbild"
+msgstr "Tipp: {{featured_image_url}} für das Beitragsbild verwenden"
 
 #. translators: {{post_title}} is a dynamic variable token.
 #: admin/src/components/Dashboard/HealthDetail.jsx:175
 msgid "Tip: Use {{post_title}} for the article headline"
-msgstr "Tipp: Verwenden Sie {{post_title}} für die Artikelüberschrift"
+msgstr "Tipp: {{post_title}} für die Artikelüberschrift verwenden"
 
 #. translators: {{post_date}} is a dynamic variable token.
 #: admin/src/components/Dashboard/HealthDetail.jsx:179
 msgid "Tip: Use {{post_date}} for auto-dated articles"
 msgstr ""
-"Tipp: Verwenden Sie {{post_date}}, um das Artikeldatum automatisch "
-"einzusetzen"
+"Tipp: {{post_date}} verwenden, um das Artikeldatum automatisch einzusetzen"
 
 #. translators: Person is a Schema.org type and {{author_name}} is a dynamic variable token.
 #: admin/src/components/Dashboard/HealthDetail.jsx:183
 msgid "Tip: Use a nested Person object or {{author_name}}"
-msgstr ""
-"Tipp: Verwenden Sie ein verschachteltes Person-Objekt oder {{author_name}}"
+msgstr "Tipp: Ein verschachteltes Person-Objekt oder {{author_name}} verwenden"
 
 #. translators: {{post_excerpt}} and {{site_description}} are dynamic variable tokens.
 #: admin/src/components/Dashboard/HealthDetail.jsx:187
 msgid "Tip: Use {{post_excerpt}} or {{site_description}}"
-msgstr "Tipp: Verwenden Sie {{post_excerpt}} oder {{site_description}}"
+msgstr "Tipp: {{post_excerpt}} oder {{site_description}} verwenden"
 
 #: admin/src/components/Dashboard/HealthDetail.jsx:190
 msgid "Add your social media profile URLs as an array"
-msgstr "Fügen Sie die URLs Ihrer Social-Media-Profile als Array hinzu"
+msgstr "URLs der Social-Media-Profile als Array hinzufügen"
 
 #. translators: PostalAddress is a Schema.org type and JSON is a technical format name.
 #: admin/src/components/Dashboard/HealthDetail.jsx:194
 msgid "Add a nested PostalAddress object via JSON import"
 msgstr ""
-"Fügen Sie über den JSON-Import ein verschachteltes PostalAddress-Objekt hinzu"
+"Über den JSON-Import ein verschachteltes PostalAddress-Objekt hinzufügen"
 
 #: admin/src/components/Dashboard/HealthDetail.jsx:197
 msgid "Add your business phone number"
-msgstr "Fügen Sie die Telefonnummer Ihres Unternehmens hinzu"
+msgstr "Telefonnummer des Unternehmens hinzufügen"
 
 #: admin/src/components/Dashboard/HealthDetail.jsx:200
 msgid "This is added automatically when rendered — no action needed"
@@ -2880,7 +2878,7 @@ msgstr ""
 #: admin/src/components/Dashboard/HealthDetail.jsx:205
 msgid "Set this property in the editor above to resolve"
 msgstr ""
-"Legen Sie diese Eigenschaft im obigen Editor fest, um das Problem zu beheben"
+"Diese Eigenschaft im obigen Editor festlegen, um das Problem zu beheben"
 
 #: admin/src/components/Dashboard/HealthScorecard.jsx:13
 msgid "Loading health data…"
@@ -3062,7 +3060,7 @@ msgstr "JSON-LD einfügen"
 #: admin/src/components/Editor/JsonImporter.jsx:56
 msgid "Paste raw JSON-LD markup. Script tags will be stripped automatically."
 msgstr ""
-"Fügen Sie unformatiertes JSON-LD-Markup ein. Script-Tags werden automatisch "
+"Unformatiertes JSON-LD-Markup einfügen. Script-Tags werden automatisch "
 "entfernt."
 
 #: admin/src/components/Editor/JsonImporter.jsx:62
@@ -3154,7 +3152,7 @@ msgstr "Schema auf dieser Seite"
 
 #: admin/src/components/Editor/LocalSchemaEditor.jsx:326
 msgid "Select a type above to start building"
-msgstr "Wählen Sie oben einen Typ aus, um das Schema zu erstellen"
+msgstr "Oben einen Typ auswählen, um das Schema zu erstellen"
 
 #. translators: %1$d: Number of schemas on the current page.
 #: admin/src/components/Editor/LocalSchemaEditor.jsx:339
@@ -3305,7 +3303,7 @@ msgstr[1] "%1$d verfügbare Eigenschaften"
 
 #: admin/src/components/Editor/SchemaBuilder.jsx:255
 msgid "Select a Schema type above to start building"
-msgstr "Wählen Sie oben einen Schema-Typ aus, um das Schema zu erstellen"
+msgstr "Oben einen Schema-Typ auswählen, um das Schema zu erstellen"
 
 #: admin/src/components/Editor/SchemaBuilder.jsx:294
 msgid "Create Schema"
@@ -3478,8 +3476,8 @@ msgid ""
 "Site-wide schemas (%1$s, %2$s) that apply to every page automatically. "
 "Manage these in the Dashboard tab."
 msgstr ""
-"Websiteweite Schemas (%1$s, %2$s), die automatisch für jede Seite gelten. "
-"Verwalten Sie sie im Tab „Dashboard“."
+"Websiteweite Schemas (%1$s, %2$s), die automatisch für jede Seite gelten. Im "
+"Tab „Dashboard“ verwalten."
 
 #: admin/src/components/Help/HelpPanel.jsx:92
 msgid "Local Schemas"
@@ -3492,7 +3490,7 @@ msgid ""
 "page. Manage these in the Pages tab."
 msgstr ""
 "Seitenspezifische Schemas (%1$s, %2$s, %3$s), die für einen einzelnen "
-"Beitrag oder eine einzelne Seite gelten. Verwalten Sie sie im Tab „Seiten“."
+"Beitrag oder eine einzelne Seite gelten. Im Tab „Seiten“ verwalten."
 
 #: admin/src/components/Help/HelpPanel.jsx:106
 msgid "Override Logic"
@@ -3519,9 +3517,9 @@ msgid ""
 "Use %1$s tags instead of hardcoded values. These resolve to real data at "
 "render time — e.g. %2$s becomes the actual page title."
 msgstr ""
-"Verwenden Sie %1$s-Tags anstelle fest codierter Werte. Bei der Ausgabe "
-"werden sie durch tatsächliche Daten ersetzt — so wird beispielsweise %2$s "
-"zum aktuellen Seitentitel."
+"%1$s-Tags anstelle fest codierter Werte verwenden. Bei der Ausgabe werden "
+"sie durch tatsächliche Daten ersetzt — so wird beispielsweise %2$s zum "
+"aktuellen Seitentitel."
 
 #: admin/src/components/Help/HelpPanel.jsx:135
 msgid "Typical Workflow"
@@ -3607,8 +3605,8 @@ msgid ""
 "Use these tags in any property value. They are resolved to real data when "
 "the %1$s is rendered."
 msgstr ""
-"Verwenden Sie diese Tags in beliebigen Eigenschaftswerten. Bei der Ausgabe "
-"von %1$s werden sie durch tatsächliche Daten ersetzt."
+"Diese Tags in beliebigen Eigenschaftswerten verwenden. Bei der Ausgabe von "
+"%1$s werden sie durch tatsächliche Daten ersetzt."
 
 #: admin/src/components/Help/HelpPanel.jsx:295
 msgid "Variable"
@@ -3638,8 +3636,8 @@ msgid ""
 "unless you actually see duplicate structured data on your pages."
 msgstr ""
 "Entfernt von anderen Plugins ausgegebenes %1$s sowie %2$s-eigenes %3$s/%4$s/"
-"%5$s/%6$s-Markup, wenn es die Ausgabe von %7$s duplizieren würde. Lassen Sie "
-"diese Option deaktiviert, solange auf Ihren Seiten keine doppelten "
+"%5$s/%6$s-Markup, wenn es die Ausgabe von %7$s duplizieren würde. Diese "
+"Option deaktiviert lassen, solange auf den Seiten keine doppelten "
 "strukturierten Daten auftreten."
 
 #: admin/src/components/Help/HelpPanel.jsx:355
@@ -3682,7 +3680,7 @@ msgstr "Meine Website"
 
 #: admin/src/components/Help/HelpPanel.jsx:434
 msgid "Your site tagline from Settings → General"
-msgstr "Untertitel Ihrer Website aus Einstellungen → Allgemein"
+msgstr "Untertitel der Website aus Einstellungen → Allgemein"
 
 #: admin/src/components/Help/HelpPanel.jsx:441
 msgid "(any custom post meta value)"
@@ -3762,7 +3760,7 @@ msgstr "Schema bearbeiten"
 
 #: admin/src/components/Preview/RichSnippet.jsx:26
 msgid "Select a schema type to see the preview"
-msgstr "Wählen Sie einen Schema-Typ aus, um die Vorschau anzuzeigen"
+msgstr "Schema-Typ auswählen, um die Vorschau anzuzeigen"
 
 #: admin/src/components/Preview/RichSnippet.jsx:36
 msgid "Rich Result Preview"
@@ -3903,8 +3901,7 @@ msgstr[1] "%1$d von %2$d Eigenschaften festgelegt"
 
 #: admin/src/components/Rules/RuleBuilder.jsx:367
 msgid "Select a schema type above to configure properties"
-msgstr ""
-"Wählen Sie oben einen Schema-Typ aus, um die Eigenschaften zu konfigurieren"
+msgstr "Oben einen Schema-Typ auswählen, um die Eigenschaften zu konfigurieren"
 
 #: admin/src/components/Rules/RuleBuilder.jsx:403
 msgid "Create Rule"
@@ -3956,8 +3953,8 @@ msgstr "Noch keine Schema-Regeln"
 #: admin/src/components/Rules/RulesList.jsx:65
 msgid "Rules let you target archives, CPTs, taxonomies, and more"
 msgstr ""
-"Mit Regeln können Sie Archive, CPTs, Taxonomien und weitere Kontexte gezielt "
-"ansprechen"
+"Mit Regeln lassen sich Archive, CPTs, Taxonomien und weitere Kontexte "
+"gezielt ansprechen"
 
 #: admin/src/components/Rules/RulesList.jsx:74
 msgid "Create Your First Rule"
