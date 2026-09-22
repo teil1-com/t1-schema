@@ -1,6 +1,6 @@
 # Teil1 Schema Manager — Documentation
 
-**Version:** 2.3.3
+**Version:** 2.4.0
 **Author:** teil1 development  
 **Requires:** WordPress 6.0+, PHP 8.0+  
 **License:** GPL v2 or later

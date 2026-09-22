@@ -97,7 +97,7 @@ export default function LocalSchemaEditor({ post, onBack }) {
   };
 
   const handleDeleteSchema = (index) => {
-    if (!window.confirm('Remove this schema from this page?')) return;
+    if (!window.confirm(wp.i18n.__('Remove this schema from this page?', 'teil1-schema-manager'))) return;
     setSchemas((prev) => prev.filter((_, i) => i !== index));
     setActiveIndex(0);
   };
@@ -125,7 +125,13 @@ export default function LocalSchemaEditor({ post, onBack }) {
       setSaveSuccess(true);
       setTimeout(() => setSaveSuccess(false), 2000);
     } catch (err) {
-      alert('Save failed: ' + err.message);
+      alert(
+        wp.i18n.sprintf(
+          /* translators: %1$s: Error message returned while saving. */
+          wp.i18n.__('Save failed: %1$s', 'teil1-schema-manager'),
+          err.message
+        )
+      );
     } finally {
       setSaving(false);
     }
@@ -145,7 +151,11 @@ export default function LocalSchemaEditor({ post, onBack }) {
 
   if (isLoading) {
     return (
-      <div className="sp-flex sp-items-center sp-justify-center sp-py-20">
+      <div
+        className="sp-flex sp-items-center sp-justify-center sp-py-20"
+        role="status"
+        aria-label={wp.i18n.__('Loading schemas…', 'teil1-schema-manager')}
+      >
         <div className="sp-h-6 sp-w-6 sp-animate-spin sp-rounded-full sp-border-2 sp-border-brand-200 sp-border-t-brand-600" />
       </div>
     );
@@ -162,7 +172,13 @@ export default function LocalSchemaEditor({ post, onBack }) {
             {post.post_type}
           </span>
           <span className="sp-rounded sp-bg-surface-2 sp-px-2 sp-py-0.5 sp-text-2xs sp-font-semibold sp-text-ink-3">
-            ID: {post.id}
+            {
+              wp.i18n.sprintf(
+                /* translators: %1$s: Post ID. */
+                wp.i18n.__('ID: %1$s', 'teil1-schema-manager'),
+                post.id
+              )
+            }
           </span>
         </div>
         <div className="sp-flex-1">
@@ -175,7 +191,7 @@ export default function LocalSchemaEditor({ post, onBack }) {
           rel="noopener noreferrer"
           className="sp-rounded-lg sp-border sp-border-surface-3 sp-px-3 sp-py-1.5 sp-text-xs sp-font-medium sp-text-ink-2 sp-transition-colors hover:sp-bg-surface-1"
         >
-          View page ↗
+          {wp.i18n.__('View page ↗', 'teil1-schema-manager')}
         </a>
       </div>
 
@@ -194,7 +210,13 @@ export default function LocalSchemaEditor({ post, onBack }) {
                     : 'sp-border sp-border-surface-3 sp-bg-white sp-text-ink-2 hover:sp-bg-surface-1'
                 }`}
               >
-                {(Array.isArray(s['@type']) ? s['@type'].join(' + ') : s['@type']) || `Schema ${i + 1}`}
+                {(Array.isArray(s['@type']) ? s['@type'].join(' + ') : s['@type']) || (
+                  wp.i18n.sprintf(
+                    /* translators: %1$d: One-based schema number. */
+                    wp.i18n.__('Schema %1$d', 'teil1-schema-manager'),
+                    i + 1
+                  )
+                )}
                 {schemas.length > 1 && (
                   <span
                     onClick={(e) => { e.stopPropagation(); handleDeleteSchema(i); }}
@@ -213,7 +235,7 @@ export default function LocalSchemaEditor({ post, onBack }) {
               onClick={handleAddSchema}
               className="sp-rounded-lg sp-border sp-border-dashed sp-border-surface-3 sp-px-3 sp-py-1.5 sp-text-sm sp-font-medium sp-text-ink-3 sp-transition-colors hover:sp-border-brand-300 hover:sp-text-brand-600"
             >
-              + Add Schema
+              {wp.i18n.__('+ Add Schema', 'teil1-schema-manager')}
             </button>
           </div>
 
@@ -223,13 +245,23 @@ export default function LocalSchemaEditor({ post, onBack }) {
               {/* Editor Header */}
               <div className="sp-flex sp-items-center sp-justify-between sp-border-b sp-border-surface-2 sp-px-6 sp-py-4">
                 <h3 className="sp-text-sm sp-font-semibold sp-text-ink-0">
-                  {primaryType ? `Editing: ${primaryType}` : 'Configure Schema'}
+                  {primaryType
+                    ? wp.i18n.sprintf(
+                      /* translators: %1$s: Schema.org type name. */
+                      wp.i18n.__('Editing: %1$s', 'teil1-schema-manager'),
+                      primaryType
+                    )
+                    : wp.i18n.__('Configure Schema', 'teil1-schema-manager')}
                 </h3>
                 <button
                   onClick={() => setShowImporter(!showImporter)}
                   className="sp-rounded-lg sp-border sp-border-surface-3 sp-px-3 sp-py-1.5 sp-text-xs sp-font-medium sp-text-ink-2 sp-transition-colors hover:sp-bg-surface-1"
                 >
-                  {showImporter ? 'Visual Editor' : '{ } Import JSON'}
+                  {
+                    showImporter
+                      ? wp.i18n.__('Visual Editor', 'teil1-schema-manager')
+                      : wp.i18n.__('{ } Import JSON', 'teil1-schema-manager')
+                  }
                 </button>
               </div>
 
@@ -263,7 +295,9 @@ export default function LocalSchemaEditor({ post, onBack }) {
                       className="sp-rounded sp-border-surface-3"
                     />
                     <span className="sp-text-xs sp-text-ink-2">
-                      Override global <strong>{primaryType}</strong> schema on this page
+                      {wp.i18n.__('Override global', 'teil1-schema-manager')}{' '}
+                      <strong>{primaryType}</strong>{' '}
+                      {wp.i18n.__('schema on this page', 'teil1-schema-manager')}
                     </span>
                   </label>
 
@@ -288,7 +322,9 @@ export default function LocalSchemaEditor({ post, onBack }) {
                   {!primaryType && (
                     <div className="sp-py-8 sp-text-center">
                       <span className="sp-text-3xl">🎯</span>
-                      <p className="sp-mt-2 sp-text-sm sp-text-ink-3">Select a type above to start building</p>
+                      <p className="sp-mt-2 sp-text-sm sp-text-ink-3">
+                        {wp.i18n.__('Select a type above to start building', 'teil1-schema-manager')}
+                      </p>
                     </div>
                   )}
                 </div>
@@ -297,18 +333,48 @@ export default function LocalSchemaEditor({ post, onBack }) {
               {/* Save Bar */}
               <div className="sp-flex sp-items-center sp-justify-between sp-border-t sp-border-surface-2 sp-bg-surface-1 sp-px-6 sp-py-3">
                 <div className="sp-text-xs sp-text-ink-3">
-                  {schemas.length} schema{schemas.length !== 1 ? 's' : ''} on this page · {propCount} properties set
+                  {
+                    wp.i18n.sprintf(
+                      /* translators: %1$d: Number of schemas on the current page. */
+                      wp.i18n._n(
+                        '%1$d schema on this page',
+                        '%1$d schemas on this page',
+                        schemas.length,
+                        'teil1-schema-manager'
+                      ),
+                      schemas.length
+                    )
+                  }
+                  {' · '}
+                  {
+                    wp.i18n.sprintf(
+                      /* translators: %1$d: Number of properties set. */
+                      wp.i18n._n(
+                        '%1$d property set',
+                        '%1$d properties set',
+                        propCount,
+                        'teil1-schema-manager'
+                      ),
+                      propCount
+                    )
+                  }
                 </div>
                 <div className="sp-flex sp-items-center sp-gap-2">
                   {saveSuccess && (
-                    <span className="sp-animate-fade-in sp-text-xs sp-font-medium sp-text-green-600">✓ Saved</span>
+                    <span className="sp-animate-fade-in sp-text-xs sp-font-medium sp-text-green-600">
+                      {wp.i18n.__('✓ Saved', 'teil1-schema-manager')}
+                    </span>
                   )}
                   <button
                     onClick={handleSave}
                     disabled={saving}
                     className="sp-rounded-lg sp-bg-brand-600 sp-px-4 sp-py-1.5 sp-text-sm sp-font-medium sp-text-white sp-transition-all hover:sp-bg-brand-700 disabled:sp-opacity-50"
                   >
-                    {saving ? 'Saving…' : 'Save Changes'}
+                    {
+                      saving
+                        ? wp.i18n.__('Saving…', 'teil1-schema-manager')
+                        : wp.i18n.__('Save Changes', 'teil1-schema-manager')
+                    }
                   </button>
                 </div>
               </div>
@@ -316,12 +382,14 @@ export default function LocalSchemaEditor({ post, onBack }) {
           ) : (
             <div className="sp-flex sp-flex-col sp-items-center sp-justify-center sp-rounded-xl sp-border sp-border-dashed sp-border-surface-3 sp-bg-white/50 sp-py-16">
               <span className="sp-mb-3 sp-text-3xl">📝</span>
-              <p className="sp-mb-4 sp-text-sm sp-text-ink-3">No local schemas for this page yet</p>
+              <p className="sp-mb-4 sp-text-sm sp-text-ink-3">
+                {wp.i18n.__('No local schemas for this page yet', 'teil1-schema-manager')}
+              </p>
               <button
                 onClick={handleAddSchema}
                 className="sp-rounded-lg sp-bg-brand-600 sp-px-4 sp-py-2 sp-text-sm sp-font-medium sp-text-white sp-transition-colors hover:sp-bg-brand-700"
               >
-                + Add First Schema
+                {wp.i18n.__('+ Add First Schema', 'teil1-schema-manager')}
               </button>
             </div>
           )}
@@ -389,7 +457,7 @@ function JsonPreview({ schema, customVars = {} }) {
     <div className="sp-rounded-xl sp-border sp-border-surface-3 sp-bg-white sp-shadow-bento">
       <div className="sp-flex sp-items-center sp-justify-between sp-border-b sp-border-surface-2 sp-px-4 sp-py-3">
         <h3 className="sp-text-xs sp-font-semibold sp-uppercase sp-tracking-wider sp-text-ink-3">
-          JSON-LD Output
+          {wp.i18n.__('JSON-LD Output', 'teil1-schema-manager')}
         </h3>
         <button
           onClick={handleCopy}
@@ -404,7 +472,7 @@ function JsonPreview({ schema, customVars = {} }) {
               <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M20 6 9 17l-5-5" />
               </svg>
-              Copied
+              {wp.i18n.__('Copied', 'teil1-schema-manager')}
             </>
           ) : (
             <>
@@ -412,7 +480,7 @@ function JsonPreview({ schema, customVars = {} }) {
                 <rect x="9" y="9" width="13" height="13" rx="2" ry="2" />
                 <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
               </svg>
-              Copy
+              {wp.i18n._x('Copy', 'JSON preview button', 'teil1-schema-manager')}
             </>
           )}
         </button>

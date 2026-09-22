@@ -33,9 +33,14 @@ export default defineConfig({
     rollupOptions: {
       input: path.resolve(__dirname, 'src/main.jsx'),
       output: {
-        entryFileNames: 'app-[hash].js',
-        chunkFileNames: 'chunks/[name]-[hash].js',
-        assetFileNames: '[name]-[hash][extname]',
+        // WordPress already cache-busts these assets with T1SCHEMA_VERSION.
+        // Stable paths also let WordPress.org generate deterministic JED
+        // language-pack filenames for the admin application.
+        entryFileNames: 'app.js',
+        chunkFileNames: 'chunks/[name].js',
+        assetFileNames: ({ name }) => (
+          name?.endsWith('.css') ? 'app.css' : '[name][extname]'
+        ),
       },
     },
   },

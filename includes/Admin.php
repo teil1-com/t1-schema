@@ -67,7 +67,7 @@ class Admin {
             wp_enqueue_script(
                 't1schema-app',
                 $asset_url . $js_file,
-                [],
+                [ 'wp-i18n' ],
                 T1SCHEMA_VERSION,
                 true
             );
@@ -97,7 +97,7 @@ class Admin {
             wp_enqueue_script(
                 't1schema-app',
                 $dev_server . '/src/main.jsx',
-                [],
+                [ 'wp-i18n' ],
                 null, // phpcs:ignore WordPress.WP.EnqueuedResourceParameters.MissingVersion
                 true
             );
@@ -118,8 +118,15 @@ class Admin {
             'adminUrl'  => admin_url(),
             'pluginUrl' => T1SCHEMA_URL,
             'version'   => T1SCHEMA_VERSION,
+            'locale'    => determine_locale(),
             'siteName'  => get_bloginfo( 'name' ),
             'siteUrl'   => home_url( '/' ),
         ] );
+
+        wp_set_script_translations(
+            't1schema-app',
+            'teil1-schema-manager',
+            T1SCHEMA_PATH . 'languages'
+        );
     }
 }

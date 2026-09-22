@@ -246,7 +246,7 @@ class RestApi {
         $row = $wpdb->get_row( $wpdb->prepare( "SELECT * FROM {$table} WHERE id = %d", $id ), ARRAY_A ); // phpcs:ignore
 
         if ( ! $row ) {
-            return new \WP_REST_Response( [ 'message' => 'Schema not found.' ], 404 );
+            return new \WP_REST_Response( [ 'message' => __( 'Schema not found.', 'teil1-schema-manager' ) ], 404 );
         }
 
         $row['schema_data'] = json_decode( $row['schema_data'], true );
@@ -265,7 +265,14 @@ class RestApi {
         $status      = sanitize_text_field( $body['status'] ?? 'active' );
 
         if ( empty( $schema_type ) || empty( $schema_data ) ) {
-            return new \WP_REST_Response( [ 'message' => 'schema_type and schema_data are required.' ], 400 );
+            return new \WP_REST_Response( [
+                'message' => sprintf(
+                    /* translators: 1: First required REST field name; 2: Second required REST field name. */
+                    __( '%1$s and %2$s are required.', 'teil1-schema-manager' ),
+                    'schema_type',
+                    'schema_data'
+                ),
+            ], 400 );
         }
 
         $result = $wpdb->insert( $table, [
@@ -275,7 +282,7 @@ class RestApi {
         ], [ '%s', '%s', '%s' ] );
 
         if ( false === $result ) {
-            return new \WP_REST_Response( [ 'message' => 'Failed to create schema.' ], 500 );
+            return new \WP_REST_Response( [ 'message' => __( 'Failed to create schema.', 'teil1-schema-manager' ) ], 500 );
         }
 
         return new \WP_REST_Response( [
@@ -293,7 +300,7 @@ class RestApi {
 
         $existing = $wpdb->get_row( $wpdb->prepare( "SELECT id FROM {$table} WHERE id = %d", $id ) ); // phpcs:ignore
         if ( ! $existing ) {
-            return new \WP_REST_Response( [ 'message' => 'Schema not found.' ], 404 );
+            return new \WP_REST_Response( [ 'message' => __( 'Schema not found.', 'teil1-schema-manager' ) ], 404 );
         }
 
         $body   = $request->get_json_params();
@@ -314,7 +321,7 @@ class RestApi {
         }
 
         if ( empty( $update ) ) {
-            return new \WP_REST_Response( [ 'message' => 'No fields to update.' ], 400 );
+            return new \WP_REST_Response( [ 'message' => __( 'No fields to update.', 'teil1-schema-manager' ) ], 400 );
         }
 
         $wpdb->update( $table, $update, [ 'id' => $id ], $format, [ '%d' ] );
@@ -330,7 +337,7 @@ class RestApi {
         $deleted = $wpdb->delete( $table, [ 'id' => $id ], [ '%d' ] );
 
         if ( ! $deleted ) {
-            return new \WP_REST_Response( [ 'message' => 'Schema not found.' ], 404 );
+            return new \WP_REST_Response( [ 'message' => __( 'Schema not found.', 'teil1-schema-manager' ) ], 404 );
         }
 
         return new \WP_REST_Response( [ 'deleted' => true ], 200 );
@@ -344,7 +351,7 @@ class RestApi {
         $post_id = (int) $request->get_param( 'post_id' );
 
         if ( ! get_post( $post_id ) ) {
-            return new \WP_REST_Response( [ 'message' => 'Post not found.' ], 404 );
+            return new \WP_REST_Response( [ 'message' => __( 'Post not found.', 'teil1-schema-manager' ) ], 404 );
         }
 
         $raw     = get_post_meta( $post_id, '_t1schema_local', true );
@@ -361,14 +368,20 @@ class RestApi {
         $post_id = (int) $request->get_param( 'post_id' );
 
         if ( ! get_post( $post_id ) ) {
-            return new \WP_REST_Response( [ 'message' => 'Post not found.' ], 404 );
+            return new \WP_REST_Response( [ 'message' => __( 'Post not found.', 'teil1-schema-manager' ) ], 404 );
         }
 
         $body    = $request->get_json_params();
         $schemas = $body['schemas'] ?? [];
 
         if ( ! is_array( $schemas ) ) {
-            return new \WP_REST_Response( [ 'message' => 'schemas must be an array.' ], 400 );
+            return new \WP_REST_Response( [
+                'message' => sprintf(
+                    /* translators: %s: schemas REST field name. */
+                    __( '%1$s must be an array.', 'teil1-schema-manager' ),
+                    'schemas'
+                ),
+            ], 400 );
         }
 
         update_post_meta( $post_id, '_t1schema_local', wp_json_encode( $schemas ) );
@@ -455,7 +468,7 @@ class RestApi {
         $_post   = get_post( $post_id );
         
         if ( ! $_post ) {
-            return new \WP_REST_Response( [ 'message' => 'Post not found.' ], 404 );
+            return new \WP_REST_Response( [ 'message' => __( 'Post not found.', 'teil1-schema-manager' ) ], 404 );
         }
 
         $raw     = get_post_meta( $post_id, '_t1schema_local', true );
@@ -649,7 +662,7 @@ class RestApi {
 
     public function get_types( \WP_REST_Request $request ): \WP_REST_Response {
         $registry = new SchemaRegistry();
-        return new \WP_REST_Response( $registry->get_types(), 200 );
+        return new \WP_REST_Response( $registry->get_localized_types(), 200 );
     }
 
     public function parse_jsonld( \WP_REST_Request $request ): \WP_REST_Response {
@@ -657,13 +670,23 @@ class RestApi {
         $raw  = $body['jsonld'] ?? '';
 
         if ( empty( $raw ) || ! is_string( $raw ) ) {
-            return new \WP_REST_Response( [ 'message' => 'jsonld string is required.' ], 400 );
+            return new \WP_REST_Response( [
+                'message' => sprintf(
+                    /* translators: %s: jsonld REST field name. */
+                    __( '%1$s string is required.', 'teil1-schema-manager' ),
+                    'jsonld'
+                ),
+            ], 400 );
         }
 
         $decoded = json_decode( $raw, true );
         if ( json_last_error() !== JSON_ERROR_NONE ) {
             return new \WP_REST_Response( [
-                'message' => 'Invalid JSON: ' . json_last_error_msg(),
+                'message' => sprintf(
+                    /* translators: %1$s: JSON parser error message. */
+                    __( 'Invalid JSON: %1$s', 'teil1-schema-manager' ),
+                    json_last_error_msg()
+                ),
                 'valid'   => false,
             ], 400 );
         }
@@ -731,7 +754,7 @@ class RestApi {
         $body = $request->get_json_params();
 
         if ( ! is_array( $body ) ) {
-            return new \WP_REST_Response( [ 'error' => 'Expected an object of key-value pairs.' ], 400 );
+            return new \WP_REST_Response( [ 'error' => __( 'Expected an object of key-value pairs.', 'teil1-schema-manager' ) ], 400 );
         }
 
         // Sanitize: only string keys/values, strip {{}} from keys.
@@ -776,7 +799,7 @@ class RestApi {
 
         $row = $wpdb->get_row( $wpdb->prepare( "SELECT * FROM {$table} WHERE id = %d", $id ), ARRAY_A ); // phpcs:ignore
         if ( ! $row ) {
-            return new \WP_REST_Response( [ 'message' => 'Rule not found.' ], 404 );
+            return new \WP_REST_Response( [ 'message' => __( 'Rule not found.', 'teil1-schema-manager' ) ], 404 );
         }
 
         $row['id']          = (int) $row['id'];
@@ -800,7 +823,14 @@ class RestApi {
         $status      = sanitize_text_field( $body['status'] ?? 'active' );
 
         if ( empty( $schema_type ) || empty( $conditions ) ) {
-            return new \WP_REST_Response( [ 'message' => 'schema_type and conditions are required.' ], 400 );
+            return new \WP_REST_Response( [
+                'message' => sprintf(
+                    /* translators: 1: First required REST field name; 2: Second required REST field name. */
+                    __( '%1$s and %2$s are required.', 'teil1-schema-manager' ),
+                    'schema_type',
+                    'conditions'
+                ),
+            ], 400 );
         }
 
         // Auto-generate rule name if not provided.
@@ -818,7 +848,7 @@ class RestApi {
         ], [ '%s', '%s', '%s', '%s', '%d', '%s' ] );
 
         if ( false === $result ) {
-            return new \WP_REST_Response( [ 'message' => 'Failed to create rule.' ], 500 );
+            return new \WP_REST_Response( [ 'message' => __( 'Failed to create rule.', 'teil1-schema-manager' ) ], 500 );
         }
 
         return new \WP_REST_Response( [
@@ -839,7 +869,7 @@ class RestApi {
 
         $existing = $wpdb->get_row( $wpdb->prepare( "SELECT id FROM {$table} WHERE id = %d", $id ) ); // phpcs:ignore
         if ( ! $existing ) {
-            return new \WP_REST_Response( [ 'message' => 'Rule not found.' ], 404 );
+            return new \WP_REST_Response( [ 'message' => __( 'Rule not found.', 'teil1-schema-manager' ) ], 404 );
         }
 
         $body   = $request->get_json_params();
@@ -872,7 +902,7 @@ class RestApi {
         }
 
         if ( empty( $update ) ) {
-            return new \WP_REST_Response( [ 'message' => 'No fields to update.' ], 400 );
+            return new \WP_REST_Response( [ 'message' => __( 'No fields to update.', 'teil1-schema-manager' ) ], 400 );
         }
 
         $wpdb->update( $table, $update, [ 'id' => $id ], $format, [ '%d' ] );
@@ -888,7 +918,7 @@ class RestApi {
         $deleted = $wpdb->delete( $table, [ 'id' => $id ], [ '%d' ] );
 
         if ( ! $deleted ) {
-            return new \WP_REST_Response( [ 'message' => 'Rule not found.' ], 404 );
+            return new \WP_REST_Response( [ 'message' => __( 'Rule not found.', 'teil1-schema-manager' ) ], 404 );
         }
 
         return new \WP_REST_Response( [ 'deleted' => true ], 200 );
@@ -903,12 +933,22 @@ class RestApi {
             $ct = $c['type'] ?? '';
             $cv = $c['value'] ?? '';
             if ( $cv ) {
-                $parts[] = "{$ct}:{$cv}";
+                $parts[] = sprintf(
+                    /* translators: 1: condition type identifier; 2: condition value. */
+                    _x( '%1$s:%2$s', 'generated rule condition', 'teil1-schema-manager' ),
+                    $ct,
+                    $cv
+                );
             } else {
                 $parts[] = $ct;
             }
         }
-        return "{$type} → " . implode( ' + ', $parts );
+        return sprintf(
+            /* translators: 1: Schema.org type identifier; 2: rule conditions summary. */
+            _x( '%1$s → %2$s', 'generated rule name', 'teil1-schema-manager' ),
+            $type,
+            implode( ' + ', $parts )
+        );
     }
 
     // =========================================================================
@@ -940,7 +980,7 @@ class RestApi {
         $front_page_id = (int) get_option( 'page_on_front' );
         $structure[] = [
             'context'  => 'front_page',
-            'label'    => 'Front Page',
+            'label'    => _x( 'Front Page', 'site structure label', 'teil1-schema-manager' ),
             'icon'     => '🏠',
             'url'      => home_url( '/' ),
             'post_id'  => $front_page_id ?: null,
@@ -952,7 +992,7 @@ class RestApi {
         $blog_page_id = (int) get_option( 'page_for_posts' );
         $structure[] = [
             'context'  => 'blog',
-            'label'    => 'Blog Index',
+            'label'    => _x( 'Blog Index', 'site structure label', 'teil1-schema-manager' ),
             'icon'     => '📝',
             'url'      => get_permalink( $blog_page_id ) ?: home_url( '/' ),
             'post_id'  => $blog_page_id ?: null,
@@ -981,7 +1021,11 @@ class RestApi {
                 $archive_url = get_post_type_archive_link( $slug );
                 $entry['archive'] = [
                     'context' => "archive:{$slug}",
-                    'label'   => "{$pt->labels->name} Archive",
+                    'label'   => sprintf(
+                        /* translators: %s: localized post type label supplied by WordPress. */
+                        _x( '%1$s Archive', 'site structure label', 'teil1-schema-manager' ),
+                        $pt->labels->name
+                    ),
                     'url'     => $archive_url ?: '',
                     'rules'   => $this->find_rules_for_context( $all_rules, [ 'type' => 'archive', 'value' => $slug ] ),
                 ];
@@ -1022,7 +1066,7 @@ class RestApi {
         // Special pages.
         $structure[] = [
             'context'  => 'author',
-            'label'    => 'Author Archives',
+            'label'    => _x( 'Author Archives', 'site structure label', 'teil1-schema-manager' ),
             'icon'     => '👤',
             'rules'    => $this->find_rules_for_context( $all_rules, [ 'type' => 'author' ] ),
             'children' => [],
@@ -1030,7 +1074,7 @@ class RestApi {
 
         $structure[] = [
             'context'  => 'search',
-            'label'    => 'Search Results',
+            'label'    => _x( 'Search Results', 'site structure label', 'teil1-schema-manager' ),
             'icon'     => '🔍',
             'rules'    => $this->find_rules_for_context( $all_rules, [ 'type' => 'search' ] ),
             'children' => [],
@@ -1169,7 +1213,8 @@ class RestApi {
 
         // --- Diversity (10%) ---
         $max_diversity = min( count( $type_defs ), 8 ); // Cap at 8 types for 100%.
-        $diversity_pct = $max_diversity > 0 ? min( ( count( $types_used ) / $max_diversity ) * 100, 100 ) : 0;
+        $types_used_count = count( $types_used );
+        $diversity_pct    = $max_diversity > 0 ? min( ( $types_used_count / $max_diversity ) * 100, 100 ) : 0;
 
         // Weighted score.
         $score = round(
@@ -1191,10 +1236,45 @@ class RestApi {
             'score'     => $score,
             'grade'     => $grade,
             'breakdown' => [
-                'coverage'  => [ 'score' => round( $coverage_pct ), 'weight' => 40, 'detail' => "{$covered_contexts}/{$total_contexts} contexts" ],
-                'health'    => [ 'score' => round( $health_pct ),   'weight' => 30, 'detail' => "{$valid_count}/{$total_count} schemas valid" ],
-                'depth'     => [ 'score' => round( $depth_pct ),    'weight' => 20, 'detail' => "{$filled_props}/{$total_props} properties" ],
-                'diversity' => [ 'score' => round( $diversity_pct ), 'weight' => 10, 'detail' => count( $types_used ) . ' types used' ],
+                'coverage'  => [
+                    'score'  => round( $coverage_pct ),
+                    'weight' => 40,
+                    'detail' => sprintf(
+                        /* translators: 1: covered site contexts; 2: total site contexts. */
+                        _n( '%1$d/%2$d context', '%1$d/%2$d contexts', $total_contexts, 'teil1-schema-manager' ),
+                        $covered_contexts,
+                        $total_contexts
+                    ),
+                ],
+                'health'    => [
+                    'score'  => round( $health_pct ),
+                    'weight' => 30,
+                    'detail' => sprintf(
+                        /* translators: 1: valid schemas; 2: total schemas. */
+                        _n( '%1$d/%2$d schema valid', '%1$d/%2$d schemas valid', $total_count, 'teil1-schema-manager' ),
+                        $valid_count,
+                        $total_count
+                    ),
+                ],
+                'depth'     => [
+                    'score'  => round( $depth_pct ),
+                    'weight' => 20,
+                    'detail' => sprintf(
+                        /* translators: 1: filled schema properties; 2: total recommended schema properties. */
+                        _n( '%1$d/%2$d property', '%1$d/%2$d properties', $total_props, 'teil1-schema-manager' ),
+                        $filled_props,
+                        $total_props
+                    ),
+                ],
+                'diversity' => [
+                    'score'  => round( $diversity_pct ),
+                    'weight' => 10,
+                    'detail' => sprintf(
+                        /* translators: %1$d: Number of Schema.org types used. */
+                        _n( '%1$d type used', '%1$d types used', $types_used_count, 'teil1-schema-manager' ),
+                        $types_used_count
+                    ),
+                ],
             ],
             'schemas_total' => $total_count,
             'types_used'    => array_keys( $types_used ),
@@ -1242,7 +1322,7 @@ class RestApi {
         }
 
         if ( ! $template ) {
-            return new \WP_REST_Response( [ 'error' => 'Unknown template key' ], 404 );
+            return new \WP_REST_Response( [ 'error' => __( 'Unknown template key', 'teil1-schema-manager' ) ], 404 );
         }
 
         $wpdb->insert( $r_table, [
@@ -1261,8 +1341,16 @@ class RestApi {
         return [
             [
                 'key'         => 'article_posts',
-                'name'        => 'Article → All Blog Posts',
-                'description' => 'Adds Article schema with headline, date, author, and image to every blog post.',
+                'name'        => sprintf(
+                    /* translators: %1$s: Schema.org type identifier. */
+                    _x( '%1$s → All Blog Posts', 'recommended rule name', 'teil1-schema-manager' ),
+                    'Article'
+                ),
+                'description' => sprintf(
+                    /* translators: %1$s: Schema.org type identifier. */
+                    __( 'Adds %1$s schema with headline, date, author, and image to every blog post.', 'teil1-schema-manager' ),
+                    'Article'
+                ),
                 'schema_type' => 'Article',
                 'conditions'  => [ [ 'type' => 'singular', 'value' => 'post' ] ],
                 'schema_data' => [
@@ -1278,8 +1366,16 @@ class RestApi {
             ],
             [
                 'key'         => 'webpage_pages',
-                'name'        => 'WebPage → All Pages',
-                'description' => 'Adds WebPage schema with name and URL to every static page.',
+                'name'        => sprintf(
+                    /* translators: %1$s: Schema.org type identifier. */
+                    _x( '%1$s → All Pages', 'recommended rule name', 'teil1-schema-manager' ),
+                    'WebPage'
+                ),
+                'description' => sprintf(
+                    /* translators: %1$s: Schema.org type identifier. */
+                    __( 'Adds %1$s schema with name and URL to every static page.', 'teil1-schema-manager' ),
+                    'WebPage'
+                ),
                 'schema_type' => 'WebPage',
                 'conditions'  => [ [ 'type' => 'singular', 'value' => 'page' ] ],
                 'schema_data' => [
@@ -1293,8 +1389,16 @@ class RestApi {
             ],
             [
                 'key'         => 'breadcrumb_singulars',
-                'name'        => 'BreadcrumbList → All Singulars',
-                'description' => 'Adds BreadcrumbList schema to every post and page for enhanced SERP display.',
+                'name'        => sprintf(
+                    /* translators: %1$s: Schema.org type identifier. */
+                    _x( '%1$s → All Singulars', 'recommended rule name', 'teil1-schema-manager' ),
+                    'BreadcrumbList'
+                ),
+                'description' => sprintf(
+                    /* translators: %1$s: Schema.org type identifier. */
+                    __( 'Adds %1$s schema to every post and page for enhanced SERP display.', 'teil1-schema-manager' ),
+                    'BreadcrumbList'
+                ),
                 'schema_type' => 'BreadcrumbList',
                 'conditions'  => [ [ 'type' => 'singular', 'value' => 'post' ] ],
                 'schema_data' => [
@@ -1309,8 +1413,16 @@ class RestApi {
             ],
             [
                 'key'         => 'collection_archives',
-                'name'        => 'CollectionPage → Post Archives',
-                'description' => 'Adds CollectionPage schema to the blog archive and category pages.',
+                'name'        => sprintf(
+                    /* translators: %1$s: Schema.org type identifier. */
+                    _x( '%1$s → Post Archives', 'recommended rule name', 'teil1-schema-manager' ),
+                    'CollectionPage'
+                ),
+                'description' => sprintf(
+                    /* translators: %1$s: Schema.org type identifier. */
+                    __( 'Adds %1$s schema to the blog archive and category pages.', 'teil1-schema-manager' ),
+                    'CollectionPage'
+                ),
                 'schema_type' => 'CollectionPage',
                 'conditions'  => [ [ 'type' => 'archive', 'value' => 'post' ] ],
                 'schema_data' => [
@@ -1323,14 +1435,26 @@ class RestApi {
             ],
             [
                 'key'         => 'search_action',
-                'name'        => 'SearchResultsPage → Search',
-                'description' => 'Adds SearchResultsPage schema to the WordPress search results page.',
+                'name'        => sprintf(
+                    /* translators: %1$s: Schema.org type identifier. */
+                    _x( '%1$s → Search', 'recommended rule name', 'teil1-schema-manager' ),
+                    'SearchResultsPage'
+                ),
+                'description' => sprintf(
+                    /* translators: %1$s: Schema.org type identifier. WordPress is a brand name. */
+                    __( 'Adds %1$s schema to the WordPress search results page.', 'teil1-schema-manager' ),
+                    'SearchResultsPage'
+                ),
                 'schema_type' => 'SearchResultsPage',
                 'conditions'  => [ [ 'type' => 'search', 'value' => '' ] ],
                 'schema_data' => [
                     '@context' => 'https://schema.org',
                     '@type'    => 'SearchResultsPage',
-                    'name'     => 'Search: {{search_query}}',
+                    'name'     => sprintf(
+                        /* translators: %s: dynamic {{search_query}} variable token; do not translate it. */
+                        _x( 'Search: %1$s', 'SearchResultsPage schema name', 'teil1-schema-manager' ),
+                        '{{search_query}}'
+                    ),
                     'url'      => '{{current_url}}',
                 ],
                 'priority' => 10,

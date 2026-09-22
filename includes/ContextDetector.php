@@ -120,12 +120,12 @@ class ContextDetector {
         $conditions = [];
 
         // Template-based.
-        $conditions[] = [ 'type' => 'front_page', 'label' => 'Front Page', 'group' => 'Template' ];
-        $conditions[] = [ 'type' => 'search',     'label' => 'Search Results', 'group' => 'Template' ];
-        $conditions[] = [ 'type' => '404',         'label' => '404 Page', 'group' => 'Template' ];
-        $conditions[] = [ 'type' => 'date',        'label' => 'Date Archives', 'group' => 'Template' ];
-        $conditions[] = [ 'type' => 'author',      'label' => 'All Author Archives', 'group' => 'Template' ];
-        $conditions[] = [ 'type' => 'blog',        'label' => 'Blog Index', 'group' => 'Template' ];
+        $conditions[] = [ 'type' => 'front_page', 'label' => _x( 'Front Page', 'condition label', 'teil1-schema-manager' ), 'group' => _x( 'Template', 'condition group', 'teil1-schema-manager' ) ];
+        $conditions[] = [ 'type' => 'search',     'label' => _x( 'Search Results', 'condition label', 'teil1-schema-manager' ), 'group' => _x( 'Template', 'condition group', 'teil1-schema-manager' ) ];
+        $conditions[] = [ 'type' => '404',         'label' => _x( '404 Page', 'condition label', 'teil1-schema-manager' ), 'group' => _x( 'Template', 'condition group', 'teil1-schema-manager' ) ];
+        $conditions[] = [ 'type' => 'date',        'label' => _x( 'Date Archives', 'condition label', 'teil1-schema-manager' ), 'group' => _x( 'Template', 'condition group', 'teil1-schema-manager' ) ];
+        $conditions[] = [ 'type' => 'author',      'label' => _x( 'All Author Archives', 'condition label', 'teil1-schema-manager' ), 'group' => _x( 'Template', 'condition group', 'teil1-schema-manager' ) ];
+        $conditions[] = [ 'type' => 'blog',        'label' => _x( 'Blog Index', 'condition label', 'teil1-schema-manager' ), 'group' => _x( 'Template', 'condition group', 'teil1-schema-manager' ) ];
 
         // Singular post types.
         $post_types = get_post_types( [ 'public' => true ], 'objects' );
@@ -136,8 +136,12 @@ class ContextDetector {
             $conditions[] = [
                 'type'  => 'singular',
                 'value' => $slug,
-                'label' => "All {$pt->labels->name} (single)",
-                'group' => 'Single Content',
+                'label' => sprintf(
+                    /* translators: %s: localized post type label supplied by WordPress. */
+                    _x( 'All %1$s (single)', 'condition label', 'teil1-schema-manager' ),
+                    $pt->labels->name
+                ),
+                'group' => _x( 'Single Content', 'condition group', 'teil1-schema-manager' ),
             ];
         }
 
@@ -147,8 +151,12 @@ class ContextDetector {
             $conditions[] = [
                 'type'  => 'archive',
                 'value' => $slug,
-                'label' => "{$pt->labels->name} Archive",
-                'group' => 'Archives',
+                'label' => sprintf(
+                    /* translators: %s: localized post type label supplied by WordPress. */
+                    _x( '%1$s Archive', 'condition label', 'teil1-schema-manager' ),
+                    $pt->labels->name
+                ),
+                'group' => _x( 'Archives', 'condition group', 'teil1-schema-manager' ),
             ];
         }
 
@@ -158,8 +166,12 @@ class ContextDetector {
             $conditions[] = [
                 'type'  => 'taxonomy',
                 'value' => $slug,
-                'label' => "All {$tax->labels->name} Archives",
-                'group' => 'Taxonomies',
+                'label' => sprintf(
+                    /* translators: %s: localized taxonomy label supplied by WordPress. */
+                    _x( 'All %1$s Archives', 'condition label', 'teil1-schema-manager' ),
+                    $tax->labels->name
+                ),
+                'group' => _x( 'Taxonomies', 'condition group', 'teil1-schema-manager' ),
             ];
 
             // Individual terms.
@@ -174,8 +186,13 @@ class ContextDetector {
                     $conditions[] = [
                         'type'  => 'taxonomy_term',
                         'value' => "{$slug}:{$term->slug}",
-                        'label' => "{$tax->labels->singular_name}: {$term->name}",
-                        'group' => 'Taxonomies',
+                        'label' => sprintf(
+                            /* translators: 1: localized taxonomy label supplied by WordPress; 2: taxonomy term name. */
+                            _x( '%1$s: %2$s', 'condition label', 'teil1-schema-manager' ),
+                            $tax->labels->singular_name,
+                            $term->name
+                        ),
+                        'group' => _x( 'Taxonomies', 'condition group', 'teil1-schema-manager' ),
                     ];
                 }
             }
@@ -187,8 +204,12 @@ class ContextDetector {
             $conditions[] = [
                 'type'  => 'author_specific',
                 'value' => $author->user_nicename,
-                'label' => "Author: {$author->display_name}",
-                'group' => 'Authors',
+                'label' => sprintf(
+                    /* translators: %s: author display name. */
+                    _x( 'Author: %1$s', 'condition label', 'teil1-schema-manager' ),
+                    $author->display_name
+                ),
+                'group' => _x( 'Authors', 'condition group', 'teil1-schema-manager' ),
             ];
         }
 
@@ -208,8 +229,12 @@ class ContextDetector {
                 $conditions[] = [
                     'type'  => 'child_of_page',
                     'value' => (string) $page->ID,
-                    'label' => "Children of: {$page->post_title}",
-                    'group' => 'Page Hierarchy',
+                    'label' => sprintf(
+                        /* translators: %s: parent page title. */
+                        _x( 'Children of: %1$s', 'condition label', 'teil1-schema-manager' ),
+                        $page->post_title
+                    ),
+                    'group' => _x( 'Page Hierarchy', 'condition group', 'teil1-schema-manager' ),
                 ];
 
                 // Also add second-level parents (e.g. /services/seo/ children).
@@ -233,8 +258,13 @@ class ContextDetector {
                         $conditions[] = [
                             'type'  => 'child_of_page',
                             'value' => (string) $child->ID,
-                            'label' => "Children of: {$page->post_title} → {$child->post_title}",
-                            'group' => 'Page Hierarchy',
+                            'label' => sprintf(
+                                /* translators: 1: top-level parent page title; 2: child page title. */
+                                _x( 'Children of: %1$s → %2$s', 'condition label', 'teil1-schema-manager' ),
+                                $page->post_title,
+                                $child->post_title
+                            ),
+                            'group' => _x( 'Page Hierarchy', 'condition group', 'teil1-schema-manager' ),
                         ];
                     }
                 }

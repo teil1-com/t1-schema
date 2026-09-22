@@ -37,13 +37,22 @@ export default function PageBrowser({ onEditLocal }) {
       {/* Header */}
       <div className="sp-flex sp-items-center sp-justify-between">
         <div>
-          <h2 className="sp-text-base sp-font-semibold sp-text-ink-0">Pages & Posts</h2>
+          <h2 className="sp-text-base sp-font-semibold sp-text-ink-0">
+            {wp.i18n.__('Pages & Posts', 'teil1-schema-manager')}
+          </h2>
           <p className="sp-text-sm sp-text-ink-3">
-            Manage local schemas for individual pages — these override global schemas per type
+            {wp.i18n.__(
+              'Manage local schemas for individual pages — these override global schemas per type',
+              'teil1-schema-manager'
+            )}
           </p>
         </div>
         <span className="sp-rounded-full sp-bg-surface-2 sp-px-2.5 sp-py-0.5 sp-text-xs sp-font-medium sp-text-ink-2">
-          {total} total
+          {wp.i18n.sprintf(
+            /* translators: %1$d: Total number of pages and posts. */
+            wp.i18n._n('%1$d item total', '%1$d items total', total, 'teil1-schema-manager'),
+            total
+          )}
         </span>
       </div>
 
@@ -58,7 +67,7 @@ export default function PageBrowser({ onEditLocal }) {
               type="text"
               value={searchInput}
               onChange={(e) => setSearchInput(e.target.value)}
-              placeholder="Search pages…"
+              placeholder={wp.i18n.__('Search pages…', 'teil1-schema-manager')}
               className="sp-w-full sp-rounded-lg sp-border sp-border-surface-3 sp-bg-surface-1 sp-py-2 sp-pl-9 sp-pr-3 sp-text-sm sp-outline-none sp-transition-colors focus:sp-border-brand-400 focus:sp-bg-white"
             />
           </div>
@@ -66,7 +75,7 @@ export default function PageBrowser({ onEditLocal }) {
             type="submit"
             className="sp-rounded-lg sp-bg-brand-600 sp-px-3 sp-py-2 sp-text-sm sp-font-medium sp-text-white sp-transition-colors hover:sp-bg-brand-700"
           >
-            Search
+            {wp.i18n.__('Search', 'teil1-schema-manager')}
           </button>
         </form>
 
@@ -76,9 +85,9 @@ export default function PageBrowser({ onEditLocal }) {
             onChange={(e) => { setFilter(e.target.value); setPage(1); }}
             className="sp-rounded-lg sp-border sp-border-surface-3 sp-bg-surface-1 sp-px-3 sp-py-2 sp-text-sm sp-text-ink-1 sp-outline-none"
           >
-            <option value="">All pages</option>
-            <option value="with_schema">With schema</option>
-            <option value="without_schema">Without schema</option>
+            <option value="">{wp.i18n.__('All pages', 'teil1-schema-manager')}</option>
+            <option value="with_schema">{wp.i18n.__('With schema', 'teil1-schema-manager')}</option>
+            <option value="without_schema">{wp.i18n.__('Without schema', 'teil1-schema-manager')}</option>
           </select>
 
           <select
@@ -86,7 +95,7 @@ export default function PageBrowser({ onEditLocal }) {
             onChange={(e) => { setPostType(e.target.value); setPage(1); }}
             className="sp-rounded-lg sp-border sp-border-surface-3 sp-bg-surface-1 sp-px-3 sp-py-2 sp-text-sm sp-text-ink-1 sp-outline-none"
           >
-            <option value="">All types</option>
+            <option value="">{wp.i18n.__('All types', 'teil1-schema-manager')}</option>
             {postTypes.map((pt) => (
               <option key={pt.slug} value={pt.slug}>
                 {pt.label} ({pt.count})
@@ -99,12 +108,18 @@ export default function PageBrowser({ onEditLocal }) {
       {/* Posts List */}
       {isLoading ? (
         <div className="sp-flex sp-items-center sp-justify-center sp-py-16">
-          <div className="sp-h-6 sp-w-6 sp-animate-spin sp-rounded-full sp-border-2 sp-border-brand-200 sp-border-t-brand-600" />
+          <div
+            role="status"
+            aria-label={wp.i18n.__('Loading pages and posts…', 'teil1-schema-manager')}
+            className="sp-h-6 sp-w-6 sp-animate-spin sp-rounded-full sp-border-2 sp-border-brand-200 sp-border-t-brand-600"
+          />
         </div>
       ) : posts.length === 0 ? (
         <div className="sp-flex sp-flex-col sp-items-center sp-justify-center sp-rounded-xl sp-border sp-border-dashed sp-border-surface-3 sp-bg-white/50 sp-py-16">
           <span className="sp-mb-2 sp-text-3xl">🔍</span>
-          <p className="sp-text-sm sp-text-ink-3">No posts found matching your criteria</p>
+          <p className="sp-text-sm sp-text-ink-3">
+            {wp.i18n.__('No posts found matching your criteria', 'teil1-schema-manager')}
+          </p>
         </div>
       ) : (
         <div className="sp-space-y-2">
@@ -118,7 +133,12 @@ export default function PageBrowser({ onEditLocal }) {
       {totalPages > 1 && (
         <div className="sp-flex sp-items-center sp-justify-between sp-rounded-xl sp-border sp-border-surface-3 sp-bg-white sp-px-4 sp-py-3 sp-shadow-bento">
           <span className="sp-text-xs sp-text-ink-3">
-            Page {page} of {totalPages}
+            {wp.i18n.sprintf(
+              /* translators: %1$d: Current page number, %2$d: Total number of pages. */
+              wp.i18n.__('Page %1$d of %2$d', 'teil1-schema-manager'),
+              page,
+              totalPages
+            )}
           </span>
           <div className="sp-flex sp-gap-1">
             <button
@@ -126,14 +146,14 @@ export default function PageBrowser({ onEditLocal }) {
               disabled={page <= 1}
               className="sp-rounded-lg sp-border sp-border-surface-3 sp-px-3 sp-py-1.5 sp-text-xs sp-font-medium sp-text-ink-2 sp-transition-colors hover:sp-bg-surface-1 disabled:sp-opacity-40"
             >
-              ← Prev
+              {wp.i18n.__('← Prev', 'teil1-schema-manager')}
             </button>
             <button
               onClick={() => setPage((p) => Math.min(totalPages, p + 1))}
               disabled={page >= totalPages}
               className="sp-rounded-lg sp-border sp-border-surface-3 sp-px-3 sp-py-1.5 sp-text-xs sp-font-medium sp-text-ink-2 sp-transition-colors hover:sp-bg-surface-1 disabled:sp-opacity-40"
             >
-              Next →
+              {wp.i18n.__('Next →', 'teil1-schema-manager')}
             </button>
           </div>
         </div>
@@ -183,7 +203,11 @@ function PostRow({ post, onEdit }) {
           {hasSchema ? (
             <>
               <span className="sp-rounded-full sp-bg-green-100 sp-px-2 sp-py-0.5 sp-text-2xs sp-font-semibold sp-text-green-700">
-                {post.schema_count} schema{post.schema_count !== 1 ? 's' : ''}
+                {wp.i18n.sprintf(
+                  /* translators: %1$d: Number of schemas. */
+                  wp.i18n._n('%1$d schema', '%1$d schemas', post.schema_count, 'teil1-schema-manager'),
+                  post.schema_count
+                )}
               </span>
               <div className="sp-flex sp-gap-1">
                 {post.schema_types.map((type, i) => (
@@ -194,7 +218,9 @@ function PostRow({ post, onEdit }) {
               </div>
             </>
           ) : (
-            <span className="sp-text-2xs sp-text-ink-4">No local schema</span>
+            <span className="sp-text-2xs sp-text-ink-4">
+              {wp.i18n.__('No local schema', 'teil1-schema-manager')}
+            </span>
           )}
         </div>
       </div>
@@ -204,7 +230,9 @@ function PostRow({ post, onEdit }) {
         onClick={onEdit}
         className="sp-ml-4 sp-rounded-lg sp-border sp-border-surface-3 sp-bg-surface-1 sp-px-3 sp-py-1.5 sp-text-xs sp-font-medium sp-text-ink-1 sp-opacity-0 sp-transition-all group-hover:sp-opacity-100 hover:sp-bg-brand-50 hover:sp-text-brand-600 hover:sp-border-brand-200"
       >
-        {hasSchema ? 'Edit Schema' : '+ Add Schema'}
+        {hasSchema
+          ? wp.i18n.__('Edit Schema', 'teil1-schema-manager')
+          : wp.i18n.__('+ Add Schema', 'teil1-schema-manager')}
       </button>
     </div>
   );

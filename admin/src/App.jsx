@@ -86,11 +86,11 @@ export default function App() {
   };
 
   const tabs = [
-    { id: TABS.DASHBOARD, label: 'Globals', icon: '📊' },
-    { id: TABS.RULES, label: 'Rules', icon: '🎯' },
-    { id: TABS.STRUCTURE, label: 'Site Map', icon: '🗺️' },
-    { id: TABS.PAGES, label: 'Pages', icon: '📄' },
-    { id: TABS.HELP, label: 'Help', icon: '📖' },
+    { id: TABS.DASHBOARD, label: wp.i18n.__( 'Globals', 'teil1-schema-manager' ), icon: '📊' },
+    { id: TABS.RULES, label: wp.i18n.__( 'Rules', 'teil1-schema-manager' ), icon: '🎯' },
+    { id: TABS.STRUCTURE, label: wp.i18n.__( 'Site Map', 'teil1-schema-manager' ), icon: '🗺️' },
+    { id: TABS.PAGES, label: wp.i18n.__( 'Pages', 'teil1-schema-manager' ), icon: '📄' },
+    { id: TABS.HELP, label: wp.i18n.__( 'Help', 'teil1-schema-manager' ), icon: '📖' },
   ];
 
   return (
@@ -106,7 +106,7 @@ export default function App() {
           <div>
             <h1 className="sp-text-lg sp-font-semibold sp-text-ink-0">Teil1 Schema Manager</h1>
             <p className="sp-text-2xs sp-font-medium sp-uppercase sp-tracking-wider sp-text-ink-3">
-              Structured Data Engine
+              {wp.i18n.__( 'Structured Data Engine', 'teil1-schema-manager' )}
             </p>
           </div>
         </div>
@@ -120,7 +120,7 @@ export default function App() {
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M19 12H5" /><path d="m12 19-7-7 7-7" />
               </svg>
-              Back
+              {wp.i18n.__( 'Back', 'teil1-schema-manager' )}
             </button>
           )}
           {view === VIEWS.TAB && activeTab === TABS.DASHBOARD && (
@@ -128,7 +128,7 @@ export default function App() {
               onClick={() => handleCreateGlobal()}
               className="sp-inline-flex sp-items-center sp-gap-1.5 sp-rounded-lg sp-bg-brand-600 sp-px-3 sp-py-1.5 sp-text-sm sp-font-medium sp-text-white sp-shadow-bento sp-transition-all hover:sp-bg-brand-700 hover:sp-shadow-bento-hover"
             >
-              + New Global
+              {wp.i18n.__( '+ New Global', 'teil1-schema-manager' )}
             </button>
           )}
           {view === VIEWS.TAB && activeTab === TABS.RULES && (
@@ -136,7 +136,7 @@ export default function App() {
               onClick={() => handleCreateRule()}
               className="sp-inline-flex sp-items-center sp-gap-1.5 sp-rounded-lg sp-bg-brand-600 sp-px-3 sp-py-1.5 sp-text-sm sp-font-medium sp-text-white sp-shadow-bento sp-transition-all hover:sp-bg-brand-700 hover:sp-shadow-bento-hover"
             >
-              + New Rule
+              {wp.i18n.__( '+ New Rule', 'teil1-schema-manager' )}
             </button>
           )}
         </div>

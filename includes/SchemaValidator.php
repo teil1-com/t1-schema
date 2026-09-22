@@ -87,7 +87,7 @@ class SchemaValidator {
                 if ( ! isset( $schema[ $prop_name ] ) || $schema[ $prop_name ] === '' ) {
                     $type_label = is_array( $raw_type ) ? implode( ' + ', $raw_type ) : $raw_type;
                     $errors[]   = sprintf(
-                        /* translators: 1: property name, 2: Schema.org type. */
+                        /* translators: %1$s: Schema.org property name. %2$s: Schema.org type name. */
                         __( "Missing required property: '%1\$s' for type '%2\$s'.", 'teil1-schema-manager' ),
                         $prop_name,
                         $type_label
@@ -108,14 +108,14 @@ class SchemaValidator {
                     if ( $context === 'rule' ) {
                         // On rule level, recommended properties may be set per-post via local overrides.
                         $infos[] = sprintf(
-                            /* translators: 1: property name, 2: Schema.org type. */
+                            /* translators: %1$s: Schema.org property name. %2$s: Schema.org type name. */
                             __( "Missing recommended property: '%1\$s' for type '%2\$s'. May be set per-post.", 'teil1-schema-manager' ),
                             $prop_name,
                             $type_label
                         );
                     } else {
                         $warnings[] = sprintf(
-                            /* translators: 1: property name, 2: Schema.org type. */
+                            /* translators: %1$s: Schema.org property name. %2$s: Schema.org type name. */
                             __( "Missing recommended property: '%1\$s' for type '%2\$s'.", 'teil1-schema-manager' ),
                             $prop_name,
                             $type_label

@@ -1,11 +1,11 @@
 {
   "src/main.jsx": {
-    "file": "app-Bru5r9FO.js",
+    "file": "app.js",
     "name": "main",
     "src": "src/main.jsx",
     "isEntry": true,
     "css": [
-      "main-vixYhHIP.css"
+      "app.css"
     ]
   }
 }

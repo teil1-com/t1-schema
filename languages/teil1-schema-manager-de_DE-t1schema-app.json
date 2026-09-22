@@ -1,0 +1,921 @@
+{
+    "translation-revision-date": "",
+    "generator": "WP-CLI\/2.12.0",
+    "source": "assets\/app.js",
+    "domain": "messages",
+    "locale_data": {
+        "messages": {
+            "": {
+                "domain": "messages",
+                "lang": "de_DE",
+                "plural-forms": "nplurals=2; plural=(n != 1);"
+            },
+            "Invalid JSON: %1$s": [
+                "Ung\u00fcltiges JSON: %1$s"
+            ],
+            "%1$d schema": [
+                "%1$d Schema",
+                "%1$d Schemas"
+            ],
+            "%1$d error": [
+                "%1$d Fehler",
+                "%1$d Fehler"
+            ],
+            "%1$d warning": [
+                "%1$d Warnung",
+                "%1$d Warnungen"
+            ],
+            "Valid (Custom)": [
+                "G\u00fcltig (benutzerdefiniert)"
+            ],
+            "Valid": [
+                "G\u00fcltig"
+            ],
+            "Missing required property: '%1$s' for type '%2$s'.": [
+                "Erforderliche Eigenschaft \u201e%1$s\u201c f\u00fcr den Typ \u201e%2$s\u201c fehlt."
+            ],
+            "Missing recommended property: '%1$s' for type '%2$s'.": [
+                "Empfohlene Eigenschaft \u201e%1$s\u201c f\u00fcr den Typ \u201e%2$s\u201c fehlt."
+            ],
+            "API error: %1$d": [
+                "API-Fehler: %1$d"
+            ],
+            "Globals": [
+                "Globale Schemas"
+            ],
+            "Rules": [
+                "Regeln"
+            ],
+            "Site Map": [
+                "Website-\u00dcbersicht"
+            ],
+            "Pages": [
+                "Seiten"
+            ],
+            "Help": [
+                "Hilfe"
+            ],
+            "Structured Data Engine": [
+                "System f\u00fcr strukturierte Daten"
+            ],
+            "Back": [
+                "Zur\u00fcck"
+            ],
+            "+ New Global": [
+                "+ Neues globales Schema"
+            ],
+            "+ New Rule": [
+                "+ Neue Regel"
+            ],
+            "Delete this global schema? This cannot be undone.": [
+                "Dieses globale Schema l\u00f6schen? Dies kann nicht r\u00fcckg\u00e4ngig gemacht werden."
+            ],
+            "Loading global schemas\u2026": [
+                "Globale Schemas werden geladen\u2026"
+            ],
+            "Global Schemas": [
+                "Globale Schemas"
+            ],
+            "Site-wide structured data applied to every page": [
+                "Websiteweite strukturierte Daten f\u00fcr jede Seite"
+            ],
+            "%1$d active": [
+                "%1$d aktiv"
+            ],
+            "Add Schema": [
+                "Schema hinzuf\u00fcgen"
+            ],
+            "Unknown": [
+                "Unbekannt"
+            ],
+            "Unchecked": [
+                "Nicht gepr\u00fcft"
+            ],
+            "Click to inspect health details": [
+                "Klicken, um Statusdetails anzuzeigen"
+            ],
+            "Schema is valid": [
+                "Schema ist g\u00fcltig"
+            ],
+            "No preview data": [
+                "Keine Vorschaudaten"
+            ],
+            "Edit": [
+                "Bearbeiten"
+            ],
+            "Inspect health": [
+                "Status pr\u00fcfen"
+            ],
+            "Delete": [
+                "L\u00f6schen"
+            ],
+            "No schemas yet": [
+                "Noch keine Schemas"
+            ],
+            "Start by creating your Organization or WebSite schema. These are the foundation of your structured data.": [
+                "Erstellen Sie zun\u00e4chst ein Organization- oder WebSite-Schema. Diese Schemas bilden die Grundlage Ihrer strukturierten Daten."
+            ],
+            "Define site-wide constants. Use %1$s in any schema.": [
+                "Definieren Sie websiteweite Konstanten. Verwenden Sie %1$s in einem beliebigen Schema."
+            ],
+            "Loading custom variables\u2026": [
+                "Benutzerdefinierte Variablen werden geladen\u2026"
+            ],
+            "Custom Variables": [
+                "Benutzerdefinierte Variablen"
+            ],
+            "Saving\u2026": [
+                "Wird gespeichert\u2026"
+            ],
+            "Save Changes": [
+                "\u00c4nderungen speichern"
+            ],
+            "Saved \u2713": [
+                "Gespeichert \u2713"
+            ],
+            "custom variable key placeholder\u0004key": [
+                "key"
+            ],
+            "Value (e.g. +43 1 234 5678)": [
+                "Wert (z. B. +43 1 234 5678)"
+            ],
+            "Remove variable": [
+                "Variable entfernen"
+            ],
+            "Add Variable": [
+                "Variable hinzuf\u00fcgen"
+            ],
+            "Usage": [
+                "Verwendung"
+            ],
+            "Schema": [
+                "Schema"
+            ],
+            "%1$s is valid \u2014 no issues found": [
+                "%1$s ist g\u00fcltig \u2014 keine Probleme gefunden"
+            ],
+            "Health: %1$s": [
+                "Status: %1$s"
+            ],
+            "Based on Google Rich Results requirements. Fixing errors is mandatory for eligibility; warnings improve quality.": [
+                "Basierend auf den Anforderungen von Google Rich Results. Fehler m\u00fcssen f\u00fcr die Eignung behoben werden; Warnungen weisen auf Verbesserungsm\u00f6glichkeiten hin."
+            ],
+            "Tip: Use {{site_name}} or {{post_title}} as a dynamic value": [
+                "Tipp: Verwenden Sie {{site_name}} oder {{post_title}} als dynamischen Wert"
+            ],
+            "Tip: Use {{site_url}} or {{post_url}}": [
+                "Tipp: Verwenden Sie {{site_url}} oder {{post_url}}"
+            ],
+            "Tip: Use {{site_logo}} to pull from theme settings": [
+                "Tipp: Verwenden Sie {{site_logo}}, um das Logo aus den Theme-Einstellungen zu \u00fcbernehmen"
+            ],
+            "Tip: Use {{featured_image_url}} for the post thumbnail": [
+                "Tipp: Verwenden Sie {{featured_image_url}} f\u00fcr das Beitragsbild"
+            ],
+            "Tip: Use {{post_title}} for the article headline": [
+                "Tipp: Verwenden Sie {{post_title}} f\u00fcr die Artikel\u00fcberschrift"
+            ],
+            "Tip: Use {{post_date}} for auto-dated articles": [
+                "Tipp: Verwenden Sie {{post_date}}, um das Artikeldatum automatisch einzusetzen"
+            ],
+            "Tip: Use a nested Person object or {{author_name}}": [
+                "Tipp: Verwenden Sie ein verschachteltes Person-Objekt oder {{author_name}}"
+            ],
+            "Tip: Use {{post_excerpt}} or {{site_description}}": [
+                "Tipp: Verwenden Sie {{post_excerpt}} oder {{site_description}}"
+            ],
+            "Add your social media profile URLs as an array": [
+                "F\u00fcgen Sie die URLs Ihrer Social-Media-Profile als Array hinzu"
+            ],
+            "Add a nested PostalAddress object via JSON import": [
+                "F\u00fcgen Sie \u00fcber den JSON-Import ein verschachteltes PostalAddress-Objekt hinzu"
+            ],
+            "Add your business phone number": [
+                "F\u00fcgen Sie die Telefonnummer Ihres Unternehmens hinzu"
+            ],
+            "This is added automatically when rendered \u2014 no action needed": [
+                "Dies wird bei der Ausgabe automatisch erg\u00e4nzt \u2014 keine Aktion erforderlich"
+            ],
+            "Google may support this type, but validation is limited to syntax checks.": [
+                "Google unterst\u00fctzt diesen Typ m\u00f6glicherweise; die Validierung ist jedoch auf Syntaxpr\u00fcfungen beschr\u00e4nkt."
+            ],
+            "Set this property in the editor above to resolve": [
+                "Legen Sie diese Eigenschaft im obigen Editor fest, um das Problem zu beheben"
+            ],
+            "Loading health data\u2026": [
+                "Statusdaten werden geladen\u2026"
+            ],
+            "All schemas are valid and complete": [
+                "Alle Schemas sind g\u00fcltig und vollst\u00e4ndig"
+            ],
+            "Valid with %1$d recommendation": [
+                "G\u00fcltig mit %1$d Empfehlung",
+                "G\u00fcltig mit %1$d Empfehlungen"
+            ],
+            "%1$d error needs attention": [
+                "%1$d Fehler erfordert Aufmerksamkeit",
+                "%1$d Fehler erfordern Aufmerksamkeit"
+            ],
+            "Total Schemas": [
+                "Schemas insgesamt"
+            ],
+            "Warnings": [
+                "Warnungen"
+            ],
+            "Errors": [
+                "Fehler"
+            ],
+            "Action Items": [
+                "Erforderliche Ma\u00dfnahmen"
+            ],
+            "Fix Global Schema": [
+                "Globales Schema korrigieren"
+            ],
+            "Go to Rules": [
+                "Zu den Regeln"
+            ],
+            "schema layer label\u0004Global": [
+                "Global"
+            ],
+            "schema layer label\u0004Rule": [
+                "Regel"
+            ],
+            "%1$d issue": [
+                "%1$d Problem",
+                "%1$d Probleme"
+            ],
+            "Recommended Rules": [
+                "Empfohlene Regeln"
+            ],
+            "%1$d suggestion": [
+                "%1$d Vorschlag",
+                "%1$d Vorschl\u00e4ge"
+            ],
+            "Expand": [
+                "Erweitern"
+            ],
+            "Minimize": [
+                "Minimieren"
+            ],
+            "Dismiss recommendations": [
+                "Empfehlungen ausblenden"
+            ],
+            "Opt-in templates to improve your coverage": [
+                "Optionale Templates zur Verbesserung der Abdeckung"
+            ],
+            "activating a recommended rule loading indicator\u0004...": [
+                "..."
+            ],
+            "Activate": [
+                "Aktivieren"
+            ],
+            "Coverage": [
+                "Abdeckung"
+            ],
+            "Health": [
+                "Status"
+            ],
+            "Depth": [
+                "Tiefe"
+            ],
+            "Diversity": [
+                "Vielfalt"
+            ],
+            "Loading schema quality score\u2026": [
+                "Schema-Qualit\u00e4tsbewertung wird geladen\u2026"
+            ],
+            "Schema Quality Score": [
+                "Schema-Qualit\u00e4tsbewertung"
+            ],
+            "+ Add Custom Property": [
+                "+ Benutzerdefinierte Eigenschaft hinzuf\u00fcgen"
+            ],
+            "propertyName": [
+                "propertyName"
+            ],
+            "custom property button\u0004Add": [
+                "Hinzuf\u00fcgen"
+            ],
+            "Cancel": [
+                "Abbrechen"
+            ],
+            "Item %1$d": [
+                "Element %1$d"
+            ],
+            "array item button\u0004Remove": [
+                "Entfernen"
+            ],
+            "https:\/\/\u2026": [
+                "https:\/\/\u2026"
+            ],
+            "Enter %1$s": [
+                "%1$s eingeben"
+            ],
+            "+ Add %1$s": [
+                "+ %1$s hinzuf\u00fcgen"
+            ],
+            "JSON must contain an @type property.": [
+                "JSON muss eine Eigenschaft @type enthalten."
+            ],
+            "Paste JSON-LD": [
+                "JSON-LD einf\u00fcgen"
+            ],
+            "Paste raw JSON-LD markup. Script tags will be stripped automatically.": [
+                "F\u00fcgen Sie unformatiertes JSON-LD-Markup ein. Script-Tags werden automatisch entfernt."
+            ],
+            "{\n  \"@context\": \"https:\/\/schema.org\",\n  \"@type\": \"Organization\",\n  \"name\": \"Your Company\"\n}": [
+                "{\n  \"@context\": \"https:\/\/schema.org\",\n  \"@type\": \"Organization\",\n  \"name\": \"Your Company\"\n}"
+            ],
+            "JSON importer button\u0004Clear": [
+                "Leeren"
+            ],
+            "Import & Populate": [
+                "Importieren und ausf\u00fcllen"
+            ],
+            "Remove this schema from this page?": [
+                "Dieses Schema von der Seite entfernen?"
+            ],
+            "Save failed: %1$s": [
+                "Speichern fehlgeschlagen: %1$s"
+            ],
+            "Loading schemas\u2026": [
+                "Schemas werden geladen\u2026"
+            ],
+            "ID: %1$s": [
+                "ID: %1$s"
+            ],
+            "View page \u2197": [
+                "Seite ansehen \u2197"
+            ],
+            "Schema %1$d": [
+                "Schema %1$d"
+            ],
+            "+ Add Schema": [
+                "+ Schema hinzuf\u00fcgen"
+            ],
+            "Editing: %1$s": [
+                "Bearbeiten: %1$s"
+            ],
+            "Configure Schema": [
+                "Schema konfigurieren"
+            ],
+            "Visual Editor": [
+                "Visueller Editor"
+            ],
+            "{ } Import JSON": [
+                "{ } JSON importieren"
+            ],
+            "Override global": [
+                "Globales Schema \u00fcberschreiben"
+            ],
+            "schema on this page": [
+                "Schema auf dieser Seite"
+            ],
+            "Select a type above to start building": [
+                "W\u00e4hlen Sie oben einen Typ aus, um das Schema zu erstellen"
+            ],
+            "%1$d schema on this page": [
+                "%1$d Schema auf dieser Seite",
+                "%1$d Schemas auf dieser Seite"
+            ],
+            "%1$d property set": [
+                "%1$d Eigenschaft festgelegt",
+                "%1$d Eigenschaften festgelegt"
+            ],
+            "\u2713 Saved": [
+                "\u2713 Gespeichert"
+            ],
+            "No local schemas for this page yet": [
+                "F\u00fcr diese Seite sind noch keine lokalen Schemas vorhanden"
+            ],
+            "+ Add First Schema": [
+                "+ Erstes Schema hinzuf\u00fcgen"
+            ],
+            "JSON-LD Output": [
+                "JSON-LD-Ausgabe"
+            ],
+            "Copied": [
+                "Kopiert"
+            ],
+            "JSON preview button\u0004Copy": [
+                "Kopieren"
+            ],
+            "Definition for type '%1$s' not found in registry.": [
+                "Definition f\u00fcr den Typ \u201e%1$s\u201c wurde nicht im Schema-Register gefunden."
+            ],
+            "Custom property": [
+                "Benutzerdefinierte Eigenschaft"
+            ],
+            "Required": [
+                "Erforderlich"
+            ],
+            "Recommended": [
+                "Empfohlen"
+            ],
+            "Toggle input mode": [
+                "Eingabemodus umschalten"
+            ],
+            "Use Text\/Var": [
+                "Text\/Variable verwenden"
+            ],
+            "Build Object": [
+                "Objekt erstellen"
+            ],
+            "Insert dynamic variable": [
+                "Dynamische Variable einf\u00fcgen"
+            ],
+            "Clear value": [
+                "Wert leeren"
+            ],
+            "Linked:": [
+                "Verkn\u00fcpft:"
+            ],
+            "Expand to full object editor": [
+                "Zum vollst\u00e4ndigen Objekteditor erweitern"
+            ],
+            "linked object button\u0004Expand": [
+                "Erweitern"
+            ],
+            "%1$s or %2$s": [
+                "%1$s oder %2$s"
+            ],
+            "number input placeholder\u00040": [
+                "0"
+            ],
+            "%1$s or enter text": [
+                "%1$s oder Text eingeben"
+            ],
+            "Enter %1$s or use %2$s": [
+                "%1$s eingeben oder %2$s verwenden"
+            ],
+            "New Schema": [
+                "Neues Schema"
+            ],
+            "Edit: %1$s + %2$d more type": [
+                "Bearbeiten: %1$s + %2$d weiterer Typ",
+                "Bearbeiten: %1$s + %2$d weitere Typen"
+            ],
+            "Edit: %1$s": [
+                "Bearbeiten: %1$s"
+            ],
+            "\ud83d\udc41 Preview": [
+                "\ud83d\udc41 Vorschau"
+            ],
+            "Properties": [
+                "Eigenschaften"
+            ],
+            "%1$d available property": [
+                "%1$d verf\u00fcgbare Eigenschaft",
+                "%1$d verf\u00fcgbare Eigenschaften"
+            ],
+            "Select a Schema type above to start building": [
+                "W\u00e4hlen Sie oben einen Schema-Typ aus, um das Schema zu erstellen"
+            ],
+            "Create Schema": [
+                "Schema erstellen"
+            ],
+            "schema type group\u0004Core": [
+                "Kern"
+            ],
+            "schema type group\u0004Content": [
+                "Inhalt"
+            ],
+            "schema type group\u0004Commerce": [
+                "E-Commerce"
+            ],
+            "schema type group\u0004Rich Results": [
+                "Rich Results"
+            ],
+            "schema type group\u0004Other": [
+                "Sonstiges"
+            ],
+            "Schema Type": [
+                "Schema-Typ"
+            ],
+            "Select a type\u2026": [
+                "Typ ausw\u00e4hlen\u2026"
+            ],
+            "Inherits from: %1$s": [
+                "\u00dcbernimmt Eigenschaften von: %1$s"
+            ],
+            "+ Add secondary type (multi-type)": [
+                "+ Sekund\u00e4ren Typ hinzuf\u00fcgen (Mehrfachtyp)"
+            ],
+            "Multi-Type (@type array)": [
+                "Mehrfachtyp (@type-Array)"
+            ],
+            "(primary)": [
+                "(prim\u00e4r)"
+            ],
+            "e.g. %1$s": [
+                "z. B. %1$s"
+            ],
+            "secondary schema type button\u0004Add": [
+                "Hinzuf\u00fcgen"
+            ],
+            "Multi-type creates": [
+                "Mehrfachtyp erzeugt"
+            ],
+            "useful for entities like %1$s + %2$s.": [
+                "N\u00fctzlich f\u00fcr Entit\u00e4ten wie %1$s + %2$s."
+            ],
+            "variable category\u0004\ud83d\udcc4 Post": [
+                "\ud83d\udcc4 Beitrag"
+            ],
+            "variable category\u0004\ud83d\udc64 Author": [
+                "\ud83d\udc64 Autor"
+            ],
+            "variable category\u0004\ud83c\udf10 Site": [
+                "\ud83c\udf10 Website"
+            ],
+            "variable category\u0004\ud83c\udff7\ufe0f Taxonomy": [
+                "\ud83c\udff7\ufe0f Taxonomie"
+            ],
+            "variable category\u0004\ud83d\udd27 Custom Meta": [
+                "\ud83d\udd27 Benutzerdefinierte Metadaten"
+            ],
+            "Insert Variable": [
+                "Variable einf\u00fcgen"
+            ],
+            "target field prefix\u0004for": [
+                "f\u00fcr"
+            ],
+            "Post \/ Page Variables": [
+                "Beitrags-\/Seitenvariablen"
+            ],
+            "Dynamic data from the current post or page": [
+                "Dynamische Daten aus dem aktuellen Beitrag oder der aktuellen Seite"
+            ],
+            "Author Variables": [
+                "Autorenvariablen"
+            ],
+            "Data about the post author": [
+                "Daten \u00fcber den Autor des Beitrags"
+            ],
+            "Site Variables": [
+                "Website-Variablen"
+            ],
+            "Global site information from %1$s settings": [
+                "Globale Website-Informationen aus den %1$s-Einstellungen"
+            ],
+            "Taxonomy Variables": [
+                "Taxonomievariablen"
+            ],
+            "Categories, tags, and custom taxonomies": [
+                "Kategorien, Schlagw\u00f6rter und benutzerdefinierte Taxonomien"
+            ],
+            "Custom Meta Variables": [
+                "Variablen f\u00fcr benutzerdefinierte Metadaten"
+            ],
+            "Access any %1$s field by key": [
+                "\u00dcber den Schl\u00fcssel auf jedes %1$s-Feld zugreifen"
+            ],
+            "%1$s Variables": [
+                "%1$s-Variablen"
+            ],
+            "Live product data \u2014 only shown when %1$s is active": [
+                "Aktuelle Produktdaten \u2014 nur sichtbar, wenn %1$s aktiv ist"
+            ],
+            "\ud83d\udcd6 How %1$s Works": [
+                "\ud83d\udcd6 Funktionsweise von %1$s"
+            ],
+            "Site-wide schemas (%1$s, %2$s) that apply to every page automatically. Manage these in the Dashboard tab.": [
+                "Websiteweite Schemas (%1$s, %2$s), die automatisch f\u00fcr jede Seite gelten. Verwalten Sie sie im Tab \u201eDashboard\u201c."
+            ],
+            "Local Schemas": [
+                "Lokale Schemas"
+            ],
+            "Page-specific schemas (%1$s, %2$s, %3$s) that apply to a single post or page. Manage these in the Pages tab.": [
+                "Seitenspezifische Schemas (%1$s, %2$s, %3$s), die f\u00fcr einen einzelnen Beitrag oder eine einzelne Seite gelten. Verwalten Sie sie im Tab \u201eSeiten\u201c."
+            ],
+            "Override Logic": [
+                "\u00dcberschreibungslogik"
+            ],
+            "If a local schema has the same %1$s as a global one, the local schema replaces the global one on that page. Toggle this per-schema with the \"%2$s\" checkbox.": [
+                "Wenn ein lokales Schema denselben Wert f\u00fcr %1$s wie ein globales Schema hat, ersetzt es das globale Schema auf dieser Seite. Dies l\u00e4sst sich mit dem Kontrollk\u00e4stchen \u201e%2$s\u201c f\u00fcr jedes Schema festlegen."
+            ],
+            "Dynamic Variables": [
+                "Dynamische Variablen"
+            ],
+            "Use %1$s tags instead of hardcoded values. These resolve to real data at render time \u2014 e.g. %2$s becomes the actual page title.": [
+                "Verwenden Sie %1$s-Tags anstelle fest codierter Werte. Bei der Ausgabe werden sie durch tats\u00e4chliche Daten ersetzt \u2014 so wird beispielsweise %2$s zum aktuellen Seitentitel."
+            ],
+            "Typical Workflow": [
+                "Typischer Ablauf"
+            ],
+            "Set up global %1$s and %2$s schemas in the Dashboard": [
+                "Globale %1$s- und %2$s-Schemas im Dashboard einrichten"
+            ],
+            "Go to the Pages tab and find the post you want to add structured data to": [
+                "Zum Tab \u201eSeiten\u201c wechseln und den Beitrag ausw\u00e4hlen, dem strukturierte Daten hinzugef\u00fcgt werden sollen"
+            ],
+            "Click \"%1$s\" \u2192 select a type (e.g. %2$s, %3$s, %4$s)": [
+                "Auf \u201e%1$s\u201c klicken \u2192 einen Typ ausw\u00e4hlen (z. B. %2$s, %3$s, %4$s)"
+            ],
+            "Fill in properties using %1$s for dynamic data or plain text for static values": [
+                "Eigenschaften mit %1$s f\u00fcr dynamische Daten oder mit Klartext f\u00fcr statische Werte ausf\u00fcllen"
+            ],
+            "Check the Health panel on the right for missing required\/recommended properties": [
+                "Im Statusbereich rechts pr\u00fcfen, ob erforderliche oder empfohlene Eigenschaften fehlen"
+            ],
+            "Save \u2192 verify the %1$s output in your page source": [
+                "Speichern \u2192 die %1$s-Ausgabe im Seitenquelltext pr\u00fcfen"
+            ],
+            "Understanding Health Status": [
+                "Schema-Status verstehen"
+            ],
+            "Missing required properties. Your schema won't qualify for %1$s without these.": [
+                "Erforderliche Eigenschaften fehlen. Ohne sie ist das Schema nicht f\u00fcr %1$s geeignet."
+            ],
+            "Missing recommended properties. The schema is technically valid, but adding these improves your chances of rich result display.": [
+                "Empfohlene Eigenschaften fehlen. Das Schema ist technisch g\u00fcltig; das Erg\u00e4nzen dieser Eigenschaften kann die Eignung f\u00fcr Rich Results verbessern."
+            ],
+            "All required and recommended properties are set. Maximum chance of %1$s display.": [
+                "Alle erforderlichen und empfohlenen Eigenschaften sind festgelegt. Damit sind die Voraussetzungen f\u00fcr eine m\u00f6gliche Anzeige als %1$s erf\u00fcllt; eine Anzeige ist nicht garantiert."
+            ],
+            "\ud83c\udff7\ufe0f Variable Reference": [
+                "\ud83c\udff7\ufe0f Variablenreferenz"
+            ],
+            "Use these tags in any property value. They are resolved to real data when the %1$s is rendered.": [
+                "Verwenden Sie diese Tags in beliebigen Eigenschaftswerten. Bei der Ausgabe von %1$s werden sie durch tats\u00e4chliche Daten ersetzt."
+            ],
+            "Variable": [
+                "Variable"
+            ],
+            "Description": [
+                "Beschreibung"
+            ],
+            "Example Output": [
+                "Beispielausgabe"
+            ],
+            "\u2699\ufe0f Settings": [
+                "\u2699\ufe0f Einstellungen"
+            ],
+            "Suppress conflicting schema output": [
+                "Konfliktverursachende Schema-Ausgabe unterdr\u00fccken"
+            ],
+            "Removes %1$s emitted by other plugins \u2014 or by %2$s's own %3$s\/%4$s\/%5$s\/%6$s markup \u2014 wherever it would duplicate what %7$s outputs. Leave this off unless you actually see duplicate structured data on your pages.": [
+                "Entfernt von anderen Plugins ausgegebenes %1$s sowie %2$s-eigenes %3$s\/%4$s\/%5$s\/%6$s-Markup, wenn es die Ausgabe von %7$s duplizieren w\u00fcrde. Lassen Sie diese Option deaktiviert, solange auf Ihren Seiten keine doppelten strukturierten Daten auftreten."
+            ],
+            "Delete all data on uninstall": [
+                "Alle Daten bei der Deinstallation l\u00f6schen"
+            ],
+            "When the plugin is deleted, drop its database tables, options, and per-page schemas. Off means your schemas survive a reinstall.": [
+                "Beim L\u00f6schen des Plugins werden seine Datenbanktabellen, Optionen und seitenspezifischen Schemas entfernt. Ist die Option deaktiviert, bleiben die Schemas f\u00fcr eine erneute Installation erhalten."
+            ],
+            "My Blog Post Title": [
+                "Titel meines Blogbeitrags"
+            ],
+            "A short summary of the post\u2026": [
+                "Eine kurze Zusammenfassung des Beitrags\u2026"
+            ],
+            "Full post content as plain text": [
+                "Vollst\u00e4ndiger Beitragsinhalt als Klartext"
+            ],
+            "Hero image description": [
+                "Beschreibung des Hero-Bildes"
+            ],
+            "Senior %1$s Developer": [
+                "Senior-%1$s-Entwickler"
+            ],
+            "My Website": [
+                "Meine Website"
+            ],
+            "Your site tagline from Settings \u2192 General": [
+                "Untertitel Ihrer Website aus Einstellungen \u2192 Allgemein"
+            ],
+            "(any custom post meta value)": [
+                "(beliebiger Wert eines benutzerdefinierten Beitrags-Metafelds)"
+            ],
+            "Pages & Posts": [
+                "Seiten und Beitr\u00e4ge"
+            ],
+            "Manage local schemas for individual pages \u2014 these override global schemas per type": [
+                "Lokale Schemas f\u00fcr einzelne Seiten verwalten \u2014 sie \u00fcberschreiben globale Schemas desselben Typs"
+            ],
+            "%1$d item total": [
+                "%1$d Element insgesamt",
+                "%1$d Elemente insgesamt"
+            ],
+            "Search pages\u2026": [
+                "Seiten durchsuchen\u2026"
+            ],
+            "Search": [
+                "Suchen"
+            ],
+            "All pages": [
+                "Alle Seiten"
+            ],
+            "With schema": [
+                "Mit Schema"
+            ],
+            "Without schema": [
+                "Ohne Schema"
+            ],
+            "All types": [
+                "Alle Typen"
+            ],
+            "Loading pages and posts\u2026": [
+                "Seiten und Beitr\u00e4ge werden geladen\u2026"
+            ],
+            "No posts found matching your criteria": [
+                "Keine Beitr\u00e4ge gefunden, die den Kriterien entsprechen"
+            ],
+            "Page %1$d of %2$d": [
+                "Seite %1$d von %2$d"
+            ],
+            "\u2190 Prev": [
+                "\u2190 Zur\u00fcck"
+            ],
+            "Next \u2192": [
+                "Weiter \u2192"
+            ],
+            "No local schema": [
+                "Kein lokales Schema"
+            ],
+            "Edit Schema": [
+                "Schema bearbeiten"
+            ],
+            "Select a schema type to see the preview": [
+                "W\u00e4hlen Sie einen Schema-Typ aus, um die Vorschau anzuzeigen"
+            ],
+            "Rich Result Preview": [
+                "Rich-Result-Vorschau"
+            ],
+            "Page Title": [
+                "Seitentitel"
+            ],
+            "A description of this page will appear here\u2026": [
+                "Hier wird eine Beschreibung dieser Seite angezeigt\u2026"
+            ],
+            "rich result preview fallback\u0004Date": [
+                "Datum"
+            ],
+            "rich result preview fallback\u0004Author": [
+                "Autor"
+            ],
+            "\u2713 In stock": [
+                "\u2713 Auf Lager"
+            ],
+            "People also ask": [
+                "Weitere Fragen"
+            ],
+            "\u25b8 First question\u2026": [
+                "\u25b8 Erste Frage\u2026"
+            ],
+            "\u25b8 Second question\u2026": [
+                "\u25b8 Zweite Frage\u2026"
+            ],
+            "rich result preview fallback\u0004Start date": [
+                "Startdatum"
+            ],
+            "rich result preview fallback\u0004Location": [
+                "Ort"
+            ],
+            "Preview based on %1$s schema": [
+                "Vorschau auf Grundlage des %1$s-Schemas"
+            ],
+            "context group label\u0004Other": [
+                "Sonstiges"
+            ],
+            "Missing required: '%1$s' for %2$s.": [
+                "Erforderliche Eigenschaft \u201e%1$s\u201c f\u00fcr %2$s fehlt."
+            ],
+            "Missing recommended: '%1$s' for %2$s.": [
+                "Empfohlene Eigenschaft \u201e%1$s\u201c f\u00fcr %2$s fehlt."
+            ],
+            "\u2190 Back to Rules": [
+                "\u2190 Zur\u00fcck zu den Regeln"
+            ],
+            "New Schema Rule": [
+                "Neue Schema-Regel"
+            ],
+            "Edit Rule: %1$s": [
+                "Regel bearbeiten: %1$s"
+            ],
+            "Rule Configuration": [
+                "Regelkonfiguration"
+            ],
+            "Rule Name": [
+                "Regelname"
+            ],
+            "(optional)": [
+                "(optional)"
+            ],
+            "Auto-generated from conditions\u2026": [
+                "Automatisch aus den Bedingungen erzeugt\u2026"
+            ],
+            "Conditions \u2014 \"Apply this schema when\u2026\"": [
+                "Bedingungen \u2014 \u201eDieses Schema anwenden, wenn\u2026\u201c"
+            ],
+            "+ Add": [
+                "+ Hinzuf\u00fcgen"
+            ],
+            "Select condition\u2026": [
+                "Bedingung ausw\u00e4hlen\u2026"
+            ],
+            "Remove condition": [
+                "Bedingung entfernen"
+            ],
+            "Multiple conditions use AND logic \u2014 all must match.": [
+                "Mehrere Bedingungen werden mit UND verkn\u00fcpft \u2014 alle m\u00fcssen zutreffen."
+            ],
+            "Priority:": [
+                "Priorit\u00e4t:"
+            ],
+            "Lower = higher priority": [
+                "Niedrigerer Wert = h\u00f6here Priorit\u00e4t"
+            ],
+            "Select type\u2026": [
+                "Typ ausw\u00e4hlen\u2026"
+            ],
+            "%1$d \/ %2$d property set": [
+                "%1$d von %2$d Eigenschaften festgelegt",
+                "%1$d von %2$d Eigenschaften festgelegt"
+            ],
+            "Select a schema type above to configure properties": [
+                "W\u00e4hlen Sie oben einen Schema-Typ aus, um die Eigenschaften zu konfigurieren"
+            ],
+            "Create Rule": [
+                "Regel erstellen"
+            ],
+            "Rule Summary": [
+                "Regel\u00fcbersicht"
+            ],
+            "Type:": [
+                "Typ:"
+            ],
+            "Applies to:": [
+                "Gilt f\u00fcr:"
+            ],
+            "No conditions set": [
+                "Keine Bedingungen festgelegt"
+            ],
+            "Add": [
+                "Hinzuf\u00fcgen"
+            ],
+            "Delete rule \"%1$s\"?": [
+                "Regel \u201e%1$s\u201c l\u00f6schen?"
+            ],
+            "Loading rules\u2026": [
+                "Regeln werden geladen\u2026"
+            ],
+            "Schema Rules": [
+                "Schema-Regeln"
+            ],
+            "Conditional schemas that apply to specific page types, archives, and taxonomies": [
+                "Bedingte Schemas f\u00fcr bestimmte Seitentypen, Archive und Taxonomien"
+            ],
+            "No schema rules yet": [
+                "Noch keine Schema-Regeln"
+            ],
+            "Rules let you target archives, CPTs, taxonomies, and more": [
+                "Mit Regeln k\u00f6nnen Sie Archive, CPTs, Taxonomien und weitere Kontexte gezielt ansprechen"
+            ],
+            "Create Your First Rule": [
+                "Erste Regel erstellen"
+            ],
+            "rule status\u0004Active": [
+                "Aktiv"
+            ],
+            "rule status\u0004Draft": [
+                "Entwurf"
+            ],
+            "rule status\u0004Inactive": [
+                "Inaktiv"
+            ],
+            "P%1$d": [
+                "P%1$d"
+            ],
+            "Delete rule \"%1$s\"": [
+                "Regel \u201e%1$s\u201c l\u00f6schen"
+            ],
+            "Loading site structure\u2026": [
+                "Website-Struktur wird geladen\u2026"
+            ],
+            "Site Structure": [
+                "Website-Struktur"
+            ],
+            "Overview of all page contexts and their schema coverage": [
+                "\u00dcbersicht aller Seitenkontexte und ihrer Schema-Abdeckung"
+            ],
+            "%1$d\/%2$d context covered": [
+                "%1$d\/%2$d Kontext abgedeckt",
+                "%1$d\/%2$d Kontexte abgedeckt"
+            ],
+            "Schema Coverage": [
+                "Schema-Abdeckung"
+            ],
+            "(%1$d item)": [
+                "(%1$d Element)",
+                "(%1$d Elemente)"
+            ],
+            "\u2713 Covered": [
+                "\u2713 Abgedeckt"
+            ],
+            "+ Add Rule": [
+                "+ Regel hinzuf\u00fcgen"
+            ]
+        }
+    }
+}

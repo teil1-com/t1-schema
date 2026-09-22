@@ -25,47 +25,59 @@ class VariableResolver {
     public static function get_available_variables(): array {
         return [
             'post' => [
-                'post_title'          => 'Post/Page title',
-                'post_excerpt'        => 'Post excerpt',
-                'post_content'        => 'Full post content (plain text)',
-                'post_date'           => 'Publish date (ISO 8601)',
-                'post_modified'       => 'Last modified date (ISO 8601)',
-                'post_url'            => 'Post permalink',
-                'post_id'             => 'Post ID',
-                'post_slug'           => 'Post slug',
-                'post_type'           => 'Post type',
-                'featured_image_url'  => 'Featured image URL (full size)',
-                'featured_image_alt'  => 'Featured image alt text',
+                'post_title'          => __( 'Post/Page title', 'teil1-schema-manager' ),
+                'post_excerpt'        => __( 'Post excerpt', 'teil1-schema-manager' ),
+                'post_content'        => __( 'Full post content (plain text)', 'teil1-schema-manager' ),
+                'post_date'           => sprintf(
+                    /* translators: %s: ISO date standard version. */
+                    __( 'Publish date (%1$s)', 'teil1-schema-manager' ),
+                    'ISO 8601'
+                ),
+                'post_modified'       => sprintf(
+                    /* translators: %s: ISO date standard version. */
+                    __( 'Last modified date (%1$s)', 'teil1-schema-manager' ),
+                    'ISO 8601'
+                ),
+                'post_url'            => __( 'Post permalink', 'teil1-schema-manager' ),
+                'post_id'             => _x( 'Post ID', 'variable description', 'teil1-schema-manager' ),
+                'post_slug'           => __( 'Post slug', 'teil1-schema-manager' ),
+                'post_type'           => _x( 'Post type', 'variable description', 'teil1-schema-manager' ),
+                'featured_image_url'  => __( 'Featured image URL (full size)', 'teil1-schema-manager' ),
+                'featured_image_alt'  => __( 'Featured image alt text', 'teil1-schema-manager' ),
             ],
             'author' => [
-                'author_name'         => 'Author display name',
-                'author_url'          => 'Author posts URL',
-                'author_description'  => 'Author bio/description',
-                'author_avatar_url'   => 'Author avatar URL',
+                'author_name'         => __( 'Author display name', 'teil1-schema-manager' ),
+                'author_url'          => __( 'Author posts URL', 'teil1-schema-manager' ),
+                'author_description'  => __( 'Author bio/description', 'teil1-schema-manager' ),
+                'author_avatar_url'   => __( 'Author avatar URL', 'teil1-schema-manager' ),
             ],
             'site' => [
-                'site_name'           => 'Site title',
-                'site_url'            => 'Site home URL',
-                'site_description'    => 'Site tagline',
-                'site_logo'           => 'Custom logo URL',
-                'site_language'       => 'Site language code',
+                'site_name'           => __( 'Site title', 'teil1-schema-manager' ),
+                'site_url'            => __( 'Site home URL', 'teil1-schema-manager' ),
+                'site_description'    => __( 'Site tagline', 'teil1-schema-manager' ),
+                'site_logo'           => __( 'Custom logo URL', 'teil1-schema-manager' ),
+                'site_language'       => __( 'Site language code', 'teil1-schema-manager' ),
             ],
             'taxonomy' => [
-                'primary_category'       => 'Primary category name',
-                'primary_category_url'   => 'Primary category URL',
-                'categories'             => 'Comma-separated category names',
-                'tags'                   => 'Comma-separated tag names',
+                'primary_category'       => __( 'Primary category name', 'teil1-schema-manager' ),
+                'primary_category_url'   => __( 'Primary category URL', 'teil1-schema-manager' ),
+                'categories'             => __( 'Comma-separated category names', 'teil1-schema-manager' ),
+                'tags'                   => __( 'Comma-separated tag names', 'teil1-schema-manager' ),
             ],
             'archive' => [
-                'term_name'              => 'Current taxonomy term name (on archive)',
-                'term_description'       => 'Current taxonomy term description',
-                'term_url'               => 'Current taxonomy term URL',
-                'archive_title'          => 'Archive page title',
-                'archive_url'            => 'Current archive URL',
-                'search_query'           => 'Current search query',
+                'term_name'              => __( 'Current taxonomy term name (on archive)', 'teil1-schema-manager' ),
+                'term_description'       => __( 'Current taxonomy term description', 'teil1-schema-manager' ),
+                'term_url'               => __( 'Current taxonomy term URL', 'teil1-schema-manager' ),
+                'archive_title'          => __( 'Archive page title', 'teil1-schema-manager' ),
+                'archive_url'            => __( 'Current archive URL', 'teil1-schema-manager' ),
+                'search_query'           => __( 'Current search query', 'teil1-schema-manager' ),
             ],
             'meta' => [
-                'meta:{key}'          => 'Custom post meta value (replace {key} with meta key)',
+                'meta:{key}'          => sprintf(
+                    /* translators: %s: literal {key} placeholder used in variable names. */
+                    __( 'Custom post meta value (replace %1$s with meta key)', 'teil1-schema-manager' ),
+                    '{key}'
+                ),
             ],
             'woocommerce' => self::get_woocommerce_catalog(),
             'custom'      => self::get_custom_variable_catalog(),
@@ -83,15 +95,28 @@ class VariableResolver {
         }
 
         return [
-            'product_price'         => 'Current price (sale price if on sale, else regular price). In an Offer.price, auto-upgrades to an AggregateOffer range for variable products',
-            'product_regular_price' => 'Regular (non-sale) price',
-            'product_sale_price'    => 'Sale price, or empty if not on sale',
-            'product_currency'      => 'Store currency code (e.g. EUR)',
-            'product_sku'           => 'Product SKU',
-            'product_availability'  => 'Stock status as a schema.org URL (e.g. https://schema.org/InStock)',
-            'product_rating'        => 'Average rating, or empty with no reviews',
-            'product_review_count'  => 'Number of approved reviews',
-            'product_brand'         => 'First term from the Product Brand taxonomy, if set',
+            'product_price'         => sprintf(
+                /* translators: 1: Schema.org Offer.price property; 2: Schema.org AggregateOffer type. */
+                __( 'Current price (sale price if on sale, else regular price). In an %1$s, auto-upgrades to an %2$s range for variable products', 'teil1-schema-manager' ),
+                'Offer.price',
+                'AggregateOffer'
+            ),
+            'product_regular_price' => __( 'Regular (non-sale) price', 'teil1-schema-manager' ),
+            'product_sale_price'    => __( 'Sale price, or empty if not on sale', 'teil1-schema-manager' ),
+            'product_currency'      => sprintf(
+                /* translators: %s: example ISO currency code. */
+                __( 'Store currency code (e.g. %1$s)', 'teil1-schema-manager' ),
+                'EUR'
+            ),
+            'product_sku'           => __( 'Product SKU', 'teil1-schema-manager' ),
+            'product_availability'  => sprintf(
+                /* translators: %s: example Schema.org availability URL. */
+                __( 'Stock status as a schema.org URL (e.g. %1$s)', 'teil1-schema-manager' ),
+                'https://schema.org/InStock'
+            ),
+            'product_rating'        => __( 'Average rating, or empty with no reviews', 'teil1-schema-manager' ),
+            'product_review_count'  => __( 'Number of approved reviews', 'teil1-schema-manager' ),
+            'product_brand'         => __( 'First term from the Product Brand taxonomy, if set', 'teil1-schema-manager' ),
         ];
     }
 
@@ -102,14 +127,18 @@ class VariableResolver {
         $vars = get_option( 't1schema_custom_variables', [] );
         if ( ! is_array( $vars ) || empty( $vars ) ) {
             return [
-                'custom.{key}' => 'User-defined site constant (create in Dashboard → Settings)',
+                'custom.{key}' => __( 'User-defined site constant (create in Dashboard → Settings)', 'teil1-schema-manager' ),
             ];
         }
 
         $catalog = [];
         foreach ( $vars as $key => $value ) {
             $preview = mb_strlen( $value ) > 30 ? mb_substr( $value, 0, 30 ) . '…' : $value;
-            $catalog[ "custom.{$key}" ] = "Site constant: {$preview}";
+            $catalog[ "custom.{$key}" ] = sprintf(
+                /* translators: %s: preview of a user-defined site constant. */
+                __( 'Site constant: %1$s', 'teil1-schema-manager' ),
+                $preview
+            );
         }
         return $catalog;
     }

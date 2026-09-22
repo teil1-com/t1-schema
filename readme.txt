@@ -4,7 +4,7 @@ Tags: schema, json-ld, structured-data, rich-snippets, woocommerce
 Requires at least: 6.0
 Tested up to: 7.1
 Requires PHP: 8.0
-Stable tag: 2.3.3
+Stable tag: 2.4.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -122,6 +122,11 @@ Yes. Use `wp teil1-schema-manager export > backup.json` and `wp teil1-schema-man
 6. Help & Settings — browse dynamic variables and configure conflict suppression and uninstall behavior.
 
 == Changelog ==
+
+= 2.4.0 =
+* Feature: Added complete WordPress-native internationalization for the React dashboard, PHP admin surfaces, REST messages, WP-CLI output, and Schema.org presentation metadata.
+* Feature: Added a bundled German (`de_DE`) translation for immediate use while the WordPress.org language pack is reviewed.
+* Improvement: Translation catalogs are generated reproducibly during release builds, including JavaScript JED files for the admin application.
 
 = 2.3.3 =
 * Documentation: Added the official Teil1 Schema Manager website and set the plugin homepage to its dedicated teil1 landing page.

@@ -19,13 +19,19 @@ export default function JsonImporter({ onImport }) {
       }
 
       if (!schema['@type']) {
-        setError('JSON must contain an @type property.');
+        setError(wp.i18n.__('JSON must contain an @type property.', 'teil1-schema-manager'));
         return;
       }
 
       onImport(schema);
     } catch (e) {
-      setError(`Invalid JSON: ${e.message}`);
+      setError(
+        wp.i18n.sprintf(
+          /* translators: %1$s: JSON parser error message. */
+          wp.i18n.__('Invalid JSON: %1$s', 'teil1-schema-manager'),
+          e.message
+        )
+      );
     }
   };
 
@@ -44,16 +50,16 @@ export default function JsonImporter({ onImport }) {
     <div className="sp-space-y-4">
       <div>
         <label className="sp-mb-1.5 sp-block sp-text-sm sp-font-medium sp-text-ink-1">
-          Paste JSON-LD
+          {wp.i18n.__('Paste JSON-LD', 'teil1-schema-manager')}
         </label>
         <p className="sp-mb-3 sp-text-xs sp-text-ink-3">
-          Paste raw JSON-LD markup. Script tags will be stripped automatically.
+          {wp.i18n.__('Paste raw JSON-LD markup. Script tags will be stripped automatically.', 'teil1-schema-manager')}
         </p>
         <textarea
           value={raw}
           onChange={(e) => { setRaw(e.target.value); setError(null); }}
           onPaste={handlePaste}
-          placeholder={'{\n  "@context": "https://schema.org",\n  "@type": "Organization",\n  "name": "Your Company"\n}'}
+          placeholder={wp.i18n.__('{\n  "@context": "https://schema.org",\n  "@type": "Organization",\n  "name": "Your Company"\n}', 'teil1-schema-manager')}
           rows={12}
           className="sp-w-full sp-rounded-lg sp-border sp-border-surface-3 sp-bg-surface-1 sp-p-4 sp-font-mono sp-text-sm sp-text-ink-1 sp-outline-none sp-transition-colors focus:sp-border-brand-400 focus:sp-ring-1 focus:sp-ring-brand-200"
           spellCheck="false"
@@ -71,14 +77,14 @@ export default function JsonImporter({ onImport }) {
           onClick={() => { setRaw(''); setError(null); }}
           className="sp-rounded-lg sp-border sp-border-surface-3 sp-px-4 sp-py-2 sp-text-sm sp-font-medium sp-text-ink-2 sp-transition-colors hover:sp-bg-surface-1"
         >
-          Clear
+          {wp.i18n._x('Clear', 'JSON importer button', 'teil1-schema-manager')}
         </button>
         <button
           onClick={handleImport}
           disabled={!raw.trim()}
           className="sp-rounded-lg sp-bg-brand-600 sp-px-4 sp-py-2 sp-text-sm sp-font-medium sp-text-white sp-transition-colors hover:sp-bg-brand-700 disabled:sp-opacity-50"
         >
-          Import & Populate
+          {wp.i18n.__('Import & Populate', 'teil1-schema-manager')}
         </button>
       </div>
     </div>

@@ -18,7 +18,13 @@ export default function ObjectEditor({
   if (!typeDef) {
     return (
       <div className="sp-rounded sp-bg-yellow-50 sp-p-3 sp-text-xs sp-text-yellow-700">
-        Definition for type '{type}' not found in registry.
+        {
+          wp.i18n.sprintf(
+            /* translators: %1$s: Schema.org type name. */
+            wp.i18n.__("Definition for type '%1$s' not found in registry.", 'teil1-schema-manager'),
+            type
+          )
+        }
       </div>
     );
   }
@@ -46,7 +52,10 @@ export default function ObjectEditor({
   return (
     <div className="sp-space-y-3">
       {allPropertyKeys.map((key) => {
-        const def = registryProperties[key] || { type: 'Text', description: 'Custom property' };
+        const def = registryProperties[key] || {
+          type: 'Text',
+          description: wp.i18n.__('Custom property', 'teil1-schema-manager'),
+        };
         return (
           <PropertyCard
             key={key}

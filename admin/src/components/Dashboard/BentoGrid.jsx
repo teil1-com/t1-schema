@@ -17,7 +17,7 @@ export default function BentoGrid({ onEdit, onCreate, onNavigateToRules }) {
   const [expandedHealth, setExpandedHealth] = useState(null);
 
   const handleDelete = (id) => {
-    if (window.confirm('Delete this global schema? This cannot be undone.')) {
+    if (window.confirm(wp.i18n.__( 'Delete this global schema? This cannot be undone.', 'teil1-schema-manager' ))) {
       deleteMutation.mutate(id);
     }
   };
@@ -25,7 +25,11 @@ export default function BentoGrid({ onEdit, onCreate, onNavigateToRules }) {
   if (isLoading) {
     return (
       <div className="sp-flex sp-items-center sp-justify-center sp-py-20">
-        <div className="sp-h-6 sp-w-6 sp-animate-spin sp-rounded-full sp-border-2 sp-border-brand-200 sp-border-t-brand-600" />
+        <div
+          className="sp-h-6 sp-w-6 sp-animate-spin sp-rounded-full sp-border-2 sp-border-brand-200 sp-border-t-brand-600"
+          role="status"
+          aria-label={wp.i18n.__( 'Loading global schemas…', 'teil1-schema-manager' )}
+        />
       </div>
     );
   }
@@ -63,11 +67,19 @@ export default function BentoGrid({ onEdit, onCreate, onNavigateToRules }) {
       <div className="lg:sp-col-span-3">
         <div className="sp-mb-4 sp-flex sp-items-center sp-justify-between">
           <div>
-            <h2 className="sp-text-base sp-font-semibold sp-text-ink-0">Global Schemas</h2>
-            <p className="sp-text-sm sp-text-ink-3">Site-wide structured data applied to every page</p>
+            <h2 className="sp-text-base sp-font-semibold sp-text-ink-0">
+              {wp.i18n.__( 'Global Schemas', 'teil1-schema-manager' )}
+            </h2>
+            <p className="sp-text-sm sp-text-ink-3">
+              {wp.i18n.__( 'Site-wide structured data applied to every page', 'teil1-schema-manager' )}
+            </p>
           </div>
           <span className="sp-rounded-full sp-bg-brand-100 sp-px-2.5 sp-py-0.5 sp-text-xs sp-font-semibold sp-text-brand-700">
-            {globals.length} active
+            {wp.i18n.sprintf(
+              /* translators: %1$d: Number of active global schemas. */
+              wp.i18n.__( '%1$d active', 'teil1-schema-manager' ),
+              globals.length
+            )}
           </span>
         </div>
 
@@ -104,7 +116,7 @@ export default function BentoGrid({ onEdit, onCreate, onNavigateToRules }) {
                   </svg>
                 </div>
                 <span className="sp-text-sm sp-font-medium sp-text-ink-3 group-hover:sp-text-brand-600">
-                  Add Schema
+                  {wp.i18n.__( 'Add Schema', 'teil1-schema-manager' )}
                 </span>
               </button>
             </div>
@@ -129,7 +141,8 @@ export default function BentoGrid({ onEdit, onCreate, onNavigateToRules }) {
  * Individual schema card in the Bento grid.
  */
 function SchemaCard({ schema, health, onEdit, onDelete, onInspectHealth, isHealthExpanded }) {
-  const type = schema.schema_type || 'Unknown';
+  const type = schema.schema_type || '';
+  const displayType = type || wp.i18n.__( 'Unknown', 'teil1-schema-manager' );
   const data = schema.schema_data || {};
   const isHealthy = health?.valid !== false;
   const errorCount = health?.errors?.length || 0;
@@ -145,12 +158,30 @@ function SchemaCard({ schema, health, onEdit, onDelete, onInspectHealth, isHealt
         : 'sp-bg-red-100 sp-text-red-700';
 
   const statusLabel = !health
-    ? 'Unchecked'
+    ? wp.i18n.__( 'Unchecked', 'teil1-schema-manager' )
     : isHealthy && warningCount === 0
-      ? 'Valid'
+      ? wp.i18n.__( 'Valid', 'teil1-schema-manager' )
       : isHealthy
-        ? `${warningCount} warning${warningCount > 1 ? 's' : ''}`
-        : `${errorCount} error${errorCount > 1 ? 's' : ''}`;
+        ? wp.i18n.sprintf(
+          /* translators: %1$d: Number of validation warnings. */
+          wp.i18n._n(
+            '%1$d warning',
+            '%1$d warnings',
+            warningCount,
+            'teil1-schema-manager'
+          ),
+          warningCount
+        )
+        : wp.i18n.sprintf(
+          /* translators: %1$d: Number of validation errors. */
+          wp.i18n._n(
+            '%1$d error',
+            '%1$d errors',
+            errorCount,
+            'teil1-schema-manager'
+          ),
+          errorCount
+        );
 
   return (
     <div className={`sp-group sp-relative sp-flex sp-flex-col sp-rounded-xl sp-border sp-bg-white sp-p-5 sp-shadow-bento sp-transition-all hover:sp-shadow-bento-hover ${
@@ -160,14 +191,18 @@ function SchemaCard({ schema, health, onEdit, onDelete, onInspectHealth, isHealt
       <div className="sp-mb-3 sp-flex sp-items-start sp-justify-between">
         <div className="sp-flex sp-items-center sp-gap-2">
           <TypeIcon type={type} />
-          <span className="sp-text-sm sp-font-semibold sp-text-ink-0">{type}</span>
+          <span className="sp-text-sm sp-font-semibold sp-text-ink-0">{displayType}</span>
         </div>
         <button
           onClick={hasIssues ? onInspectHealth : undefined}
           className={`sp-rounded-full sp-px-2 sp-py-0.5 sp-text-2xs sp-font-semibold sp-transition-colors ${statusColor} ${
             hasIssues ? 'sp-cursor-pointer hover:sp-opacity-80' : ''
           }`}
-          title={hasIssues ? 'Click to inspect health details' : 'Schema is valid'}
+          title={
+            hasIssues
+              ? wp.i18n.__( 'Click to inspect health details', 'teil1-schema-manager' )
+              : wp.i18n.__( 'Schema is valid', 'teil1-schema-manager' )
+          }
         >
           {statusLabel}
         </button>
@@ -186,7 +221,9 @@ function SchemaCard({ schema, health, onEdit, onDelete, onInspectHealth, isHealt
           </p>
         )}
         {!data.name && !data.url && (
-          <p className="sp-text-sm sp-italic sp-text-ink-4">No preview data</p>
+          <p className="sp-text-sm sp-italic sp-text-ink-4">
+            {wp.i18n.__( 'No preview data', 'teil1-schema-manager' )}
+          </p>
         )}
       </div>
 
@@ -196,13 +233,13 @@ function SchemaCard({ schema, health, onEdit, onDelete, onInspectHealth, isHealt
           onClick={onEdit}
           className="sp-flex-1 sp-rounded-lg sp-bg-surface-1 sp-px-3 sp-py-1.5 sp-text-xs sp-font-medium sp-text-ink-1 sp-transition-colors hover:sp-bg-surface-2"
         >
-          Edit
+          {wp.i18n.__( 'Edit', 'teil1-schema-manager' )}
         </button>
         {hasIssues && (
           <button
             onClick={onInspectHealth}
             className="sp-rounded-lg sp-px-2.5 sp-py-1.5 sp-text-xs sp-font-medium sp-text-ink-4 sp-transition-colors hover:sp-bg-yellow-50 hover:sp-text-yellow-600"
-            title="Inspect health"
+            title={wp.i18n.__( 'Inspect health', 'teil1-schema-manager' )}
           >
             🔍
           </button>
@@ -210,7 +247,7 @@ function SchemaCard({ schema, health, onEdit, onDelete, onInspectHealth, isHealt
         <button
           onClick={onDelete}
           className="sp-rounded-lg sp-px-2.5 sp-py-1.5 sp-text-xs sp-font-medium sp-text-ink-4 sp-transition-colors hover:sp-bg-red-50 hover:sp-text-red-600"
-          title="Delete"
+          title={wp.i18n.__( 'Delete', 'teil1-schema-manager' )}
         >
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
             <path d="M3 6h18" /><path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6" /><path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2" />
@@ -255,9 +292,17 @@ function EmptyState({ onCreate }) {
   return (
     <div className="sp-flex sp-flex-col sp-items-center sp-justify-center sp-rounded-xl sp-border sp-border-dashed sp-border-surface-3 sp-bg-white/50 sp-px-8 sp-py-16">
       <div className="sp-mb-4 sp-text-4xl">🏗️</div>
-      <h3 className="sp-mb-1 sp-text-base sp-font-semibold sp-text-ink-0">No schemas yet</h3>
+      <h3 className="sp-mb-1 sp-text-base sp-font-semibold sp-text-ink-0">
+        {wp.i18n.__( 'No schemas yet', 'teil1-schema-manager' )}
+      </h3>
       <p className="sp-mb-6 sp-max-w-sm sp-text-center sp-text-sm sp-text-ink-3">
-        Start by creating your Organization or WebSite schema. These are the foundation of your structured data.
+        {
+          /* translators: Organization and WebSite are Schema.org type identifiers. */
+          wp.i18n.__(
+            'Start by creating your Organization or WebSite schema. These are the foundation of your structured data.',
+            'teil1-schema-manager'
+          )
+        }
       </p>
       <div className="sp-flex sp-gap-3">
         <button

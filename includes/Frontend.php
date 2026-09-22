@@ -293,7 +293,7 @@ class Frontend {
         $items[] = [
             '@type'    => 'ListItem',
             'position' => $position++,
-            'name'     => 'Home',
+            'name'     => __( 'Home', 'teil1-schema-manager' ),
             'item'     => home_url( '/' ),
         ];
 

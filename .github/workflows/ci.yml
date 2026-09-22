@@ -1,0 +1,56 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: npm
+          cache-dependency-path: admin/package-lock.json
+
+      - name: Setup PHP and WP-CLI
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.3'
+          tools: wp-cli
+
+      - name: Install gettext
+        run: sudo apt-get update && sudo apt-get install --yes gettext
+
+      - name: Install admin dependencies
+        run: npm ci
+        working-directory: admin
+
+      - name: Run admin tests
+        run: npm test
+        working-directory: admin
+
+      - name: Build release package
+        run: bash bin/build-zip.sh
+
+      - name: Lint PHP
+        run: find . -path './admin/node_modules' -prune -o -path './dist' -prune -o -name '*.php' -print0 | xargs -0 -n1 php -l
+
+      - name: Verify generated artifacts are committed
+        run: git diff --exit-code -- assets languages includes/SchemaTypeTranslations.php
+
+      - name: Verify distribution archive
+        run: |
+          unzip -t dist/teil1-schema-manager-*.zip
+          if unzip -Z1 dist/teil1-schema-manager-*.zip | grep -E '(^|/)\.[^/]+($|/)'; then
+            echo "Hidden files are not permitted in the WordPress.org package." >&2
+            exit 1
+          fi

@@ -11,7 +11,11 @@ export default function SiteStructure({ onCreateRule }) {
   if (isLoading) {
     return (
       <div className="sp-flex sp-items-center sp-justify-center sp-py-16">
-        <div className="sp-h-6 sp-w-6 sp-animate-spin sp-rounded-full sp-border-2 sp-border-brand-200 sp-border-t-brand-600" />
+        <div
+          role="status"
+          aria-label={wp.i18n.__('Loading site structure…', 'teil1-schema-manager')}
+          className="sp-h-6 sp-w-6 sp-animate-spin sp-rounded-full sp-border-2 sp-border-brand-200 sp-border-t-brand-600"
+        />
       </div>
     );
   }
@@ -25,14 +29,26 @@ export default function SiteStructure({ onCreateRule }) {
       {/* Header */}
       <div className="sp-flex sp-items-center sp-justify-between">
         <div>
-          <h2 className="sp-text-base sp-font-semibold sp-text-ink-0">Site Structure</h2>
+          <h2 className="sp-text-base sp-font-semibold sp-text-ink-0">
+            {wp.i18n.__('Site Structure', 'teil1-schema-manager')}
+          </h2>
           <p className="sp-text-sm sp-text-ink-3">
-            Overview of all page contexts and their schema coverage
+            {wp.i18n.__('Overview of all page contexts and their schema coverage', 'teil1-schema-manager')}
           </p>
         </div>
         <div className="sp-flex sp-items-center sp-gap-3">
           <div className="sp-rounded-full sp-bg-surface-2 sp-px-3 sp-py-1 sp-text-xs sp-font-medium sp-text-ink-2">
-            {coveredContexts}/{totalContexts} contexts covered
+            {wp.i18n.sprintf(
+              /* translators: %1$d: Number of covered contexts, %2$d: Total number of contexts. */
+              wp.i18n._n(
+                '%1$d/%2$d context covered',
+                '%1$d/%2$d contexts covered',
+                totalContexts,
+                'teil1-schema-manager'
+              ),
+              coveredContexts,
+              totalContexts
+            )}
           </div>
         </div>
       </div>
@@ -40,7 +56,9 @@ export default function SiteStructure({ onCreateRule }) {
       {/* Progress bar */}
       <div className="sp-rounded-xl sp-border sp-border-surface-3 sp-bg-white sp-p-4 sp-shadow-bento">
         <div className="sp-flex sp-items-center sp-justify-between sp-mb-2">
-          <span className="sp-text-xs sp-font-semibold sp-text-ink-2">Schema Coverage</span>
+          <span className="sp-text-xs sp-font-semibold sp-text-ink-2">
+            {wp.i18n.__('Schema Coverage', 'teil1-schema-manager')}
+          </span>
           <span className="sp-text-xs sp-font-semibold sp-text-brand-600">
             {totalContexts > 0 ? Math.round((coveredContexts / totalContexts) * 100) : 0}%
           </span>
@@ -99,7 +117,13 @@ function StructureNode({ node, onCreateRule, depth = 0 }) {
           <div>
             <span className="sp-text-sm sp-font-medium sp-text-ink-0">{node.label}</span>
             {node.count !== undefined && (
-              <span className="sp-ml-2 sp-text-2xs sp-text-ink-4">({node.count} items)</span>
+              <span className="sp-ml-2 sp-text-2xs sp-text-ink-4">
+                {wp.i18n.sprintf(
+                  /* translators: %1$d: Number of items in this site-structure context. */
+                  wp.i18n._n('(%1$d item)', '(%1$d items)', node.count, 'teil1-schema-manager'),
+                  node.count
+                )}
+              </span>
             )}
             {node.url && (
               <p className="sp-text-xs sp-text-ink-4 sp-truncate sp-max-w-xs">{node.url}</p>
@@ -118,14 +142,14 @@ function StructureNode({ node, onCreateRule, depth = 0 }) {
           {/* Coverage indicator */}
           {hasCoverage ? (
             <span className="sp-rounded-full sp-bg-green-100 sp-px-2 sp-py-0.5 sp-text-2xs sp-font-semibold sp-text-green-700">
-              ✓ Covered
+              {wp.i18n.__('✓ Covered', 'teil1-schema-manager')}
             </span>
           ) : (
             <button
               onClick={() => onCreateRule && onCreateRule(node.context)}
               className="sp-rounded-lg sp-border sp-border-dashed sp-border-surface-3 sp-px-2.5 sp-py-1 sp-text-xs sp-text-ink-4 sp-opacity-0 sp-transition-all group-hover:sp-opacity-100 hover:sp-border-brand-300 hover:sp-text-brand-600"
             >
-              + Add Rule
+              {wp.i18n.__('+ Add Rule', 'teil1-schema-manager')}
             </button>
           )}
         </div>
@@ -166,7 +190,7 @@ function StructureNode({ node, onCreateRule, depth = 0 }) {
                 onClick={() => onCreateRule && onCreateRule(node.archive.context)}
                 className="sp-rounded-lg sp-border sp-border-dashed sp-border-surface-3 sp-px-2.5 sp-py-1 sp-text-xs sp-text-ink-4 sp-opacity-0 sp-transition-all group-hover:sp-opacity-100 hover:sp-border-brand-300 hover:sp-text-brand-600"
               >
-                + Add Rule
+                {wp.i18n.__('+ Add Rule', 'teil1-schema-manager')}
               </button>
             )}
           </div>

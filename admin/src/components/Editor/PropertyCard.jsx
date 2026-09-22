@@ -55,12 +55,12 @@ export default function PropertyCard({
                 ? 'sp-bg-green-100 sp-text-green-600'
                 : 'sp-bg-red-100 sp-text-red-600'
             }`}>
-              Required
+              {wp.i18n.__('Required', 'teil1-schema-manager')}
             </span>
           )}
           {!isRequired && isRecommended && (
             <span className="sp-rounded sp-bg-blue-100 sp-px-1.5 sp-py-0.5 sp-text-2xs sp-font-semibold sp-text-blue-600">
-              Recommended
+              {wp.i18n.__('Recommended', 'teil1-schema-manager')}
             </span>
           )}
           <span className="sp-text-2xs sp-text-ink-4">{valueType}</span>
@@ -79,9 +79,13 @@ export default function PropertyCard({
                 setBuilderMode(!builderMode);
               }}
               className="sp-rounded sp-border sp-border-surface-3 sp-bg-surface-1 sp-px-2 sp-py-0.5 sp-text-2xs sp-font-medium sp-text-ink-2 sp-transition-colors hover:sp-bg-surface-2"
-              title="Toggle input mode"
+              title={wp.i18n.__('Toggle input mode', 'teil1-schema-manager')}
             >
-              {builderMode ? 'Use Text/Var' : 'Build Object'}
+              {
+                builderMode
+                  ? wp.i18n.__('Use Text/Var', 'teil1-schema-manager')
+                  : wp.i18n.__('Build Object', 'teil1-schema-manager')
+              }
             </button>
           )}
 
@@ -89,7 +93,7 @@ export default function PropertyCard({
             <button
               onClick={onRequestVariable}
               className="sp-rounded sp-p-1 sp-text-ink-4 sp-transition-colors hover:sp-bg-brand-50 hover:sp-text-brand-600"
-              title="Insert dynamic variable"
+              title={wp.i18n.__('Insert dynamic variable', 'teil1-schema-manager')}
             >
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M4 7c0-1.1.9-2 2-2h3a2 2 0 0 1 2 2v1a2 2 0 0 0 2 2" />
@@ -100,7 +104,7 @@ export default function PropertyCard({
               <button
                 onClick={onRemove}
                 className="sp-rounded sp-p-1 sp-text-ink-4 sp-transition-colors hover:sp-bg-red-50 hover:sp-text-red-500"
-                title="Clear value"
+                title={wp.i18n.__('Clear value', 'teil1-schema-manager')}
               >
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M18 6 6 18" /><path d="m6 6 12 12" />
@@ -124,7 +128,9 @@ export default function PropertyCard({
               <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" />
               <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" />
             </svg>
-            <span className="sp-text-xs sp-font-medium sp-text-teal-700">Linked:</span>
+            <span className="sp-text-xs sp-font-medium sp-text-teal-700">
+              {wp.i18n.__('Linked:', 'teil1-schema-manager')}
+            </span>
             <code className="sp-rounded sp-bg-teal-100/80 sp-px-1.5 sp-py-0.5 sp-text-xs sp-font-mono sp-text-teal-800">
               {value['@id']}
             </code>
@@ -135,9 +141,9 @@ export default function PropertyCard({
               setBuilderMode(true);
             }}
             className="sp-rounded sp-border sp-border-teal-300 sp-bg-white sp-px-2 sp-py-0.5 sp-text-2xs sp-font-medium sp-text-teal-700 sp-transition-colors hover:sp-bg-teal-100"
-            title="Expand to full object editor"
+            title={wp.i18n.__('Expand to full object editor', 'teil1-schema-manager')}
           >
-            Expand
+            {wp.i18n._x('Expand', 'linked object button', 'teil1-schema-manager')}
           </button>
         </div>
       ) : (isObj || isArr) && builderMode ? (
@@ -192,9 +198,27 @@ function isObjectType(type) {
 }
 
 function getPlaceholder(name, type) {
-  if (type === 'URL') return 'https://…';
-  if (type === 'Date') return 'YYYY-MM-DD or {{post_date}}';
-  if (type === 'Number') return '0';
-  if (name === 'name') return '{{site_name}} or enter text';
-  return `Enter ${name} or use {{variable}}`;
+  if (type === 'URL') return wp.i18n.__('https://…', 'teil1-schema-manager');
+  if (type === 'Date') {
+    return wp.i18n.sprintf(
+      /* translators: %1$s: Date format example. %2$s: Dynamic post date variable token. */
+      wp.i18n.__('%1$s or %2$s', 'teil1-schema-manager'),
+      'YYYY-MM-DD',
+      '{{post_date}}'
+    );
+  }
+  if (type === 'Number') return wp.i18n._x('0', 'number input placeholder', 'teil1-schema-manager');
+  if (name === 'name') {
+    return wp.i18n.sprintf(
+      /* translators: %1$s: Dynamic site name variable token. */
+      wp.i18n.__('%1$s or enter text', 'teil1-schema-manager'),
+      '{{site_name}}'
+    );
+  }
+  return wp.i18n.sprintf(
+    /* translators: %1$s: Schema.org property name. %2$s: Example dynamic variable token. */
+    wp.i18n.__('Enter %1$s or use %2$s', 'teil1-schema-manager'),
+    name,
+    '{{variable}}'
+  );
 }

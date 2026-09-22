@@ -10,6 +10,16 @@ import { useCustomVariables, useUpdateCustomVariables } from '../../hooks/useSch
 export default function CustomVariables() {
   const { data: saved = {}, isLoading } = useCustomVariables();
   const updateMutation = useUpdateCustomVariables();
+  const variableExample = '{{custom.key}}';
+  const helpText = wp.i18n.sprintf(
+    /* translators: %1$s: Custom variable syntax example. */
+    wp.i18n.__(
+      'Define site-wide constants. Use %1$s in any schema.',
+      'teil1-schema-manager'
+    ),
+    variableExample
+  );
+  const [helpBeforeExample, helpAfterExample] = helpText.split(variableExample);
 
   const [entries, setEntries] = useState([]);
   const [hasChanges, setHasChanges] = useState(false);
@@ -56,7 +66,11 @@ export default function CustomVariables() {
 
   if (isLoading) {
     return (
-      <div className="sp-rounded-xl sp-border sp-border-surface-2 sp-bg-surface-1 sp-p-6 sp-animate-pulse">
+      <div
+        className="sp-rounded-xl sp-border sp-border-surface-2 sp-bg-surface-1 sp-p-6 sp-animate-pulse"
+        role="status"
+        aria-label={wp.i18n.__( 'Loading custom variables…', 'teil1-schema-manager' )}
+      >
         <div className="sp-h-6 sp-w-40 sp-rounded sp-bg-surface-2" />
       </div>
     );
@@ -68,10 +82,14 @@ export default function CustomVariables() {
       <div className="sp-flex sp-items-center sp-justify-between sp-mb-4">
         <div>
           <h3 className="sp-text-sm sp-font-semibold sp-text-ink-0 sp-flex sp-items-center sp-gap-2">
-            <span>⚡</span> Custom Variables
+            <span>⚡</span> {wp.i18n.__( 'Custom Variables', 'teil1-schema-manager' )}
           </h3>
           <p className="sp-text-xs sp-text-ink-3 sp-mt-0.5">
-            Define site-wide constants. Use <code className="sp-px-1 sp-py-0.5 sp-rounded sp-bg-surface-2 sp-text-xs sp-font-mono sp-text-brand-700">{'{{custom.key}}'}</code> in any schema.
+            {helpBeforeExample}
+            <code className="sp-px-1 sp-py-0.5 sp-rounded sp-bg-surface-2 sp-text-xs sp-font-mono sp-text-brand-700">
+              {variableExample}
+            </code>
+            {helpAfterExample}
           </p>
         </div>
         <button
@@ -79,7 +97,11 @@ export default function CustomVariables() {
           disabled={!hasChanges || updateMutation.isPending}
           className="sp-rounded-md sp-bg-brand-600 sp-px-3 sp-py-1.5 sp-text-xs sp-font-medium sp-text-white sp-transition hover:sp-bg-brand-700 disabled:sp-opacity-40 disabled:sp-cursor-not-allowed"
         >
-          {updateMutation.isPending ? 'Saving…' : hasChanges ? 'Save Changes' : 'Saved ✓'}
+          {updateMutation.isPending
+            ? wp.i18n.__( 'Saving…', 'teil1-schema-manager' )
+            : hasChanges
+              ? wp.i18n.__( 'Save Changes', 'teil1-schema-manager' )
+              : wp.i18n.__( 'Saved ✓', 'teil1-schema-manager' )}
         </button>
       </div>
 
@@ -96,7 +118,7 @@ export default function CustomVariables() {
                 type="text"
                 value={entry.key}
                 onChange={(e) => updateEntry(i, 'key', e.target.value)}
-                placeholder="key"
+                placeholder={wp.i18n._x( 'key', 'custom variable key placeholder', 'teil1-schema-manager' )}
                 className="sp-w-full sp-rounded-md sp-border sp-border-surface-3 sp-bg-white sp-py-1.5 sp-pr-2 sp-text-xs sp-font-mono sp-text-ink-0 sp-transition focus:sp-border-brand-400 focus:sp-ring-2 focus:sp-ring-brand-100 sp-outline-none"
                 style={{ paddingLeft: '80px' }}
               />
@@ -113,7 +135,7 @@ export default function CustomVariables() {
               type="text"
               value={entry.value}
               onChange={(e) => updateEntry(i, 'value', e.target.value)}
-              placeholder="Value (e.g. +43 1 234 5678)"
+              placeholder={wp.i18n.__( 'Value (e.g. +43 1 234 5678)', 'teil1-schema-manager' )}
               className="sp-flex-1 sp-rounded-md sp-border sp-border-surface-3 sp-bg-white sp-px-3 sp-py-1.5 sp-text-xs sp-text-ink-0 sp-transition focus:sp-border-brand-400 focus:sp-ring-2 focus:sp-ring-brand-100 sp-outline-none"
             />
 
@@ -121,7 +143,7 @@ export default function CustomVariables() {
             <button
               onClick={() => removeEntry(i)}
               className="sp-flex-shrink-0 sp-rounded sp-p-1 sp-text-ink-4 sp-transition hover:sp-bg-red-50 hover:sp-text-red-500"
-              title="Remove variable"
+              title={wp.i18n.__( 'Remove variable', 'teil1-schema-manager' )}
             >
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M18 6 6 18" /><path d="m6 6 12 12" />
@@ -139,13 +161,15 @@ export default function CustomVariables() {
         <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
           <path d="M12 5v14" /><path d="M5 12h14" />
         </svg>
-        Add Variable
+        {wp.i18n.__( 'Add Variable', 'teil1-schema-manager' )}
       </button>
 
       {/* Usage hint */}
       {entries.some(e => e.key.trim()) && (
         <div className="sp-mt-4 sp-rounded-lg sp-bg-brand-50 sp-px-3 sp-py-2 sp-border sp-border-brand-100">
-          <p className="sp-text-xs sp-text-brand-700 sp-font-medium sp-mb-1">Usage</p>
+          <p className="sp-text-xs sp-text-brand-700 sp-font-medium sp-mb-1">
+            {wp.i18n.__( 'Usage', 'teil1-schema-manager' )}
+          </p>
           <div className="sp-flex sp-flex-wrap sp-gap-1.5">
             {entries.filter(e => e.key.trim()).map((e, i) => (
               <code key={i} className="sp-rounded sp-bg-white sp-px-1.5 sp-py-0.5 sp-text-xs sp-font-mono sp-text-brand-800 sp-border sp-border-brand-200">

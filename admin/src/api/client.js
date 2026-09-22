@@ -28,12 +28,20 @@ function buildApiUrl(endpoint) {
     new URLSearchParams(endpointQuery).forEach((value, key) => {
       base.searchParams.append(key, value);
     });
+    // REST responses contain localized presentation strings. Request the
+    // authenticated administrator's locale instead of the site's locale.
+    base.searchParams.set('_locale', 'user');
 
     return base.toString();
   }
 
   const baseUrl = config.restUrl.endsWith('/') ? config.restUrl : `${config.restUrl}/`;
-  return `${baseUrl}${endpoint.replace(/^\/+/, '')}`;
+  const url = new URL(`${baseUrl}${endpointPath.replace(/^\/+/, '')}`);
+  new URLSearchParams(endpointQuery).forEach((value, key) => {
+    url.searchParams.append(key, value);
+  });
+  url.searchParams.set('_locale', 'user');
+  return url.toString();
 }
 
 /**
@@ -55,7 +63,13 @@ async function apiFetch(endpoint, options = {}) {
 
   if (!response.ok) {
     const error = await response.json().catch(() => ({}));
-    throw new Error(error.message || `API error: ${response.status}`);
+    throw new Error(
+      error.message || wp.i18n.sprintf(
+        /* translators: %1$d: HTTP response status code. */
+        wp.i18n.__('API error: %1$d', 'teil1-schema-manager'),
+        response.status
+      )
+    );
   }
 
   return response.json();

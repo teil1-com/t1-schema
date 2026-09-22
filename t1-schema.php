@@ -3,7 +3,7 @@
  * Plugin Name:       Teil1 Schema Manager
  * Plugin URI:        https://teil1.com/t1-schema/
  * Description:       Visual Schema.org JSON-LD manager for rich snippets, with conditional rules, quality scoring, @graph output, and WooCommerce support.
- * Version:           2.3.3
+ * Version:           2.4.0
  * Requires at least: 6.0
  * Requires PHP:      8.0
  * Author:            teil1 development
@@ -22,7 +22,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Plugin constants.
  */
-define( 'T1SCHEMA_VERSION', '2.3.3' );
+define( 'T1SCHEMA_VERSION', '2.4.0' );
 // Tracks the table schema, not the release. Bump only when tables change.
 define( 'T1SCHEMA_DB_VERSION', '1.5.0' );
 define( 'T1SCHEMA_FILE', __FILE__ );

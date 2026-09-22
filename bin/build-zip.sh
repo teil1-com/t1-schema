@@ -44,6 +44,12 @@ if [[ ! -d node_modules ]]; then
 	fi
 fi
 npm run build
+test -f "${ROOT}/assets/app.js"
+test -f "${ROOT}/assets/app.css"
+
+echo "→ Building translation catalogs…"
+cd "${ROOT}"
+bash "${ROOT}/bin/build-i18n.sh"
 
 echo "→ Staging plugin files…"
 cd "${ROOT}"

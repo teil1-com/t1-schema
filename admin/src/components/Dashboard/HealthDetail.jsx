@@ -14,6 +14,7 @@ export default function HealthDetail({ health, type }) {
   const infos = health.infos || [];
   const isValid = health.valid !== false;
   const hasIssues = errors.length > 0 || warnings.length > 0 || infos.length > 0;
+  const displayType = type || wp.i18n.__( 'Schema', 'teil1-schema-manager' );
 
   if (!hasIssues) {
     return (
@@ -21,7 +22,11 @@ export default function HealthDetail({ health, type }) {
         <div className="sp-flex sp-items-center sp-gap-2">
           <span className="sp-text-green-600">✓</span>
           <span className="sp-text-sm sp-font-medium sp-text-green-700">
-            {type || 'Schema'} is valid — no issues found
+            {wp.i18n.sprintf(
+              /* translators: %1$s: Schema.org type identifier or the generic word "Schema". */
+              wp.i18n.__( '%1$s is valid — no issues found', 'teil1-schema-manager' ),
+              displayType
+            )}
           </span>
         </div>
       </div>
@@ -44,23 +49,45 @@ export default function HealthDetail({ health, type }) {
             {errors.length > 0 ? '🚨' : warnings.length > 0 ? '⚠️' : 'ℹ️'}
           </span>
           <span className="sp-text-xs sp-font-semibold sp-uppercase sp-tracking-wider sp-text-ink-3">
-            Health: {type || 'Schema'}
+            {wp.i18n.sprintf(
+              /* translators: %1$s: Schema.org type identifier or the generic word "Schema". */
+              wp.i18n.__( 'Health: %1$s', 'teil1-schema-manager' ),
+              displayType
+            )}
           </span>
         </div>
         <div className="sp-flex sp-items-center sp-gap-2">
           {errors.length > 0 && (
             <span className="sp-rounded-full sp-bg-red-100 sp-px-2 sp-py-0.5 sp-text-2xs sp-font-semibold sp-text-red-600">
-              {errors.length} error{errors.length > 1 ? 's' : ''}
+              {wp.i18n.sprintf(
+                /* translators: %1$d: Number of validation errors. */
+                wp.i18n._n(
+                  '%1$d error',
+                  '%1$d errors',
+                  errors.length,
+                  'teil1-schema-manager'
+                ),
+                errors.length
+              )}
             </span>
           )}
           {warnings.length > 0 && (
             <span className="sp-rounded-full sp-bg-yellow-100 sp-px-2 sp-py-0.5 sp-text-2xs sp-font-semibold sp-text-yellow-600">
-              {warnings.length} warning{warnings.length > 1 ? 's' : ''}
+              {wp.i18n.sprintf(
+                /* translators: %1$d: Number of validation warnings. */
+                wp.i18n._n(
+                  '%1$d warning',
+                  '%1$d warnings',
+                  warnings.length,
+                  'teil1-schema-manager'
+                ),
+                warnings.length
+              )}
             </span>
           )}
           {infos.length > 0 && errors.length === 0 && warnings.length === 0 && (
             <span className="sp-rounded-full sp-bg-blue-100 sp-px-2 sp-py-0.5 sp-text-2xs sp-font-semibold sp-text-blue-600">
-              Valid (Custom)
+              {wp.i18n.__( 'Valid (Custom)', 'teil1-schema-manager' )}
             </span>
           )}
           <svg
@@ -112,7 +139,10 @@ export default function HealthDetail({ health, type }) {
           ))}
 
           <p className="sp-pt-1 sp-text-2xs sp-text-ink-4">
-            Based on Google Rich Results requirements. Fixing errors is mandatory for eligibility; warnings improve quality.
+            {wp.i18n.__(
+              'Based on Google Rich Results requirements. Fixing errors is mandatory for eligibility; warnings improve quality.',
+              'teil1-schema-manager'
+            )}
           </p>
         </div>
       )}
@@ -124,18 +154,53 @@ export default function HealthDetail({ health, type }) {
  * Provide actionable fix suggestions for common issues.
  */
 function getFixSuggestion(message) {
-  if (message.includes("'name'")) return 'Tip: Use {{site_name}} or {{post_title}} as a dynamic value';
-  if (message.includes("'url'")) return 'Tip: Use {{site_url}} or {{post_url}}';
-  if (message.includes("'logo'")) return 'Tip: Use {{site_logo}} to pull from theme settings';
-  if (message.includes("'image'")) return 'Tip: Use {{featured_image_url}} for the post thumbnail';
-  if (message.includes("'headline'")) return 'Tip: Use {{post_title}} for the article headline';
-  if (message.includes("'datePublished'")) return 'Tip: Use {{post_date}} for auto-dated articles';
-  if (message.includes("'author'")) return 'Tip: Use a nested Person object or {{author_name}}';
-  if (message.includes("'description'")) return 'Tip: Use {{post_excerpt}} or {{site_description}}';
-  if (message.includes("'sameAs'")) return 'Add your social media profile URLs as an array';
-  if (message.includes("'address'")) return 'Add a nested PostalAddress object via JSON import';
-  if (message.includes("'telephone'")) return 'Add your business phone number';
-  if (message.includes('@context')) return 'This is added automatically when rendered — no action needed';
-  if (message.includes('valid custom Schema.org type')) return 'Google may support this type, but validation is limited to syntax checks.';
-  return 'Set this property in the editor above to resolve';
+  if (message.includes("'name'")) {
+    /* translators: {{site_name}} and {{post_title}} are dynamic variable tokens. */
+    return wp.i18n.__( 'Tip: Use {{site_name}} or {{post_title}} as a dynamic value', 'teil1-schema-manager' );
+  }
+  if (message.includes("'url'")) {
+    /* translators: {{site_url}} and {{post_url}} are dynamic variable tokens. */
+    return wp.i18n.__( 'Tip: Use {{site_url}} or {{post_url}}', 'teil1-schema-manager' );
+  }
+  if (message.includes("'logo'")) {
+    /* translators: {{site_logo}} is a dynamic variable token. */
+    return wp.i18n.__( 'Tip: Use {{site_logo}} to pull from theme settings', 'teil1-schema-manager' );
+  }
+  if (message.includes("'image'")) {
+    /* translators: {{featured_image_url}} is a dynamic variable token. */
+    return wp.i18n.__( 'Tip: Use {{featured_image_url}} for the post thumbnail', 'teil1-schema-manager' );
+  }
+  if (message.includes("'headline'")) {
+    /* translators: {{post_title}} is a dynamic variable token. */
+    return wp.i18n.__( 'Tip: Use {{post_title}} for the article headline', 'teil1-schema-manager' );
+  }
+  if (message.includes("'datePublished'")) {
+    /* translators: {{post_date}} is a dynamic variable token. */
+    return wp.i18n.__( 'Tip: Use {{post_date}} for auto-dated articles', 'teil1-schema-manager' );
+  }
+  if (message.includes("'author'")) {
+    /* translators: Person is a Schema.org type and {{author_name}} is a dynamic variable token. */
+    return wp.i18n.__( 'Tip: Use a nested Person object or {{author_name}}', 'teil1-schema-manager' );
+  }
+  if (message.includes("'description'")) {
+    /* translators: {{post_excerpt}} and {{site_description}} are dynamic variable tokens. */
+    return wp.i18n.__( 'Tip: Use {{post_excerpt}} or {{site_description}}', 'teil1-schema-manager' );
+  }
+  if (message.includes("'sameAs'")) {
+    return wp.i18n.__( 'Add your social media profile URLs as an array', 'teil1-schema-manager' );
+  }
+  if (message.includes("'address'")) {
+    /* translators: PostalAddress is a Schema.org type and JSON is a technical format name. */
+    return wp.i18n.__( 'Add a nested PostalAddress object via JSON import', 'teil1-schema-manager' );
+  }
+  if (message.includes("'telephone'")) {
+    return wp.i18n.__( 'Add your business phone number', 'teil1-schema-manager' );
+  }
+  if (message.includes('@context')) {
+    return wp.i18n.__( 'This is added automatically when rendered — no action needed', 'teil1-schema-manager' );
+  }
+  if (message.includes('valid custom Schema.org type')) {
+    return wp.i18n.__( 'Google may support this type, but validation is limited to syntax checks.', 'teil1-schema-manager' );
+  }
+  return wp.i18n.__( 'Set this property in the editor above to resolve', 'teil1-schema-manager' );
 }

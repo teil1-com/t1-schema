@@ -53,7 +53,7 @@ export default function RuleBuilder({ rule, onBack }) {
 
   // Group contexts for dropdown.
   const grouped = contexts.reduce((acc, ctx) => {
-    const g = ctx.group || 'Other';
+    const g = ctx.group || wp.i18n._x('Other', 'context group label', 'teil1-schema-manager');
     if (!acc[g]) acc[g] = [];
     acc[g].push(ctx);
     return acc;
@@ -122,7 +122,13 @@ export default function RuleBuilder({ rule, onBack }) {
       setSaveSuccess(true);
       setTimeout(() => setSaveSuccess(false), 2000);
     } catch (err) {
-      alert('Save failed: ' + err.message);
+      alert(
+        wp.i18n.sprintf(
+          /* translators: %1$s: Error message returned while saving. */
+          wp.i18n.__('Save failed: %1$s', 'teil1-schema-manager'),
+          err.message
+        )
+      );
     } finally {
       setSaving(false);
     }
@@ -139,8 +145,25 @@ export default function RuleBuilder({ rule, onBack }) {
     for (const [key, def] of Object.entries(registryProperties)) {
       const val = schemaData[key];
       const empty = val === undefined || val === '' || val === null;
-      if (def.required && empty) errors.push(`Missing required: '${key}' for ${schemaType}.`);
-      else if (def.recommended && empty) warnings.push(`Missing recommended: '${key}' for ${schemaType}.`);
+      if (def.required && empty) {
+        errors.push(
+          wp.i18n.sprintf(
+            /* translators: %1$s: Schema.org property identifier, %2$s: Schema.org type identifier. */
+            wp.i18n.__("Missing required: '%1$s' for %2$s.", 'teil1-schema-manager'),
+            key,
+            schemaType
+          )
+        );
+      } else if (def.recommended && empty) {
+        warnings.push(
+          wp.i18n.sprintf(
+            /* translators: %1$s: Schema.org property identifier, %2$s: Schema.org type identifier. */
+            wp.i18n.__("Missing recommended: '%1$s' for %2$s.", 'teil1-schema-manager'),
+            key,
+            schemaType
+          )
+        );
+      }
     }
     return { valid: errors.length === 0, errors, warnings };
   }, [schemaData, schemaType, typeDef, registryProperties]);
@@ -152,7 +175,7 @@ export default function RuleBuilder({ rule, onBack }) {
         onClick={onBack}
         className="sp-flex sp-items-center sp-gap-1 sp-text-sm sp-text-ink-3 sp-transition-colors hover:sp-text-ink-0"
       >
-        ← Back to Rules
+        {wp.i18n.__('← Back to Rules', 'teil1-schema-manager')}
       </button>
 
       <div className="sp-grid sp-grid-cols-1 sp-gap-6 lg:sp-grid-cols-3">
@@ -164,13 +187,21 @@ export default function RuleBuilder({ rule, onBack }) {
             {/* Header */}
             <div className="sp-flex sp-items-center sp-justify-between sp-border-b sp-border-surface-2 sp-px-6 sp-py-4">
               <h2 className="sp-text-base sp-font-semibold sp-text-ink-0">
-                {isNew ? 'New Schema Rule' : `Edit Rule: ${rule.rule_name}`}
+                {isNew
+                  ? wp.i18n.__('New Schema Rule', 'teil1-schema-manager')
+                  : wp.i18n.sprintf(
+                    /* translators: %1$s: Rule name. */
+                    wp.i18n.__('Edit Rule: %1$s', 'teil1-schema-manager'),
+                    rule.rule_name
+                  )}
               </h2>
               <button
                 onClick={() => setShowImporter(!showImporter)}
                 className="sp-rounded-lg sp-border sp-border-surface-3 sp-px-3 sp-py-1.5 sp-text-xs sp-font-medium sp-text-ink-2 sp-transition-colors hover:sp-bg-surface-1"
               >
-                {showImporter ? 'Visual Editor' : '{ } Import JSON'}
+                {showImporter
+                  ? wp.i18n.__('Visual Editor', 'teil1-schema-manager')
+                  : wp.i18n.__('{ } Import JSON', 'teil1-schema-manager')}
               </button>
             </div>
 
@@ -183,19 +214,22 @@ export default function RuleBuilder({ rule, onBack }) {
                 {/* ── Rule Metadata ─────────────────────────────────── */}
                 <div className="sp-rounded-lg sp-border sp-border-surface-2 sp-bg-surface-1/50 sp-p-4 sp-space-y-4">
                   <h3 className="sp-text-xs sp-font-semibold sp-text-ink-2 sp-uppercase sp-tracking-wider">
-                    Rule Configuration
+                    {wp.i18n.__('Rule Configuration', 'teil1-schema-manager')}
                   </h3>
 
                   {/* Rule Name */}
                   <div>
                     <label className="sp-block sp-text-xs sp-font-medium sp-text-ink-3 sp-mb-1">
-                      Rule Name <span className="sp-text-ink-4">(optional)</span>
+                      {wp.i18n.__('Rule Name', 'teil1-schema-manager')}{' '}
+                      <span className="sp-text-ink-4">
+                        {wp.i18n.__('(optional)', 'teil1-schema-manager')}
+                      </span>
                     </label>
                     <input
                       type="text"
                       value={ruleName}
                       onChange={(e) => setRuleName(e.target.value)}
-                      placeholder="Auto-generated from conditions…"
+                      placeholder={wp.i18n.__('Auto-generated from conditions…', 'teil1-schema-manager')}
                       className="sp-w-full sp-rounded-lg sp-border sp-border-surface-3 sp-bg-white sp-px-3 sp-py-2 sp-text-sm sp-outline-none focus:sp-border-brand-400 focus:sp-ring-1 focus:sp-ring-brand-200"
                     />
                   </div>
@@ -204,13 +238,13 @@ export default function RuleBuilder({ rule, onBack }) {
                   <div>
                     <div className="sp-flex sp-items-center sp-justify-between sp-mb-2">
                       <label className="sp-text-xs sp-font-medium sp-text-ink-3">
-                        Conditions — "Apply this schema when…"
+                        {wp.i18n.__('Conditions — "Apply this schema when…"', 'teil1-schema-manager')}
                       </label>
                       <button
                         onClick={addCondition}
                         className="sp-rounded-lg sp-border sp-border-dashed sp-border-brand-300 sp-px-2.5 sp-py-1 sp-text-xs sp-font-medium sp-text-brand-600 sp-transition-colors hover:sp-bg-brand-50"
                       >
-                        + Add
+                        {wp.i18n.__('+ Add', 'teil1-schema-manager')}
                       </button>
                     </div>
                     <div className="sp-space-y-2">
@@ -226,7 +260,9 @@ export default function RuleBuilder({ rule, onBack }) {
                             }}
                             className="sp-flex-1 sp-rounded-lg sp-border sp-border-surface-3 sp-bg-white sp-px-3 sp-py-2 sp-text-sm sp-outline-none"
                           >
-                            <option value="">Select condition…</option>
+                            <option value="">
+                              {wp.i18n.__('Select condition…', 'teil1-schema-manager')}
+                            </option>
                             {Object.entries(grouped).map(([group, items]) => (
                               <optgroup key={group} label={group}>
                                 {items.map((ctx, ci) => (
@@ -240,6 +276,7 @@ export default function RuleBuilder({ rule, onBack }) {
                           {conditions.length > 1 && (
                             <button
                               onClick={() => removeCondition(i)}
+                              aria-label={wp.i18n.__('Remove condition', 'teil1-schema-manager')}
                               className="sp-rounded-lg sp-border sp-border-surface-3 sp-px-2 sp-py-1.5 sp-text-xs sp-text-ink-4 sp-transition-colors hover:sp-bg-red-50 hover:sp-text-red-600"
                             >
                               ×
@@ -250,14 +287,16 @@ export default function RuleBuilder({ rule, onBack }) {
                     </div>
                     {conditions.length > 1 && (
                       <p className="sp-mt-2 sp-text-2xs sp-text-ink-4">
-                        Multiple conditions use AND logic — all must match.
+                        {wp.i18n.__('Multiple conditions use AND logic — all must match.', 'teil1-schema-manager')}
                       </p>
                     )}
                   </div>
 
                   {/* Priority */}
                   <div className="sp-flex sp-items-center sp-gap-3">
-                    <label className="sp-text-xs sp-font-medium sp-text-ink-3">Priority:</label>
+                    <label className="sp-text-xs sp-font-medium sp-text-ink-3">
+                      {wp.i18n.__('Priority:', 'teil1-schema-manager')}
+                    </label>
                     <input
                       type="number"
                       value={priority}
@@ -265,21 +304,23 @@ export default function RuleBuilder({ rule, onBack }) {
                       min="1" max="100"
                       className="sp-w-16 sp-rounded sp-border sp-border-surface-3 sp-bg-white sp-px-2 sp-py-1 sp-text-xs sp-text-center sp-outline-none"
                     />
-                    <span className="sp-text-2xs sp-text-ink-4">Lower = higher priority</span>
+                    <span className="sp-text-2xs sp-text-ink-4">
+                      {wp.i18n.__('Lower = higher priority', 'teil1-schema-manager')}
+                    </span>
                   </div>
                 </div>
 
                 {/* ── Schema Type Selector ─────────────────────────── */}
                 <div>
                   <label className="sp-block sp-text-xs sp-font-semibold sp-text-ink-2 sp-mb-1.5 sp-uppercase sp-tracking-wider">
-                    Schema Type
+                    {wp.i18n.__('Schema Type', 'teil1-schema-manager')}
                   </label>
                   <select
                     value={schemaType}
                     onChange={(e) => setSchemaType(e.target.value)}
                     className="sp-w-full sp-rounded-lg sp-border sp-border-surface-3 sp-bg-white sp-px-3 sp-py-2 sp-text-sm sp-outline-none focus:sp-border-brand-400"
                   >
-                    <option value="">Select type…</option>
+                    <option value="">{wp.i18n.__('Select type…', 'teil1-schema-manager')}</option>
                     {typeNames.map((t) => (
                       <option key={t} value={t}>{t}</option>
                     ))}
@@ -290,9 +331,21 @@ export default function RuleBuilder({ rule, onBack }) {
                 {schemaType && allPropertyKeys.length > 0 && (
                   <div className="sp-space-y-3">
                     <div className="sp-flex sp-items-center sp-justify-between">
-                      <h3 className="sp-text-sm sp-font-semibold sp-text-ink-1">Properties</h3>
+                      <h3 className="sp-text-sm sp-font-semibold sp-text-ink-1">
+                        {wp.i18n.__('Properties', 'teil1-schema-manager')}
+                      </h3>
                       <span className="sp-text-2xs sp-text-ink-3">
-                        {Object.keys(schemaData).filter(k => !k.startsWith('@') && !k.startsWith('_')).length} / {allPropertyKeys.length} set
+                        {wp.i18n.sprintf(
+                          /* translators: %1$d: Number of properties set, %2$d: Total number of properties. */
+                          wp.i18n._n(
+                            '%1$d / %2$d property set',
+                            '%1$d / %2$d properties set',
+                            Object.keys(schemaData).filter(k => !k.startsWith('@') && !k.startsWith('_')).length,
+                            'teil1-schema-manager'
+                          ),
+                          Object.keys(schemaData).filter(k => !k.startsWith('@') && !k.startsWith('_')).length,
+                          allPropertyKeys.length
+                        )}
                       </span>
                     </div>
 
@@ -311,7 +364,7 @@ export default function RuleBuilder({ rule, onBack }) {
                   <div className="sp-flex sp-flex-col sp-items-center sp-justify-center sp-py-12 sp-text-center">
                     <span className="sp-mb-3 sp-text-3xl">🎯</span>
                     <p className="sp-text-sm sp-text-ink-3">
-                      Select a Schema type above to configure properties
+                      {wp.i18n.__('Select a schema type above to configure properties', 'teil1-schema-manager')}
                     </p>
                   </div>
                 )}
@@ -322,12 +375,21 @@ export default function RuleBuilder({ rule, onBack }) {
             {schemaType && conditions.some(c => c.type) && (
               <div className="sp-flex sp-items-center sp-justify-between sp-border-t sp-border-surface-2 sp-bg-surface-1 sp-px-6 sp-py-3">
                 <div className="sp-text-xs sp-text-ink-3">
-                  {Object.keys(schemaData).filter(k => !k.startsWith('@') && !k.startsWith('_')).length} properties set
+                  {wp.i18n.sprintf(
+                    /* translators: %1$d: Number of properties set. */
+                    wp.i18n._n(
+                      '%1$d property set',
+                      '%1$d properties set',
+                      Object.keys(schemaData).filter(k => !k.startsWith('@') && !k.startsWith('_')).length,
+                      'teil1-schema-manager'
+                    ),
+                    Object.keys(schemaData).filter(k => !k.startsWith('@') && !k.startsWith('_')).length
+                  )}
                 </div>
                 <div className="sp-flex sp-items-center sp-gap-2">
                   {saveSuccess && (
                     <span className="sp-animate-fade-in sp-text-xs sp-font-medium sp-text-green-600">
-                      ✓ Saved
+                      {wp.i18n.__('✓ Saved', 'teil1-schema-manager')}
                     </span>
                   )}
                   <button
@@ -335,7 +397,11 @@ export default function RuleBuilder({ rule, onBack }) {
                     disabled={saving || !schemaType}
                     className="sp-rounded-lg sp-bg-brand-600 sp-px-4 sp-py-1.5 sp-text-sm sp-font-medium sp-text-white sp-transition-all hover:sp-bg-brand-700 disabled:sp-opacity-50"
                   >
-                    {saving ? 'Saving…' : isNew ? 'Create Rule' : 'Save Changes'}
+                    {saving
+                      ? wp.i18n.__('Saving…', 'teil1-schema-manager')
+                      : isNew
+                        ? wp.i18n.__('Create Rule', 'teil1-schema-manager')
+                        : wp.i18n.__('Save Changes', 'teil1-schema-manager')}
                   </button>
                 </div>
               </div>
@@ -359,18 +425,24 @@ export default function RuleBuilder({ rule, onBack }) {
           {/* Rule Summary */}
           <div className="sp-rounded-xl sp-border sp-border-surface-3 sp-bg-white sp-p-4 sp-shadow-bento">
             <h3 className="sp-text-xs sp-font-semibold sp-uppercase sp-tracking-wider sp-text-ink-3 sp-mb-3">
-              Rule Summary
+              {wp.i18n.__('Rule Summary', 'teil1-schema-manager')}
             </h3>
             <div className="sp-space-y-2">
               <div className="sp-flex sp-items-center sp-gap-2">
-                <span className="sp-text-xs sp-text-ink-3">Type:</span>
+                <span className="sp-text-xs sp-text-ink-3">
+                  {wp.i18n.__('Type:', 'teil1-schema-manager')}
+                </span>
                 <span className="sp-rounded sp-bg-brand-100 sp-px-2 sp-py-0.5 sp-text-2xs sp-font-semibold sp-text-brand-700">
                   {schemaType || '—'}
                 </span>
               </div>
-              <div className="sp-text-xs sp-text-ink-3">Applies to:</div>
+              <div className="sp-text-xs sp-text-ink-3">
+                {wp.i18n.__('Applies to:', 'teil1-schema-manager')}
+              </div>
               {conditions.filter(c => c.type).length === 0 ? (
-                <p className="sp-text-xs sp-italic sp-text-ink-4">No conditions set</p>
+                <p className="sp-text-xs sp-italic sp-text-ink-4">
+                  {wp.i18n.__('No conditions set', 'teil1-schema-manager')}
+                </p>
               ) : (
                 <div className="sp-space-y-1">
                   {conditions.filter(c => c.type).map((c, i) => {
@@ -385,7 +457,9 @@ export default function RuleBuilder({ rule, onBack }) {
                 </div>
               )}
               <div className="sp-mt-2 sp-flex sp-items-center sp-gap-2 sp-border-t sp-border-surface-2 sp-pt-2">
-                <span className="sp-text-xs sp-text-ink-3">Priority:</span>
+                <span className="sp-text-xs sp-text-ink-3">
+                  {wp.i18n.__('Priority:', 'teil1-schema-manager')}
+                </span>
                 <span className="sp-text-xs sp-font-medium sp-text-ink-1">{priority}</span>
               </div>
             </div>
@@ -398,7 +472,7 @@ export default function RuleBuilder({ rule, onBack }) {
           <div className="sp-rounded-xl sp-border sp-border-surface-3 sp-bg-white sp-shadow-bento">
             <div className="sp-border-b sp-border-surface-2 sp-px-4 sp-py-3">
               <h3 className="sp-text-xs sp-font-semibold sp-uppercase sp-tracking-wider sp-text-ink-3">
-                JSON-LD Output
+                {wp.i18n.__('JSON-LD Output', 'teil1-schema-manager')}
               </h3>
             </div>
             <pre className="sp-max-h-64 sp-overflow-auto sp-p-4 sp-font-mono sp-text-xs sp-text-ink-2">
@@ -433,7 +507,7 @@ function AddCustomProperty({ existingKeys, onAdd }) {
         onClick={() => setAdding(true)}
         className="sp-w-full sp-rounded-lg sp-border sp-border-dashed sp-border-surface-3 sp-py-2.5 sp-text-xs sp-font-medium sp-text-ink-3 sp-transition-colors hover:sp-border-brand-300 hover:sp-text-brand-600 hover:sp-bg-brand-50/30"
       >
-        + Add Custom Property
+        {wp.i18n.__('+ Add Custom Property', 'teil1-schema-manager')}
       </button>
     );
   }
@@ -453,13 +527,13 @@ function AddCustomProperty({ existingKeys, onAdd }) {
         onClick={submit}
         className="sp-rounded-lg sp-bg-brand-600 sp-px-3 sp-py-2 sp-text-xs sp-font-medium sp-text-white hover:sp-bg-brand-700"
       >
-        Add
+        {wp.i18n.__('Add', 'teil1-schema-manager')}
       </button>
       <button
         onClick={() => { setAdding(false); setKey(''); }}
         className="sp-rounded-lg sp-border sp-border-surface-3 sp-px-3 sp-py-2 sp-text-xs sp-text-ink-3 hover:sp-bg-surface-1"
       >
-        Cancel
+        {wp.i18n.__('Cancel', 'teil1-schema-manager')}
       </button>
     </div>
   );

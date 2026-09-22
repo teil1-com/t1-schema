@@ -23,8 +23,20 @@ jobs:
           cache: npm
           cache-dependency-path: admin/package-lock.json
 
+      - name: Setup PHP and WP-CLI
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.3'
+          tools: wp-cli
+
+      - name: Install gettext
+        run: sudo apt-get update && sudo apt-get install --yes gettext
+
       - name: Build distribution zip
         run: bash bin/build-zip.sh
+
+      - name: Verify generated artifacts are committed
+        run: git diff --exit-code -- assets languages includes/SchemaTypeTranslations.php
 
       - name: Upload release asset
         uses: softprops/action-gh-release@v2

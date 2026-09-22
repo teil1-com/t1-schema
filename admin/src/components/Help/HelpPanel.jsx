@@ -10,12 +10,52 @@ export default function HelpPanel() {
   const updateSettings = useUpdateSettings();
 
   const categoryMeta = {
-    post: { icon: '📄', title: 'Post / Page Variables', desc: 'Dynamic data from the current post or page' },
-    author: { icon: '👤', title: 'Author Variables', desc: 'Data about the post author' },
-    site: { icon: '🌐', title: 'Site Variables', desc: 'Global site information from WordPress settings' },
-    taxonomy: { icon: '🏷️', title: 'Taxonomy Variables', desc: 'Categories, tags, and custom taxonomies' },
-    meta: { icon: '🔧', title: 'Custom Meta Variables', desc: 'Access any post_meta field by key' },
-    woocommerce: { icon: '🛒', title: 'WooCommerce Variables', desc: 'Live product data — only shown when WooCommerce is active' },
+    post: {
+      icon: '📄',
+      title: wp.i18n.__('Post / Page Variables', 'teil1-schema-manager'),
+      desc: wp.i18n.__('Dynamic data from the current post or page', 'teil1-schema-manager'),
+    },
+    author: {
+      icon: '👤',
+      title: wp.i18n.__('Author Variables', 'teil1-schema-manager'),
+      desc: wp.i18n.__('Data about the post author', 'teil1-schema-manager'),
+    },
+    site: {
+      icon: '🌐',
+      title: wp.i18n.__('Site Variables', 'teil1-schema-manager'),
+      desc: wp.i18n.sprintf(
+        /* translators: %1$s: WordPress brand name. */
+        wp.i18n.__('Global site information from %1$s settings', 'teil1-schema-manager'),
+        'WordPress'
+      ),
+    },
+    taxonomy: {
+      icon: '🏷️',
+      title: wp.i18n.__('Taxonomy Variables', 'teil1-schema-manager'),
+      desc: wp.i18n.__('Categories, tags, and custom taxonomies', 'teil1-schema-manager'),
+    },
+    meta: {
+      icon: '🔧',
+      title: wp.i18n.__('Custom Meta Variables', 'teil1-schema-manager'),
+      desc: wp.i18n.sprintf(
+        /* translators: %1$s: WordPress post meta field name. */
+        wp.i18n.__('Access any %1$s field by key', 'teil1-schema-manager'),
+        'post_meta'
+      ),
+    },
+    woocommerce: {
+      icon: '🛒',
+      title: wp.i18n.sprintf(
+        /* translators: %1$s: WooCommerce brand name. */
+        wp.i18n.__('%1$s Variables', 'teil1-schema-manager'),
+        'WooCommerce'
+      ),
+      desc: wp.i18n.sprintf(
+        /* translators: %1$s: WooCommerce brand name. */
+        wp.i18n.__('Live product data — only shown when %1$s is active', 'teil1-schema-manager'),
+        'WooCommerce'
+      ),
+    },
   };
 
   return (
@@ -23,69 +63,191 @@ export default function HelpPanel() {
       {/* Quick Start Guide */}
       <div className="sp-rounded-xl sp-border sp-border-surface-3 sp-bg-white sp-shadow-bento">
         <div className="sp-border-b sp-border-surface-2 sp-px-6 sp-py-4">
-          <h2 className="sp-text-base sp-font-semibold sp-text-ink-0">📖 How Teil1 Schema Manager Works</h2>
+          <h2 className="sp-text-base sp-font-semibold sp-text-ink-0">
+            {wp.i18n.sprintf(
+              /* translators: %1$s: Plugin name. */
+              wp.i18n.__('📖 How %1$s Works', 'teil1-schema-manager'),
+              'Teil1 Schema Manager'
+            )}
+          </h2>
         </div>
         <div className="sp-p-6 sp-space-y-6">
           {/* Concepts */}
           <div className="sp-grid sp-grid-cols-1 sp-gap-4 md:sp-grid-cols-2">
             <ConceptCard
               icon="🌍"
-              title="Global Schemas"
-              desc="Site-wide schemas (Organization, WebSite) that apply to every page automatically. Manage these in the Dashboard tab."
+              title={wp.i18n.__('Global Schemas', 'teil1-schema-manager')}
+              desc={wp.i18n.sprintf(
+                /* translators: %1$s: Organization Schema.org type, %2$s: WebSite Schema.org type. */
+                wp.i18n.__(
+                  'Site-wide schemas (%1$s, %2$s) that apply to every page automatically. Manage these in the Dashboard tab.',
+                  'teil1-schema-manager'
+                ),
+                'Organization',
+                'WebSite'
+              )}
             />
             <ConceptCard
               icon="📄"
-              title="Local Schemas"
-              desc="Page-specific schemas (Article, Product, FAQ) that apply to a single post or page. Manage these in the Pages tab."
+              title={wp.i18n.__('Local Schemas', 'teil1-schema-manager')}
+              desc={wp.i18n.sprintf(
+                /* translators: %1$s: Article Schema.org type, %2$s: Product Schema.org type, %3$s: FAQ schema name. */
+                wp.i18n.__(
+                  'Page-specific schemas (%1$s, %2$s, %3$s) that apply to a single post or page. Manage these in the Pages tab.',
+                  'teil1-schema-manager'
+                ),
+                'Article',
+                'Product',
+                'FAQ'
+              )}
             />
             <ConceptCard
               icon="🔀"
-              title="Override Logic"
-              desc='If a local schema has the same @type as a global one, the local schema replaces the global one on that page. Toggle this per-schema with the "Override global" checkbox.'
+              title={wp.i18n.__('Override Logic', 'teil1-schema-manager')}
+              desc={wp.i18n.sprintf(
+                /* translators: %1$s: @type JSON-LD key, %2$s: translated checkbox label. */
+                wp.i18n.__(
+                  'If a local schema has the same %1$s as a global one, the local schema replaces the global one on that page. Toggle this per-schema with the "%2$s" checkbox.',
+                  'teil1-schema-manager'
+                ),
+                '@type',
+                wp.i18n.__('Override global', 'teil1-schema-manager')
+              )}
             />
             <ConceptCard
               icon="🏷️"
-              title="Dynamic Variables"
-              desc='Use {{variable}} tags instead of hardcoded values. These resolve to real data at render time — e.g. {{post_title}} becomes the actual page title.'
+              title={wp.i18n.__('Dynamic Variables', 'teil1-schema-manager')}
+              desc={wp.i18n.sprintf(
+                /* translators: %1$s: {{variable}} token, %2$s: {{post_title}} token. */
+                wp.i18n.__(
+                  'Use %1$s tags instead of hardcoded values. These resolve to real data at render time — e.g. %2$s becomes the actual page title.',
+                  'teil1-schema-manager'
+                ),
+                '{{variable}}',
+                '{{post_title}}'
+              )}
             />
           </div>
 
           {/* Workflow */}
           <div>
-            <h3 className="sp-mb-3 sp-text-sm sp-font-semibold sp-text-ink-0">Typical Workflow</h3>
+            <h3 className="sp-mb-3 sp-text-sm sp-font-semibold sp-text-ink-0">
+              {wp.i18n.__('Typical Workflow', 'teil1-schema-manager')}
+            </h3>
             <div className="sp-space-y-2">
-              <Step n="1" text="Set up global Organization and WebSite schemas in the Dashboard" />
-              <Step n="2" text="Go to the Pages tab and find the post you want to add structured data to" />
-              <Step n="3" text='Click "Add Schema" → select a type (e.g. Article, Product, FAQ)' />
-              <Step n="4" text='Fill in properties using {{variables}} for dynamic data or plain text for static values' />
-              <Step n="5" text="Check the Health panel on the right for missing required/recommended properties" />
-              <Step n="6" text="Save → verify the JSON-LD output in your page source" />
+              <Step
+                n="1"
+                text={wp.i18n.sprintf(
+                  /* translators: %1$s: Organization Schema.org type, %2$s: WebSite Schema.org type. */
+                  wp.i18n.__('Set up global %1$s and %2$s schemas in the Dashboard', 'teil1-schema-manager'),
+                  'Organization',
+                  'WebSite'
+                )}
+              />
+              <Step
+                n="2"
+                text={wp.i18n.__(
+                  'Go to the Pages tab and find the post you want to add structured data to',
+                  'teil1-schema-manager'
+                )}
+              />
+              <Step
+                n="3"
+                text={wp.i18n.sprintf(
+                  /* translators: %1$s: translated Add Schema button label, %2$s: Article Schema.org type, %3$s: Product Schema.org type, %4$s: FAQ schema name. */
+                  wp.i18n.__(
+                    'Click "%1$s" → select a type (e.g. %2$s, %3$s, %4$s)',
+                    'teil1-schema-manager'
+                  ),
+                  wp.i18n.__('Add Schema', 'teil1-schema-manager'),
+                  'Article',
+                  'Product',
+                  'FAQ'
+                )}
+              />
+              <Step
+                n="4"
+                text={wp.i18n.sprintf(
+                  /* translators: %1$s: {{variables}} token. */
+                  wp.i18n.__(
+                    'Fill in properties using %1$s for dynamic data or plain text for static values',
+                    'teil1-schema-manager'
+                  ),
+                  '{{variables}}'
+                )}
+              />
+              <Step
+                n="5"
+                text={wp.i18n.__(
+                  'Check the Health panel on the right for missing required/recommended properties',
+                  'teil1-schema-manager'
+                )}
+              />
+              <Step
+                n="6"
+                text={wp.i18n.sprintf(
+                  /* translators: %1$s: JSON-LD data format name. */
+                  wp.i18n.__('Save → verify the %1$s output in your page source', 'teil1-schema-manager'),
+                  'JSON-LD'
+                )}
+              />
             </div>
           </div>
 
           {/* Warning vs Error */}
           <div>
-            <h3 className="sp-mb-3 sp-text-sm sp-font-semibold sp-text-ink-0">Understanding Health Status</h3>
+            <h3 className="sp-mb-3 sp-text-sm sp-font-semibold sp-text-ink-0">
+              {wp.i18n.__('Understanding Health Status', 'teil1-schema-manager')}
+            </h3>
             <div className="sp-space-y-2">
               <div className="sp-flex sp-items-start sp-gap-3 sp-rounded-lg sp-bg-red-50 sp-p-3">
                 <span className="sp-mt-0.5 sp-text-red-500">🚨</span>
                 <div>
-                  <p className="sp-text-sm sp-font-medium sp-text-red-700">Errors</p>
-                  <p className="sp-text-xs sp-text-red-600">Missing required properties. Your schema won't qualify for Google Rich Results without these.</p>
+                  <p className="sp-text-sm sp-font-medium sp-text-red-700">
+                    {wp.i18n.__('Errors', 'teil1-schema-manager')}
+                  </p>
+                  <p className="sp-text-xs sp-text-red-600">
+                    {wp.i18n.sprintf(
+                      /* translators: %1$s: Google Rich Results product name. */
+                      wp.i18n.__(
+                        "Missing required properties. Your schema won't qualify for %1$s without these.",
+                        'teil1-schema-manager'
+                      ),
+                      'Google Rich Results'
+                    )}
+                  </p>
                 </div>
               </div>
               <div className="sp-flex sp-items-start sp-gap-3 sp-rounded-lg sp-bg-yellow-50 sp-p-3">
                 <span className="sp-mt-0.5 sp-text-yellow-500">⚠️</span>
                 <div>
-                  <p className="sp-text-sm sp-font-medium sp-text-yellow-700">Warnings</p>
-                  <p className="sp-text-xs sp-text-yellow-600">Missing recommended properties. The schema is technically valid, but adding these improves your chances of rich result display.</p>
+                  <p className="sp-text-sm sp-font-medium sp-text-yellow-700">
+                    {wp.i18n.__('Warnings', 'teil1-schema-manager')}
+                  </p>
+                  <p className="sp-text-xs sp-text-yellow-600">
+                    {wp.i18n.__(
+                      'Missing recommended properties. The schema is technically valid, but adding these improves your chances of rich result display.',
+                      'teil1-schema-manager'
+                    )}
+                  </p>
                 </div>
               </div>
               <div className="sp-flex sp-items-start sp-gap-3 sp-rounded-lg sp-bg-green-50 sp-p-3">
                 <span className="sp-mt-0.5 sp-text-green-500">✅</span>
                 <div>
-                  <p className="sp-text-sm sp-font-medium sp-text-green-700">Valid</p>
-                  <p className="sp-text-xs sp-text-green-600">All required and recommended properties are set. Maximum chance of Google Rich Result display.</p>
+                  <p className="sp-text-sm sp-font-medium sp-text-green-700">
+                    {wp.i18n.__('Valid', 'teil1-schema-manager')}
+                  </p>
+                  <p className="sp-text-xs sp-text-green-600">
+                    {wp.i18n.sprintf(
+                      /* translators: %1$s: Google Rich Result product name. */
+                      wp.i18n.__(
+                        'All required and recommended properties are set. Maximum chance of %1$s display.',
+                        'teil1-schema-manager'
+                      ),
+                      'Google Rich Result'
+                    )}
+                  </p>
                 </div>
               </div>
             </div>
@@ -96,9 +258,18 @@ export default function HelpPanel() {
       {/* Variable Reference */}
       <div className="sp-rounded-xl sp-border sp-border-surface-3 sp-bg-white sp-shadow-bento">
         <div className="sp-border-b sp-border-surface-2 sp-px-6 sp-py-4">
-          <h2 className="sp-text-base sp-font-semibold sp-text-ink-0">🏷️ Variable Reference</h2>
+          <h2 className="sp-text-base sp-font-semibold sp-text-ink-0">
+            {wp.i18n.__('🏷️ Variable Reference', 'teil1-schema-manager')}
+          </h2>
           <p className="sp-mt-1 sp-text-sm sp-text-ink-3">
-            Use these tags in any property value. They are resolved to real data when the JSON-LD is rendered.
+            {wp.i18n.sprintf(
+              /* translators: %1$s: JSON-LD data format name. */
+              wp.i18n.__(
+                'Use these tags in any property value. They are resolved to real data when the %1$s is rendered.',
+                'teil1-schema-manager'
+              ),
+              'JSON-LD'
+            )}
           </p>
         </div>
         <div className="sp-p-6 sp-space-y-6">
@@ -120,9 +291,15 @@ export default function HelpPanel() {
                   <table className="sp-w-full">
                     <thead>
                       <tr className="sp-bg-surface-1">
-                        <th className="sp-px-4 sp-py-2 sp-text-left sp-text-2xs sp-font-semibold sp-uppercase sp-tracking-wider sp-text-ink-3">Variable</th>
-                        <th className="sp-px-4 sp-py-2 sp-text-left sp-text-2xs sp-font-semibold sp-uppercase sp-tracking-wider sp-text-ink-3">Description</th>
-                        <th className="sp-px-4 sp-py-2 sp-text-left sp-text-2xs sp-font-semibold sp-uppercase sp-tracking-wider sp-text-ink-3">Example Output</th>
+                        <th className="sp-px-4 sp-py-2 sp-text-left sp-text-2xs sp-font-semibold sp-uppercase sp-tracking-wider sp-text-ink-3">
+                          {wp.i18n.__('Variable', 'teil1-schema-manager')}
+                        </th>
+                        <th className="sp-px-4 sp-py-2 sp-text-left sp-text-2xs sp-font-semibold sp-uppercase sp-tracking-wider sp-text-ink-3">
+                          {wp.i18n.__('Description', 'teil1-schema-manager')}
+                        </th>
+                        <th className="sp-px-4 sp-py-2 sp-text-left sp-text-2xs sp-font-semibold sp-uppercase sp-tracking-wider sp-text-ink-3">
+                          {wp.i18n.__('Example Output', 'teil1-schema-manager')}
+                        </th>
                       </tr>
                     </thead>
                     <tbody>
@@ -149,19 +326,37 @@ export default function HelpPanel() {
       {/* Settings */}
       <div className="sp-rounded-xl sp-border sp-border-surface-3 sp-bg-white sp-shadow-bento">
         <div className="sp-border-b sp-border-surface-2 sp-px-6 sp-py-4">
-          <h2 className="sp-text-base sp-font-semibold sp-text-ink-0">⚙️ Settings</h2>
+          <h2 className="sp-text-base sp-font-semibold sp-text-ink-0">
+            {wp.i18n.__('⚙️ Settings', 'teil1-schema-manager')}
+          </h2>
         </div>
         <div className="sp-divide-y sp-divide-surface-2">
           <SettingToggle
-            label="Suppress conflicting schema output"
-            desc="Removes JSON-LD emitted by other plugins — or by WooCommerce's own Product/Review/BreadcrumbList/WebSite markup — wherever it would duplicate what Teil1 Schema Manager outputs. Leave this off unless you actually see duplicate structured data on your pages."
+            label={wp.i18n.__('Suppress conflicting schema output', 'teil1-schema-manager')}
+            desc={wp.i18n.sprintf(
+              /* translators: %1$s: JSON-LD format, %2$s: WooCommerce brand, %3$s: Product type, %4$s: Review type, %5$s: BreadcrumbList type, %6$s: WebSite type, %7$s: plugin name. */
+              wp.i18n.__(
+                "Removes %1$s emitted by other plugins — or by %2$s's own %3$s/%4$s/%5$s/%6$s markup — wherever it would duplicate what %7$s outputs. Leave this off unless you actually see duplicate structured data on your pages.",
+                'teil1-schema-manager'
+              ),
+              'JSON-LD',
+              'WooCommerce',
+              'Product',
+              'Review',
+              'BreadcrumbList',
+              'WebSite',
+              'Teil1 Schema Manager'
+            )}
             checked={!!settings?.suppress_conflicts}
             disabled={!settings || updateSettings.isPending}
             onChange={(value) => updateSettings.mutate({ suppress_conflicts: value })}
           />
           <SettingToggle
-            label="Delete all data on uninstall"
-            desc="When the plugin is deleted, drop its database tables, options, and per-page schemas. Off means your schemas survive a reinstall."
+            label={wp.i18n.__('Delete all data on uninstall', 'teil1-schema-manager')}
+            desc={wp.i18n.__(
+              'When the plugin is deleted, drop its database tables, options, and per-page schemas. Off means your schemas survive a reinstall.',
+              'teil1-schema-manager'
+            )}
             checked={!!settings?.delete_data_on_uninstall}
             disabled={!settings || updateSettings.isPending}
             onChange={(value) => updateSettings.mutate({ delete_data_on_uninstall: value })}
@@ -215,9 +410,9 @@ function Step({ n, text }) {
 
 function getExample(tag) {
   const examples = {
-    post_title: 'My Blog Post Title',
-    post_excerpt: 'A short summary of the post…',
-    post_content: 'Full post content as plain text',
+    post_title: wp.i18n.__('My Blog Post Title', 'teil1-schema-manager'),
+    post_excerpt: wp.i18n.__('A short summary of the post…', 'teil1-schema-manager'),
+    post_content: wp.i18n.__('Full post content as plain text', 'teil1-schema-manager'),
     post_date: '2026-05-04T12:00:00+02:00',
     post_modified: '2026-05-04T14:30:00+02:00',
     post_url: 'https://example.com/my-post/',
@@ -225,21 +420,25 @@ function getExample(tag) {
     post_slug: 'my-post',
     post_type: 'post',
     featured_image_url: 'https://example.com/wp-content/uploads/hero.jpg',
-    featured_image_alt: 'Hero image description',
+    featured_image_alt: wp.i18n.__('Hero image description', 'teil1-schema-manager'),
     author_name: 'Max Mustermann',
     author_url: 'https://example.com/author/max/',
-    author_description: 'Senior WordPress Developer',
+    author_description: wp.i18n.sprintf(
+      /* translators: %1$s: WordPress brand name. */
+      wp.i18n.__('Senior %1$s Developer', 'teil1-schema-manager'),
+      'WordPress'
+    ),
     author_avatar_url: 'https://example.com/wp-content/uploads/author.jpg',
-    site_name: 'My Website',
+    site_name: wp.i18n.__('My Website', 'teil1-schema-manager'),
     site_url: 'https://example.com/',
-    site_description: 'Your site tagline from Settings → General',
+    site_description: wp.i18n.__('Your site tagline from Settings → General', 'teil1-schema-manager'),
     site_logo: 'https://example.com/wp-content/uploads/logo.svg',
     site_language: 'en-US',
     primary_category: 'Marketing',
     primary_category_url: 'https://example.com/category/marketing/',
     categories: 'Marketing, SEO, Growth',
     tags: 'schema, json-ld, structured-data',
-    'meta:{key}': '(any custom post meta value)',
+    'meta:{key}': wp.i18n.__('(any custom post meta value)', 'teil1-schema-manager'),
     product_price: '29.90',
     product_regular_price: '34.90',
     product_sale_price: '29.90',

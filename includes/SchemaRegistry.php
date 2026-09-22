@@ -65,6 +65,17 @@ class SchemaRegistry {
     }
 
     /**
+     * Get type metadata localized for presentation in the admin interface.
+     *
+     * Schema.org type and property identifiers remain canonical.
+     *
+     * @return array<string, array>
+     */
+    public function get_localized_types(): array {
+        return SchemaTypeTranslations::localize( $this->types );
+    }
+
+    /**
      * Get a flat list of type names.
      *
      * @return array<string>

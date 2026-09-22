@@ -46,23 +46,23 @@ class CLI {
         $rows = $wpdb->get_results( "SELECT * FROM {$table} ORDER BY created_at DESC", ARRAY_A ); // phpcs:ignore
 
         if ( empty( $rows ) ) {
-            \WP_CLI::log( 'No global schemas found.' );
+            \WP_CLI::log( __( 'No global schemas found.', 'teil1-schema-manager' ) );
             return;
         }
 
-        $items = array_map( function ( array $row ): array {
+        $format = $assoc_args['format'] ?? 'table';
+        $items  = array_map( function ( array $row ) use ( $format ): array {
             $data = json_decode( $row['schema_data'], true );
             return [
                 'ID'      => $row['id'],
                 'Type'    => $row['schema_type'],
-                'Status'  => $row['status'],
+                'Status'  => 'table' === $format ? $this->translate_status_label( $row['status'] ) : $row['status'],
                 'Name'    => $data['name'] ?? '—',
                 'Created' => $row['created_at'],
             ];
         }, $rows );
 
-        $format = $assoc_args['format'] ?? 'table';
-        \WP_CLI\Utils\format_items( $format, $items, [ 'ID', 'Type', 'Status', 'Name', 'Created' ] );
+        $this->format_items( $format, $items, [ 'ID', 'Type', 'Status', 'Name', 'Created' ] );
     }
 
     /**
@@ -135,24 +135,57 @@ class CLI {
         ], [ '%s', '%s', '%s' ] );
 
         if ( false === $result ) {
-            \WP_CLI::error( 'Failed to create schema.' );
+            \WP_CLI::error( __( 'Failed to create schema.', 'teil1-schema-manager' ) );
             return;
         }
 
-        \WP_CLI::success( "Created {$type} schema (ID: {$wpdb->insert_id})." );
+        \WP_CLI::success(
+            sprintf(
+                /* translators: 1: Schema.org type, 2: Schema ID. */
+                __( 'Created %1$s schema (ID: %2$d).', 'teil1-schema-manager' ),
+                $type,
+                $wpdb->insert_id
+            )
+        );
 
         // Validate.
         $health = SchemaValidator::validate( $schema_data );
         if ( ! empty( $health['errors'] ) ) {
-            \WP_CLI::warning( count( $health['errors'] ) . ' validation error(s):' );
+            $error_count = count( $health['errors'] );
+            \WP_CLI::warning(
+                sprintf(
+                    /* translators: %1$d: Number of validation errors. */
+                    _n( '%1$d validation error:', '%1$d validation errors:', $error_count, 'teil1-schema-manager' ),
+                    $error_count
+                )
+            );
             foreach ( $health['errors'] as $e ) {
-                \WP_CLI::log( "  ✗ {$e}" );
+                \WP_CLI::log(
+                    sprintf(
+                        /* translators: %1$s: Validation error message. */
+                        __( '  ✗ %1$s', 'teil1-schema-manager' ),
+                        $e
+                    )
+                );
             }
         }
         if ( ! empty( $health['warnings'] ) ) {
-            \WP_CLI::log( count( $health['warnings'] ) . ' warning(s):' );
+            $warning_count = count( $health['warnings'] );
+            \WP_CLI::log(
+                sprintf(
+                    /* translators: %1$d: Number of validation warnings. */
+                    _n( '%1$d warning:', '%1$d warnings:', $warning_count, 'teil1-schema-manager' ),
+                    $warning_count
+                )
+            );
             foreach ( $health['warnings'] as $w ) {
-                \WP_CLI::log( "  ⚠ {$w}" );
+                \WP_CLI::log(
+                    sprintf(
+                        /* translators: %1$s: Validation warning message. */
+                        __( '  ⚠ %1$s', 'teil1-schema-manager' ),
+                        $w
+                    )
+                );
             }
         }
     }
@@ -197,7 +230,13 @@ class CLI {
 
         $row = $wpdb->get_row( $wpdb->prepare( "SELECT * FROM {$table} WHERE id = %d", $id ), ARRAY_A ); // phpcs:ignore
         if ( ! $row ) {
-            \WP_CLI::error( "Schema ID {$id} not found." );
+            \WP_CLI::error(
+                sprintf(
+                    /* translators: %1$d: Schema ID. */
+                    __( 'Schema ID %1$d not found.', 'teil1-schema-manager' ),
+                    $id
+                )
+            );
             return;
         }
 
@@ -232,7 +271,13 @@ class CLI {
 
         $wpdb->update( $table, $update, [ 'id' => $id ], $format, [ '%d' ] );
 
-        \WP_CLI::success( "Updated schema ID {$id}." );
+        \WP_CLI::success(
+            sprintf(
+                /* translators: %1$d: Schema ID. */
+                __( 'Updated schema ID %1$d.', 'teil1-schema-manager' ),
+                $id
+            )
+        );
     }
 
     /**
@@ -260,14 +305,34 @@ class CLI {
 
         $row = $wpdb->get_row( $wpdb->prepare( "SELECT schema_type FROM {$table} WHERE id = %d", $id ) ); // phpcs:ignore
         if ( ! $row ) {
-            \WP_CLI::error( "Schema ID {$id} not found." );
+            \WP_CLI::error(
+                sprintf(
+                    /* translators: %1$d: Schema ID. */
+                    __( 'Schema ID %1$d not found.', 'teil1-schema-manager' ),
+                    $id
+                )
+            );
             return;
         }
 
-        \WP_CLI::confirm( "Delete {$row->schema_type} schema (ID: {$id})?", $assoc_args );
+        \WP_CLI::confirm(
+            sprintf(
+                /* translators: 1: Schema.org type, 2: Schema ID. */
+                __( 'Delete %1$s schema (ID: %2$d)?', 'teil1-schema-manager' ),
+                $row->schema_type,
+                $id
+            ),
+            $assoc_args
+        );
 
         $wpdb->delete( $table, [ 'id' => $id ], [ '%d' ] );
-        \WP_CLI::success( "Deleted schema ID {$id}." );
+        \WP_CLI::success(
+            sprintf(
+                /* translators: %1$d: Schema ID. */
+                __( 'Deleted schema ID %1$d.', 'teil1-schema-manager' ),
+                $id
+            )
+        );
     }
 
     /**
@@ -295,7 +360,13 @@ class CLI {
 
         $row = $wpdb->get_row( $wpdb->prepare( "SELECT * FROM {$table} WHERE id = %d", $id ), ARRAY_A ); // phpcs:ignore
         if ( ! $row ) {
-            \WP_CLI::error( "Schema ID {$id} not found." );
+            \WP_CLI::error(
+                sprintf(
+                    /* translators: %1$d: Schema ID. */
+                    __( 'Schema ID %1$d not found.', 'teil1-schema-manager' ),
+                    $id
+                )
+            );
             return;
         }
 
@@ -331,7 +402,13 @@ class CLI {
         $post    = get_post( $post_id );
 
         if ( ! $post ) {
-            \WP_CLI::error( "Post ID {$post_id} not found." );
+            \WP_CLI::error(
+                sprintf(
+                    /* translators: %1$d: Post ID. */
+                    __( 'Post ID %1$d not found.', 'teil1-schema-manager' ),
+                    $post_id
+                )
+            );
             return;
         }
 
@@ -339,26 +416,44 @@ class CLI {
         $schemas = $raw ? ( is_string( $raw ) ? json_decode( $raw, true ) : $raw ) : [];
 
         if ( empty( $schemas ) ) {
-            \WP_CLI::log( "No local schemas for '{$post->post_title}' (ID: {$post_id})." );
+            \WP_CLI::log(
+                sprintf(
+                    /* translators: 1: Post title, 2: Post ID. */
+                    __( 'No local schemas for \'%1$s\' (ID: %2$d).', 'teil1-schema-manager' ),
+                    $post->post_title,
+                    $post_id
+                )
+            );
             return;
         }
 
-        \WP_CLI::log( "Local schemas for '{$post->post_title}' (ID: {$post_id}):" );
+        \WP_CLI::log(
+            sprintf(
+                /* translators: 1: Post title, 2: Post ID. */
+                __( 'Local schemas for \'%1$s\' (ID: %2$d):', 'teil1-schema-manager' ),
+                $post->post_title,
+                $post_id
+            )
+        );
         \WP_CLI::log( '' );
 
+        $format = $assoc_args['format'] ?? 'table';
         $items = [];
         foreach ( $schemas as $i => $schema ) {
             $items[] = [
                 '#'        => $i,
-                'Type'     => $schema['@type'] ?? 'Unknown',
-                'Override' => ( $schema['_t1schema_meta']['override_global'] ?? true ) ? 'Yes' : 'No',
-                'Status'   => $schema['_t1schema_meta']['status'] ?? 'active',
+                'Type'     => $schema['@type'] ?? ( 'table' === $format ? _x( 'Unknown', 'schema type table value', 'teil1-schema-manager' ) : 'Unknown' ),
+                'Override' => ( $schema['_t1schema_meta']['override_global'] ?? true )
+                    ? ( 'table' === $format ? _x( 'Yes', 'boolean table value', 'teil1-schema-manager' ) : 'Yes' )
+                    : ( 'table' === $format ? _x( 'No', 'boolean table value', 'teil1-schema-manager' ) : 'No' ),
+                'Status'   => 'table' === $format
+                    ? $this->translate_status_label( $schema['_t1schema_meta']['status'] ?? 'active' )
+                    : ( $schema['_t1schema_meta']['status'] ?? 'active' ),
                 'Props'    => count( array_filter( array_keys( $schema ), fn( $k ) => ! str_starts_with( $k, '@' ) && $k !== '_t1schema_meta' ) ),
             ];
         }
 
-        $format = $assoc_args['format'] ?? 'table';
-        \WP_CLI\Utils\format_items( $format, $items, [ '#', 'Type', 'Override', 'Status', 'Props' ] );
+        $this->format_items( $format, $items, [ '#', 'Type', 'Override', 'Status', 'Props' ] );
     }
 
     /**
@@ -395,7 +490,13 @@ class CLI {
 
         $post = get_post( $post_id );
         if ( ! $post ) {
-            \WP_CLI::error( "Post ID {$post_id} not found." );
+            \WP_CLI::error(
+                sprintf(
+                    /* translators: %1$d: Post ID. */
+                    __( 'Post ID %1$d not found.', 'teil1-schema-manager' ),
+                    $post_id
+                )
+            );
             return;
         }
 
@@ -412,7 +513,13 @@ class CLI {
         if ( ! empty( $assoc_args['schema-json'] ) ) {
             $extra = json_decode( $assoc_args['schema-json'], true );
             if ( json_last_error() !== JSON_ERROR_NONE ) {
-                \WP_CLI::error( 'Invalid JSON: ' . json_last_error_msg() );
+                \WP_CLI::error(
+                    sprintf(
+                        /* translators: %1$s: JSON parser error message. */
+                        __( 'Invalid JSON: %1$s', 'teil1-schema-manager' ),
+                        json_last_error_msg()
+                    )
+                );
                 return;
             }
             $schema_data = array_merge( $schema_data, $extra );
@@ -435,13 +542,34 @@ class CLI {
         $schemas[] = $schema_data;
         update_post_meta( $post_id, '_t1schema_local', wp_json_encode( $schemas ) );
 
-        \WP_CLI::success( "Added {$type} schema to '{$post->post_title}' (ID: {$post_id}). Total: " . count( $schemas ) . ' schema(s).' );
+        $schema_count = count( $schemas );
+        \WP_CLI::success(
+            sprintf(
+                /* translators: 1: Schema.org type, 2: Post title, 3: Post ID, 4: Total number of local schemas. */
+                _n(
+                    'Added %1$s schema to \'%2$s\' (ID: %3$d). Total: %4$d schema.',
+                    'Added %1$s schema to \'%2$s\' (ID: %3$d). Total: %4$d schemas.',
+                    $schema_count,
+                    'teil1-schema-manager'
+                ),
+                $type,
+                $post->post_title,
+                $post_id,
+                $schema_count
+            )
+        );
 
         // Validate.
         $health = SchemaValidator::validate( $schema_data );
         if ( ! empty( $health['errors'] ) ) {
             foreach ( $health['errors'] as $e ) {
-                \WP_CLI::log( "  ✗ {$e}" );
+                \WP_CLI::log(
+                    sprintf(
+                        /* translators: %1$s: Validation error message. */
+                        __( '  ✗ %1$s', 'teil1-schema-manager' ),
+                        $e
+                    )
+                );
             }
         }
     }
@@ -468,14 +596,33 @@ class CLI {
         $post    = get_post( $post_id );
 
         if ( ! $post ) {
-            \WP_CLI::error( "Post ID {$post_id} not found." );
+            \WP_CLI::error(
+                sprintf(
+                    /* translators: %1$d: Post ID. */
+                    __( 'Post ID %1$d not found.', 'teil1-schema-manager' ),
+                    $post_id
+                )
+            );
             return;
         }
 
-        \WP_CLI::confirm( "Clear all local schemas from '{$post->post_title}'?", $assoc_args );
+        \WP_CLI::confirm(
+            sprintf(
+                /* translators: %1$s: Post title. */
+                __( 'Clear all local schemas from \'%1$s\'?', 'teil1-schema-manager' ),
+                $post->post_title
+            ),
+            $assoc_args
+        );
 
         delete_post_meta( $post_id, '_t1schema_local' );
-        \WP_CLI::success( "Cleared local schemas from post ID {$post_id}." );
+        \WP_CLI::success(
+            sprintf(
+                /* translators: %1$d: Post ID. */
+                __( 'Cleared local schemas from post ID %1$d.', 'teil1-schema-manager' ),
+                $post_id
+            )
+        );
     }
 
     /**
@@ -513,6 +660,7 @@ class CLI {
         $total_errors = 0;
         $total_warns  = 0;
         $total_infos  = 0;
+        $format       = $assoc_args['format'] ?? 'table';
 
         // Validate globals.
         $globals = $wpdb->get_results( "SELECT * FROM {$g_table} WHERE status = 'active'", ARRAY_A ); // phpcs:ignore
@@ -527,11 +675,21 @@ class CLI {
             $total_warns  += $warns;
             $total_infos  += $infos;
 
-            $status = $health['valid'] ? ( $warns > 0 ? '⚠ Warnings' : ( $infos > 0 ? 'ℹ Custom' : '✓ Valid' ) ) : '✗ Errors';
+            if ( 'table' === $format ) {
+                $status = $health['valid']
+                    ? ( $warns > 0
+                        ? _x( '⚠ Warnings', 'schema validation status', 'teil1-schema-manager' )
+                        : ( $infos > 0
+                            ? _x( 'ℹ Custom', 'schema validation status', 'teil1-schema-manager' )
+                            : _x( '✓ Valid', 'schema validation status', 'teil1-schema-manager' ) ) )
+                    : _x( '✗ Errors', 'schema validation status', 'teil1-schema-manager' );
+            } else {
+                $status = $health['valid'] ? ( $warns > 0 ? '⚠ Warnings' : ( $infos > 0 ? 'ℹ Custom' : '✓ Valid' ) ) : '✗ Errors';
+            }
 
             $items[] = [
                 'ID'       => $row['id'],
-                'Layer'    => 'Global',
+                'Layer'    => 'table' === $format ? _x( 'Global', 'schema layer table value', 'teil1-schema-manager' ) : 'Global',
                 'Type'     => $row['schema_type'],
                 'Status'   => $status,
                 'Errors'   => $errors,
@@ -554,11 +712,27 @@ class CLI {
                 $total_warns  += $warns;
                 $total_infos  += $infos;
 
-                $status = $health['valid'] ? ( $warns > 0 ? '⚠ Warnings' : ( $infos > 0 ? 'ℹ Custom' : '✓ Valid' ) ) : '✗ Errors';
+                if ( 'table' === $format ) {
+                    $status = $health['valid']
+                        ? ( $warns > 0
+                            ? _x( '⚠ Warnings', 'schema validation status', 'teil1-schema-manager' )
+                            : ( $infos > 0
+                                ? _x( 'ℹ Custom', 'schema validation status', 'teil1-schema-manager' )
+                                : _x( '✓ Valid', 'schema validation status', 'teil1-schema-manager' ) ) )
+                        : _x( '✗ Errors', 'schema validation status', 'teil1-schema-manager' );
+                } else {
+                    $status = $health['valid'] ? ( $warns > 0 ? '⚠ Warnings' : ( $infos > 0 ? 'ℹ Custom' : '✓ Valid' ) ) : '✗ Errors';
+                }
 
                 $items[] = [
                     'ID'       => $row['id'],
-                    'Layer'    => "Rule: {$row['rule_name']}",
+                    'Layer'    => 'table' === $format
+                        ? sprintf(
+                            /* translators: %1$s: Schema rule name. */
+                            _x( 'Rule: %1$s', 'schema layer table value', 'teil1-schema-manager' ),
+                            $row['rule_name']
+                        )
+                        : "Rule: {$row['rule_name']}",
                     'Type'     => $row['schema_type'],
                     'Status'   => $status,
                     'Errors'   => $errors,
@@ -569,29 +743,71 @@ class CLI {
         }
 
         if ( empty( $items ) ) {
-            \WP_CLI::log( 'No active schemas to check.' );
+            \WP_CLI::log( __( 'No active schemas to check.', 'teil1-schema-manager' ) );
             return;
         }
 
-        $format = $assoc_args['format'] ?? 'table';
+        $item_count = count( $items );
+        \WP_CLI::log(
+            sprintf(
+                /* translators: %1$d: Number of evaluated items. */
+                _n( 'Total item evaluated: %1$d', 'Total items evaluated: %1$d', $item_count, 'teil1-schema-manager' ),
+                $item_count
+            )
+        );
+        \WP_CLI::log(
+            sprintf(
+                /* translators: %1$d: Number of validation errors. */
+                _n( 'Total validation error: %1$d', 'Total validation errors: %1$d', $total_errors, 'teil1-schema-manager' ),
+                $total_errors
+            )
+        );
+        \WP_CLI::log(
+            sprintf(
+                /* translators: %1$d: Number of validation warnings. */
+                _n( 'Total validation warning: %1$d', 'Total validation warnings: %1$d', $total_warns, 'teil1-schema-manager' ),
+                $total_warns
+            )
+        );
+        \WP_CLI::log(
+            sprintf(
+                /* translators: %1$d: Number of custom schema types. */
+                _n( 'Total custom type (info): %1$d', 'Total custom types (infos): %1$d', $total_infos, 'teil1-schema-manager' ),
+                $total_infos
+            )
+        );
 
-        \WP_CLI::log( "Total items evaluated: " . count( $items ) );
-        \WP_CLI::log( "Total validation errors: " . $total_errors );
-        \WP_CLI::log( "Total validation warnings: " . $total_warns );
-        \WP_CLI::log( "Total custom types (infos): " . $total_infos );
-
-        \WP_CLI\Utils\format_items(
+        $this->format_items(
             $format,
             $items,
             [ 'ID', 'Layer', 'Type', 'Status', 'Errors', 'Warnings', 'Infos' ]
         );
         \WP_CLI::log( '' );
-        \WP_CLI::log( sprintf(
-            'Summary: %d schema(s), %d error(s), %d warning(s).',
-            count( $items ),
-            $total_errors,
+
+        $schema_summary = sprintf(
+            /* translators: %1$d: Number of schemas. */
+            _n( '%1$d schema', '%1$d schemas', $item_count, 'teil1-schema-manager' ),
+            $item_count
+        );
+        $error_summary = sprintf(
+            /* translators: %1$d: Number of validation errors. */
+            _n( '%1$d error', '%1$d errors', $total_errors, 'teil1-schema-manager' ),
+            $total_errors
+        );
+        $warning_summary = sprintf(
+            /* translators: %1$d: Number of validation warnings. */
+            _n( '%1$d warning', '%1$d warnings', $total_warns, 'teil1-schema-manager' ),
             $total_warns
-        ) );
+        );
+        \WP_CLI::log(
+            sprintf(
+                /* translators: 1: Schema count summary, 2: Error count summary, 3: Warning count summary. */
+                __( 'Summary: %1$s, %2$s, %3$s.', 'teil1-schema-manager' ),
+                $schema_summary,
+                $error_summary,
+                $warning_summary
+            )
+        );
     }
 
     /**
@@ -600,7 +816,13 @@ class CLI {
     private function health_for_post( int $post_id, array $assoc_args ): void {
         $post = get_post( $post_id );
         if ( ! $post ) {
-            \WP_CLI::error( "Post ID {$post_id} not found." );
+            \WP_CLI::error(
+                sprintf(
+                    /* translators: %1$d: Post ID. */
+                    __( 'Post ID %1$d not found.', 'teil1-schema-manager' ),
+                    $post_id
+                )
+            );
             return;
         }
 
@@ -608,13 +830,21 @@ class CLI {
         $schemas = $raw ? ( is_string( $raw ) ? json_decode( $raw, true ) : $raw ) : [];
 
         if ( empty( $schemas ) ) {
-            \WP_CLI::log( "No local schemas on \"{$post->post_title}\" (ID: {$post_id})." );
+            \WP_CLI::log(
+                sprintf(
+                    /* translators: 1: Post title, 2: Post ID. */
+                    __( 'No local schemas on "%1$s" (ID: %2$d).', 'teil1-schema-manager' ),
+                    $post->post_title,
+                    $post_id
+                )
+            );
             return;
         }
 
         $items        = [];
         $total_errors = 0;
         $total_warns  = 0;
+        $format       = $assoc_args['format'] ?? 'table';
 
         foreach ( $schemas as $i => $schema ) {
             $meta   = $schema['_t1schema_meta'] ?? [];
@@ -628,9 +858,15 @@ class CLI {
             $total_errors += $errors;
             $total_warns  += $warns;
 
-            $type_raw = $schema['@type'] ?? 'Unknown';
+            $type_raw = $schema['@type'] ?? ( 'table' === $format ? _x( 'Unknown', 'schema type table value', 'teil1-schema-manager' ) : 'Unknown' );
             $type_str = is_array( $type_raw ) ? implode( ' + ', $type_raw ) : $type_raw;
-            $hstatus  = $health['valid'] ? ( $warns > 0 ? '⚠ Warnings' : '✓ Valid' ) : '✗ Errors';
+            $hstatus  = 'table' === $format
+                ? ( $health['valid']
+                    ? ( $warns > 0
+                        ? _x( '⚠ Warnings', 'schema validation status', 'teil1-schema-manager' )
+                        : _x( '✓ Valid', 'schema validation status', 'teil1-schema-manager' ) )
+                    : _x( '✗ Errors', 'schema validation status', 'teil1-schema-manager' ) )
+                : ( $health['valid'] ? ( $warns > 0 ? '⚠ Warnings' : '✓ Valid' ) : '✗ Errors' );
 
             $items[] = [
                 'Index'    => $i,
@@ -642,19 +878,44 @@ class CLI {
             ];
         }
 
-        \WP_CLI::log( sprintf( 'Health for "%s" (ID: %d):', $post->post_title, $post_id ) );
+        \WP_CLI::log(
+            sprintf(
+                /* translators: 1: Post title, 2: Post ID. */
+                __( 'Health for "%1$s" (ID: %2$d):', 'teil1-schema-manager' ),
+                $post->post_title,
+                $post_id
+            )
+        );
         \WP_CLI::log( '' );
 
-        $format = $assoc_args['format'] ?? 'table';
-        \WP_CLI\Utils\format_items( $format, $items, [ 'Index', 'Type', 'Status', 'Errors', 'Warnings', 'Details' ] );
+        $this->format_items( $format, $items, [ 'Index', 'Type', 'Status', 'Errors', 'Warnings', 'Details' ] );
 
         \WP_CLI::log( '' );
-        \WP_CLI::log( sprintf(
-            'Summary: %d schema(s), %d error(s), %d warning(s).',
-            count( $items ),
-            $total_errors,
+        $item_count = count( $items );
+        $schema_summary = sprintf(
+            /* translators: %1$d: Number of schemas. */
+            _n( '%1$d schema', '%1$d schemas', $item_count, 'teil1-schema-manager' ),
+            $item_count
+        );
+        $error_summary = sprintf(
+            /* translators: %1$d: Number of validation errors. */
+            _n( '%1$d error', '%1$d errors', $total_errors, 'teil1-schema-manager' ),
+            $total_errors
+        );
+        $warning_summary = sprintf(
+            /* translators: %1$d: Number of validation warnings. */
+            _n( '%1$d warning', '%1$d warnings', $total_warns, 'teil1-schema-manager' ),
             $total_warns
-        ) );
+        );
+        \WP_CLI::log(
+            sprintf(
+                /* translators: 1: Schema count summary, 2: Error count summary, 3: Warning count summary. */
+                __( 'Summary: %1$s, %2$s, %3$s.', 'teil1-schema-manager' ),
+                $schema_summary,
+                $error_summary,
+                $warning_summary
+            )
+        );
     }
 
     /**
@@ -690,7 +951,7 @@ class CLI {
         }
 
         $format = $assoc_args['format'] ?? 'table';
-        \WP_CLI\Utils\format_items( $format, $items, [ 'Type', 'Parent', 'Required', 'Recommended', 'Total Props' ] );
+        $this->format_items( $format, $items, [ 'Type', 'Parent', 'Required', 'Recommended', 'Total Props' ] );
     }
 
     /**
@@ -716,7 +977,7 @@ class CLI {
             }
         }
 
-        \WP_CLI\Utils\format_items( 'table', $items, [ 'Category', 'Variable', 'Desc' ] );
+        $this->format_items( 'table', $items, [ 'Category', 'Variable', 'Desc' ] );
     }
 
     /**
@@ -749,7 +1010,7 @@ class CLI {
         }
 
         if ( empty( $vars ) ) {
-            \WP_CLI::log( 'No custom variables defined. Use `wp t1-schema set-var <key> <value>` to create one.' );
+            \WP_CLI::log( __( 'No custom variables defined. Use `wp t1-schema set-var <key> <value>` to create one.', 'teil1-schema-manager' ) );
             return;
         }
 
@@ -763,7 +1024,7 @@ class CLI {
         }
 
         $format = $assoc_args['format'] ?? 'table';
-        \WP_CLI\Utils\format_items( $format, $items, [ 'Key', 'Variable', 'Value' ] );
+        $this->format_items( $format, $items, [ 'Key', 'Variable', 'Value' ] );
     }
 
     /**
@@ -793,7 +1054,7 @@ class CLI {
         $value = sanitize_text_field( $args[1] );
 
         if ( ! $key ) {
-            \WP_CLI::error( 'Invalid key. Use lowercase letters, numbers, and underscores only.' );
+            \WP_CLI::error( __( 'Invalid key. Use lowercase letters, numbers, and underscores only.', 'teil1-schema-manager' ) );
             return;
         }
 
@@ -806,8 +1067,25 @@ class CLI {
         $vars[ $key ] = $value;
         update_option( 't1schema_custom_variables', $vars );
 
-        $verb = $is_update ? 'Updated' : 'Created';
-        \WP_CLI::success( "{$verb} custom variable: {{custom.{$key}}} → \"{$value}\"" );
+        if ( $is_update ) {
+            \WP_CLI::success(
+                sprintf(
+                    /* translators: 1: Custom variable key, 2: Custom variable value. */
+                    __( 'Updated custom variable: {{custom.%1$s}} → "%2$s"', 'teil1-schema-manager' ),
+                    $key,
+                    $value
+                )
+            );
+        } else {
+            \WP_CLI::success(
+                sprintf(
+                    /* translators: 1: Custom variable key, 2: Custom variable value. */
+                    __( 'Created custom variable: {{custom.%1$s}} → "%2$s"', 'teil1-schema-manager' ),
+                    $key,
+                    $value
+                )
+            );
+        }
     }
 
     /**
@@ -832,15 +1110,34 @@ class CLI {
         $vars = get_option( 't1schema_custom_variables', [] );
 
         if ( ! is_array( $vars ) || ! isset( $vars[ $key ] ) ) {
-            \WP_CLI::error( "Custom variable '{$key}' not found." );
+            \WP_CLI::error(
+                sprintf(
+                    /* translators: %1$s: Custom variable key. */
+                    __( 'Custom variable \'%1$s\' not found.', 'teil1-schema-manager' ),
+                    $key
+                )
+            );
             return;
         }
 
-        \WP_CLI::confirm( "Delete custom variable '{{custom.{$key}}}'?", $assoc_args );
+        \WP_CLI::confirm(
+            sprintf(
+                /* translators: %1$s: Custom variable key. */
+                __( 'Delete custom variable \'{{custom.%1$s}}\'?', 'teil1-schema-manager' ),
+                $key
+            ),
+            $assoc_args
+        );
 
         unset( $vars[ $key ] );
         update_option( 't1schema_custom_variables', $vars );
-        \WP_CLI::success( "Deleted custom variable: {{custom.{$key}}}" );
+        \WP_CLI::success(
+            sprintf(
+                /* translators: %1$s: Custom variable key. */
+                __( 'Deleted custom variable: {{custom.%1$s}}', 'teil1-schema-manager' ),
+                $key
+            )
+        );
     }
 
     /**
@@ -869,7 +1166,13 @@ class CLI {
         $file = $args[0];
 
         if ( ! file_exists( $file ) ) {
-            \WP_CLI::error( "File not found: {$file}" );
+            \WP_CLI::error(
+                sprintf(
+                    /* translators: %1$s: JSON file path. */
+                    __( 'File not found: %1$s', 'teil1-schema-manager' ),
+                    $file
+                )
+            );
             return;
         }
 
@@ -877,7 +1180,13 @@ class CLI {
         $decoded = json_decode( $content, true );
 
         if ( json_last_error() !== JSON_ERROR_NONE ) {
-            \WP_CLI::error( 'Invalid JSON file: ' . json_last_error_msg() );
+            \WP_CLI::error(
+                sprintf(
+                    /* translators: %1$s: JSON parser error message. */
+                    __( 'Invalid JSON file: %1$s', 'teil1-schema-manager' ),
+                    json_last_error_msg()
+                )
+            );
             return;
         }
 
@@ -889,7 +1198,7 @@ class CLI {
         } elseif ( is_array( $decoded ) ) {
             $this->import_flat_array( $decoded, $dry_run );
         } else {
-            \WP_CLI::error( 'Unrecognized JSON format. Expected export format or flat array.' );
+            \WP_CLI::error( __( 'Unrecognized JSON format. Expected export format or flat array.', 'teil1-schema-manager' ) );
         }
     }
 
@@ -911,7 +1220,7 @@ class CLI {
                 $status      = $g['status'] ?? 'active';
 
                 if ( ! $type ) {
-                    \WP_CLI::warning( 'Skipping global: missing schema_type.' );
+                    \WP_CLI::warning( __( 'Skipping global: missing schema_type.', 'teil1-schema-manager' ) );
                     continue;
                 }
 
@@ -920,14 +1229,27 @@ class CLI {
                 $schema_data['@type']    = $type;
 
                 if ( $dry_run ) {
-                    \WP_CLI::log( "[DRY RUN] Would create global: {$type}" );
+                    \WP_CLI::log(
+                        sprintf(
+                            /* translators: %1$s: Schema.org type. */
+                            __( '[DRY RUN] Would create global: %1$s', 'teil1-schema-manager' ),
+                            $type
+                        )
+                    );
                 } else {
                     $wpdb->insert( $g_table, [
                         'schema_type' => $type,
                         'schema_data' => wp_json_encode( $schema_data ),
                         'status'      => $status,
                     ], [ '%s', '%s', '%s' ] );
-                    \WP_CLI::log( "✓ Created global {$type} (ID: {$wpdb->insert_id})" );
+                    \WP_CLI::log(
+                        sprintf(
+                            /* translators: 1: Schema.org type, 2: Schema ID. */
+                            __( '✓ Created global %1$s (ID: %2$d)', 'teil1-schema-manager' ),
+                            $type,
+                            $wpdb->insert_id
+                        )
+                    );
                 }
                 $g_count++;
             }
@@ -937,19 +1259,25 @@ class CLI {
         if ( ! empty( $data['rules'] ) ) {
             $r_table = $wpdb->prefix . 't1schema_rules';
             foreach ( $data['rules'] as $r ) {
-                $name       = $r['rule_name'] ?? 'Imported Rule';
+                $name       = $r['rule_name'] ?? _x( 'Imported Rule', 'default imported schema rule name', 'teil1-schema-manager' );
                 $type       = $r['schema_type'] ?? '';
                 $conditions = $r['conditions'] ?? [];
                 $schema_data = $r['schema_data'] ?? [];
                 $priority   = (int) ( $r['priority'] ?? 10 );
 
                 if ( ! $type ) {
-                    \WP_CLI::warning( 'Skipping rule: missing schema_type.' );
+                    \WP_CLI::warning( __( 'Skipping rule: missing schema_type.', 'teil1-schema-manager' ) );
                     continue;
                 }
 
                 if ( $dry_run ) {
-                    \WP_CLI::log( "[DRY RUN] Would create rule: {$name}" );
+                    \WP_CLI::log(
+                        sprintf(
+                            /* translators: %1$s: Schema rule name. */
+                            __( '[DRY RUN] Would create rule: %1$s', 'teil1-schema-manager' ),
+                            $name
+                        )
+                    );
                 } else {
                     $wpdb->insert( $r_table, [
                         'rule_name'   => $name,
@@ -959,7 +1287,14 @@ class CLI {
                         'priority'    => $priority,
                         'status'      => 'active',
                     ], [ '%s', '%s', '%s', '%s', '%d', '%s' ] );
-                    \WP_CLI::log( "✓ Created rule '{$name}' (ID: {$wpdb->insert_id})" );
+                    \WP_CLI::log(
+                        sprintf(
+                            /* translators: 1: Schema rule name, 2: Rule ID. */
+                            __( '✓ Created rule \'%1$s\' (ID: %2$d)', 'teil1-schema-manager' ),
+                            $name,
+                            $wpdb->insert_id
+                        )
+                    );
                 }
                 $r_count++;
             }
@@ -977,22 +1312,89 @@ class CLI {
 
                 $post = get_post( $post_id );
                 if ( ! $post ) {
-                    \WP_CLI::warning( "Post ID {$post_id} not found, skipping." );
+                    \WP_CLI::warning(
+                        sprintf(
+                            /* translators: %1$d: Post ID. */
+                            __( 'Post ID %1$d not found, skipping.', 'teil1-schema-manager' ),
+                            $post_id
+                        )
+                    );
                     continue;
                 }
 
+                $schema_count = count( $schemas );
                 if ( $dry_run ) {
-                    \WP_CLI::log( "[DRY RUN] Would set " . count( $schemas ) . " local schema(s) on '{$post->post_title}' (ID: {$post_id})" );
+                    \WP_CLI::log(
+                        sprintf(
+                            /* translators: 1: Number of local schemas, 2: Post title, 3: Post ID. */
+                            _n(
+                                '[DRY RUN] Would set %1$d local schema on \'%2$s\' (ID: %3$d)',
+                                '[DRY RUN] Would set %1$d local schemas on \'%2$s\' (ID: %3$d)',
+                                $schema_count,
+                                'teil1-schema-manager'
+                            ),
+                            $schema_count,
+                            $post->post_title,
+                            $post_id
+                        )
+                    );
                 } else {
                     update_post_meta( $post_id, '_t1schema_local', wp_json_encode( $schemas ) );
-                    \WP_CLI::log( "✓ Set " . count( $schemas ) . " local schema(s) on '{$post->post_title}' (ID: {$post_id})" );
+                    \WP_CLI::log(
+                        sprintf(
+                            /* translators: 1: Number of local schemas, 2: Post title, 3: Post ID. */
+                            _n(
+                                '✓ Set %1$d local schema on \'%2$s\' (ID: %3$d)',
+                                '✓ Set %1$d local schemas on \'%2$s\' (ID: %3$d)',
+                                $schema_count,
+                                'teil1-schema-manager'
+                            ),
+                            $schema_count,
+                            $post->post_title,
+                            $post_id
+                        )
+                    );
                 }
                 $l_count++;
             }
         }
 
-        $verb = $dry_run ? 'Would import' : 'Imported';
-        \WP_CLI::success( "{$verb}: {$g_count} global(s), {$r_count} rule(s), {$l_count} local(s)." );
+        $global_summary = sprintf(
+            /* translators: %1$d: Number of global schemas. */
+            _n( '%1$d global', '%1$d globals', $g_count, 'teil1-schema-manager' ),
+            $g_count
+        );
+        $rule_summary = sprintf(
+            /* translators: %1$d: Number of schema rules. */
+            _n( '%1$d rule', '%1$d rules', $r_count, 'teil1-schema-manager' ),
+            $r_count
+        );
+        $local_summary = sprintf(
+            /* translators: %1$d: Number of posts with local schemas. */
+            _n( '%1$d local', '%1$d locals', $l_count, 'teil1-schema-manager' ),
+            $l_count
+        );
+        if ( $dry_run ) {
+            \WP_CLI::success(
+                sprintf(
+                    /* translators: 1: Global schema count summary, 2: Rule count summary, 3: Local schema count summary. */
+                    __( 'Would import: %1$s, %2$s, %3$s.', 'teil1-schema-manager' ),
+                    $global_summary,
+                    $rule_summary,
+                    $local_summary
+                )
+            );
+        } else {
+            \WP_CLI::success(
+                sprintf(
+                    /* translators: 1: Global schema count summary, 2: Rule count summary, 3: Local schema count summary. */
+                    __( 'Imported: %1$s, %2$s, %3$s.', 'teil1-schema-manager' ),
+                    $global_summary,
+                    $rule_summary,
+                    $local_summary
+                )
+            );
+        }
     }
 
     /**
@@ -1007,18 +1409,32 @@ class CLI {
             $data    = $entry['data'] ?? $entry;
 
             if ( ! $post_id || ! $type ) {
-                \WP_CLI::warning( 'Skipping entry: missing post_id or type.' );
+                \WP_CLI::warning( __( 'Skipping entry: missing post_id or type.', 'teil1-schema-manager' ) );
                 continue;
             }
 
             $post = get_post( $post_id );
             if ( ! $post ) {
-                \WP_CLI::warning( "Post ID {$post_id} not found, skipping." );
+                \WP_CLI::warning(
+                    sprintf(
+                        /* translators: %1$d: Post ID. */
+                        __( 'Post ID %1$d not found, skipping.', 'teil1-schema-manager' ),
+                        $post_id
+                    )
+                );
                 continue;
             }
 
             if ( $dry_run ) {
-                \WP_CLI::log( "[DRY RUN] Would add {$type} to '{$post->post_title}' (ID: {$post_id})." );
+                \WP_CLI::log(
+                    sprintf(
+                        /* translators: 1: Schema.org type, 2: Post title, 3: Post ID. */
+                        __( '[DRY RUN] Would add %1$s to \'%2$s\' (ID: %3$d).', 'teil1-schema-manager' ),
+                        $type,
+                        $post->post_title,
+                        $post_id
+                    )
+                );
             } else {
                 $schema = array_merge( $data, [
                     '@context'        => 'https://schema.org',
@@ -1033,13 +1449,36 @@ class CLI {
                 $existing[] = $schema;
                 update_post_meta( $post_id, '_t1schema_local', wp_json_encode( $existing ) );
 
-                \WP_CLI::log( "✓ Added {$type} to '{$post->post_title}' (ID: {$post_id})." );
+                \WP_CLI::log(
+                    sprintf(
+                        /* translators: 1: Schema.org type, 2: Post title, 3: Post ID. */
+                        __( '✓ Added %1$s to \'%2$s\' (ID: %3$d).', 'teil1-schema-manager' ),
+                        $type,
+                        $post->post_title,
+                        $post_id
+                    )
+                );
             }
             $count++;
         }
 
-        $verb = $dry_run ? 'Would process' : 'Processed';
-        \WP_CLI::success( "{$verb} {$count} schema(s)." );
+        if ( $dry_run ) {
+            \WP_CLI::success(
+                sprintf(
+                    /* translators: %1$d: Number of schemas. */
+                    _n( 'Would process %1$d schema.', 'Would process %1$d schemas.', $count, 'teil1-schema-manager' ),
+                    $count
+                )
+            );
+        } else {
+            \WP_CLI::success(
+                sprintf(
+                    /* translators: %1$d: Number of schemas. */
+                    _n( 'Processed %1$d schema.', 'Processed %1$d schemas.', $count, 'teil1-schema-manager' ),
+                    $count
+                )
+            );
+        }
     }
 
     /**
@@ -1052,13 +1491,25 @@ class CLI {
         if ( ! empty( $assoc_args['json-file'] ) ) {
             $path = $assoc_args['json-file'];
             if ( ! file_exists( $path ) ) {
-                \WP_CLI::error( "JSON file not found: {$path}" );
+                \WP_CLI::error(
+                    sprintf(
+                        /* translators: %1$s: JSON file path. */
+                        __( 'JSON file not found: %1$s', 'teil1-schema-manager' ),
+                        $path
+                    )
+                );
                 return false;
             }
             $content = file_get_contents( $path ); // phpcs:ignore
             $data    = json_decode( $content, true );
             if ( json_last_error() !== JSON_ERROR_NONE ) {
-                \WP_CLI::error( 'Invalid JSON file: ' . json_last_error_msg() );
+                \WP_CLI::error(
+                    sprintf(
+                        /* translators: %1$s: JSON parser error message. */
+                        __( 'Invalid JSON file: %1$s', 'teil1-schema-manager' ),
+                        json_last_error_msg()
+                    )
+                );
                 return false;
             }
             return $data;
@@ -1067,7 +1518,13 @@ class CLI {
         if ( ! empty( $assoc_args['schema-json'] ) ) {
             $data = json_decode( $assoc_args['schema-json'], true );
             if ( json_last_error() !== JSON_ERROR_NONE ) {
-                \WP_CLI::error( 'Invalid JSON: ' . json_last_error_msg() );
+                \WP_CLI::error(
+                    sprintf(
+                        /* translators: %1$s: JSON parser error message. */
+                        __( 'Invalid JSON: %1$s', 'teil1-schema-manager' ),
+                        json_last_error_msg()
+                    )
+                );
                 return false;
             }
             return $data;
@@ -1097,25 +1554,26 @@ class CLI {
         $rows  = $wpdb->get_results( "SELECT * FROM {$table} ORDER BY priority ASC", ARRAY_A ); // phpcs:ignore
 
         if ( empty( $rows ) ) {
-            \WP_CLI::log( 'No schema rules found.' );
+            \WP_CLI::log( __( 'No schema rules found.', 'teil1-schema-manager' ) );
             return;
         }
 
-        $items = array_map( function ( array $row ): array {
+        $format = $assoc_args['format'] ?? 'table';
+        $items  = array_map( function ( array $row ) use ( $format ): array {
             $conds = json_decode( $row['conditions'], true ) ?: [];
             $labels = array_map( fn( $c ) => $c['type'] . ( $c['value'] ? ':' . $c['value'] : '' ), $conds );
             return [
                 'ID'         => $row['id'],
                 'Name'       => $row['rule_name'],
                 'Type'       => $row['schema_type'],
-                'Conditions' => implode( ' AND ', $labels ) ?: '(none)',
+                'Conditions' => implode( 'table' === $format ? _x( ' AND ', 'schema rule condition separator', 'teil1-schema-manager' ) : ' AND ', $labels )
+                    ?: ( 'table' === $format ? _x( '(none)', 'empty schema rule conditions table value', 'teil1-schema-manager' ) : '(none)' ),
                 'Priority'   => $row['priority'],
-                'Status'     => $row['status'],
+                'Status'     => 'table' === $format ? $this->translate_status_label( $row['status'] ) : $row['status'],
             ];
         }, $rows );
 
-        $format = $assoc_args['format'] ?? 'table';
-        \WP_CLI\Utils\format_items( $format, $items, [ 'ID', 'Name', 'Type', 'Conditions', 'Priority', 'Status' ] );
+        $this->format_items( $format, $items, [ 'ID', 'Name', 'Type', 'Conditions', 'Priority', 'Status' ] );
     }
 
     /**
@@ -1152,7 +1610,13 @@ class CLI {
 
         $conditions = json_decode( $assoc_args['conditions'] ?? '[]', true );
         if ( json_last_error() !== JSON_ERROR_NONE ) {
-            \WP_CLI::error( 'Invalid conditions JSON: ' . json_last_error_msg() );
+            \WP_CLI::error(
+                sprintf(
+                    /* translators: %1$s: JSON parser error message. */
+                    __( 'Invalid conditions JSON: %1$s', 'teil1-schema-manager' ),
+                    json_last_error_msg()
+                )
+            );
             return;
         }
 
@@ -1160,7 +1624,13 @@ class CLI {
         if ( ! empty( $assoc_args['schema-json'] ) ) {
             $extra = json_decode( $assoc_args['schema-json'], true );
             if ( json_last_error() !== JSON_ERROR_NONE ) {
-                \WP_CLI::error( 'Invalid schema JSON: ' . json_last_error_msg() );
+                \WP_CLI::error(
+                    sprintf(
+                        /* translators: %1$s: JSON parser error message. */
+                        __( 'Invalid schema JSON: %1$s', 'teil1-schema-manager' ),
+                        json_last_error_msg()
+                    )
+                );
                 return;
             }
             $schema_data = array_merge( $schema_data, $extra );
@@ -1179,11 +1649,18 @@ class CLI {
         ], [ '%s', '%s', '%s', '%s', '%d', '%s' ] );
 
         if ( false === $result ) {
-            \WP_CLI::error( 'Failed to create rule.' );
+            \WP_CLI::error( __( 'Failed to create rule.', 'teil1-schema-manager' ) );
             return;
         }
 
-        \WP_CLI::success( "Created rule '{$name}' (ID: {$wpdb->insert_id})." );
+        \WP_CLI::success(
+            sprintf(
+                /* translators: 1: Schema rule name, 2: Rule ID. */
+                __( 'Created rule \'%1$s\' (ID: %2$d).', 'teil1-schema-manager' ),
+                $name,
+                $wpdb->insert_id
+            )
+        );
     }
 
     /**
@@ -1206,13 +1683,33 @@ class CLI {
 
         $row = $wpdb->get_row( $wpdb->prepare( "SELECT rule_name FROM {$table} WHERE id = %d", $id ) ); // phpcs:ignore
         if ( ! $row ) {
-            \WP_CLI::error( "Rule ID {$id} not found." );
+            \WP_CLI::error(
+                sprintf(
+                    /* translators: %1$d: Rule ID. */
+                    __( 'Rule ID %1$d not found.', 'teil1-schema-manager' ),
+                    $id
+                )
+            );
             return;
         }
 
-        \WP_CLI::confirm( "Delete rule '{$row->rule_name}' (ID: {$id})?", $assoc_args );
+        \WP_CLI::confirm(
+            sprintf(
+                /* translators: 1: Schema rule name, 2: Rule ID. */
+                __( 'Delete rule \'%1$s\' (ID: %2$d)?', 'teil1-schema-manager' ),
+                $row->rule_name,
+                $id
+            ),
+            $assoc_args
+        );
         $wpdb->delete( $table, [ 'id' => $id ], [ '%d' ] );
-        \WP_CLI::success( "Deleted rule ID {$id}." );
+        \WP_CLI::success(
+            sprintf(
+                /* translators: %1$d: Rule ID. */
+                __( 'Deleted rule ID %1$d.', 'teil1-schema-manager' ),
+                $id
+            )
+        );
     }
 
     /**
@@ -1318,7 +1815,13 @@ class CLI {
         $_post   = get_post( $post_id );
 
         if ( ! $_post ) {
-            \WP_CLI::error( "Post ID {$post_id} not found." );
+            \WP_CLI::error(
+                sprintf(
+                    /* translators: %1$d: Post ID. */
+                    __( 'Post ID %1$d not found.', 'teil1-schema-manager' ),
+                    $post_id
+                )
+            );
             return;
         }
 
@@ -1377,7 +1880,21 @@ class CLI {
         \WP_CLI::log( wp_json_encode( $graph, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE ) );
 
         \WP_CLI::log( '' );
-        \WP_CLI::log( sprintf( 'Total: %d schema(s) for "%s" (ID: %d).', count( $merged ), $post->post_title, $post_id ) );
+        $schema_count = count( $merged );
+        \WP_CLI::log(
+            sprintf(
+                /* translators: 1: Number of schemas, 2: Post title, 3: Post ID. */
+                _n(
+                    'Total: %1$d schema for "%2$s" (ID: %3$d).',
+                    'Total: %1$d schemas for "%2$s" (ID: %3$d).',
+                    $schema_count,
+                    'teil1-schema-manager'
+                ),
+                $schema_count,
+                $post->post_title,
+                $post_id
+            )
+        );
         
         // Restore the global query state we replaced above.
         $wp_query = $original_query;
@@ -1408,12 +1925,18 @@ class CLI {
         $items   = [];
         $covered = 0;
         $total   = 0;
+        $format  = $assoc_args['format'] ?? 'table';
 
         // Front page.
         $total++;
         $fp_rules = $this->find_rules_for( $rules, 'front_page', '' );
         if ( $fp_rules ) $covered++;
-        $items[] = [ 'Context' => '🏠 Front Page', 'Type' => 'front_page', 'Schemas' => $fp_rules ?: '—', 'Status' => $fp_rules ? '✓' : '✗' ];
+        $items[] = [
+            'Context' => 'table' === $format ? _x( '🏠 Front Page', 'site context table value', 'teil1-schema-manager' ) : '🏠 Front Page',
+            'Type'    => 'front_page',
+            'Schemas' => $fp_rules ?: '—',
+            'Status'  => $fp_rules ? '✓' : '✗',
+        ];
 
         // Post types.
         $post_types = get_post_types( [ 'public' => true ], 'objects' );
@@ -1423,13 +1946,36 @@ class CLI {
             $s_rules = $this->find_rules_for( $rules, 'singular', $pt->name );
             if ( $s_rules ) $covered++;
             $count   = wp_count_posts( $pt->name )->publish ?? 0;
-            $items[] = [ 'Context' => "📄 {$pt->label} ({$count})", 'Type' => "singular:{$pt->name}", 'Schemas' => $s_rules ?: '—', 'Status' => $s_rules ? '✓' : '✗' ];
+            $items[] = [
+                'Context' => 'table' === $format
+                    ? sprintf(
+                        /* translators: 1: Post type label, 2: Number of published posts. */
+                        _x( '📄 %1$s (%2$d)', 'site context table value', 'teil1-schema-manager' ),
+                        $pt->label,
+                        $count
+                    )
+                    : "📄 {$pt->label} ({$count})",
+                'Type'    => "singular:{$pt->name}",
+                'Schemas' => $s_rules ?: '—',
+                'Status'  => $s_rules ? '✓' : '✗',
+            ];
 
             if ( $pt->has_archive ) {
                 $total++;
                 $a_rules = $this->find_rules_for( $rules, 'archive', $pt->name );
                 if ( $a_rules ) $covered++;
-                $items[] = [ 'Context' => "  📋 {$pt->label} Archive", 'Type' => "archive:{$pt->name}", 'Schemas' => $a_rules ?: '—', 'Status' => $a_rules ? '✓' : '✗' ];
+                $items[] = [
+                    'Context' => 'table' === $format
+                        ? sprintf(
+                            /* translators: %1$s: Post type label. */
+                            _x( '  📋 %1$s Archive', 'site context table value', 'teil1-schema-manager' ),
+                            $pt->label
+                        )
+                        : "  📋 {$pt->label} Archive",
+                    'Type'    => "archive:{$pt->name}",
+                    'Schemas' => $a_rules ?: '—',
+                    'Status'  => $a_rules ? '✓' : '✗',
+                ];
             }
         }
 
@@ -1440,22 +1986,54 @@ class CLI {
             $t_rules = $this->find_rules_for( $rules, 'taxonomy', $tax->name );
             if ( $t_rules ) $covered++;
             $term_count = wp_count_terms( [ 'taxonomy' => $tax->name ] );
-            $items[] = [ 'Context' => "🏷️ {$tax->label} ({$term_count})", 'Type' => "taxonomy:{$tax->name}", 'Schemas' => $t_rules ?: '—', 'Status' => $t_rules ? '✓' : '✗' ];
+            $items[] = [
+                'Context' => 'table' === $format
+                    ? sprintf(
+                        /* translators: 1: Taxonomy label, 2: Number of taxonomy terms. */
+                        _x( '🏷️ %1$s (%2$d)', 'site context table value', 'teil1-schema-manager' ),
+                        $tax->label,
+                        $term_count
+                    )
+                    : "🏷️ {$tax->label} ({$term_count})",
+                'Type'    => "taxonomy:{$tax->name}",
+                'Schemas' => $t_rules ?: '—',
+                'Status'  => $t_rules ? '✓' : '✗',
+            ];
         }
 
         // Special pages.
-        foreach ( [ [ 'search', '🔍 Search Results' ], [ '404', '⚠️  404 Page' ], [ 'author', '👤 Author Archives' ], [ 'date', '📅 Date Archives' ] ] as $sp ) {
+        $special_pages = 'table' === $format
+            ? [
+                [ 'search', _x( '🔍 Search Results', 'site context table value', 'teil1-schema-manager' ) ],
+                [ '404', _x( '⚠️  404 Page', 'site context table value', 'teil1-schema-manager' ) ],
+                [ 'author', _x( '👤 Author Archives', 'site context table value', 'teil1-schema-manager' ) ],
+                [ 'date', _x( '📅 Date Archives', 'site context table value', 'teil1-schema-manager' ) ],
+            ]
+            : [ [ 'search', '🔍 Search Results' ], [ '404', '⚠️  404 Page' ], [ 'author', '👤 Author Archives' ], [ 'date', '📅 Date Archives' ] ];
+        foreach ( $special_pages as $sp ) {
             $total++;
             $sp_rules = $this->find_rules_for( $rules, $sp[0], '' );
             if ( $sp_rules ) $covered++;
             $items[] = [ 'Context' => $sp[1], 'Type' => $sp[0], 'Schemas' => $sp_rules ?: '—', 'Status' => $sp_rules ? '✓' : '✗' ];
         }
 
-        $format = $assoc_args['format'] ?? 'table';
-        \WP_CLI\Utils\format_items( $format, $items, [ 'Context', 'Type', 'Schemas', 'Status' ] );
+        $this->format_items( $format, $items, [ 'Context', 'Type', 'Schemas', 'Status' ] );
         \WP_CLI::log( '' );
         $pct = $total > 0 ? round( ( $covered / $total ) * 100 ) : 0;
-        \WP_CLI::log( "Coverage: {$covered}/{$total} contexts ({$pct}%)." );
+        \WP_CLI::log(
+            sprintf(
+                /* translators: 1: Covered site contexts, 2: Total site contexts, 3: Coverage percentage. */
+                _n(
+                    'Coverage: %1$d/%2$d context (%3$d%%).',
+                    'Coverage: %1$d/%2$d contexts (%3$d%%).',
+                    $total,
+                    'teil1-schema-manager'
+                ),
+                $covered,
+                $total,
+                $pct
+            )
+        );
     }
 
     /**
@@ -1489,46 +2067,77 @@ class CLI {
         global $wpdb;
         $issues = 0;
 
-        \WP_CLI::log( '🩺 Teil1 Schema Manager Doctor' );
+        \WP_CLI::log( __( '🩺 Teil1 Schema Manager Doctor', 'teil1-schema-manager' ) );
         \WP_CLI::log( str_repeat( '─', 50 ) );
 
         // 1. Check database tables.
-        \WP_CLI::log( "\n1. Database tables:" );
+        \WP_CLI::log( "\n" . __( '1. Database tables:', 'teil1-schema-manager' ) );
         foreach ( [ 't1schema_globals', 't1schema_rules' ] as $t ) {
             $exists = $wpdb->get_var( "SHOW TABLES LIKE '{$wpdb->prefix}{$t}'" ); // phpcs:ignore
             if ( $exists ) {
                 $count = $wpdb->get_var( "SELECT COUNT(*) FROM {$wpdb->prefix}{$t}" ); // phpcs:ignore
-                \WP_CLI::log( "   ✓ {$t} ({$count} rows)" );
+                \WP_CLI::log(
+                    sprintf(
+                        /* translators: 1: Database table name, 2: Number of rows. */
+                        _n( '   ✓ %1$s (%2$d row)', '   ✓ %1$s (%2$d rows)', $count, 'teil1-schema-manager' ),
+                        $t,
+                        $count
+                    )
+                );
             } else {
-                \WP_CLI::log( "   ✗ {$t} — MISSING! Deactivate and reactivate the plugin." );
+                \WP_CLI::log(
+                    sprintf(
+                        /* translators: %1$s: Database table name. */
+                        __( '   ✗ %1$s — MISSING! Deactivate and reactivate the plugin.', 'teil1-schema-manager' ),
+                        $t
+                    )
+                );
                 $issues++;
             }
         }
 
         // 2. Check for duplicate types in globals.
-        \WP_CLI::log( "\n2. Duplicate global types:" );
+        \WP_CLI::log( "\n" . __( '2. Duplicate global types:', 'teil1-schema-manager' ) );
         $g_table = $wpdb->prefix . 't1schema_globals';
         $dupes   = $wpdb->get_results( "SELECT schema_type, COUNT(*) as cnt FROM {$g_table} WHERE status = 'active' GROUP BY schema_type HAVING cnt > 1", ARRAY_A ); // phpcs:ignore
         if ( empty( $dupes ) ) {
-            \WP_CLI::log( '   ✓ No duplicates' );
+            \WP_CLI::log( __( '   ✓ No duplicates', 'teil1-schema-manager' ) );
         } else {
             foreach ( $dupes as $d ) {
-                \WP_CLI::log( "   ⚠ {$d['schema_type']} has {$d['cnt']} active globals — only one will render" );
+                \WP_CLI::log(
+                    sprintf(
+                        /* translators: 1: Schema.org type, 2: Number of active global schemas. */
+                        _n(
+                            '   ⚠ %1$s has %2$d active global — only one will render',
+                            '   ⚠ %1$s has %2$d active globals — only one will render',
+                            $d['cnt'],
+                            'teil1-schema-manager'
+                        ),
+                        $d['schema_type'],
+                        $d['cnt']
+                    )
+                );
                 $issues++;
             }
         }
 
         // 3. Check for conflicting plugins.
-        \WP_CLI::log( "\n3. Plugin conflicts:" );
+        \WP_CLI::log( "\n" . __( '3. Plugin conflicts:', 'teil1-schema-manager' ) );
         $conflicts = [
-            'teil1-content/teil1-content.php' => 'teil1-content (mu-plugin schema)',
-            'schema-pro/schema-pro.php'       => 'Schema Pro (wpschema.com)',
-            'wp-seo-schema-pro/schema.php'    => 'WP SEO Schema Pro',
+            'teil1-content/teil1-content.php' => _x( 'teil1-content (mu-plugin schema)', 'plugin conflict label', 'teil1-schema-manager' ),
+            'schema-pro/schema-pro.php'       => _x( 'Schema Pro (wpschema.com)', 'plugin conflict label', 'teil1-schema-manager' ),
+            'wp-seo-schema-pro/schema.php'    => _x( 'WP SEO Schema Pro', 'plugin conflict label', 'teil1-schema-manager' ),
         ];
         $found_conflict = false;
         foreach ( $conflicts as $file => $label ) {
             if ( is_plugin_active( $file ) || ( defined( 'WPMU_PLUGIN_DIR' ) && file_exists( WPMU_PLUGIN_DIR . '/' . $file ) ) ) {
-                \WP_CLI::log( "   ⚠ {$label} is active — may output duplicate JSON-LD" );
+                \WP_CLI::log(
+                    sprintf(
+                        /* translators: %1$s: Conflicting plugin name. */
+                        __( '   ⚠ %1$s is active — may output duplicate JSON-LD', 'teil1-schema-manager' ),
+                        $label
+                    )
+                );
                 $issues++;
                 $found_conflict = true;
             }
@@ -1536,8 +2145,8 @@ class CLI {
         if ( function_exists( 'teil1_schema_output' ) ) {
             $suppressing = (bool) get_option( 't1schema_suppress_conflicts', false );
             \WP_CLI::log( $suppressing
-                ? '   ⚠ teil1_schema_output() detected — suppression is ON, Teil1 Schema Manager removes it'
-                : '   ⚠ teil1_schema_output() detected — suppression is OFF, enable it in Settings if you see duplicates'
+                ? __( '   ⚠ teil1_schema_output() detected — suppression is ON, Teil1 Schema Manager removes it', 'teil1-schema-manager' )
+                : __( '   ⚠ teil1_schema_output() detected — suppression is OFF, enable it in Settings if you see duplicates', 'teil1-schema-manager' )
             );
             $found_conflict = true;
         }
@@ -1547,17 +2156,17 @@ class CLI {
                 (bool) get_option( 't1schema_suppress_conflicts', false )
             );
             \WP_CLI::log( $suppressing
-                ? '   ⚠ WooCommerce detected — suppression is ON, Teil1 Schema Manager removes WooCommerce\'s own Product/Review/BreadcrumbList/WebSite markup wherever a configured rule covers the same type'
-                : '   ⚠ WooCommerce detected — suppression is OFF; if a configured rule also covers Product, Review, BreadcrumbList, or WebSite, enable it in Settings to avoid duplicate JSON-LD'
+                ? __( '   ⚠ WooCommerce detected — suppression is ON, Teil1 Schema Manager removes WooCommerce\'s own Product/Review/BreadcrumbList/WebSite markup wherever a configured rule covers the same type', 'teil1-schema-manager' )
+                : __( '   ⚠ WooCommerce detected — suppression is OFF; if a configured rule also covers Product, Review, BreadcrumbList, or WebSite, enable it in Settings to avoid duplicate JSON-LD', 'teil1-schema-manager' )
             );
             $found_conflict = true;
         }
         if ( ! $found_conflict ) {
-            \WP_CLI::log( '   ✓ No conflicts detected' );
+            \WP_CLI::log( __( '   ✓ No conflicts detected', 'teil1-schema-manager' ) );
         }
 
         // 4. Health across all layers.
-        \WP_CLI::log( "\n4. Schema health (all layers):" );
+        \WP_CLI::log( "\n" . __( '4. Schema health (all layers):', 'teil1-schema-manager' ) );
         $total_errors = 0;
         $total_warns  = 0;
 
@@ -1571,7 +2180,20 @@ class CLI {
             $total_errors += $errors;
             $total_warns  += $warns;
             if ( $errors > 0 ) {
-                \WP_CLI::log( "   ✗ Global #{$row['id']} ({$row['schema_type']}): {$errors} error(s)" );
+                \WP_CLI::log(
+                    sprintf(
+                        /* translators: 1: Global schema ID, 2: Schema.org type, 3: Number of validation errors. */
+                        _n(
+                            '   ✗ Global #%1$d (%2$s): %3$d error',
+                            '   ✗ Global #%1$d (%2$s): %3$d errors',
+                            $errors,
+                            'teil1-schema-manager'
+                        ),
+                        $row['id'],
+                        $row['schema_type'],
+                        $errors
+                    )
+                );
             }
         }
 
@@ -1586,36 +2208,193 @@ class CLI {
             $total_errors += $errors;
             $total_warns  += $warns;
             if ( $errors > 0 ) {
-                \WP_CLI::log( "   ✗ Rule #{$row['id']} ({$row['schema_type']}): {$errors} error(s)" );
+                \WP_CLI::log(
+                    sprintf(
+                        /* translators: 1: Schema rule ID, 2: Schema.org type, 3: Number of validation errors. */
+                        _n(
+                            '   ✗ Rule #%1$d (%2$s): %3$d error',
+                            '   ✗ Rule #%1$d (%2$s): %3$d errors',
+                            $errors,
+                            'teil1-schema-manager'
+                        ),
+                        $row['id'],
+                        $row['schema_type'],
+                        $errors
+                    )
+                );
             }
         }
 
         if ( $total_errors === 0 ) {
-            \WP_CLI::log( "   ✓ All schemas valid ({$total_warns} warning(s))" );
+            \WP_CLI::log(
+                sprintf(
+                    /* translators: %1$d: Number of validation warnings. */
+                    _n(
+                        '   ✓ All schemas valid (%1$d warning)',
+                        '   ✓ All schemas valid (%1$d warnings)',
+                        $total_warns,
+                        'teil1-schema-manager'
+                    ),
+                    $total_warns
+                )
+            );
         } else {
             $issues += $total_errors;
         }
 
         // 5. Orphaned local schemas.
-        \WP_CLI::log( "\n5. Orphaned local schemas:" );
+        \WP_CLI::log( "\n" . __( '5. Orphaned local schemas:', 'teil1-schema-manager' ) );
         $orphans = $wpdb->get_results(
             "SELECT pm.post_id FROM {$wpdb->postmeta} pm LEFT JOIN {$wpdb->posts} p ON pm.post_id = p.ID WHERE pm.meta_key = '_t1schema_local' AND (p.ID IS NULL OR p.post_status = 'trash')",
             ARRAY_A
         ); // phpcs:ignore
         if ( empty( $orphans ) ) {
-            \WP_CLI::log( '   ✓ No orphaned schemas' );
+            \WP_CLI::log( __( '   ✓ No orphaned schemas', 'teil1-schema-manager' ) );
         } else {
-            $ids = array_column( $orphans, 'post_id' );
-            \WP_CLI::log( '   ⚠ ' . count( $orphans ) . ' orphaned local schema(s) on deleted posts: ' . implode( ', ', $ids ) );
+            $ids          = array_column( $orphans, 'post_id' );
+            $orphan_count = count( $orphans );
+            \WP_CLI::log(
+                sprintf(
+                    /* translators: 1: Number of orphaned local schemas, 2: Comma-separated post IDs. */
+                    _n(
+                        '   ⚠ %1$d orphaned local schema on deleted posts: %2$s',
+                        '   ⚠ %1$d orphaned local schemas on deleted posts: %2$s',
+                        $orphan_count,
+                        'teil1-schema-manager'
+                    ),
+                    $orphan_count,
+                    implode( ', ', $ids )
+                )
+            );
             $issues++;
         }
 
         // Summary.
         \WP_CLI::log( "\n" . str_repeat( '─', 50 ) );
         if ( $issues === 0 ) {
-            \WP_CLI::success( 'No issues found. Teil1 Schema Manager is healthy.' );
+            \WP_CLI::success( __( 'No issues found. Teil1 Schema Manager is healthy.', 'teil1-schema-manager' ) );
         } else {
-            \WP_CLI::warning( "{$issues} issue(s) found." );
+            \WP_CLI::warning(
+                sprintf(
+                    /* translators: %1$d: Number of issues found. */
+                    _n( '%1$d issue found.', '%1$d issues found.', $issues, 'teil1-schema-manager' ),
+                    $issues
+                )
+            );
+        }
+    }
+
+    /**
+     * Format items while translating headings only for human-readable tables.
+     *
+     * Machine-readable formats retain their original field names and values.
+     *
+     * @param string $format Output format.
+     * @param array  $items  Items to format.
+     * @param array  $fields Item fields in display order.
+     */
+    private function format_items( string $format, array $items, array $fields ): void {
+        if ( 'table' !== $format ) {
+            \WP_CLI\Utils\format_items( $format, $items, $fields );
+            return;
+        }
+
+        $table_fields = array_map( [ $this, 'translate_table_header' ], $fields );
+        $table_items  = array_map(
+            function ( array $item ) use ( $fields ): array {
+                $table_item = [];
+                foreach ( $fields as $field ) {
+                    $table_item[ $this->translate_table_header( $field ) ] = $item[ $field ] ?? null;
+                }
+                return $table_item;
+            },
+            $items
+        );
+
+        \WP_CLI\Utils\format_items( 'table', $table_items, $table_fields );
+    }
+
+    /**
+     * Translate a table column heading.
+     *
+     * @param string $header Original heading.
+     * @return string Translated heading.
+     */
+    private function translate_table_header( string $header ): string {
+        switch ( $header ) {
+            case '#':
+                return _x( '#', 'table column heading', 'teil1-schema-manager' );
+            case 'ID':
+                return _x( 'ID', 'table column heading', 'teil1-schema-manager' );
+            case 'Index':
+                return _x( 'Index', 'table column heading', 'teil1-schema-manager' );
+            case 'Type':
+                return _x( 'Type', 'table column heading', 'teil1-schema-manager' );
+            case 'Status':
+                return _x( 'Status', 'table column heading', 'teil1-schema-manager' );
+            case 'Name':
+                return _x( 'Name', 'table column heading', 'teil1-schema-manager' );
+            case 'Created':
+                return _x( 'Created', 'table column heading', 'teil1-schema-manager' );
+            case 'Override':
+                return _x( 'Override', 'table column heading', 'teil1-schema-manager' );
+            case 'Props':
+                return _x( 'Props', 'table column heading', 'teil1-schema-manager' );
+            case 'Layer':
+                return _x( 'Layer', 'table column heading', 'teil1-schema-manager' );
+            case 'Errors':
+                return _x( 'Errors', 'table column heading', 'teil1-schema-manager' );
+            case 'Warnings':
+                return _x( 'Warnings', 'table column heading', 'teil1-schema-manager' );
+            case 'Infos':
+                return _x( 'Infos', 'table column heading', 'teil1-schema-manager' );
+            case 'Details':
+                return _x( 'Details', 'table column heading', 'teil1-schema-manager' );
+            case 'Parent':
+                return _x( 'Parent', 'table column heading', 'teil1-schema-manager' );
+            case 'Required':
+                return _x( 'Required', 'table column heading', 'teil1-schema-manager' );
+            case 'Recommended':
+                return _x( 'Recommended', 'table column heading', 'teil1-schema-manager' );
+            case 'Total Props':
+                return _x( 'Total Props', 'table column heading', 'teil1-schema-manager' );
+            case 'Category':
+                return _x( 'Category', 'table column heading', 'teil1-schema-manager' );
+            case 'Variable':
+                return _x( 'Variable', 'table column heading', 'teil1-schema-manager' );
+            case 'Desc':
+                return _x( 'Desc', 'table column heading', 'teil1-schema-manager' );
+            case 'Key':
+                return _x( 'Key', 'table column heading', 'teil1-schema-manager' );
+            case 'Value':
+                return _x( 'Value', 'table column heading', 'teil1-schema-manager' );
+            case 'Conditions':
+                return _x( 'Conditions', 'table column heading', 'teil1-schema-manager' );
+            case 'Priority':
+                return _x( 'Priority', 'table column heading', 'teil1-schema-manager' );
+            case 'Context':
+                return _x( 'Context', 'table column heading', 'teil1-schema-manager' );
+            case 'Schemas':
+                return _x( 'Schemas', 'table column heading', 'teil1-schema-manager' );
+            default:
+                return $header;
+        }
+    }
+
+    /**
+     * Translate known human-readable status labels.
+     *
+     * @param string $status Stored status identifier.
+     * @return string Translated status label.
+     */
+    private function translate_status_label( string $status ): string {
+        switch ( $status ) {
+            case 'active':
+                return _x( 'Active', 'schema status', 'teil1-schema-manager' );
+            case 'draft':
+                return _x( 'Draft', 'schema status', 'teil1-schema-manager' );
+            default:
+                return $status;
         }
     }
 }

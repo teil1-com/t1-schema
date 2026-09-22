@@ -17,10 +17,10 @@ const factorIcons = {
 };
 
 const factorLabels = {
-  coverage: 'Coverage',
-  health: 'Health',
-  depth: 'Depth',
-  diversity: 'Diversity',
+  coverage: wp.i18n.__( 'Coverage', 'teil1-schema-manager' ),
+  health: wp.i18n.__( 'Health', 'teil1-schema-manager' ),
+  depth: wp.i18n.__( 'Depth', 'teil1-schema-manager' ),
+  diversity: wp.i18n.__( 'Diversity', 'teil1-schema-manager' ),
 };
 
 export default function SchemaScore() {
@@ -28,7 +28,11 @@ export default function SchemaScore() {
 
   if (isLoading || !score) {
     return (
-      <div className="sp-rounded-xl sp-border sp-border-surface-2 sp-bg-surface-1 sp-p-6 sp-animate-pulse">
+      <div
+        className="sp-rounded-xl sp-border sp-border-surface-2 sp-bg-surface-1 sp-p-6 sp-animate-pulse"
+        role="status"
+        aria-label={wp.i18n.__( 'Loading schema quality score…', 'teil1-schema-manager' )}
+      >
         <div className="sp-h-6 sp-w-32 sp-rounded sp-bg-surface-2" />
       </div>
     );
@@ -63,24 +67,26 @@ export default function SchemaScore() {
 
         {/* Breakdown */}
         <div className="sp-flex-1 sp-space-y-2">
-          <h3 className="sp-text-sm sp-font-semibold sp-text-ink-0 sp-mb-3">Schema Quality Score</h3>
+          <h3 className="sp-text-sm sp-font-semibold sp-text-ink-0 sp-mb-3">
+            {wp.i18n.__( 'Schema Quality Score', 'teil1-schema-manager' )}
+          </h3>
           {Object.entries(score.breakdown).map(([key, factor]) => (
-            <div key={key} className="sp-flex sp-items-center sp-gap-2">
-              <span className="sp-text-sm">{factorIcons[key]}</span>
-              <span className="sp-text-xs sp-font-medium sp-text-ink-2 sp-w-16">{factorLabels[key]}</span>
-              <div className="sp-flex-1 sp-h-1.5 sp-rounded-full sp-bg-surface-2 sp-overflow-hidden">
-                <div
-                  className="sp-h-full sp-rounded-full"
-                  style={{
-                    width: `${factor.score}%`,
-                    backgroundColor: factor.score >= 75 ? '#10b981' : factor.score >= 50 ? '#f59e0b' : '#ef4444',
-                    transition: 'width 0.8s ease-in-out',
-                  }}
-                />
+              <div key={key} className="sp-flex sp-items-center sp-gap-2">
+                <span className="sp-text-sm">{factorIcons[key]}</span>
+                <span className="sp-text-xs sp-font-medium sp-text-ink-2 sp-w-16">{factorLabels[key]}</span>
+                <div className="sp-flex-1 sp-h-1.5 sp-rounded-full sp-bg-surface-2 sp-overflow-hidden">
+                  <div
+                    className="sp-h-full sp-rounded-full"
+                    style={{
+                      width: `${factor.score}%`,
+                      backgroundColor: factor.score >= 75 ? '#10b981' : factor.score >= 50 ? '#f59e0b' : '#ef4444',
+                      transition: 'width 0.8s ease-in-out',
+                    }}
+                  />
+                </div>
+                <span className="sp-text-xs sp-font-mono sp-text-ink-3 sp-w-8 sp-text-right">{factor.score}%</span>
+                <span className="sp-text-xs sp-text-ink-4 sp-w-24 sp-truncate" title={factor.detail}>{factor.detail}</span>
               </div>
-              <span className="sp-text-xs sp-font-mono sp-text-ink-3 sp-w-8 sp-text-right">{factor.score}%</span>
-              <span className="sp-text-xs sp-text-ink-4 sp-w-24 sp-truncate" title={factor.detail}>{factor.detail}</span>
-            </div>
           ))}
         </div>
       </div>

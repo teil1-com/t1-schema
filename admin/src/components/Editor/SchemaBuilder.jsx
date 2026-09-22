@@ -102,7 +102,13 @@ export default function SchemaBuilder({ schema, onBack }) {
       setSaveSuccess(true);
       setTimeout(() => setSaveSuccess(false), 2000);
     } catch (err) {
-      alert('Save failed: ' + err.message);
+      alert(
+        wp.i18n.sprintf(
+          /* translators: %1$s: Error message returned while saving. */
+          wp.i18n.__('Save failed: %1$s', 'teil1-schema-manager'),
+          err.message
+        )
+      );
     } finally {
       setSaving(false);
     }
@@ -117,11 +123,32 @@ export default function SchemaBuilder({ schema, onBack }) {
       const val = schemaData[key];
       const empty = val === undefined || val === '' || val === null;
       const typeLabel = Array.isArray(schemaType) ? schemaType.join(' + ') : schemaType;
-      if (def.required && empty) errors.push(`Missing required property: '${key}' for type '${typeLabel}'.`);
-      else if (def.recommended && empty) warnings.push(`Missing recommended property: '${key}' for type '${typeLabel}'.`);
+      if (def.required && empty) {
+        errors.push(
+          wp.i18n.sprintf(
+            /* translators: %1$s: Schema.org property name. %2$s: Schema.org type name. */
+            wp.i18n.__("Missing required property: '%1$s' for type '%2$s'.", 'teil1-schema-manager'),
+            key,
+            typeLabel
+          )
+        );
+      } else if (def.recommended && empty) {
+        warnings.push(
+          wp.i18n.sprintf(
+            /* translators: %1$s: Schema.org property name. %2$s: Schema.org type name. */
+            wp.i18n.__("Missing recommended property: '%1$s' for type '%2$s'.", 'teil1-schema-manager'),
+            key,
+            typeLabel
+          )
+        );
+      }
     }
     return { valid: errors.length === 0, errors, warnings };
   }, [schemaData, schemaType, typeDef, properties]);
+
+  const secondaryTypeCount = Array.isArray(schemaType) ? schemaType.length - 1 : 0;
+  const availablePropertyCount = Object.keys(properties).length;
+  const setPropertyCount = Object.keys(schemaData).filter((k) => !k.startsWith('@')).length;
 
   return (
     <div className="sp-grid sp-grid-cols-1 sp-gap-6 lg:sp-grid-cols-3">
@@ -131,20 +158,42 @@ export default function SchemaBuilder({ schema, onBack }) {
           {/* Editor Header */}
           <div className="sp-flex sp-items-center sp-justify-between sp-border-b sp-border-surface-2 sp-px-6 sp-py-4">
             <h2 className="sp-text-base sp-font-semibold sp-text-ink-0">
-              {isNew ? 'New Schema' : `Edit: ${primaryType}${Array.isArray(schemaType) && schemaType.length > 1 ? ` + ${schemaType.length - 1} more` : ''}`}
+              {isNew
+                ? wp.i18n.__('New Schema', 'teil1-schema-manager')
+                : secondaryTypeCount > 0
+                  ? wp.i18n.sprintf(
+                    /* translators: %1$s: Primary Schema.org type name. %2$d: Number of additional types. */
+                    wp.i18n._n(
+                      'Edit: %1$s + %2$d more type',
+                      'Edit: %1$s + %2$d more types',
+                      secondaryTypeCount,
+                      'teil1-schema-manager'
+                    ),
+                    primaryType,
+                    secondaryTypeCount
+                  )
+                  : wp.i18n.sprintf(
+                    /* translators: %1$s: Schema.org type name. */
+                    wp.i18n.__('Edit: %1$s', 'teil1-schema-manager'),
+                    primaryType
+                  )}
             </h2>
             <div className="sp-flex sp-items-center sp-gap-2">
               <button
                 onClick={() => setShowImporter(!showImporter)}
                 className="sp-rounded-lg sp-border sp-border-surface-3 sp-px-3 sp-py-1.5 sp-text-xs sp-font-medium sp-text-ink-2 sp-transition-colors hover:sp-bg-surface-1"
               >
-                {showImporter ? 'Visual Editor' : '{ } Import JSON'}
+                {
+                  showImporter
+                    ? wp.i18n.__('Visual Editor', 'teil1-schema-manager')
+                    : wp.i18n.__('{ } Import JSON', 'teil1-schema-manager')
+                }
               </button>
               <button
                 onClick={() => setShowPreview(!showPreview)}
                 className="sp-rounded-lg sp-border sp-border-surface-3 sp-px-3 sp-py-1.5 sp-text-xs sp-font-medium sp-text-ink-2 sp-transition-colors hover:sp-bg-surface-1 lg:sp-hidden"
               >
-                👁 Preview
+                {wp.i18n.__('👁 Preview', 'teil1-schema-manager')}
               </button>
             </div>
           </div>
@@ -167,10 +216,23 @@ export default function SchemaBuilder({ schema, onBack }) {
                 {primaryType && (
                   <div className="sp-space-y-3">
                     <div className="sp-mb-3 sp-flex sp-items-center sp-justify-between">
-                      <h3 className="sp-text-sm sp-font-semibold sp-text-ink-1">Properties</h3>
+                      <h3 className="sp-text-sm sp-font-semibold sp-text-ink-1">
+                        {wp.i18n.__('Properties', 'teil1-schema-manager')}
+                      </h3>
                       {typeDef && (
                         <span className="sp-text-2xs sp-text-ink-3">
-                          {Object.keys(properties).length} available
+                          {
+                            wp.i18n.sprintf(
+                              /* translators: %1$d: Number of available properties. */
+                              wp.i18n._n(
+                                '%1$d available property',
+                                '%1$d available properties',
+                                availablePropertyCount,
+                                'teil1-schema-manager'
+                              ),
+                              availablePropertyCount
+                            )
+                          }
                         </span>
                       )}
                     </div>
@@ -190,7 +252,7 @@ export default function SchemaBuilder({ schema, onBack }) {
                   <div className="sp-flex sp-flex-col sp-items-center sp-justify-center sp-py-12 sp-text-center">
                     <span className="sp-mb-3 sp-text-3xl">🎯</span>
                     <p className="sp-text-sm sp-text-ink-3">
-                      Select a Schema type above to start building
+                      {wp.i18n.__('Select a Schema type above to start building', 'teil1-schema-manager')}
                     </p>
                   </div>
                 )}
@@ -202,12 +264,23 @@ export default function SchemaBuilder({ schema, onBack }) {
           {primaryType && (
             <div className="sp-flex sp-items-center sp-justify-between sp-border-t sp-border-surface-2 sp-bg-surface-1 sp-px-6 sp-py-3">
               <div className="sp-text-xs sp-text-ink-3">
-                {Object.keys(schemaData).filter((k) => !k.startsWith('@')).length} properties set
+                {
+                  wp.i18n.sprintf(
+                    /* translators: %1$d: Number of properties set. */
+                    wp.i18n._n(
+                      '%1$d property set',
+                      '%1$d properties set',
+                      setPropertyCount,
+                      'teil1-schema-manager'
+                    ),
+                    setPropertyCount
+                  )
+                }
               </div>
               <div className="sp-flex sp-items-center sp-gap-2">
                 {saveSuccess && (
                   <span className="sp-animate-fade-in sp-text-xs sp-font-medium sp-text-green-600">
-                    ✓ Saved
+                    {wp.i18n.__('✓ Saved', 'teil1-schema-manager')}
                   </span>
                 )}
                 <button
@@ -215,7 +288,11 @@ export default function SchemaBuilder({ schema, onBack }) {
                   disabled={saving || !primaryType}
                   className="sp-rounded-lg sp-bg-brand-600 sp-px-4 sp-py-1.5 sp-text-sm sp-font-medium sp-text-white sp-transition-all hover:sp-bg-brand-700 disabled:sp-opacity-50"
                 >
-                  {saving ? 'Saving…' : isNew ? 'Create Schema' : 'Save Changes'}
+                  {saving
+                    ? wp.i18n.__('Saving…', 'teil1-schema-manager')
+                    : isNew
+                      ? wp.i18n.__('Create Schema', 'teil1-schema-manager')
+                      : wp.i18n.__('Save Changes', 'teil1-schema-manager')}
                 </button>
               </div>
             </div>
@@ -244,7 +321,7 @@ export default function SchemaBuilder({ schema, onBack }) {
         <div className="sp-rounded-xl sp-border sp-border-surface-3 sp-bg-white sp-shadow-bento">
           <div className="sp-border-b sp-border-surface-2 sp-px-4 sp-py-3">
             <h3 className="sp-text-xs sp-font-semibold sp-uppercase sp-tracking-wider sp-text-ink-3">
-              JSON-LD Output
+              {wp.i18n.__('JSON-LD Output', 'teil1-schema-manager')}
             </h3>
           </div>
           <pre className="sp-max-h-64 sp-overflow-auto sp-p-4 sp-font-mono sp-text-xs sp-text-ink-2">

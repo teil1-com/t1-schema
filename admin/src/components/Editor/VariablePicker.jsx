@@ -8,11 +8,11 @@ export default function VariablePicker({ onSelect, onClose, targetField }) {
   const { data: variables = {} } = useVariables();
 
   const categoryLabels = {
-    post: '📄 Post',
-    author: '👤 Author',
-    site: '🌐 Site',
-    taxonomy: '🏷️ Taxonomy',
-    meta: '🔧 Custom Meta',
+    post: wp.i18n._x('📄 Post', 'variable category', 'teil1-schema-manager'),
+    author: wp.i18n._x('👤 Author', 'variable category', 'teil1-schema-manager'),
+    site: wp.i18n._x('🌐 Site', 'variable category', 'teil1-schema-manager'),
+    taxonomy: wp.i18n._x('🏷️ Taxonomy', 'variable category', 'teil1-schema-manager'),
+    meta: wp.i18n._x('🔧 Custom Meta', 'variable category', 'teil1-schema-manager'),
   };
 
   return (
@@ -20,10 +20,11 @@ export default function VariablePicker({ onSelect, onClose, targetField }) {
       <div className="sp-flex sp-items-center sp-justify-between sp-border-b sp-border-surface-2 sp-px-4 sp-py-3">
         <div>
           <h3 className="sp-text-xs sp-font-semibold sp-uppercase sp-tracking-wider sp-text-ink-3">
-            Insert Variable
+            {wp.i18n.__('Insert Variable', 'teil1-schema-manager')}
           </h3>
           <p className="sp-text-2xs sp-text-ink-4">
-            for <span className="sp-font-mono sp-text-brand-600">{targetField}</span>
+            {wp.i18n._x('for', 'target field prefix', 'teil1-schema-manager')}{' '}
+            <span className="sp-font-mono sp-text-brand-600">{targetField}</span>
           </p>
         </div>
         <button
