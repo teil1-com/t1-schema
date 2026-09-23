@@ -26,7 +26,7 @@
                 "%1$d Warnungen"
             ],
             "Valid (Custom)": [
-                "G\u00fcltig (benutzerdefiniert)"
+                "G\u00fcltig (individuell)"
             ],
             "Valid": [
                 "G\u00fcltig"
@@ -92,7 +92,7 @@
                 "Nicht gepr\u00fcft"
             ],
             "Click to inspect health details": [
-                "Klicken, um Statusdetails anzuzeigen"
+                "Statusdetails anzeigen"
             ],
             "Schema is valid": [
                 "Schema ist g\u00fcltig"
@@ -119,10 +119,10 @@
                 "Definieren Sie websiteweite Konstanten. Verwenden Sie %1$s in einem beliebigen Schema."
             ],
             "Loading custom variables\u2026": [
-                "Benutzerdefinierte Variablen werden geladen\u2026"
+                "Individuelle Variablen werden geladen\u2026"
             ],
             "Custom Variables": [
-                "Benutzerdefinierte Variablen"
+                "Individuelle Variablen"
             ],
             "Saving\u2026": [
                 "Wird gespeichert\u2026"
@@ -261,7 +261,7 @@
                 "Empfehlungen ausblenden"
             ],
             "Opt-in templates to improve your coverage": [
-                "Optionale Templates zur Verbesserung der Abdeckung"
+                "Optionale Templates zur Verbesserung Ihrer Abdeckung"
             ],
             "activating a recommended rule loading indicator\u0004...": [
                 "..."
@@ -288,7 +288,7 @@
                 "Schema-Qualit\u00e4tsbewertung"
             ],
             "+ Add Custom Property": [
-                "+ Benutzerdefinierte Eigenschaft hinzuf\u00fcgen"
+                "+ Individuelle Eigenschaft hinzuf\u00fcgen"
             ],
             "propertyName": [
                 "propertyName"
@@ -354,7 +354,7 @@
                 "+ Schema hinzuf\u00fcgen"
             ],
             "Editing: %1$s": [
-                "Bearbeiten: %1$s"
+                "Bearbeitung: %1$s"
             ],
             "Configure Schema": [
                 "Schema konfigurieren"
@@ -404,7 +404,7 @@
                 "Definition f\u00fcr den Typ \u201e%1$s\u201c wurde nicht im Schema-Register gefunden."
             ],
             "Custom property": [
-                "Benutzerdefinierte Eigenschaft"
+                "Individuelle Eigenschaft"
             ],
             "Required": [
                 "Erforderlich"
@@ -452,11 +452,11 @@
                 "Neues Schema"
             ],
             "Edit: %1$s + %2$d more type": [
-                "Bearbeiten: %1$s + %2$d weiterer Typ",
-                "Bearbeiten: %1$s + %2$d weitere Typen"
+                "Bearbeitung: %1$s + %2$d weiterer Typ",
+                "Bearbeitung: %1$s + %2$d weitere Typen"
             ],
             "Edit: %1$s": [
-                "Bearbeiten: %1$s"
+                "Bearbeitung: %1$s"
             ],
             "\ud83d\udc41 Preview": [
                 "\ud83d\udc41 Vorschau"
@@ -532,7 +532,7 @@
                 "\ud83c\udff7\ufe0f Taxonomie"
             ],
             "variable category\u0004\ud83d\udd27 Custom Meta": [
-                "\ud83d\udd27 Benutzerdefinierte Metadaten"
+                "\ud83d\udd27 Individuelle Metadaten"
             ],
             "Insert Variable": [
                 "Variable einf\u00fcgen"
@@ -562,10 +562,10 @@
                 "Taxonomievariablen"
             ],
             "Categories, tags, and custom taxonomies": [
-                "Kategorien, Schlagw\u00f6rter und benutzerdefinierte Taxonomien"
+                "Kategorien, Schlagw\u00f6rter und individuelle Taxonomien"
             ],
             "Custom Meta Variables": [
-                "Variablen f\u00fcr benutzerdefinierte Metadaten"
+                "Variablen f\u00fcr individuelle Metadaten"
             ],
             "Access any %1$s field by key": [
                 "\u00dcber den Schl\u00fcssel auf jedes %1$s-Feld zugreifen"
@@ -604,31 +604,31 @@
                 "Typischer Ablauf"
             ],
             "Set up global %1$s and %2$s schemas in the Dashboard": [
-                "Globale %1$s- und %2$s-Schemas im Dashboard einrichten"
+                "Richten Sie globale %1$s- und %2$s-Schemas im Dashboard ein"
             ],
             "Go to the Pages tab and find the post you want to add structured data to": [
-                "Zum Tab \u201eSeiten\u201c wechseln und den Beitrag ausw\u00e4hlen, dem strukturierte Daten hinzugef\u00fcgt werden sollen"
+                "Wechseln Sie zum Tab \u201eSeiten\u201c und w\u00e4hlen Sie den Beitrag aus, dem Sie strukturierte Daten hinzuf\u00fcgen m\u00f6chten"
             ],
             "Click \"%1$s\" \u2192 select a type (e.g. %2$s, %3$s, %4$s)": [
-                "Auf \u201e%1$s\u201c klicken \u2192 einen Typ ausw\u00e4hlen (z. B. %2$s, %3$s, %4$s)"
+                "Klicken Sie auf \u201e%1$s\u201c \u2192 w\u00e4hlen Sie einen Typ aus (z. B. %2$s, %3$s, %4$s)"
             ],
             "Fill in properties using %1$s for dynamic data or plain text for static values": [
-                "Eigenschaften mit %1$s f\u00fcr dynamische Daten oder mit Klartext f\u00fcr statische Werte ausf\u00fcllen"
+                "F\u00fcllen Sie Eigenschaften mit %1$s f\u00fcr dynamische Daten oder mit Klartext f\u00fcr statische Werte aus"
             ],
             "Check the Health panel on the right for missing required\/recommended properties": [
-                "Im Statusbereich rechts pr\u00fcfen, ob erforderliche oder empfohlene Eigenschaften fehlen"
+                "Pr\u00fcfen Sie im Statusbereich rechts, ob erforderliche oder empfohlene Eigenschaften fehlen"
             ],
             "Save \u2192 verify the %1$s output in your page source": [
-                "Speichern \u2192 die %1$s-Ausgabe im Seitenquelltext pr\u00fcfen"
+                "Speichern Sie und \u00fcberpr\u00fcfen Sie die %1$s-Ausgabe im Seitenquelltext"
             ],
             "Understanding Health Status": [
-                "Schema-Status verstehen"
+                "Schema-Status"
             ],
             "Missing required properties. Your schema won't qualify for %1$s without these.": [
-                "Erforderliche Eigenschaften fehlen. Ohne sie ist das Schema nicht f\u00fcr %1$s geeignet."
+                "Erforderliche Eigenschaften fehlen. Ohne sie ist Ihr Schema nicht f\u00fcr %1$s geeignet."
             ],
             "Missing recommended properties. The schema is technically valid, but adding these improves your chances of rich result display.": [
-                "Empfohlene Eigenschaften fehlen. Das Schema ist technisch g\u00fcltig; das Erg\u00e4nzen dieser Eigenschaften kann die Eignung f\u00fcr Rich Results verbessern."
+                "Empfohlene Eigenschaften fehlen. Das Schema ist technisch g\u00fcltig; durch das Erg\u00e4nzen dieser Eigenschaften verbessern Sie Ihre Chancen auf Rich Results."
             ],
             "All required and recommended properties are set. Maximum chance of %1$s display.": [
                 "Alle erforderlichen und empfohlenen Eigenschaften sind festgelegt. Damit sind die Voraussetzungen f\u00fcr eine m\u00f6gliche Anzeige als %1$s erf\u00fcllt; eine Anzeige ist nicht garantiert."
@@ -661,7 +661,7 @@
                 "Alle Daten bei der Deinstallation l\u00f6schen"
             ],
             "When the plugin is deleted, drop its database tables, options, and per-page schemas. Off means your schemas survive a reinstall.": [
-                "Beim L\u00f6schen des Plugins werden seine Datenbanktabellen, Optionen und seitenspezifischen Schemas entfernt. Ist die Option deaktiviert, bleiben die Schemas f\u00fcr eine erneute Installation erhalten."
+                "Beim L\u00f6schen des Plugins werden seine Datenbanktabellen, Optionen und seitenspezifischen Schemas entfernt. Ist die Option deaktiviert, bleiben Ihre Schemas f\u00fcr eine erneute Installation erhalten."
             ],
             "My Blog Post Title": [
                 "Titel meines Blogbeitrags"
@@ -685,7 +685,7 @@
                 "Untertitel Ihrer Website aus Einstellungen \u2192 Allgemein"
             ],
             "(any custom post meta value)": [
-                "(beliebiger Wert eines benutzerdefinierten Beitrags-Metafelds)"
+                "(beliebiger Wert eines individuellen Beitrags-Metafelds)"
             ],
             "Pages & Posts": [
                 "Seiten und Beitr\u00e4ge"
@@ -719,7 +719,7 @@
                 "Seiten und Beitr\u00e4ge werden geladen\u2026"
             ],
             "No posts found matching your criteria": [
-                "Keine Beitr\u00e4ge gefunden, die den Kriterien entsprechen"
+                "Keine Beitr\u00e4ge gefunden, die Ihren Kriterien entsprechen"
             ],
             "Page %1$d of %2$d": [
                 "Seite %1$d von %2$d"
@@ -791,7 +791,7 @@
                 "Neue Schema-Regel"
             ],
             "Edit Rule: %1$s": [
-                "Regel bearbeiten: %1$s"
+                "Bearbeitung der Regel: %1$s"
             ],
             "Rule Configuration": [
                 "Regelkonfiguration"

@@ -202,7 +202,7 @@ msgstr "⚠ Warnungen"
 #: includes/CLI.php:683 includes/CLI.php:720
 msgctxt "schema validation status"
 msgid "ℹ Custom"
-msgstr "ℹ Benutzerdefiniert"
+msgstr "ℹ Individuell"
 
 #: includes/CLI.php:684 includes/CLI.php:721 includes/CLI.php:867
 msgctxt "schema validation status"
@@ -259,8 +259,8 @@ msgstr[1] "Validierungswarnungen insgesamt: %1$d"
 #, php-format
 msgid "Total custom type (info): %1$d"
 msgid_plural "Total custom types (infos): %1$d"
-msgstr[0] "Benutzerdefinierter Typ insgesamt (Hinweis): %1$d"
-msgstr[1] "Benutzerdefinierte Typen insgesamt (Hinweise): %1$d"
+msgstr[0] "Individueller Typ insgesamt (Hinweis): %1$d"
+msgstr[1] "Individuelle Typen insgesamt (Hinweise): %1$d"
 
 #. translators: %1$d: Number of schemas.
 #: includes/CLI.php:789 includes/CLI.php:897
@@ -314,44 +314,44 @@ msgid ""
 "No custom variables defined. Use `wp t1-schema set-var <key> <value>` to "
 "create one."
 msgstr ""
-"Keine benutzerdefinierten Variablen definiert. Mit `wp t1-schema set-var "
-"<key> <value>` kann eine erstellt werden."
+"Keine individuellen Variablen definiert. Erstelle eine mit `wp t1-schema set-"
+"var <key> <value>`."
 
 #: includes/CLI.php:1057
 msgid "Invalid key. Use lowercase letters, numbers, and underscores only."
 msgstr ""
-"Ungültiger Schlüssel. Ausschließlich Kleinbuchstaben, Zahlen und "
-"Unterstriche verwenden."
+"Ungültiger Schlüssel. Verwende ausschließlich Kleinbuchstaben, Zahlen und "
+"Unterstriche."
 
 #. translators: 1: Custom variable key, 2: Custom variable value.
 #: includes/CLI.php:1074
 #, php-format
 msgid "Updated custom variable: {{custom.%1$s}} → \"%2$s\""
-msgstr "Benutzerdefinierte Variable aktualisiert: {{custom.%1$s}} → „%2$s“"
+msgstr "Individuelle Variable aktualisiert: {{custom.%1$s}} → „%2$s“"
 
 #. translators: 1: Custom variable key, 2: Custom variable value.
 #: includes/CLI.php:1083
 #, php-format
 msgid "Created custom variable: {{custom.%1$s}} → \"%2$s\""
-msgstr "Benutzerdefinierte Variable erstellt: {{custom.%1$s}} → „%2$s“"
+msgstr "Individuelle Variable erstellt: {{custom.%1$s}} → „%2$s“"
 
 #. translators: %1$s: Custom variable key.
 #: includes/CLI.php:1116
 #, php-format
 msgid "Custom variable '%1$s' not found."
-msgstr "Benutzerdefinierte Variable „%1$s“ wurde nicht gefunden."
+msgstr "Individuelle Variable „%1$s“ wurde nicht gefunden."
 
 #. translators: %1$s: Custom variable key.
 #: includes/CLI.php:1126
 #, php-format
 msgid "Delete custom variable '{{custom.%1$s}}'?"
-msgstr "Benutzerdefinierte Variable „{{custom.%1$s}}“ löschen?"
+msgstr "Individuelle Variable „{{custom.%1$s}}“ löschen?"
 
 #. translators: %1$s: Custom variable key.
 #: includes/CLI.php:1137
 #, php-format
 msgid "Deleted custom variable: {{custom.%1$s}}"
-msgstr "Benutzerdefinierte Variable gelöscht: {{custom.%1$s}}"
+msgstr "Individuelle Variable gelöscht: {{custom.%1$s}}"
 
 #. translators: %1$s: JSON file path.
 #: includes/CLI.php:1172
@@ -642,7 +642,7 @@ msgstr[1] "   ✓ %1$s (%2$d Zeilen)"
 #: includes/CLI.php:2092
 #, php-format
 msgid "   ✗ %1$s — MISSING! Deactivate and reactivate the plugin."
-msgstr "   ✗ %1$s — FEHLT! Plugin deaktivieren und reaktivieren."
+msgstr "   ✗ %1$s — FEHLT! Deaktiviere und reaktiviere das Plugin."
 
 #: includes/CLI.php:2101
 msgid "2. Duplicate global types:"
@@ -700,8 +700,8 @@ msgid ""
 "   ⚠ teil1_schema_output() detected — suppression is OFF, enable it in "
 "Settings if you see duplicates"
 msgstr ""
-"   ⚠ teil1_schema_output() erkannt — Unterdrückung ist AUS; bei doppelten "
-"Ausgaben in den Einstellungen aktivieren"
+"   ⚠ teil1_schema_output() erkannt — Unterdrückung ist AUS; aktiviere sie in "
+"den Einstellungen, wenn du doppelte Ausgaben siehst"
 
 #: includes/CLI.php:2160
 msgid ""
@@ -720,9 +720,8 @@ msgid ""
 "avoid duplicate JSON-LD"
 msgstr ""
 "   ⚠ WooCommerce erkannt — Unterdrückung ist AUS; wenn eine konfigurierte "
-"Regel auch Product, Review, BreadcrumbList oder WebSite abdeckt, die "
-"Unterdrückung in den Einstellungen aktivieren, um doppeltes JSON-LD zu "
-"vermeiden"
+"Regel auch Product, Review, BreadcrumbList oder WebSite abdeckt, aktiviere "
+"die Unterdrückung in den Einstellungen, um doppeltes JSON-LD zu vermeiden"
 
 #: includes/CLI.php:2166
 msgid "   ✓ No conflicts detected"
@@ -1082,7 +1081,7 @@ msgstr[1] "%d Warnungen"
 
 #: includes/MetaBox.php:120 admin/src/components/Dashboard/HealthDetail.jsx:90
 msgid "Valid (Custom)"
-msgstr "Gültig (benutzerdefiniert)"
+msgstr "Gültig (individuell)"
 
 #: includes/MetaBox.php:123 admin/src/components/Dashboard/BentoGrid.jsx:163
 #: admin/src/components/Dashboard/HealthScorecard.jsx:64
@@ -2385,7 +2384,7 @@ msgstr "Erforderliche Eigenschaft @type fehlt."
 msgid ""
 "Type '%s' is a valid custom Schema.org type. Property validation is skipped."
 msgstr ""
-"Der Typ „%s“ ist ein gültiger benutzerdefinierter Schema.org-Typ. Die "
+"Der Typ „%s“ ist ein gültiger individueller Schema.org-Typ. Die "
 "Eigenschaften werden nicht validiert."
 
 #. translators: %s: Schema.org type name.
@@ -2456,7 +2455,7 @@ msgstr "Beitrags-ID"
 
 #: includes/VariableResolver.php:43
 msgid "Post slug"
-msgstr "Beitrags-Titelform"
+msgstr "Titelform des Beitrags"
 
 #: includes/VariableResolver.php:44
 msgctxt "variable description"
@@ -2552,7 +2551,7 @@ msgstr "Aktuelle Suchanfrage"
 #, php-format
 msgid "Custom post meta value (replace %1$s with meta key)"
 msgstr ""
-"Wert eines benutzerdefinierten Beitrags-Metafelds (%1$s durch den "
+"Wert eines individuellen Beitrags-Metafelds (%1$s durch den "
 "Metaschlüssel ersetzen)"
 
 #. translators: 1: Schema.org Offer.price property; 2: Schema.org AggregateOffer type.
@@ -2605,7 +2604,7 @@ msgstr "Erster Begriff aus der Taxonomie Product Brand, sofern festgelegt"
 #: includes/VariableResolver.php:130
 msgid "User-defined site constant (create in Dashboard → Settings)"
 msgstr ""
-"Benutzerdefinierte Website-Konstante (unter Dashboard → Einstellungen "
+"Vom Benutzer festgelegte Website-Konstante (unter Dashboard → Einstellungen "
 "erstellen)"
 
 #. translators: %s: preview of a user-defined site constant.
@@ -2693,7 +2692,7 @@ msgstr "Nicht geprüft"
 
 #: admin/src/components/Dashboard/BentoGrid.jsx:203
 msgid "Click to inspect health details"
-msgstr "Klicken, um Statusdetails anzuzeigen"
+msgstr "Statusdetails anzeigen"
 
 #: admin/src/components/Dashboard/BentoGrid.jsx:204
 msgid "Schema is valid"
@@ -2726,23 +2725,22 @@ msgid ""
 "Start by creating your Organization or WebSite schema. These are the "
 "foundation of your structured data."
 msgstr ""
-"Zunächst ein Organization- oder WebSite-Schema erstellen. Diese Schemas "
-"bilden die Grundlage für strukturierte Daten."
+"Erstelle zunächst dein Organization- oder WebSite-Schema. Diese Schemas bilden "
+"die Grundlage deiner strukturierten Daten."
 
 #. translators: %1$s: Custom variable syntax example.
 #: admin/src/components/Dashboard/CustomVariables.jsx:16
 msgid "Define site-wide constants. Use %1$s in any schema."
 msgstr ""
-"Websiteweite Konstanten definieren. %1$s in einem beliebigen Schema "
-"verwenden."
+"Definiere websiteweite Konstanten. Verwende %1$s in einem beliebigen Schema."
 
 #: admin/src/components/Dashboard/CustomVariables.jsx:72
 msgid "Loading custom variables…"
-msgstr "Benutzerdefinierte Variablen werden geladen…"
+msgstr "Individuelle Variablen werden geladen…"
 
 #: admin/src/components/Dashboard/CustomVariables.jsx:85
 msgid "Custom Variables"
-msgstr "Benutzerdefinierte Variablen"
+msgstr "Individuelle Variablen"
 
 #: admin/src/components/Dashboard/CustomVariables.jsx:101
 #: admin/src/components/Editor/LocalSchemaEditor.jsx:375
@@ -2809,59 +2807,59 @@ msgstr ""
 #. translators: {{site_name}} and {{post_title}} are dynamic variable tokens.
 #: admin/src/components/Dashboard/HealthDetail.jsx:159
 msgid "Tip: Use {{site_name}} or {{post_title}} as a dynamic value"
-msgstr "Tipp: {{site_name}} oder {{post_title}} als dynamischen Wert verwenden"
+msgstr "Tipp: Verwende {{site_name}} oder {{post_title}} als dynamischen Wert"
 
 #. translators: {{site_url}} and {{post_url}} are dynamic variable tokens.
 #: admin/src/components/Dashboard/HealthDetail.jsx:163
 msgid "Tip: Use {{site_url}} or {{post_url}}"
-msgstr "Tipp: {{site_url}} oder {{post_url}} verwenden"
+msgstr "Tipp: Verwende {{site_url}} oder {{post_url}}"
 
 #. translators: {{site_logo}} is a dynamic variable token.
 #: admin/src/components/Dashboard/HealthDetail.jsx:167
 msgid "Tip: Use {{site_logo}} to pull from theme settings"
 msgstr ""
-"Tipp: {{site_logo}} verwenden, um das Logo aus den Theme-Einstellungen zu "
+"Tipp: Verwende {{site_logo}}, um das Logo aus den Theme-Einstellungen zu "
 "übernehmen"
 
 #. translators: {{featured_image_url}} is a dynamic variable token.
 #: admin/src/components/Dashboard/HealthDetail.jsx:171
 msgid "Tip: Use {{featured_image_url}} for the post thumbnail"
-msgstr "Tipp: {{featured_image_url}} für das Beitragsbild verwenden"
+msgstr "Tipp: Verwende {{featured_image_url}} für das Beitragsbild"
 
 #. translators: {{post_title}} is a dynamic variable token.
 #: admin/src/components/Dashboard/HealthDetail.jsx:175
 msgid "Tip: Use {{post_title}} for the article headline"
-msgstr "Tipp: {{post_title}} für die Artikelüberschrift verwenden"
+msgstr "Tipp: Verwende {{post_title}} für die Artikelüberschrift"
 
 #. translators: {{post_date}} is a dynamic variable token.
 #: admin/src/components/Dashboard/HealthDetail.jsx:179
 msgid "Tip: Use {{post_date}} for auto-dated articles"
 msgstr ""
-"Tipp: {{post_date}} verwenden, um das Artikeldatum automatisch einzusetzen"
+"Tipp: Verwende {{post_date}}, um das Artikeldatum automatisch einzusetzen"
 
 #. translators: Person is a Schema.org type and {{author_name}} is a dynamic variable token.
 #: admin/src/components/Dashboard/HealthDetail.jsx:183
 msgid "Tip: Use a nested Person object or {{author_name}}"
-msgstr "Tipp: Ein verschachteltes Person-Objekt oder {{author_name}} verwenden"
+msgstr "Tipp: Verwende ein verschachteltes Person-Objekt oder {{author_name}}"
 
 #. translators: {{post_excerpt}} and {{site_description}} are dynamic variable tokens.
 #: admin/src/components/Dashboard/HealthDetail.jsx:187
 msgid "Tip: Use {{post_excerpt}} or {{site_description}}"
-msgstr "Tipp: {{post_excerpt}} oder {{site_description}} verwenden"
+msgstr "Tipp: Verwende {{post_excerpt}} oder {{site_description}}"
 
 #: admin/src/components/Dashboard/HealthDetail.jsx:190
 msgid "Add your social media profile URLs as an array"
-msgstr "URLs der Social-Media-Profile als Array hinzufügen"
+msgstr "Füge die URLs deiner Social-Media-Profile als Array hinzu"
 
 #. translators: PostalAddress is a Schema.org type and JSON is a technical format name.
 #: admin/src/components/Dashboard/HealthDetail.jsx:194
 msgid "Add a nested PostalAddress object via JSON import"
 msgstr ""
-"Über den JSON-Import ein verschachteltes PostalAddress-Objekt hinzufügen"
+"Füge über den JSON-Import ein verschachteltes PostalAddress-Objekt hinzu"
 
 #: admin/src/components/Dashboard/HealthDetail.jsx:197
 msgid "Add your business phone number"
-msgstr "Telefonnummer des Unternehmens hinzufügen"
+msgstr "Füge die Telefonnummer deines Unternehmens hinzu"
 
 #: admin/src/components/Dashboard/HealthDetail.jsx:200
 msgid "This is added automatically when rendered — no action needed"
@@ -2878,7 +2876,7 @@ msgstr ""
 #: admin/src/components/Dashboard/HealthDetail.jsx:205
 msgid "Set this property in the editor above to resolve"
 msgstr ""
-"Diese Eigenschaft im obigen Editor festlegen, um das Problem zu beheben"
+"Lege diese Eigenschaft im obigen Editor fest, um das Problem zu beheben"
 
 #: admin/src/components/Dashboard/HealthScorecard.jsx:13
 msgid "Loading health data…"
@@ -2970,7 +2968,7 @@ msgstr "Empfehlungen ausblenden"
 
 #: admin/src/components/Dashboard/RuleTemplates.jsx:81
 msgid "Opt-in templates to improve your coverage"
-msgstr "Optionale Templates zur Verbesserung der Abdeckung"
+msgstr "Optionale Templates zur Verbesserung deiner Abdeckung"
 
 #: admin/src/components/Dashboard/RuleTemplates.jsx:105
 msgctxt "activating a recommended rule loading indicator"
@@ -3008,7 +3006,7 @@ msgstr "Schema-Qualitätsbewertung"
 #: admin/src/components/Editor/AddCustomProperty.jsx:25
 #: admin/src/components/Rules/RuleBuilder.jsx:510
 msgid "+ Add Custom Property"
-msgstr "+ Benutzerdefinierte Eigenschaft hinzufügen"
+msgstr "+ Individuelle Eigenschaft hinzufügen"
 
 #: admin/src/components/Editor/AddCustomProperty.jsx:37
 msgid "propertyName"
@@ -3060,7 +3058,7 @@ msgstr "JSON-LD einfügen"
 #: admin/src/components/Editor/JsonImporter.jsx:56
 msgid "Paste raw JSON-LD markup. Script tags will be stripped automatically."
 msgstr ""
-"Unformatiertes JSON-LD-Markup einfügen. Script-Tags werden automatisch "
+"Füge unformatiertes JSON-LD-Markup ein. Script-Tags werden automatisch "
 "entfernt."
 
 #: admin/src/components/Editor/JsonImporter.jsx:62
@@ -3123,7 +3121,7 @@ msgstr "+ Schema hinzufügen"
 #. translators: %1$s: Schema.org type name.
 #: admin/src/components/Editor/LocalSchemaEditor.jsx:251
 msgid "Editing: %1$s"
-msgstr "Bearbeiten: %1$s"
+msgstr "Bearbeitung: %1$s"
 
 #: admin/src/components/Editor/LocalSchemaEditor.jsx:254
 msgid "Configure Schema"
@@ -3152,7 +3150,7 @@ msgstr "Schema auf dieser Seite"
 
 #: admin/src/components/Editor/LocalSchemaEditor.jsx:326
 msgid "Select a type above to start building"
-msgstr "Oben einen Typ auswählen, um das Schema zu erstellen"
+msgstr "Wähle oben einen Typ aus, um das Schema zu erstellen"
 
 #. translators: %1$d: Number of schemas on the current page.
 #: admin/src/components/Editor/LocalSchemaEditor.jsx:339
@@ -3206,7 +3204,7 @@ msgstr "Definition für den Typ „%1$s“ wurde nicht im Schema-Register gefund
 
 #: admin/src/components/Editor/ObjectEditor.jsx:57
 msgid "Custom property"
-msgstr "Benutzerdefinierte Eigenschaft"
+msgstr "Individuelle Eigenschaft"
 
 #: admin/src/components/Editor/PropertyCard.jsx:58
 msgid "Required"
@@ -3277,13 +3275,13 @@ msgstr "Neues Schema"
 #: admin/src/components/Editor/SchemaBuilder.jsx:166
 msgid "Edit: %1$s + %2$d more type"
 msgid_plural "Edit: %1$s + %2$d more types"
-msgstr[0] "Bearbeiten: %1$s + %2$d weiterer Typ"
-msgstr[1] "Bearbeiten: %1$s + %2$d weitere Typen"
+msgstr[0] "Bearbeitung: %1$s + %2$d weiterer Typ"
+msgstr[1] "Bearbeitung: %1$s + %2$d weitere Typen"
 
 #. translators: %1$s: Schema.org type name.
 #: admin/src/components/Editor/SchemaBuilder.jsx:177
 msgid "Edit: %1$s"
-msgstr "Bearbeiten: %1$s"
+msgstr "Bearbeitung: %1$s"
 
 #: admin/src/components/Editor/SchemaBuilder.jsx:196
 msgid "👁 Preview"
@@ -3303,7 +3301,7 @@ msgstr[1] "%1$d verfügbare Eigenschaften"
 
 #: admin/src/components/Editor/SchemaBuilder.jsx:255
 msgid "Select a Schema type above to start building"
-msgstr "Oben einen Schema-Typ auswählen, um das Schema zu erstellen"
+msgstr "Wähle oben einen Schema-Typ aus, um das Schema zu erstellen"
 
 #: admin/src/components/Editor/SchemaBuilder.jsx:294
 msgid "Create Schema"
@@ -3402,7 +3400,7 @@ msgstr "🏷️ Taxonomie"
 #: admin/src/components/Editor/VariablePicker.jsx:15
 msgctxt "variable category"
 msgid "🔧 Custom Meta"
-msgstr "🔧 Benutzerdefinierte Metadaten"
+msgstr "🔧 Individuelle Metadaten"
 
 #: admin/src/components/Editor/VariablePicker.jsx:23
 msgid "Insert Variable"
@@ -3444,11 +3442,11 @@ msgstr "Taxonomievariablen"
 
 #: admin/src/components/Help/HelpPanel.jsx:35
 msgid "Categories, tags, and custom taxonomies"
-msgstr "Kategorien, Schlagwörter und benutzerdefinierte Taxonomien"
+msgstr "Kategorien, Schlagwörter und individuelle Taxonomien"
 
 #: admin/src/components/Help/HelpPanel.jsx:39
 msgid "Custom Meta Variables"
-msgstr "Variablen für benutzerdefinierte Metadaten"
+msgstr "Variablen für individuelle Metadaten"
 
 #. translators: %1$s: WordPress post meta field name.
 #: admin/src/components/Help/HelpPanel.jsx:42
@@ -3476,8 +3474,8 @@ msgid ""
 "Site-wide schemas (%1$s, %2$s) that apply to every page automatically. "
 "Manage these in the Dashboard tab."
 msgstr ""
-"Websiteweite Schemas (%1$s, %2$s), die automatisch für jede Seite gelten. Im "
-"Tab „Dashboard“ verwalten."
+"Websiteweite Schemas (%1$s, %2$s), die automatisch für jede Seite gelten. "
+"Verwalte sie im Tab „Dashboard“."
 
 #: admin/src/components/Help/HelpPanel.jsx:92
 msgid "Local Schemas"
@@ -3490,7 +3488,7 @@ msgid ""
 "page. Manage these in the Pages tab."
 msgstr ""
 "Seitenspezifische Schemas (%1$s, %2$s, %3$s), die für einen einzelnen "
-"Beitrag oder eine einzelne Seite gelten. Im Tab „Seiten“ verwalten."
+"Beitrag oder eine einzelne Seite gelten. Verwalte sie im Tab „Seiten“."
 
 #: admin/src/components/Help/HelpPanel.jsx:106
 msgid "Override Logic"
@@ -3517,7 +3515,7 @@ msgid ""
 "Use %1$s tags instead of hardcoded values. These resolve to real data at "
 "render time — e.g. %2$s becomes the actual page title."
 msgstr ""
-"%1$s-Tags anstelle fest codierter Werte verwenden. Bei der Ausgabe werden "
+"Verwende %1$s-Tags anstelle fest codierter Werte. Bei der Ausgabe werden "
 "sie durch tatsächliche Daten ersetzt — so wird beispielsweise %2$s zum "
 "aktuellen Seitentitel."
 
@@ -3528,19 +3526,19 @@ msgstr "Typischer Ablauf"
 #. translators: %1$s: Organization Schema.org type, %2$s: WebSite Schema.org type.
 #: admin/src/components/Help/HelpPanel.jsx:142
 msgid "Set up global %1$s and %2$s schemas in the Dashboard"
-msgstr "Globale %1$s- und %2$s-Schemas im Dashboard einrichten"
+msgstr "Richte globale %1$s- und %2$s-Schemas im Dashboard ein"
 
 #: admin/src/components/Help/HelpPanel.jsx:149
 msgid ""
 "Go to the Pages tab and find the post you want to add structured data to"
 msgstr ""
-"Zum Tab „Seiten“ wechseln und den Beitrag auswählen, dem strukturierte Daten "
-"hinzugefügt werden sollen"
+"Wechsle zum Tab „Seiten“ und wähle den Beitrag aus, dem du strukturierte Daten "
+"hinzufügen möchtest"
 
 #. translators: %1$s: translated Add Schema button label, %2$s: Article Schema.org type, %3$s: Product Schema.org type, %4$s: FAQ schema name.
 #: admin/src/components/Help/HelpPanel.jsx:158
 msgid "Click \"%1$s\" → select a type (e.g. %2$s, %3$s, %4$s)"
-msgstr "Auf „%1$s“ klicken → einen Typ auswählen (z. B. %2$s, %3$s, %4$s)"
+msgstr "Klicke auf „%1$s“ → wähle einen Typ aus (z. B. %2$s, %3$s, %4$s)"
 
 #. translators: %1$s: {{variables}} token.
 #: admin/src/components/Help/HelpPanel.jsx:172
@@ -3548,25 +3546,25 @@ msgid ""
 "Fill in properties using %1$s for dynamic data or plain text for static "
 "values"
 msgstr ""
-"Eigenschaften mit %1$s für dynamische Daten oder mit Klartext für statische "
-"Werte ausfüllen"
+"Fülle Eigenschaften mit %1$s für dynamische Daten oder mit Klartext für "
+"statische Werte aus"
 
 #: admin/src/components/Help/HelpPanel.jsx:181
 msgid ""
 "Check the Health panel on the right for missing required/recommended "
 "properties"
 msgstr ""
-"Im Statusbereich rechts prüfen, ob erforderliche oder empfohlene "
-"Eigenschaften fehlen"
+"Prüfe im Statusbereich rechts, ob erforderliche oder empfohlene Eigenschaften "
+"fehlen"
 
 #. translators: %1$s: JSON-LD data format name.
 #: admin/src/components/Help/HelpPanel.jsx:190
 msgid "Save → verify the %1$s output in your page source"
-msgstr "Speichern → die %1$s-Ausgabe im Seitenquelltext prüfen"
+msgstr "Speichere und überprüfe die %1$s-Ausgabe im Seitenquelltext"
 
 #: admin/src/components/Help/HelpPanel.jsx:200
 msgid "Understanding Health Status"
-msgstr "Schema-Status verstehen"
+msgstr "Schema-Status"
 
 #. translators: %1$s: Google Rich Results product name.
 #: admin/src/components/Help/HelpPanel.jsx:212
@@ -3574,7 +3572,7 @@ msgid ""
 "Missing required properties. Your schema won't qualify for %1$s without "
 "these."
 msgstr ""
-"Erforderliche Eigenschaften fehlen. Ohne sie ist das Schema nicht für %1$s "
+"Erforderliche Eigenschaften fehlen. Ohne sie ist dein Schema nicht für %1$s "
 "geeignet."
 
 #: admin/src/components/Help/HelpPanel.jsx:228
@@ -3582,8 +3580,8 @@ msgid ""
 "Missing recommended properties. The schema is technically valid, but adding "
 "these improves your chances of rich result display."
 msgstr ""
-"Empfohlene Eigenschaften fehlen. Das Schema ist technisch gültig; das "
-"Ergänzen dieser Eigenschaften kann die Eignung für Rich Results verbessern."
+"Empfohlene Eigenschaften fehlen. Das Schema ist technisch gültig; durch das "
+"Ergänzen dieser Eigenschaften verbesserst du deine Chancen auf Rich Results."
 
 #. translators: %1$s: Google Rich Result product name.
 #: admin/src/components/Help/HelpPanel.jsx:244
@@ -3605,7 +3603,7 @@ msgid ""
 "Use these tags in any property value. They are resolved to real data when "
 "the %1$s is rendered."
 msgstr ""
-"Diese Tags in beliebigen Eigenschaftswerten verwenden. Bei der Ausgabe von "
+"Verwende diese Tags in beliebigen Eigenschaftswerten. Bei der Ausgabe von "
 "%1$s werden sie durch tatsächliche Daten ersetzt."
 
 #: admin/src/components/Help/HelpPanel.jsx:295
@@ -3636,9 +3634,9 @@ msgid ""
 "unless you actually see duplicate structured data on your pages."
 msgstr ""
 "Entfernt von anderen Plugins ausgegebenes %1$s sowie %2$s-eigenes %3$s/%4$s/"
-"%5$s/%6$s-Markup, wenn es die Ausgabe von %7$s duplizieren würde. Diese "
-"Option deaktiviert lassen, solange auf den Seiten keine doppelten "
-"strukturierten Daten auftreten."
+"%5$s/%6$s-Markup, wenn es die Ausgabe von %7$s duplizieren würde. Lass diese "
+"Option deaktiviert, solange du auf deinen Seiten keine doppelten "
+"strukturierten Daten siehst."
 
 #: admin/src/components/Help/HelpPanel.jsx:355
 msgid "Delete all data on uninstall"
@@ -3650,7 +3648,7 @@ msgid ""
 "schemas. Off means your schemas survive a reinstall."
 msgstr ""
 "Beim Löschen des Plugins werden seine Datenbanktabellen, Optionen und "
-"seitenspezifischen Schemas entfernt. Ist die Option deaktiviert, bleiben die "
+"seitenspezifischen Schemas entfernt. Ist die Option deaktiviert, bleiben deine "
 "Schemas für eine erneute Installation erhalten."
 
 #: admin/src/components/Help/HelpPanel.jsx:413
@@ -3680,11 +3678,11 @@ msgstr "Meine Website"
 
 #: admin/src/components/Help/HelpPanel.jsx:434
 msgid "Your site tagline from Settings → General"
-msgstr "Untertitel der Website aus Einstellungen → Allgemein"
+msgstr "Untertitel deiner Website aus Einstellungen → Allgemein"
 
 #: admin/src/components/Help/HelpPanel.jsx:441
 msgid "(any custom post meta value)"
-msgstr "(beliebiger Wert eines benutzerdefinierten Beitrags-Metafelds)"
+msgstr "(beliebiger Wert eines individuellen Beitrags-Metafelds)"
 
 #: admin/src/components/Pages/PageBrowser.jsx:41
 msgid "Pages & Posts"
@@ -3735,7 +3733,7 @@ msgstr "Seiten und Beiträge werden geladen…"
 
 #: admin/src/components/Pages/PageBrowser.jsx:121
 msgid "No posts found matching your criteria"
-msgstr "Keine Beiträge gefunden, die den Kriterien entsprechen"
+msgstr "Keine Beiträge gefunden, die deinen Kriterien entsprechen"
 
 #. translators: %1$d: Current page number, %2$d: Total number of pages.
 #: admin/src/components/Pages/PageBrowser.jsx:138
@@ -3760,7 +3758,7 @@ msgstr "Schema bearbeiten"
 
 #: admin/src/components/Preview/RichSnippet.jsx:26
 msgid "Select a schema type to see the preview"
-msgstr "Schema-Typ auswählen, um die Vorschau anzuzeigen"
+msgstr "Wähle einen Schema-Typ aus, um die Vorschau anzuzeigen"
 
 #: admin/src/components/Preview/RichSnippet.jsx:36
 msgid "Rich Result Preview"
@@ -3841,7 +3839,7 @@ msgstr "Neue Schema-Regel"
 #. translators: %1$s: Rule name.
 #: admin/src/components/Rules/RuleBuilder.jsx:194
 msgid "Edit Rule: %1$s"
-msgstr "Regel bearbeiten: %1$s"
+msgstr "Bearbeitung der Regel: %1$s"
 
 #: admin/src/components/Rules/RuleBuilder.jsx:217
 msgid "Rule Configuration"
@@ -3901,7 +3899,7 @@ msgstr[1] "%1$d von %2$d Eigenschaften festgelegt"
 
 #: admin/src/components/Rules/RuleBuilder.jsx:367
 msgid "Select a schema type above to configure properties"
-msgstr "Oben einen Schema-Typ auswählen, um die Eigenschaften zu konfigurieren"
+msgstr "Wähle oben einen Schema-Typ aus, um die Eigenschaften zu konfigurieren"
 
 #: admin/src/components/Rules/RuleBuilder.jsx:403
 msgid "Create Rule"
@@ -3953,8 +3951,8 @@ msgstr "Noch keine Schema-Regeln"
 #: admin/src/components/Rules/RulesList.jsx:65
 msgid "Rules let you target archives, CPTs, taxonomies, and more"
 msgstr ""
-"Mit Regeln lassen sich Archive, CPTs, Taxonomien und weitere Kontexte "
-"gezielt ansprechen"
+"Mit Regeln kannst du Archive, CPTs, Taxonomien und weitere Kontexte gezielt "
+"ansprechen"
 
 #: admin/src/components/Rules/RulesList.jsx:74
 msgid "Create Your First Rule"
