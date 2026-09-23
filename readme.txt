@@ -126,7 +126,7 @@ Yes. Use `wp teil1-schema-manager export > backup.json` and `wp teil1-schema-man
 = 2.4.1 =
 * Feature: Map explicit blog editorial formats to Article, NewsArticle, or BlogPosting before canonical graph nodes are merged.
 * Improvement: Added separate German and German Formal runtime catalogs so each locale follows WordPress.org language conventions.
-* Improvement: Default German now uses neutral WordPress-style instructions, while German Formal preserves the approved "Sie" wording.
+* Improvement: Default German now uses the informal "du" wording, while German Formal preserves the approved "Sie" wording.
 
 = 2.4.0 =
 * Feature: Added complete WordPress-native internationalization for the React dashboard, PHP admin surfaces, REST messages, WP-CLI output, and Schema.org presentation metadata.
